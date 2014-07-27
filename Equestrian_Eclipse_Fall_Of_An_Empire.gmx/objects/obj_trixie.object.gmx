@@ -73,7 +73,7 @@ depth = phy_position_y * -1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///handle input
+            <string>///Handle Input
 
 if(keyboard_check(vk_left)){
 sprite_index = spr_trixie_left;

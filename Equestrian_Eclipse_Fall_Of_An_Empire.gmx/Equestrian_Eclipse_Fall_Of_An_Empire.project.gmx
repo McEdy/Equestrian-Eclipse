@@ -61,7 +61,6 @@
       <object>objects\obj_NPC_base</object>
     </objects>
   </objects>
-  <timelines name="timelines"/>
   <rooms name="rooms">
     <room>rooms\rm_titlescreen</room>
     <room>rooms\rm_test</room>
