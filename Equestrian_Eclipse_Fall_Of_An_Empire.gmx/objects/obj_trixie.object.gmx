@@ -75,10 +75,15 @@ depth = phy_position_y * -1
             <kind>1</kind>
             <string>///Handle Input
 
-if(keyboard_check(vk_left)){
+if(keyboard_check(ord("A"))){
 sprite_index = spr_trixie_left;
-phy_position_x -=2;
-}
+
+    if(keyboard_check(vk_shift)){
+    phy_position_x -=5;
+}else
+{
+    phy_position_x -=2;
+}}
 
 if(keyboard_check(vk_right)){
 sprite_index = spr_trixie_right;
