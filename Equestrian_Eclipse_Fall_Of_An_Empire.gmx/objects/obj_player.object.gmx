@@ -51,7 +51,7 @@ action = false
             <kind>1</kind>
             <string>///Depth
 
-depth = phy_position_y * -1
+depth = (phy_position_y - 15) * -1
 </string>
           </argument>
         </arguments>
