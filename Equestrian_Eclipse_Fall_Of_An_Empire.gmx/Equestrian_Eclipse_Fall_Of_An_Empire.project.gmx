@@ -52,6 +52,7 @@
   <objects name="objects">
     <objects name="System">
       <object>objects\obj_gamestate</object>
+      <object>objects\obj_obstacles</object>
     </objects>
     <objects name="Ponies">
       <objects name="Playable">
@@ -73,7 +74,6 @@
       <objects name="Town">
         <object>objects\obj_lamp</object>
       </objects>
-      <object>objects\obj_obstacles</object>
     </objects>
     <objects name="Quest">
       <object>objects\obj_shades</object>

@@ -88,8 +88,10 @@ if(dist &lt; 50){
             if(obj_gamestate.switches[? quest]) = true{
                 show_message(quest_success) 
                 show_debug_message("Quest completed" + quest)
+                obj_gamestate.switches[? quest] = false; //This line is just for test and has to be erased afterwards
             }
             else{
+                show_message(quest_start)
                 show_debug_message("Quest activated" + quest)
                 obj_gamestate.switches[? quest] = true;
             }

@@ -52,10 +52,9 @@ active = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(obj_gamestate.switches[? "quest_cobaltshades_started"]) == true{
+            <string>if(obj_gamestate.switches[? "quest_cobaltshades_on"]) == true{
 
     active = true;
-
 }
 </string>
           </argument>
@@ -105,7 +104,11 @@ obj_gamestate.switches[? "quest_cobaltshades_get"] = true;
           <argument>
             <kind>1</kind>
             <string>if(active == true){
-draw_self();
+    draw_self();
+    obj_shades.visible = true
+}else
+{
+    obj_shades.visible = false
 }
 </string>
           </argument>
