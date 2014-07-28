@@ -134,7 +134,7 @@ action = false;
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_obstacles">
+    <event eventtype="4" ename="obj_NPC_base">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -157,7 +157,7 @@ action = false;
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_NPC_base">
+    <event eventtype="4" ename="obj_obstacles">
       <action>
         <libid>1</libid>
         <id>603</id>
