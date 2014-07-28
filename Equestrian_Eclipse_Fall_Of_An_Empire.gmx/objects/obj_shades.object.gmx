@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///depth
+            <string>///Depth
 
 depth = y * -1
 
@@ -62,7 +62,7 @@ active = false;
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_trixie">
+    <event eventtype="4" ename="obj_player">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -79,7 +79,7 @@ active = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///collide with
+            <string>///Collide With
 
 obj_gamestate.switches[? "quest_cobaltshades_get"] = true;
 </string>

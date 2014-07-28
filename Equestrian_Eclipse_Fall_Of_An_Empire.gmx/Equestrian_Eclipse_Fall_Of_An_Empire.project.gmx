@@ -6,59 +6,77 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprites name="Nature">
-      <sprite>sprites\spr_tree</sprite>
-      <sprite>sprites\Flower</sprite>
-      <sprite>sprites\sprite7</sprite>
-    </sprites>
-    <sprites name="Playable_Characters">
+    <sprites name="Playable">
       <sprites name="Cobalt">
-        <sprite>sprites\spr_cobalt_back</sprite>
-        <sprite>sprites\spr_cobalt_front</sprite>
-        <sprite>sprites\spr_cobalt_left</sprite>
         <sprite>sprites\spr_cobalt_right</sprite>
+        <sprite>sprites\spr_cobalt_left</sprite>
+        <sprite>sprites\spr_cobalt_up</sprite>
+        <sprite>sprites\spr_cobalt_down</sprite>
       </sprites>
       <sprites name="Trixie">
-        <sprite>sprites\spr_trixie_left</sprite>
         <sprite>sprites\spr_trixie_right</sprite>
+        <sprite>sprites\spr_trixie_left</sprite>
         <sprite>sprites\spr_trixie_up</sprite>
         <sprite>sprites\spr_trixie_down</sprite>
       </sprites>
       <sprites name="Applejack">
-        <sprite>sprites\spr_right</sprite>
-        <sprite>sprites\spr_left</sprite>
-        <sprite>sprites\spr_down</sprite>
-        <sprite>sprites\spr_up</sprite>
+        <sprite>sprites\spr_applejack_right</sprite>
+        <sprite>sprites\spr_applejack_left</sprite>
+        <sprite>sprites\spr_applejack_down</sprite>
+        <sprite>sprites\spr_applejack_up</sprite>
       </sprites>
       <sprites name="Derpy">
-        <sprite>sprites\spr_derpy_back</sprite>
         <sprite>sprites\spr_derpy_right</sprite>
-        <sprite>sprites\spr_derpy_front</sprite>
         <sprite>sprites\spr_derpy_left</sprite>
+        <sprite>sprites\spr_derpy_up</sprite>
+        <sprite>sprites\spr_derpy_down</sprite>
       </sprites>
+    </sprites>
+    <sprites name="Nature">
+      <sprite>sprites\spr_tree</sprite>
+      <sprite>sprites\spr_flower_orange</sprite>
+      <sprite>sprites\spr_flower_blue</sprite>
+      <sprite>sprites\spr_bush_red</sprite>
+    </sprites>
+    <sprites name="Town">
+      <sprite>sprites\spr_lamp</sprite>
     </sprites>
     <sprites name="Items">
       <sprite>sprites\spr_shades</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
-    <background>background\background0</background>
-    <background>background\background1</background>
+    <background>background\tiles_1</background>
   </backgrounds>
   <paths name="paths"/>
   <objects name="objects">
-    <object>objects\obj_shades</object>
-    <object>objects\obj_apple</object>
-    <object>objects\obj_tree</object>
-    <object>objects\obj_flower</object>
-    <object>objects\obj_lamp</object>
-    <object>objects\obj_trixie</object>
     <objects name="System">
       <object>objects\obj_gamestate</object>
     </objects>
-    <objects name="NPCs">
-      <object>objects\obj_NPC_cobalt</object>
-      <object>objects\obj_NPC_base</object>
+    <objects name="Ponies">
+      <objects name="Playable">
+        <object>objects\obj_player</object>
+        <object>objects\obj_applejack</object>
+      </objects>
+      <objects name="NPCs">
+        <object>objects\obj_NPC_cobalt</object>
+        <object>objects\obj_NPC_base</object>
+      </objects>
+    </objects>
+    <objects name="Environment">
+      <objects name="Nature">
+        <object>objects\obj_flower_orange</object>
+        <object>objects\obj_flower_blue</object>
+        <object>objects\obj_tree</object>
+        <object>objects\obj_bush_red</object>
+      </objects>
+      <objects name="Town">
+        <object>objects\obj_lamp</object>
+      </objects>
+      <object>objects\obj_obstacles</object>
+    </objects>
+    <objects name="Quest">
+      <object>objects\obj_shades</object>
     </objects>
   </objects>
   <rooms name="rooms">

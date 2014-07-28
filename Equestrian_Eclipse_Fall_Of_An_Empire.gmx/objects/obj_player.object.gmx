@@ -25,9 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.1
-
-action = true
+            <string>
+action = false
 </string>
           </argument>
         </arguments>
@@ -50,7 +49,7 @@ action = true
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///depth
+            <string>///Depth
 
 depth = phy_position_y * -1
 </string>
@@ -79,53 +78,80 @@ if(keyboard_check(ord("A"))){
 sprite_index = spr_trixie_left;
 
     if(keyboard_check(vk_shift)){
-    phy_position_x -=5;
-}else
-{
-    phy_position_x -=2;
-}}
+        phy_position_x -=5;
+    }else
+    {
+        phy_position_x -=2;
+    }
+}
 
 
 if(keyboard_check(ord("D"))){
 sprite_index = spr_trixie_right;
 
     if(keyboard_check(vk_shift)){
-    phy_position_x +=5;
-}else
-{
-    phy_position_x +=2;
-}}
+        phy_position_x +=5;
+    }else
+    {
+        phy_position_x +=2;
+    }
+}
 
 
 if(keyboard_check(ord("W"))){
 sprite_index = spr_trixie_up;
 
     if(keyboard_check(vk_shift)){
-    phy_position_y -=5;
-}else
-{
-    phy_position_y -=2;
-}}
+        phy_position_y -=5;
+    }else
+    {
+        phy_position_y -=2;
+    }
+}
 
 
 if(keyboard_check(ord("S"))){
 sprite_index = spr_trixie_down;
 
     if(keyboard_check(vk_shift)){
-    phy_position_y +=5;
-}else
-{
-    phy_position_y +=2;
-}}
+        phy_position_y +=5;
+    }else
+    {
+        phy_position_y +=2;
+    }
+}
 
 
 //Interaction
-if(keyboard_check(ord("Z"))){
+if(keyboard_check(ord("E"))){
 action = true;
 }else
 {
 action = false;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_obstacles">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Collide With
 </string>
           </argument>
         </arguments>
@@ -148,53 +174,7 @@ action = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///collide with
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_tree">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///collide with
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_shades">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///collide with
+            <string>///Collide With
 </string>
           </argument>
         </arguments>

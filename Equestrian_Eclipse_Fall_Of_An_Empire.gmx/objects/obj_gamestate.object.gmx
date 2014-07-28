@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///initialise IVARs
+            <string>///Initialise IVARs
 
 global.gamespeed = 1.0;
 
@@ -53,7 +53,7 @@ switches [? "quest_colabtshades_get"] = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///start game
+            <string>///Start Game
 
 room_goto_next();
 </string>

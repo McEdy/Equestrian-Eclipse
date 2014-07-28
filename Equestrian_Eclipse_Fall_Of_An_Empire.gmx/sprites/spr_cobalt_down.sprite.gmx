@@ -8,8 +8,8 @@
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
   <bbox_left>16</bbox_left>
-  <bbox_right>32</bbox_right>
-  <bbox_top>4</bbox_top>
+  <bbox_right>33</bbox_right>
+  <bbox_top>5</bbox_top>
   <bbox_bottom>45</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
@@ -20,6 +20,6 @@
   <width>50</width>
   <height>50</height>
   <frames>
-    <frame index="0">images\spr_down_0.png</frame>
+    <frame index="0">images\spr_cobalt_down_0.png</frame>
   </frames>
 </sprite>

@@ -25,14 +25,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
+            <string>///NPC Options
+
+event_inherited();
 
 hasquest = true;
 quest = "quest_cobaltshades_started"
-questcondition = "quest_cobaltshades_get"
+quest_condition = "quest_cobaltshades_get"
 
-questmessage = "Hey sexy. If you find my shades of cobalt we can find somewhere more private for me to give you your reward."
-questsuccessmessage = "Great, you found my cobalt shades. Now, about your reward..."
+quest_start = "Hey sexy. If you find my shades of cobalt we can find somewhere more private for me to give you your reward."
+quest_success = "Great, you found my cobalt shades. Now, about your reward..."
 </string>
           </argument>
         </arguments>
