@@ -57,7 +57,8 @@ active = false;
     active = true;
 }
 
-/*if(active == true){
+/*
+if(active == true){
     obj_shades.visible = true
 }else
 {

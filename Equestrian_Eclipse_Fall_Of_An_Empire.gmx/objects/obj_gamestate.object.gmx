@@ -31,7 +31,7 @@ global.gamespeed = 1.0;
 
 switches = ds_map_create();
 
-switches[? "quest_colabtshades_started"] = false;
+switches[? "quest_colabtshades_on"] = false;
 switches[? "quest_colabtshades_get"] = false;
 </string>
           </argument>
