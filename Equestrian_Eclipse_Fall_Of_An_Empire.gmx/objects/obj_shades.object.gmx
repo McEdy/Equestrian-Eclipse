@@ -57,12 +57,13 @@ active = false;
     active = true;
 }
 
-if(active == true){
+/*if(active == true){
     obj_shades.visible = true
 }else
 {
     obj_shades.visible = false
 }
+*/
 </string>
           </argument>
         </arguments>
@@ -88,6 +89,7 @@ if(active == true){
             <string>///Collide With
 
 obj_gamestate.switches[? "quest_cobaltshades_get"] = true;
+show_message("Shades picked up.")
 </string>
           </argument>
         </arguments>

@@ -30,13 +30,15 @@
 event_inherited();
 
 hasquest = true;
-quest = "quest_cobaltshades_on"
-quest_condition = "quest_cobaltshades_get"
+//quest = "quest_cobaltshades_on";
+//quest_condition = "quest_cobaltshades_get";
 
 obj_gamestate.switches[? "quest_cobaltshades_get"] = false;
 
-quest_start = "Hey sexy. If you find my shades of cobalt we can find somewhere more private for me to give you your reward."
-quest_success = "Great, you found my cobalt shades. Now, about your reward..."
+quest_start = "Hey sexy. If you find my shades of cobalt we can find somewhere more private for me to give you your reward.";
+quest_success = "Great, you found my cobalt shades. Now, about your reward...";
+quest_uncompleted = "You haven't got my cobalt shades yet. Bring them me, si senior?";
+quest_none = "Sorry, I don't have a quest for you at the moment. Check back later maybe."
 </string>
           </argument>
         </arguments>

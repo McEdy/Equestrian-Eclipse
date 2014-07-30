@@ -30,6 +30,7 @@ var quest_start = "Undefined Quest NPC"
 var quest_success = "Undefined Quest Success Message NPC"
 
 
+
 var hasquest = false;
 var quest = "";
 </string>
@@ -85,19 +86,24 @@ if(dist &lt; 50){
     if(obj_player.action == true){
     
         if(hasquest == true){
-            if(obj_gamestate.switches[? quest]) = true{
-                show_message(quest_success) 
-                show_debug_message("Quest completed" + quest)
-                obj_gamestate.switches[? quest] = false; //This line is just for test and has to be erased afterwards
+            if(obj_gamestate.switches[? "quest_cobaltshades_on"]) = true{
+                if(obj_gamestate.switches[? "quest_cobaltshades_get"]) = true{
+                    show_message(quest_success) 
+                    show_debug_message("Quest completed: Cobalt Shades")
+                    hasquest = false;
+                }
+                else{
+                    show_message(quest_uncompleted)
+                }
             }
             else{
                 show_message(quest_start)
-                show_debug_message("Quest activated" + quest)
-                obj_gamestate.switches[? quest] = true;
+                show_debug_message("Quest activated: Cobalt Shades")
+                obj_gamestate.switches[? "quest_cobaltshades_on"] = true;
             }
         }
-        else{
-            show_message(quest_undefined);
+    else{
+            show_message(quest_none);
         }
     }
 }
