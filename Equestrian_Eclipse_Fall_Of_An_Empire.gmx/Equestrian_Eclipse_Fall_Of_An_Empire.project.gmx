@@ -32,10 +32,10 @@
         <sprite>sprites\spr_derpy_down</sprite>
       </sprites>
       <sprites name="Shining">
+        <sprite>sprites\spr_shining_right</sprite>
+        <sprite>sprites\spr_shining_left</sprite>
         <sprite>sprites\spr_shining_up</sprite>
         <sprite>sprites\spr_shining_down</sprite>
-        <sprite>sprites\spr_shining_left</sprite>
-        <sprite>sprites\spr_shining_right</sprite>
       </sprites>
     </sprites>
     <sprites name="Nature">
