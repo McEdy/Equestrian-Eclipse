@@ -63,6 +63,7 @@ active = false;
 {
     obj_shades.visible = false
 }
+
 */
 </string>
           </argument>
@@ -90,6 +91,7 @@ active = false;
 
 obj_gamestate.switches[? "quest_cobaltshades_get"] = true;
 show_message("Shades picked up.")
+instance_destroy();
 </string>
           </argument>
         </arguments>
