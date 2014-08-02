@@ -22,8 +22,8 @@
       <sprites name="Applejack">
         <sprite>sprites\spr_applejack_right</sprite>
         <sprite>sprites\spr_applejack_left</sprite>
-        <sprite>sprites\spr_applejack_down</sprite>
         <sprite>sprites\spr_applejack_up</sprite>
+        <sprite>sprites\spr_applejack_down</sprite>
       </sprites>
       <sprites name="Derpy">
         <sprite>sprites\spr_derpy_right</sprite>
@@ -51,8 +51,6 @@
       <sprite>sprites\spr_shades</sprite>
     </sprites>
     <sprites name="System">
-      <sprite>sprites\spr_collision</sprite>
-      <sprite>sprites\spr_collision_off</sprite>
       <sprites name="Window">
         <sprite>sprites\spr_window_tl</sprite>
         <sprite>sprites\spr_window_t</sprite>
@@ -81,7 +79,6 @@
     <objects name="System">
       <object>objects\obj_gamestate</object>
       <object>objects\obj_obstacles</object>
-      <object>objects\obj_collision</object>
       <object>objects\obj_button</object>
       <object>objects\obj_button_quit</object>
       <object>objects\obj_manemenu</object>
