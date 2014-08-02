@@ -41,10 +41,10 @@ with(instance_create(room_width/2+200,128,obj_button))
 with(instance_create(room_width/2+200,128+80,obj_button))
 {
     room_dest   = rm_test
-    pony_right  = spr_rainbowdash_right
-    pony_left   = spr_rainbowdash_left
-    pony_up     = spr_rainbowdash_up
-    pony_down   = spr_rainbowdash_down
+    pony_right  = spr_rainbow_right
+    pony_left   = spr_rainbow_left
+    pony_up     = spr_rainbow_up
+    pony_down   = spr_rainbow_down
     name        = "Rainbow Dash"
 }
 
