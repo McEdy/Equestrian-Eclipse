@@ -53,6 +53,17 @@
     <sprites name="System">
       <sprite>sprites\spr_collision</sprite>
       <sprite>sprites\spr_collision_off</sprite>
+      <sprites name="Window">
+        <sprite>sprites\spr_window_tl</sprite>
+        <sprite>sprites\spr_window_t</sprite>
+        <sprite>sprites\spr_window_tr</sprite>
+        <sprite>sprites\spr_window_l</sprite>
+        <sprite>sprites\spr_window_r</sprite>
+        <sprite>sprites\spr_window_bl</sprite>
+        <sprite>sprites\spr_window_b</sprite>
+        <sprite>sprites\spr_window_br</sprite>
+        <sprite>sprites\spr_window_base</sprite>
+      </sprites>
     </sprites>
     <sprites name="Mane_menu">
       <sprite>sprites\spr_button</sprite>
@@ -74,6 +85,9 @@
       <object>objects\obj_button</object>
       <object>objects\obj_button_quit</object>
       <object>objects\obj_manemenu</object>
+      <objects name="Window">
+        <object>objects\obj_window_base</object>
+      </objects>
     </objects>
     <objects name="Ponies">
       <objects name="Playable">
