@@ -50,15 +50,30 @@
     <sprites name="Items">
       <sprite>sprites\spr_shades</sprite>
     </sprites>
+    <sprites name="System">
+      <sprite>sprites\spr_collision</sprite>
+      <sprite>sprites\spr_collision_off</sprite>
+    </sprites>
+    <sprites name="Mane_menu">
+      <sprite>sprites\spr_button</sprite>
+      <sprite>sprites\spr_button_pressed</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\tiles_1</background>
   </backgrounds>
   <paths name="paths"/>
+  <fonts name="fonts">
+    <font>fonts\font_eq</font>
+  </fonts>
   <objects name="objects">
     <objects name="System">
       <object>objects\obj_gamestate</object>
       <object>objects\obj_obstacles</object>
+      <object>objects\obj_collision</object>
+      <object>objects\obj_button</object>
+      <object>objects\obj_button_quit</object>
+      <object>objects\obj_manemenu</object>
     </objects>
     <objects name="Ponies">
       <objects name="Playable">
@@ -86,7 +101,7 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_titlescreen</room>
+    <room>rooms\rm_manemenu</room>
     <room>rooms\rm_test</room>
   </rooms>
   <help>

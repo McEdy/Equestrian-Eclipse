@@ -4,11 +4,11 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>-1</persistent>
+  <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="0" enumb="0">
+    <event eventtype="7" enumb="4">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -25,18 +25,24 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Initialise IVARs
+            <string>///Create Mane Menu
 
-global.gamespeed = 1.0;
+with(instance_create(room_width/2,128,obj_button))
+{
+    room_dest = rm_test
+    name = "Room Test"
+}
 
-switches = ds_map_create();
-
-switches[? "quest_colabtshades_on"] = false;
-switches[? "quest_colabtshades_get"] = false;
+with(instance_create(room_width/2,128+80,obj_button_quit))
+{
+    name = "Quit Game"
+}
 </string>
           </argument>
         </arguments>
       </action>
+    </event>
+    <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -53,9 +59,10 @@ switches[? "quest_colabtshades_get"] = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Start Game
+            <string>///Mane Menu Text
 
-//room_goto_next();
+draw_text(room_width/2,40,"EQUESTRIAN ECLIPSE#-Fall of an Empire-");
+draw_text(room_width/2,600,"This game is currently a prototype.#Nothing seen here is final and all#is still work in progress!");
 </string>
           </argument>
         </arguments>
