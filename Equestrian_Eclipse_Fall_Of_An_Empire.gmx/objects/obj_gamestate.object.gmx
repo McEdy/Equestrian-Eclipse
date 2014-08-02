@@ -25,14 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///initialise IVARs
+            <string>///Initialise IVARs
 
 global.gamespeed = 1.0;
 
 switches = ds_map_create();
 
-switches [? "quest_colabtshades_started"] = false;
-switches [? "quest_colabtshades_get"] = false;
+switches[? "quest_colabtshades_on"] = false;
+switches[? "quest_colabtshades_get"] = false;
 </string>
           </argument>
         </arguments>
@@ -53,9 +53,9 @@ switches [? "quest_colabtshades_get"] = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///start game
+            <string>///Start Game
 
-room_goto_next();
+//room_goto_next();
 </string>
           </argument>
         </arguments>

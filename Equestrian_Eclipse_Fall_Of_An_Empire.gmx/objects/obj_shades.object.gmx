@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///depth
+            <string>///Depth
 
 depth = y * -1
 
@@ -52,17 +52,16 @@ active = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(obj_gamestate.switches[? "quest_cobaltshades_started"]) == true{
+            <string>if(obj_gamestate.switches[? "quest_cobaltshades_on"]) == true{
 
     active = true;
-
 }
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_trixie">
+    <event eventtype="4" ename="obj_player">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -79,9 +78,14 @@ active = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///collide with
+            <string>///Collide With
 
-obj_gamestate.switches[? "quest_cobaltshades_get"] = true;
+if(obj_gamestate.switches[? "quest_cobaltshades_on"] == true)
+{
+    obj_gamestate.switches[? "quest_cobaltshades_get"] = true;
+    show_message("Shades picked up.")
+    instance_destroy();
+}
 </string>
           </argument>
         </arguments>
@@ -105,7 +109,7 @@ obj_gamestate.switches[? "quest_cobaltshades_get"] = true;
           <argument>
             <kind>1</kind>
             <string>if(active == true){
-draw_self();
+    draw_self();
 }
 </string>
           </argument>
