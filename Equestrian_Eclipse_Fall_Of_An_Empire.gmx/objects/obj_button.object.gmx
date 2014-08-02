@@ -41,6 +41,10 @@ if(mouse_check_button_released(mb_left) &amp;&amp; sprite_index == spr_button_pr
 {
     //Action
     room_goto(room_dest)
+    global.character_right  = pony_right
+    global.character_left   = pony_left
+    global.character_up     = pony_up
+    global.character_down   = pony_down
 }
 
 

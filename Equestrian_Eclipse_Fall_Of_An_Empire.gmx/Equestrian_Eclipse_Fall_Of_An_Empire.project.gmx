@@ -37,7 +37,7 @@
         <sprite>sprites\spr_shining_up</sprite>
         <sprite>sprites\spr_shining_down</sprite>
       </sprites>
-      <sprites name="Ponka">
+      <sprites name="Pinkie Pie">
         <sprite>sprites\spr_pinkie_right</sprite>
         <sprite>sprites\spr_pinkie_left</sprite>
         <sprite>sprites\spr_pinkie_up</sprite>
@@ -49,7 +49,7 @@
         <sprite>sprites\spr_rarity_up</sprite>
         <sprite>sprites\spr_rarity_down</sprite>
       </sprites>
-      <sprites name="Crusty_Cunt">
+      <sprites name="Rainbow Dash">
         <sprite>sprites\spr_rainbowdash_right</sprite>
         <sprite>sprites\spr_rainbowdash_left</sprite>
         <sprite>sprites\spr_rainbowdash_up</sprite>
@@ -71,6 +71,8 @@
     <sprites name="System">
       <sprite>sprites\spr_collision</sprite>
       <sprite>sprites\spr_collision_off</sprite>
+      <sprite>sprites\spr_button</sprite>
+      <sprite>sprites\spr_button_pressed</sprite>
       <sprites name="Window">
         <sprite>sprites\spr_window_tl</sprite>
         <sprite>sprites\spr_window_t</sprite>
@@ -82,10 +84,6 @@
         <sprite>sprites\spr_window_br</sprite>
         <sprite>sprites\spr_window_base</sprite>
       </sprites>
-    </sprites>
-    <sprites name="Mane_menu">
-      <sprite>sprites\spr_button</sprite>
-      <sprite>sprites\spr_button_pressed</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -110,7 +108,6 @@
     <objects name="Ponies">
       <objects name="Playable">
         <object>objects\obj_player</object>
-        <object>objects\obj_applejack</object>
       </objects>
       <objects name="NPCs">
         <object>objects\obj_NPC_cobalt</object>

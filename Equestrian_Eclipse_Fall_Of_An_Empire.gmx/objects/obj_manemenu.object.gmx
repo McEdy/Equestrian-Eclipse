@@ -111,7 +111,7 @@ with(instance_create(room_width/2-200,128+240,obj_button))
 }
 
 
-with(instance_create(room_width/2,128+240,obj_button_quit))
+with(instance_create(room_width/2,128+320,obj_button_quit))
 {
     name        = "Quit Game"
 }
@@ -139,7 +139,12 @@ with(instance_create(room_width/2,128+240,obj_button_quit))
             <kind>1</kind>
             <string>///Mane Menu Text
 
+draw_set_font(font_eq);
+draw_set_color(c_black);
+
 draw_text(room_width/2,40,"EQUESTRIAN ECLIPSE#-Fall of an Empire-");
+
+draw_set_color(c_white);
 draw_text(room_width/2,600,"This game is currently a prototype.#Nothing seen here is final and all#is still work in progress!");
 </string>
           </argument>
