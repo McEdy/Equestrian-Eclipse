@@ -56,6 +56,12 @@
         <sprite>sprites\spr_rainbowdash_down</sprite>
       </sprites>
     </sprites>
+    <sprites name="Non_playable">
+      <sprite>sprites\spr_changeling_down</sprite>
+      <sprite>sprites\spr_changeling_up</sprite>
+      <sprite>sprites\spr_changeling_right</sprite>
+      <sprite>sprites\spr_changeling_left</sprite>
+    </sprites>
     <sprites name="Nature">
       <sprite>sprites\spr_tree</sprite>
       <sprite>sprites\spr_flower_orange</sprite>
