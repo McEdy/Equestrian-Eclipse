@@ -25,9 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Variables + Sprite
-
-sprite_index = global.character_right
+            <string>
 action = false
 </string>
           </argument>
@@ -76,20 +74,8 @@ depth = (phy_position_y - 15) * -1
             <kind>1</kind>
             <string>///Handle Input
 
-if(keyboard_check(ord("D"))){
-sprite_index = global.character_right;
-
-    if(keyboard_check(vk_shift)){
-        phy_position_x +=3;
-    }else
-    {
-        phy_position_x +=1.5;
-    }
-}
-
-
 if(keyboard_check(ord("A"))){
-sprite_index = global.character_left;
+sprite_index = spr_trixie_left;
 
     if(keyboard_check(vk_shift)){
         phy_position_x -=3;
@@ -100,8 +86,20 @@ sprite_index = global.character_left;
 }
 
 
+if(keyboard_check(ord("D"))){
+sprite_index = spr_trixie_right;
+
+    if(keyboard_check(vk_shift)){
+        phy_position_x +=3;
+    }else
+    {
+        phy_position_x +=1.5;
+    }
+}
+
+
 if(keyboard_check(ord("W"))){
-sprite_index = global.character_up;
+sprite_index = spr_trixie_up;
 
     if(keyboard_check(vk_shift)){
         phy_position_y -=3;
@@ -113,7 +111,7 @@ sprite_index = global.character_up;
 
 
 if(keyboard_check(ord("S"))){
-sprite_index = global.character_down;
+sprite_index = spr_trixie_down;
 
     if(keyboard_check(vk_shift)){
         phy_position_y +=3;

@@ -25,95 +25,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Create Buttons
+            <string>///Create Mane Menu
 
-//Solar Empire
-with(instance_create(room_width/2+200,128,obj_button))
+with(instance_create(room_width/2,128,obj_button))
 {
-    room_dest   = rm_test
-    pony_right  = spr_applejack_right
-    pony_left   = spr_applejack_left
-    pony_up     = spr_applejack_up
-    pony_down   = spr_applejack_down
-    name        = "Apfeljack"
+    room_dest = rm_test
+    name = "Room Test"
 }
 
-with(instance_create(room_width/2+200,128+80,obj_button))
+with(instance_create(room_width/2,128+80,obj_button_quit))
 {
-    room_dest   = rm_test
-    pony_right  = spr_rainbow_right
-    pony_left   = spr_rainbow_left
-    pony_up     = spr_rainbow_up
-    pony_down   = spr_rainbow_down
-    name        = "Rainbow Dash"
-}
-
-with(instance_create(room_width/2+200,128+160,obj_button))
-{
-    room_dest   = rm_test
-    pony_right  = spr_rarity_right
-    pony_left   = spr_rarity_left
-    pony_up     = spr_rarity_up
-    pony_down   = spr_rarity_down
-    name        = "Rarity"
-}
-
-with(instance_create(room_width/2+200,128+240,obj_button))
-{
-    room_dest   = rm_test
-    pony_right  = spr_shining_right
-    pony_left   = spr_shining_left
-    pony_up     = spr_shining_up
-    pony_down   = spr_shining_down
-    name        = "Shining Armor"
-}
-
-
-//Lunar Republic
-with(instance_create(room_width/2-200,128,obj_button))
-{
-    room_dest   = rm_test
-    pony_right  = spr_pinkie_right
-    pony_left   = spr_pinkie_left
-    pony_up     = spr_pinkie_up
-    pony_down   = spr_pinkie_down
-    name        = "Pinkie Pie"
-}
-
-with(instance_create(room_width/2-200,128+80,obj_button))
-{
-    room_dest   = rm_test
-    pony_right  = spr_derpy_right
-    pony_left   = spr_derpy_left
-    pony_up     = spr_derpy_up
-    pony_down   = spr_derpy_down
-    name        = "Derpy"
-}
-
-with(instance_create(room_width/2-200,128+160,obj_button))
-{
-    room_dest   = rm_test
-    pony_right  = spr_trixie_right
-    pony_left   = spr_trixie_left
-    pony_up     = spr_trixie_up
-    pony_down   = spr_trixie_down
-    name        = "The Great and Powerful"
-}
-
-with(instance_create(room_width/2-200,128+240,obj_button))
-{
-    room_dest   = rm_test
-    pony_right  = spr_cobalt_right
-    pony_left   = spr_cobalt_left
-    pony_up     = spr_cobalt_up
-    pony_down   = spr_cobalt_down
-    name        = "Cobalt Shade"
-}
-
-
-with(instance_create(room_width/2,128+240,obj_button_quit))
-{
-    name        = "Quit Game"
+    name = "Quit Game"
 }
 </string>
           </argument>

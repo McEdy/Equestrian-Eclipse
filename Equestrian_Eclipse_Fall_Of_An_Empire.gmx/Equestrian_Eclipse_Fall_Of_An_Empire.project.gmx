@@ -22,8 +22,8 @@
       <sprites name="Applejack">
         <sprite>sprites\spr_applejack_right</sprite>
         <sprite>sprites\spr_applejack_left</sprite>
-        <sprite>sprites\spr_applejack_up</sprite>
         <sprite>sprites\spr_applejack_down</sprite>
+        <sprite>sprites\spr_applejack_up</sprite>
       </sprites>
       <sprites name="Derpy">
         <sprite>sprites\spr_derpy_right</sprite>
@@ -36,6 +36,24 @@
         <sprite>sprites\spr_shining_left</sprite>
         <sprite>sprites\spr_shining_up</sprite>
         <sprite>sprites\spr_shining_down</sprite>
+      </sprites>
+      <sprites name="Ponka">
+        <sprite>sprites\spr_pinkie_right</sprite>
+        <sprite>sprites\spr_pinkie_left</sprite>
+        <sprite>sprites\spr_pinkie_up</sprite>
+        <sprite>sprites\spr_pinkie_down</sprite>
+      </sprites>
+      <sprites name="Rarity">
+        <sprite>sprites\spr_rarity_right</sprite>
+        <sprite>sprites\spr_rarity_left</sprite>
+        <sprite>sprites\spr_rarity_up</sprite>
+        <sprite>sprites\spr_rarity_down</sprite>
+      </sprites>
+      <sprites name="Crusty_Cunt">
+        <sprite>sprites\spr_rainbowdash_right</sprite>
+        <sprite>sprites\spr_rainbowdash_left</sprite>
+        <sprite>sprites\spr_rainbowdash_up</sprite>
+        <sprite>sprites\spr_rainbowdash_down</sprite>
       </sprites>
     </sprites>
     <sprites name="Nature">
@@ -51,6 +69,8 @@
       <sprite>sprites\spr_shades</sprite>
     </sprites>
     <sprites name="System">
+      <sprite>sprites\spr_collision</sprite>
+      <sprite>sprites\spr_collision_off</sprite>
       <sprites name="Window">
         <sprite>sprites\spr_window_tl</sprite>
         <sprite>sprites\spr_window_t</sprite>
@@ -79,6 +99,7 @@
     <objects name="System">
       <object>objects\obj_gamestate</object>
       <object>objects\obj_obstacles</object>
+      <object>objects\obj_collision</object>
       <object>objects\obj_button</object>
       <object>objects\obj_button_quit</object>
       <object>objects\obj_manemenu</object>
