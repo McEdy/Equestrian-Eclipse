@@ -96,19 +96,6 @@
     <instance objName="obj_bush_red" x="203" y="186" name="inst_E0DB7A5A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bush_red" x="352" y="204" name="inst_66FE5244" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bush_red" x="192" y="416" name="inst_AC438AC4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-<<<<<<< HEAD
-    <instance objName="obj_tree" x="752" y="512" name="inst_F009FACD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_tree" x="816" y="400" name="inst_BA0CEB4E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_tree" x="1152" y="336" name="inst_DF9EFA69" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_tree" x="992" y="560" name="inst_AC8B74F6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_tree" x="816" y="192" name="inst_20E893E8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_tree" x="704" y="384" name="inst_71900772" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_tree" x="624" y="432" name="inst_BFF9F70F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_tree" x="720" y="320" name="inst_B0E5FD5C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_tree" x="928" y="320" name="inst_8C52F91A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_tree" x="928" y="432" name="inst_63DD7B0A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_tree" x="832" y="336" name="inst_1450B845" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-=======
     <instance objName="obj_tree" x="691" y="32" name="inst_673A5BB5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_tree" x="749" y="31" name="inst_4A07A917" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_tree" x="659" y="21" name="inst_8AE643BC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -119,7 +106,6 @@
     <instance objName="obj_tree" x="676" y="52" name="inst_FE5D8F9E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_tree" x="771" y="107" name="inst_A3B2B21E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_warp_forest" x="704" y="32" name="inst_D5091EEA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
->>>>>>> origin/Branch_0.02
   </instances>
   <tiles>
     <tile bgName="tiles_1" x="16" y="192" w="32" h="32" xo="80" yo="16" id="10000925" name="inst_C95240B0" depth="1000001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
