@@ -90,6 +90,10 @@
         <sprite>sprites\spr_window_br</sprite>
         <sprite>sprites\spr_window_base</sprite>
       </sprites>
+      <sprites name="Warps">
+        <sprite>sprites\spr_hero_start</sprite>
+        <sprite>sprites\spr_hero_warp</sprite>
+      </sprites>
       <sprite>sprites\spr_button_quit</sprite>
       <sprite>sprites\spr_button_quit_pressed</sprite>
     </sprites>
@@ -111,6 +115,11 @@
       <object>objects\obj_manemenu</object>
       <objects name="Window">
         <object>objects\obj_window_base</object>
+      </objects>
+      <objects name="Warp">
+        <object>objects\obj_base_warp</object>
+        <object>objects\obj_warp_forest</object>
+        <object>objects\obj_hero_start</object>
       </objects>
     </objects>
     <objects name="Ponies">
@@ -140,6 +149,8 @@
   <rooms name="rooms">
     <room>rooms\rm_manemenu</room>
     <room>rooms\rm_test</room>
+    <room>rooms\Windows_galore</room>
+    <room>rooms\rm_forest</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
