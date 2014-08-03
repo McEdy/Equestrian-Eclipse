@@ -50,7 +50,10 @@ var dest_position_y;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>room_goto (dest_room);
+            <string>room_goto(dest_room);
+
+obj_player.phy_position_x = obj_hero_start.x;
+obj_player.phy_position_y = obj_hero_start.y;
 </string>
           </argument>
         </arguments>
@@ -60,7 +63,7 @@ var dest_position_y;
   <PhysicsObject>-1</PhysicsObject>
   <PhysicsObjectSensor>-1</PhysicsObjectSensor>
   <PhysicsObjectShape>1</PhysicsObjectShape>
-  <PhysicsObjectDensity>0.5</PhysicsObjectDensity>
+  <PhysicsObjectDensity>0</PhysicsObjectDensity>
   <PhysicsObjectRestitution>0.100000001490116</PhysicsObjectRestitution>
   <PhysicsObjectGroup>0</PhysicsObjectGroup>
   <PhysicsObjectLinearDamping>0.100000001490116</PhysicsObjectLinearDamping>
