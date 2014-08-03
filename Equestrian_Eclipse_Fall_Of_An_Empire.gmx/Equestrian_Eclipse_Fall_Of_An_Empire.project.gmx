@@ -149,8 +149,8 @@
   <rooms name="rooms">
     <room>rooms\rm_manemenu</room>
     <room>rooms\rm_test</room>
-    <room>rooms\Windows_galore</room>
     <room>rooms\rm_forest</room>
+    <room>rooms\Windows_galore</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
