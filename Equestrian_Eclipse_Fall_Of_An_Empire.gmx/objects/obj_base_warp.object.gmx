@@ -26,8 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>var dest_room = -1;
-var dest_position_x;
-var dest_position_y;
+var dest_x = 0;
+var dest_y = 0;
 </string>
           </argument>
         </arguments>
@@ -50,10 +50,12 @@ var dest_position_y;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>room_goto(dest_room);
+            <string>///deal with player collission
 
-obj_player.phy_position_x = obj_hero_start.x;
-obj_player.phy_position_y = obj_hero_start.y;
+global.dest_x = dest_x;
+global.dest_y = dest_y;
+
+room_goto(dest_room);
 </string>
           </argument>
         </arguments>

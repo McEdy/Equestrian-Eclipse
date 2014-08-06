@@ -6,7 +6,7 @@
   <vsnap>32</vsnap>
   <hsnap>32</hsnap>
   <isometric>0</isometric>
-  <speed>30</speed>
+  <speed>60</speed>
   <persistent>0</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
@@ -72,7 +72,7 @@
     <instance objName="obj_tree" x="602" y="284" name="inst_385C2FE8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_tree" x="579" y="434" name="inst_53B58B53" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_tree" x="42" y="245" name="inst_3BCD7709" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_hero_start" x="320" y="448" name="inst_2F02FCDF" locked="0" code="" scaleX="1" scaleY="0.96875" colour="4294967295" rotation="0"/>
+    <instance objName="obj_hero_reposition" x="320" y="448" name="inst_2F02FCDF" locked="0" code="" scaleX="1.5" scaleY="1.5" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tiles_1" x="0" y="0" w="32" h="32" xo="80" yo="16" id="10003325" name="inst_A7396B2B" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -404,12 +404,12 @@
     <tile bgName="tiles_1" x="288" y="256" w="32" h="32" xo="16" yo="0" id="10003788" name="inst_CB5EFB26" depth="999999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tiles_1" x="320" y="256" w="32" h="32" xo="16" yo="0" id="10003789" name="inst_0A47CCEE" depth="999999" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
   </tiles>
-  <PhysicsWorld>0</PhysicsWorld>
+  <PhysicsWorld>-1</PhysicsWorld>
   <PhysicsWorldTop>0</PhysicsWorldTop>
   <PhysicsWorldLeft>0</PhysicsWorldLeft>
   <PhysicsWorldRight>640</PhysicsWorldRight>
   <PhysicsWorldBottom>480</PhysicsWorldBottom>
   <PhysicsWorldGravityX>0</PhysicsWorldGravityX>
-  <PhysicsWorldGravityY>10</PhysicsWorldGravityY>
+  <PhysicsWorldGravityY>0</PhysicsWorldGravityY>
   <PhysicsWorldPixToMeters>0.100000001490116</PhysicsWorldPixToMeters>
 </room>

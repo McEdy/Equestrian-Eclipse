@@ -118,8 +118,7 @@
       </objects>
       <objects name="Warp">
         <object>objects\obj_base_warp</object>
-        <object>objects\obj_warp_forest</object>
-        <object>objects\obj_hero_start</object>
+        <object>objects\obj_hero_reposition</object>
       </objects>
     </objects>
     <objects name="Ponies">
