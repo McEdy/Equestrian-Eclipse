@@ -51,7 +51,7 @@
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="640" hview="480" xport="0" yport="0" wport="640" hport="480" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance objName="obj_player" x="263" y="62" name="inst_42DB4E29" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_player" x="272" y="112" name="inst_42DB4E29" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_flower_orange" x="361" y="291" name="inst_4E31661D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_flower_orange" x="464" y="322" name="inst_824F47F6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_flower_orange" x="453" y="324" name="inst_7BE28557" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -105,7 +105,8 @@
     <instance objName="obj_tree" x="784" y="64" name="inst_7E9F686E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_tree" x="676" y="52" name="inst_FE5D8F9E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_tree" x="771" y="107" name="inst_A3B2B21E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_base_warp" x="704" y="31" name="inst_0277A5BD" locked="0" code="dest_room = rm_forest;&#xA;dest_x = 320;&#xA;dest_y = 488;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_base_warp" x="704" y="32" name="inst_0277A5BD" locked="0" code="event_inherited();&#xA;dest_room = rm_forest;&#xA;dest_x = 320;&#xA;dest_y = 352;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_hero_reposition" x="16" y="16" name="inst_9BDF399C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tiles_1" x="16" y="192" w="32" h="32" xo="80" yo="16" id="10000925" name="inst_C95240B0" depth="1000001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
