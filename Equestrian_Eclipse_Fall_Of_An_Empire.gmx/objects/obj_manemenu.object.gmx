@@ -45,7 +45,7 @@ with(instance_create(room_width/2+200,128+80,obj_button))
     pony_left   = spr_rainbowdash_left
     pony_up     = spr_rainbowdash_up
     pony_down   = spr_rainbowdash_down
-    name        = "Rainbow Dash"
+    name        = "Ronbow Dosh"
 }
 
 with(instance_create(room_width/2+200,128+160,obj_button))
@@ -55,7 +55,7 @@ with(instance_create(room_width/2+200,128+160,obj_button))
     pony_left   = spr_rarity_left
     pony_up     = spr_rarity_up
     pony_down   = spr_rarity_down
-    name        = "Rarity"
+    name        = "Rarara"
 }
 
 with(instance_create(room_width/2+200,128+240,obj_button))
@@ -65,7 +65,7 @@ with(instance_create(room_width/2+200,128+240,obj_button))
     pony_left   = spr_shining_left
     pony_up     = spr_shining_up
     pony_down   = spr_shining_down
-    name        = "Shining Armor"
+    name        = "Shining Armour"
 }
 
 
@@ -77,7 +77,7 @@ with(instance_create(room_width/2-200,128,obj_button))
     pony_left   = spr_pinkie_left
     pony_up     = spr_pinkie_up
     pony_down   = spr_pinkie_down
-    name        = "Pinkie Pie"
+    name        = "Ponka"
 }
 
 with(instance_create(room_width/2-200,128+80,obj_button))
@@ -97,7 +97,7 @@ with(instance_create(room_width/2-200,128+160,obj_button))
     pony_left   = spr_trixie_left
     pony_up     = spr_trixie_up
     pony_down   = spr_trixie_down
-    name        = "The Great and Powerful"
+    name        = "Best Pony"
 }
 
 with(instance_create(room_width/2-200,128+240,obj_button))
@@ -107,7 +107,7 @@ with(instance_create(room_width/2-200,128+240,obj_button))
     pony_left   = spr_cobalt_left
     pony_up     = spr_cobalt_up
     pony_down   = spr_cobalt_down
-    name        = "Cobalt Shade"
+    name        = "Cobalt Shady"
 }
 
 
