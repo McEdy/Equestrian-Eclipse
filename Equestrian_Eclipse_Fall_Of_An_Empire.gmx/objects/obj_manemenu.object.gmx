@@ -45,7 +45,7 @@ with(instance_create(room_width/2+200,128+80,obj_button))
     pony_left   = spr_rainbowdash_left
     pony_up     = spr_rainbowdash_up
     pony_down   = spr_rainbowdash_down
-    name        = "Ronbow Dosh"
+    name        = "LGBT Rights Pony"
 }
 
 with(instance_create(room_width/2+200,128+160,obj_button))
@@ -107,7 +107,7 @@ with(instance_create(room_width/2-200,128+240,obj_button))
     pony_left   = spr_cobalt_left
     pony_up     = spr_cobalt_up
     pony_down   = spr_cobalt_down
-    name        = "Cobalt Shady"
+    name        = "World's Sexiest Unicorn"
 }
 
 

@@ -144,6 +144,9 @@
         </objects>
       </objects>
     </objects>
+    <objects name="Enemies">
+      <object>objects\obj_enemy_base</object>
+    </objects>
     <objects name="Environment">
       <objects name="Nature">
         <object>objects\obj_flower_orange</object>
@@ -163,7 +166,7 @@
     <room>rooms\rm_manemenu</room>
     <room>rooms\rm_test</room>
     <room>rooms\rm_forest</room>
-    <room>rooms\rm_micro_forest</room>
+    <room>rooms\rm_everfree_lv1_1</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

@@ -37,8 +37,6 @@ var quest = "";
 
 my_target = instance_create(x,y,obj_pathguide);
 my_path = -1
-
-event_user(0);
 </string>
           </argument>
         </arguments>
@@ -135,7 +133,19 @@ if(dist &lt; 50){
             <kind>1</kind>
             <string>///Follow path if available
 if(my_path !=-1){
-    //schtuff
+    dir = point_direction(my_target.x, my_target.y, phy_position_x, phy_position_y);
+    dist = point_distance(my_target.x, my_target.y, phy_position_x, phy_position_y);
+
+    dx = lengthdir_x(1, dir);
+    dy = lengthdir_y(1, dir);
+    
+    phy_position_x -= dx
+    phy_position_y -= dy
+    
+    if(dist &gt; 32){
+    phy_position_x = my_target.x
+    phy_position_y = my_target.y
+    }
 }
 </string>
           </argument>

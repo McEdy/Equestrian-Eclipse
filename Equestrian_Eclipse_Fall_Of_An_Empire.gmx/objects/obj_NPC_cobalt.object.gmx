@@ -58,6 +58,6 @@ quest_none = "Sorry, I don't have a quest for you at the moment. Check back late
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
   <PhysicsShapePoints>
     <point>25,27</point>
-    <point>17,25</point>
+    <point>19,25</point>
   </PhysicsShapePoints>
 </object>
