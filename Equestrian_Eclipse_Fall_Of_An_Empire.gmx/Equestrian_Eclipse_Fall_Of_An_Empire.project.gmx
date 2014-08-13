@@ -72,6 +72,8 @@
     </sprites>
     <sprites name="Town">
       <sprite>sprites\spr_lamp</sprite>
+      <sprite>sprites\house_1</sprite>
+      <sprite>sprites\shop_1</sprite>
     </sprites>
     <sprites name="Items">
       <sprite>sprites\spr_shades</sprite>
@@ -101,13 +103,17 @@
       <sprites name="Collisions">
         <sprite>sprites\spr_collision_off</sprite>
         <sprite>sprites\spr_collision</sprite>
+        <sprite>sprites\spr_enemy_collission</sprite>
       </sprites>
       <sprite>sprites\spr_pathguide</sprite>
+    </sprites>
+    <sprites name="Attacks">
+      <sprite>sprites\spr_fire_attack</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\tiles_1</background>
-    <background>background\background1</background>
+    <background>background\everfree</background>
   </backgrounds>
   <paths name="paths">
     <path>paths\path_test</path>
@@ -146,6 +152,10 @@
     </objects>
     <objects name="Enemies">
       <object>objects\obj_enemy_base</object>
+      <objects name="timberwolf">
+        <object>objects\obj_timberwolf</object>
+      </objects>
+      <object>objects\ob_enemy_collission</object>
     </objects>
     <objects name="Environment">
       <objects name="Nature">
@@ -156,10 +166,14 @@
       </objects>
       <objects name="Town">
         <object>objects\obj_lamp</object>
+        <object>objects\obj_house</object>
       </objects>
     </objects>
     <objects name="Quest">
       <object>objects\obj_shades</object>
+    </objects>
+    <objects name="attacks">
+      <object>objects\obj_fire_attack</object>
     </objects>
   </objects>
   <rooms name="rooms">
@@ -168,6 +182,10 @@
     <room>rooms\rm_forest</room>
     <room>rooms\rm_everfree_lv1_1</room>
   </rooms>
+  <constants number="2">
+    <constant name="GM_build_date">41864.7678308681</constant>
+    <constant name="GM_version">'0.0.0.1'</constant>
+  </constants>
   <help>
     <rtf>help.rtf</rtf>
   </help>
