@@ -57,10 +57,12 @@
       </sprites>
     </sprites>
     <sprites name="Non_playable">
-      <sprite>sprites\spr_changeling_down</sprite>
-      <sprite>sprites\spr_changeling_up</sprite>
-      <sprite>sprites\spr_changeling_right</sprite>
-      <sprite>sprites\spr_changeling_left</sprite>
+      <sprites name="Changeling">
+        <sprite>sprites\spr_changeling_right</sprite>
+        <sprite>sprites\spr_changeling_left</sprite>
+        <sprite>sprites\spr_changeling_up</sprite>
+        <sprite>sprites\spr_changeling_down</sprite>
+      </sprites>
     </sprites>
     <sprites name="Nature">
       <sprite>sprites\spr_tree</sprite>
@@ -75,10 +77,6 @@
       <sprite>sprites\spr_shades</sprite>
     </sprites>
     <sprites name="System">
-      <sprite>sprites\spr_collision</sprite>
-      <sprite>sprites\spr_collision_off</sprite>
-      <sprite>sprites\spr_button</sprite>
-      <sprite>sprites\spr_button_pressed</sprite>
       <sprites name="Window">
         <sprite>sprites\spr_window_tl</sprite>
         <sprite>sprites\spr_window_t</sprite>
@@ -90,14 +88,30 @@
         <sprite>sprites\spr_window_br</sprite>
         <sprite>sprites\spr_window_base</sprite>
       </sprites>
-      <sprite>sprites\spr_button_quit</sprite>
-      <sprite>sprites\spr_button_quit_pressed</sprite>
+      <sprites name="Warps">
+        <sprite>sprites\spr_hero_start</sprite>
+        <sprite>sprites\spr_hero_warp</sprite>
+      </sprites>
+      <sprites name="Buttons">
+        <sprite>sprites\spr_button_quit</sprite>
+        <sprite>sprites\spr_button_quit_pressed</sprite>
+        <sprite>sprites\spr_button</sprite>
+        <sprite>sprites\spr_button_pressed</sprite>
+      </sprites>
+      <sprites name="Collisions">
+        <sprite>sprites\spr_collision_off</sprite>
+        <sprite>sprites\spr_collision</sprite>
+      </sprites>
+      <sprite>sprites\spr_pathguide</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\tiles_1</background>
+    <background>background\background1</background>
   </backgrounds>
-  <paths name="paths"/>
+  <paths name="paths">
+    <path>paths\path_test</path>
+  </paths>
   <fonts name="fonts">
     <font>fonts\font_eq</font>
   </fonts>
@@ -112,6 +126,10 @@
       <objects name="Window">
         <object>objects\obj_window_base</object>
       </objects>
+      <objects name="Warp">
+        <object>objects\obj_base_warp</object>
+        <object>objects\obj_hero_reposition</object>
+      </objects>
     </objects>
     <objects name="Ponies">
       <objects name="Playable">
@@ -119,8 +137,15 @@
       </objects>
       <objects name="NPCs">
         <object>objects\obj_NPC_cobalt</object>
-        <object>objects\obj_NPC_base</object>
+        <object>objects\obj_NPC_derpy</object>
+        <objects name="Base">
+          <object>objects\obj_NPC_base</object>
+          <object>objects\obj_pathguide</object>
+        </objects>
       </objects>
+    </objects>
+    <objects name="Enemies">
+      <object>objects\obj_enemy_base</object>
     </objects>
     <objects name="Environment">
       <objects name="Nature">
@@ -140,6 +165,8 @@
   <rooms name="rooms">
     <room>rooms\rm_manemenu</room>
     <room>rooms\rm_test</room>
+    <room>rooms\rm_forest</room>
+    <room>rooms\rm_everfree_lv1_1</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
