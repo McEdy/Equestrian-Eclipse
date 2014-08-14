@@ -25,9 +25,56 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = random(30);
+            <string>event_inherited();
+
+player_dist = 0;
+vision_r = 64 + random(32);
+attack_speed = 30;
+
+max_hp = 15;
+hp = max_hp;
+
+alarm[0] = random(30);
 dx = 0;
 dy = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>player_dir = point_direction(x,y, obj_player.phy_position_x, obj_player.phy_position_y);
+
+spawn_x = lengthdir_x(25, player_dir);
+spawn_y = lengthdir_y(25, player_dir);
+attack = instance_create(phy_position_x + spawn_x, phy_position_y + spawn_y, obj_energy_attack);
+
+with(attack){
+
+    force_x = lengthdir_x(force, other.dir);
+    force_y = lengthdir_y(force, other.dir);
+
+    phy_rotation = -other.player_dir
+    
+    physics_apply_impulse(x, y, force_x, force_y);
+
+}
 </string>
           </argument>
         </arguments>
@@ -50,13 +97,80 @@ dy = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>dir = random(360);
+            <string>if(player_dist &lt; vision_r){
+
+    dir = point_direction(x,y, obj_player.phy_position_x, obj_player.phy_position_y);
+    alarm[1] = attack_speed
+}else{
+   
+    dir = random(360);
+
+}
+
 dx = lengthdir_x(20, dir);
 dy = lengthdir_y(20, dir);
-
 physics_apply_impulse(x, y, dx, dy);
 
 alarm[0] = random(100);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>player_dist = point_distance(phy_position_x, phy_position_y, obj_player.phy_position_x, obj_player.phy_position_y)
+
+if(player_dist &lt; vision_r){
+    alarm[0] = random(10)
+}else{
+
+    alarm[0] = random(200)
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_self();
+
+/*if(player_dist &lt; 128){
+draw_circle_colour(x, y, 64, c_red, c_red, 1);
+}else{
+draw_circle_colour(x, y, 64, c_green, c_green, 1);
+}/*
 </string>
           </argument>
         </arguments>

@@ -108,7 +108,14 @@
       <sprite>sprites\spr_pathguide</sprite>
     </sprites>
     <sprites name="Attacks">
-      <sprite>sprites\spr_fire_attack</sprite>
+      <sprites name="Player atatcks">
+        <sprite>sprites\spr_attack_lightning</sprite>
+        <sprite>sprites\spr_attack_ice</sprite>
+        <sprite>sprites\spr_attack_fire</sprite>
+      </sprites>
+      <sprites name="Enemy attacks">
+        <sprite>sprites\spr_energy_attack</sprite>
+      </sprites>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -173,7 +180,10 @@
       <object>objects\obj_shades</object>
     </objects>
     <objects name="attacks">
-      <object>objects\obj_fire_attack</object>
+      <object>objects\obj_attack_fire</object>
+      <object>objects\obj_attack_lightning</object>
+      <object>objects\obj_attack_ice</object>
+      <object>objects\obj_energy_attack</object>
     </objects>
   </objects>
   <rooms name="rooms">
@@ -183,7 +193,7 @@
     <room>rooms\rm_everfree_lv1_1</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41864.9079738426</constant>
+    <constant name="GM_build_date">41865.7344539005</constant>
     <constant name="GM_version">'0.0.0.1'</constant>
   </constants>
   <help>
