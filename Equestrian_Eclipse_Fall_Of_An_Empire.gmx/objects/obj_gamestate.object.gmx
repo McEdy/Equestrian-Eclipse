@@ -34,6 +34,8 @@ switches = ds_map_create();
 
 switches[? "quest_colabtshades_on"] = false;
 switches[? "quest_colabtshades_get"] = false;
+
+//Penis (very mature, I know).
 </string>
           </argument>
         </arguments>
