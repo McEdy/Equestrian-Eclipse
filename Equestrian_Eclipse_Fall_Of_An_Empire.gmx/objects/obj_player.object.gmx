@@ -25,16 +25,20 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>phy_fixed_rotation = true;
+            <string>///Setup
+
+phy_fixed_rotation = true;
 
 sprite_index = global.character_right;
 
 action = false;
 attack_type = 1;
 
-
 max_hp = 100;
 hp = max_hp;
+
+max_stamina = 60;
+stamina = max_stamina;
 </string>
           </argument>
         </arguments>
@@ -113,8 +117,9 @@ phy_fixed_rotation = true;
 if(keyboard_check(ord("A"))){
 sprite_index = global.character_left;
 
-    if(keyboard_check(vk_shift)){
+    if(keyboard_check(vk_shift) &amp;&amp; stamina &gt; 0){
         phy_position_x -=3;
+        stamina -= 2/60;
     }else
     {
         phy_position_x -=1.5;
@@ -125,8 +130,9 @@ sprite_index = global.character_left;
 if(keyboard_check(ord("D"))){
 sprite_index = global.character_right;
 
-    if(keyboard_check(vk_shift)){
+    if(keyboard_check(vk_shift) &amp;&amp; stamina &gt; 0){
         phy_position_x +=3;
+        stamina -= 2/60;
     }else
     {
         phy_position_x +=1.5;
@@ -137,8 +143,9 @@ sprite_index = global.character_right;
 if(keyboard_check(ord("W"))){
 sprite_index = global.character_up;
 
-    if(keyboard_check(vk_shift)){
+    if(keyboard_check(vk_shift) &amp;&amp; stamina &gt; 0){
         phy_position_y -=3;
+        stamina -= 2/60;
     }else
     {
         phy_position_y -=1.5;
@@ -149,8 +156,9 @@ sprite_index = global.character_up;
 if(keyboard_check(ord("S"))){
 sprite_index = global.character_down;
 
-    if(keyboard_check(vk_shift)){
+    if(keyboard_check(vk_shift) &amp;&amp; stamina &gt; 0){
         phy_position_y +=3;
+        stamina -= 2/60;
     }else
     {
         phy_position_y +=1.5;
@@ -243,6 +251,36 @@ action = false;
         </arguments>
       </action>
     </event>
+    <event eventtype="6" enumb="54">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (attack_type == 3)
+{
+    attack_type = 1;
+}
+else
+{
+    attack_type +=1;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="6" enumb="53">
       <action>
         <libid>1</libid>
@@ -312,7 +350,8 @@ with(attack){
           <argument>
             <kind>1</kind>
             <string>draw_text(150, 10, "attack_type: " + string(attack_type));
-draw_text(150, 50, "helath: " + string(hp) + "/" + string(max_hp));
+draw_text(150, 50, "Health: " + string(hp) + "/" + string(max_hp));
+draw_text(150, 50, "Stamina: " + string(stamina) + "/" + string(max_stamina));
 </string>
           </argument>
         </arguments>
@@ -339,75 +378,6 @@ draw_text(150, 50, "helath: " + string(hp) + "/" + string(max_hp));
 
 physics_draw_debug()
 draw_self()
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="51">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>attack_type = 3;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="50">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>attack_type = 2;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="49">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>attack_type = 1;
 </string>
           </argument>
         </arguments>
