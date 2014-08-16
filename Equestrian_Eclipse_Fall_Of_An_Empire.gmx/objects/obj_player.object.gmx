@@ -325,39 +325,46 @@ spawn_y = lengthdir_y(25, dir);
 switch(attack_type){
 
 case 1:
-if(magic &gt;= 5)
+if(magic &gt;= 5 &amp;&amp; global.character_race == "unicorn")
 {
     attack = instance_create(phy_position_x + spawn_x, phy_position_y + spawn_y, obj_attack_fire);
     magic -= 5;
     break;
 }
+else
+{}
 
 case 2:
-if(magic &gt;= 5)
+if(magic &gt;= 5 &amp;&amp; global.character_race == "unicorn")
 {
     attack = instance_create(phy_position_x + spawn_x, phy_position_y + spawn_y, obj_attack_ice);
     magic -= 5;
     break;
 }
+else
+{}
 
 case 3:
-if(magic &gt;= 5)
+if(magic &gt;= 5 &amp;&amp; global.character_race == "unicorn")
 {
     attack = instance_create(phy_position_x + spawn_x, phy_position_y + spawn_y, obj_attack_lightning);
     magic -= 5;
     break;
 }
+else{}
 
 }
 
-with(attack){
+if(global.character_race == "unicorn")
+{
+    with(attack){
 
     force_x = lengthdir_x(force, other.dir);
     force_y = lengthdir_y(force, other.dir);
 
     phy_rotation = -other.dir
     physics_apply_impulse(x, y, force_x, force_y);
-
+    }
 }
 </string>
           </argument>
@@ -384,7 +391,11 @@ with(attack){
             <string>draw_text(150, 10, "attack_type: " + string(attack_type));
 draw_text(150, 50, "Health: " + string(hp) + "/" + string(max_hp));
 draw_text(150, 50, "#Stamina: " + string(stamina) + "/" + string(max_stamina));
-draw_text(150, 50, "##Magic: " + string(magic) + "/" + string(max_magic));
+
+if(global.character_race == "unicorn")
+{
+    draw_text(150, 50, "##Magic: " + string(magic) + "/" + string(max_magic));
+}
 </string>
           </argument>
         </arguments>

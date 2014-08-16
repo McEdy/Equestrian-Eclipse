@@ -193,7 +193,7 @@
     <room>rooms\rm_everfree_lv1_1</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41867.6593487616</constant>
+    <constant name="GM_build_date">41867.6824012731</constant>
     <constant name="GM_version">'0.0.0.1'</constant>
   </constants>
   <help>
