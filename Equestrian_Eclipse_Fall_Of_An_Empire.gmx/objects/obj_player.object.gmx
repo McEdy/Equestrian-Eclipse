@@ -37,8 +37,11 @@ attack_type = 1;
 max_hp = 100;
 hp = max_hp;
 
-max_stamina = 60;
+max_stamina = 30;
 stamina = max_stamina;
+
+max_magic = 30;
+magic = max_magic;
 </string>
           </argument>
         </arguments>
@@ -120,6 +123,7 @@ sprite_index = global.character_left;
     if(keyboard_check(vk_shift) &amp;&amp; stamina &gt; 0){
         phy_position_x -=3;
         stamina -= 2/60;
+        status_running = true;
     }else
     {
         phy_position_x -=1.5;
@@ -133,6 +137,7 @@ sprite_index = global.character_right;
     if(keyboard_check(vk_shift) &amp;&amp; stamina &gt; 0){
         phy_position_x +=3;
         stamina -= 2/60;
+        status_running = true;
     }else
     {
         phy_position_x +=1.5;
@@ -146,12 +151,14 @@ sprite_index = global.character_up;
     if(keyboard_check(vk_shift) &amp;&amp; stamina &gt; 0){
         phy_position_y -=3;
         stamina -= 2/60;
+        status_running = true;
     }else
     {
         phy_position_y -=1.5;
     }
 }
 
+status_running = false;
 
 if(keyboard_check(ord("S"))){
 sprite_index = global.character_down;
@@ -159,6 +166,7 @@ sprite_index = global.character_down;
     if(keyboard_check(vk_shift) &amp;&amp; stamina &gt; 0){
         phy_position_y +=3;
         stamina -= 2/60;
+        status_running = true;
     }else
     {
         phy_position_y +=1.5;
@@ -172,6 +180,18 @@ action = true;
 }else
 {
 action = false;
+}
+
+//Stamina regeneration
+if(status_running == false &amp;&amp; stamina &lt; max_stamina)
+{
+    stamina += 1/60;
+}
+
+//Magic regeneration
+if(magic &lt; max_magic)
+{
+    magic += 1/60;
 }
 </string>
           </argument>
@@ -305,16 +325,28 @@ spawn_y = lengthdir_y(25, dir);
 switch(attack_type){
 
 case 1:
-attack = instance_create(phy_position_x + spawn_x, phy_position_y + spawn_y, obj_attack_fire);
-break;
+if(magic &gt;= 5)
+{
+    attack = instance_create(phy_position_x + spawn_x, phy_position_y + spawn_y, obj_attack_fire);
+    magic -= 5;
+    break;
+}
 
 case 2:
-attack = instance_create(phy_position_x + spawn_x, phy_position_y + spawn_y, obj_attack_ice);
-break;
+if(magic &gt;= 5)
+{
+    attack = instance_create(phy_position_x + spawn_x, phy_position_y + spawn_y, obj_attack_ice);
+    magic -= 5;
+    break;
+}
 
 case 3:
-attack = instance_create(phy_position_x + spawn_x, phy_position_y + spawn_y, obj_attack_lightning);
-break;
+if(magic &gt;= 5)
+{
+    attack = instance_create(phy_position_x + spawn_x, phy_position_y + spawn_y, obj_attack_lightning);
+    magic -= 5;
+    break;
+}
 
 }
 
@@ -351,7 +383,8 @@ with(attack){
             <kind>1</kind>
             <string>draw_text(150, 10, "attack_type: " + string(attack_type));
 draw_text(150, 50, "Health: " + string(hp) + "/" + string(max_hp));
-draw_text(150, 50, "Stamina: " + string(stamina) + "/" + string(max_stamina));
+draw_text(150, 50, "#Stamina: " + string(stamina) + "/" + string(max_stamina));
+draw_text(150, 50, "##Magic: " + string(magic) + "/" + string(max_magic));
 </string>
           </argument>
         </arguments>
