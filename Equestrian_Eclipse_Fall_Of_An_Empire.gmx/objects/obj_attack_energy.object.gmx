@@ -72,11 +72,11 @@ force = 10;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*hit_angle = point_direction(x, y, other.phy_position_x, other.phy_position_y);
+            <string>hit_angle = point_direction(x, y, other.phy_position_x, other.phy_position_y);
 hit_dx = lengthdir_x(10, hit_angle);
 hit_dy= -lengthdir_y(10, hit_angle);
 
-damage = 1 +irandom(3);
+damage = 4; //+irandom(1);
 
 with(other){
 
@@ -124,7 +124,8 @@ with(other){
         //Handle game over
         show_debug_message("You died in Equestrian Eclipse. You're bad at this game and you should feel bad")
             
-            //respawn
+        //respawn
+        show_message("You died. Bad player, I expected more from you!")
             
     }
 }

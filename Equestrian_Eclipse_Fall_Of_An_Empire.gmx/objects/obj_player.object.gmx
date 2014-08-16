@@ -34,7 +34,7 @@ sprite_index = global.character_right;
 action = false;
 attack_type = 1;
 
-max_hp = 100;
+max_hp = 10;
 hp = max_hp;
 
 max_stamina = 30;
@@ -62,7 +62,7 @@ magic = max_magic;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///respawn
+            <string>///Respawn
 
 /*dest_x = 272;
 dest_y = 112;
@@ -288,7 +288,7 @@ if(magic &lt; max_magic)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (attack_type == 3)
+            <string>if (attack_type == 4)
 {
     attack_type = 1;
 }
@@ -327,7 +327,7 @@ switch(attack_type){
 case 1:
 if(magic &gt;= 5 &amp;&amp; global.character_race == "unicorn")
 {
-    attack = instance_create(phy_position_x + spawn_x, phy_position_y + spawn_y, obj_attack_fire);
+    attack = instance_create(phy_position_x + spawn_x, phy_position_y + spawn_y, obj_attack_energy);
     magic -= 5;
     break;
 }
@@ -337,7 +337,7 @@ else
 case 2:
 if(magic &gt;= 5 &amp;&amp; global.character_race == "unicorn")
 {
-    attack = instance_create(phy_position_x + spawn_x, phy_position_y + spawn_y, obj_attack_ice);
+    attack = instance_create(phy_position_x + spawn_x, phy_position_y + spawn_y, obj_attack_fire);
     magic -= 5;
     break;
 }
@@ -345,6 +345,16 @@ else
 {}
 
 case 3:
+if(magic &gt;= 5 &amp;&amp; global.character_race == "unicorn")
+{
+    attack = instance_create(phy_position_x + spawn_x, phy_position_y + spawn_y, obj_attack_ice);
+    magic -= 5;
+    break;
+}
+else
+{}
+
+case 4:
 if(magic &gt;= 5 &amp;&amp; global.character_race == "unicorn")
 {
     attack = instance_create(phy_position_x + spawn_x, phy_position_y + spawn_y, obj_attack_lightning);

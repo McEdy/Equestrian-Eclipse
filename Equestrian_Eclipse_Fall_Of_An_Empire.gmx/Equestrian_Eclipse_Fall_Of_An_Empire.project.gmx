@@ -179,11 +179,11 @@
     <objects name="Quest">
       <object>objects\obj_shades</object>
     </objects>
-    <objects name="attacks">
+    <objects name="Attacks">
       <object>objects\obj_attack_fire</object>
       <object>objects\obj_attack_lightning</object>
       <object>objects\obj_attack_ice</object>
-      <object>objects\obj_energy_attack</object>
+      <object>objects\obj_attack_energy</object>
     </objects>
   </objects>
   <rooms name="rooms">
@@ -193,7 +193,7 @@
     <room>rooms\rm_everfree_lv1_1</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41867.6824012731</constant>
+    <constant name="GM_build_date">41867.702871875</constant>
     <constant name="GM_version">'0.0.0.1'</constant>
   </constants>
   <help>

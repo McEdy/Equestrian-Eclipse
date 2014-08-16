@@ -76,7 +76,7 @@ force = 30;
 hit_dx = lengthdir_x(10, hit_angle);
 hit_dy= -lengthdir_y(10, hit_angle);
 
-damage = 1 +irandom(3);
+damage = 4; //+irandom(1);
 
 with(other){
 
