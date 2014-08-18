@@ -327,7 +327,7 @@ switch(attack_type){
 case 1:
 if(magic &gt;= 5 &amp;&amp; global.character_race == "unicorn")
 {
-    attack = instance_create(phy_position_x + spawn_x, phy_position_y + spawn_y, obj_attack_energy);
+    attack = instance_create(phy_position_x + spawn_x, phy_position_y + spawn_y, obj_attack_magic);
     magic -= 5;
     break;
 }

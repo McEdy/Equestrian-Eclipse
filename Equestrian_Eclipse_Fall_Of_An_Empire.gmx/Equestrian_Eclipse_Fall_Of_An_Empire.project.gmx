@@ -115,6 +115,7 @@
       </sprites>
       <sprites name="Enemy attacks">
         <sprite>sprites\spr_energy_attack</sprite>
+        <sprite>sprites\spr_attack_energy_changeling</sprite>
       </sprites>
     </sprites>
   </sprites>
@@ -184,6 +185,7 @@
       <object>objects\obj_attack_lightning</object>
       <object>objects\obj_attack_ice</object>
       <object>objects\obj_attack_energy</object>
+      <object>objects\obj_attack_magic</object>
     </objects>
   </objects>
   <rooms name="rooms">
@@ -193,7 +195,7 @@
     <room>rooms\rm_everfree_lv1_1</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41867.702871875</constant>
+    <constant name="GM_build_date">41869.7216196759</constant>
     <constant name="GM_version">'0.0.0.1'</constant>
   </constants>
   <help>
