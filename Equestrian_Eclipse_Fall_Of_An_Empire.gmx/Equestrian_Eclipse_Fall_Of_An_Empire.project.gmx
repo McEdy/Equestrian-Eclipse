@@ -69,6 +69,9 @@
       <sprite>sprites\spr_flower_orange</sprite>
       <sprite>sprites\spr_flower_blue</sprite>
       <sprite>sprites\spr_bush_red</sprite>
+      <sprites name="Cave">
+        <sprite>sprites\spr_stalagmite</sprite>
+      </sprites>
     </sprites>
     <sprites name="Town">
       <sprite>sprites\spr_lamp</sprite>
@@ -122,6 +125,7 @@
   <backgrounds name="background">
     <background>background\tiles_1</background>
     <background>background\everfree</background>
+    <background>background\caves</background>
   </backgrounds>
   <paths name="paths">
     <path>paths\path_test</path>
@@ -171,6 +175,9 @@
         <object>objects\obj_flower_blue</object>
         <object>objects\obj_tree</object>
         <object>objects\obj_bush_red</object>
+        <objects name="Cave">
+          <object>objects\obj_stalagmite</object>
+        </objects>
       </objects>
       <objects name="Town">
         <object>objects\obj_lamp</object>
@@ -193,9 +200,10 @@
     <room>rooms\rm_test</room>
     <room>rooms\rm_forest</room>
     <room>rooms\rm_everfree_lv1_1</room>
+    <room>rooms\rm_cave_boss</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41869.7216196759</constant>
+    <constant name="GM_build_date">41872.913194919</constant>
     <constant name="GM_version">'0.0.0.1'</constant>
   </constants>
   <help>

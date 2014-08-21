@@ -112,6 +112,7 @@
     <instance objName="obj_base_warp" x="224" y="0" name="inst_44FCF524" locked="0" code="event_inherited();&#xA;dest_room = rm_everfree_lv1_1;&#xA;dest_x = 48;&#xA;dest_y = 208;&#xA;" scaleX="3" scaleY="0.5" colour="4294967295" rotation="0"/>
     <instance objName="obj_house" x="843" y="389" name="inst_EA014766" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_house" x="971" y="390" name="inst_4DDBFAF6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_base_warp" x="160" y="288" name="inst_A827E00F" locked="0" code="event_inherited();&#xA;dest_room = rm_cave_boss;&#xA;dest_x = 384;&#xA;dest_y = 928;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tiles_1" x="16" y="192" w="32" h="32" xo="80" yo="16" id="10000925" name="inst_C95240B0" depth="1000001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -2222,6 +2223,7 @@
     <tile bgName="&lt;undefined&gt;" x="1232" y="432" w="16" h="16" xo="16" yo="32" id="10004308" name="inst_B3DEAB08" depth="999998" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="&lt;undefined&gt;" x="1168" y="496" w="16" h="16" xo="16" yo="32" id="10004310" name="inst_BD114F76" depth="999998" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="&lt;undefined&gt;" x="1168" y="400" w="16" h="16" xo="0" yo="48" id="10004311" name="inst_0E026BBC" depth="999998" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="caves" x="160" y="288" w="32" h="32" xo="0" yo="0" id="10006985" name="inst_86EBF083" depth="999997" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
   </tiles>
   <PhysicsWorld>-1</PhysicsWorld>
   <PhysicsWorldTop>0</PhysicsWorldTop>
