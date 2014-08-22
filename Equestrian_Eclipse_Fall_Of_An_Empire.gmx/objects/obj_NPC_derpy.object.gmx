@@ -31,7 +31,7 @@ event_inherited();
 
 hasquest = false;
 
-quest_none = "I like muffins!"
+quest_none = "I like muffins...and the delicious taste of spicy horse semen!"
 
 my_path = path_test;
 

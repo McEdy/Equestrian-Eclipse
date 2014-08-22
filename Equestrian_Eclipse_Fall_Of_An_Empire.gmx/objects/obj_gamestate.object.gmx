@@ -27,9 +27,6 @@
             <kind>1</kind>
             <string>///Initialise IVARs
 
-//I like to eat muffins using my mind powers
-
-//Smoke dat kush evrie dai
 global.gamespeed = 1.0;
 global.dest_x = 256;
 global.dest_y = 96;

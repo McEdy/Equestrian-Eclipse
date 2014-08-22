@@ -33,6 +33,18 @@ if(room == rm_test)
     y = view_yview[0]+30
 }
 
+if(room == rm_cave_boss)
+{
+    x = view_xview[0]+610
+    y = view_yview[0]+30
+}
+
+if(room == rm_everfree_lv1_1)
+{
+    x = view_xview[0]+610
+    y = view_yview[0]+30
+}
+
 if(room == rm_forest)
 {
     x = view_xview[0]+610
