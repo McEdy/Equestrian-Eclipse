@@ -48,7 +48,7 @@ depth = y * -1
   <PhysicsShapePoints>
     <point>16,48</point>
     <point>96,48</point>
-    <point>96,128</point>
-    <point>16,128</point>
+    <point>96,120</point>
+    <point>16,120</point>
   </PhysicsShapePoints>
 </object>
