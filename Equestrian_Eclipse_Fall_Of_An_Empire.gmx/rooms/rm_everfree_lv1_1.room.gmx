@@ -52,8 +52,8 @@
   </views>
   <instances>
     <instance objName="obj_hero_reposition" x="8" y="8" name="inst_5A0D1CDA" locked="0" code="" scaleX="0.5" scaleY="0.5" colour="4294967295" rotation="0"/>
-    <instance objName="obj_base_warp" x="0" y="160" name="inst_40B6C3D3" locked="0" code="event_inherited();&#xA;dest_room = rm_test;&#xA;dest_x = 1120;&#xA;dest_y = 464;" scaleX="0.5" scaleY="3.09677410125732" colour="4294967295" rotation="0"/>
-    <instance objName="obj_collision" x="158" y="16" name="inst_12682ADF" locked="0" code="" scaleX="10.125" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_base_warp" x="0" y="160" name="inst_40B6C3D3" locked="0" code="event_inherited();&#xA;dest_room = rm_test;&#xA;dest_x = 1120;&#xA;dest_y = 464;" scaleX="0.5" scaleY="3.09999990463257" colour="4294967295" rotation="0"/>
+    <instance objName="obj_collision" x="158" y="16" name="inst_12682ADF" locked="0" code="" scaleX="10.1300001144409" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_collision" x="500" y="16" name="inst_DD4739BB" locked="0" code="" scaleX="3.74193549156189" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_collision" x="432" y="134" name="inst_7C614E6D" locked="0" code="" scaleX="1" scaleY="9.65625" colour="4294967295" rotation="0"/>
     <instance objName="obj_base_warp" x="320" y="0" name="inst_59C4E5F6" locked="0" code="event_inherited();&#xA;dest_room = rm_test;&#xA;dest_x = 1120;&#xA;dest_y = 464;&#xA;" scaleX="3" scaleY="0.5" colour="4294967295" rotation="0"/>
@@ -68,8 +68,8 @@
     <instance objName="obj_timberwolf" x="312" y="328" name="inst_6663B045" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_timberwolf" x="494" y="90" name="inst_81C88AE7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_collision" x="560" y="202" name="inst_610B65E9" locked="0" code="" scaleX="1" scaleY="11.53125" colour="4294967295" rotation="0"/>
-    <instance objName="ob_enemy_collission" x="24" y="208" name="inst_ADF2802C" locked="0" code="" scaleX="0.5" scaleY="3" colour="4294967295" rotation="0"/>
-    <instance objName="ob_enemy_collission" x="368" y="24" name="inst_E32558F4" locked="0" code="" scaleX="3.03125" scaleY="0.5" colour="4294967295" rotation="0"/>
+    <instance objName="obj_enemy_collission" x="24" y="208" name="inst_ADF2802C" locked="0" code="" scaleX="0.5" scaleY="3" colour="4294967295" rotation="0"/>
+    <instance objName="obj_enemy_collission" x="368" y="24" name="inst_E32558F4" locked="0" code="" scaleX="3.02999997138977" scaleY="0.5" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tiles_1" x="32" y="32" w="32" h="32" xo="80" yo="16" id="10004568" name="inst_35623431" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

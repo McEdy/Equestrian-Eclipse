@@ -155,9 +155,10 @@
       </objects>
       <objects name="NPCs">
         <object>objects\obj_NPC_cobalt</object>
+        <object>objects\obj_NPC_applejack</object>
         <object>objects\obj_NPC_derpy</object>
         <objects name="Base">
-          <object>objects\obj_NPC_base</object>
+          <object>objects\obj_NPC_base1</object>
           <object>objects\obj_pathguide</object>
         </objects>
       </objects>
@@ -167,7 +168,7 @@
       <objects name="timberwolf">
         <object>objects\obj_timberwolf</object>
       </objects>
-      <object>objects\ob_enemy_collission</object>
+      <object>objects\obj_enemy_collission</object>
     </objects>
     <objects name="Environment">
       <objects name="Nature">
@@ -186,6 +187,7 @@
     </objects>
     <objects name="Quest">
       <object>objects\obj_shades</object>
+      <object>objects\obj_flower_quest</object>
     </objects>
     <objects name="Attacks">
       <object>objects\obj_attack_fire</object>
@@ -203,7 +205,7 @@
     <room>rooms\rm_cave_boss</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41873.2191085995</constant>
+    <constant name="GM_build_date">41876.6751358333</constant>
     <constant name="GM_version">'0.0.0.1'</constant>
   </constants>
   <help>

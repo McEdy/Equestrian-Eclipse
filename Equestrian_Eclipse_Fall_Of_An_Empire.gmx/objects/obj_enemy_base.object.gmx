@@ -68,7 +68,7 @@ with(other){
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="ob_enemy_collission">
+    <event eventtype="4" ename="obj_enemy_collission">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -85,7 +85,7 @@ with(other){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///collide with
+            <string>///Collide with
 </string>
           </argument>
         </arguments>

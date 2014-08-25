@@ -213,7 +213,7 @@ if(magic &lt; max_magic)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///respawn
+            <string>///Respawn
 
 /*if(hp &lt; 0)
     global.dest_x = dest_x;
@@ -225,7 +225,7 @@ if(magic &lt; max_magic)
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_NPC_base">
+    <event eventtype="4" ename="obj_NPC_base1">
       <action>
         <libid>1</libid>
         <id>603</id>

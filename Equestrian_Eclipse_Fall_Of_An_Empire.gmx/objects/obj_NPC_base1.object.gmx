@@ -26,14 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>///Initiate IVars
-var quest_undefined = "Undefined NPC"
-var quest_start = "Undefined Quest NPC"
-var quest_success = "Undefined Quest Success Message NPC"
-
-
 
 var hasquest = false;
-var quest = "";
 
 my_target = instance_create(x,y,obj_pathguide);
 my_path = -1
@@ -88,28 +82,37 @@ depth = y * -1
 
 var dist = point_distance(obj_player.phy_position_x, obj_player.phy_position_y,phy_position_x,phy_position_y);
 
-if(dist &lt; 50){
-    if(obj_player.action == true){
-    
-        if(hasquest == true){
-            if(obj_gamestate.switches[? "quest_cobaltshades_on"]) = true{
-                if(obj_gamestate.switches[? "quest_cobaltshades_get"]) = true{
+if(dist &lt; 50)
+{
+    if(obj_player.action == true)
+    {
+        if(hasquest == true)
+        {
+            if(obj_gamestate.switches[? quest_active]) = true
+            {
+                if(obj_gamestate.switches[? quest_condition1]) = true
+                {
                     show_message(quest_success) 
-                    show_debug_message("Quest completed: Cobalt Shades")
+                    show_debug_message("Quest completed: " + quest_name + ".")
                     hasquest = false;
+                    obj_gamestate.switches[? quest_active] = false;
                 }
-                else{
+                else
+                {
                     show_message(quest_uncompleted)
                 }
             }
-            else{
+            else
+            {
                 show_message(quest_start)
-                show_debug_message("Quest activated: Cobalt Shades")
-                obj_gamestate.switches[? "quest_cobaltshades_on"] = true;
+                show_debug_message("Quest activated: " + quest_name + ".")
+                obj_gamestate.switches[? quest_active] = true
+                quest_object1.active = true
             }
         }
-    else{
-            show_message(quest_none);
+        else
+        {
+            show_message(quest_none)
         }
     }
 }

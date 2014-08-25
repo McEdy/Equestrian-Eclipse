@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>obj_NPC_base</parentName>
+  <parentName>obj_NPC_base1</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -29,11 +29,14 @@
 
 event_inherited();
 
-hasquest = true;
-//quest = "cobaltshades";
-//quest_condition = "quest_cobaltshades_get";
+hasquest         = true
+quest_name       = "Cobalt Shades"
+quest_active     = "quest_cobaltshades_on"
+quest_condition1 = "quest_cobaltshades_get"
+quest_object1    = obj_shades
 
 obj_gamestate.switches[? "quest_cobaltshades_get"] = false
+obj_gamestate.switches[? "quest_cobaltshades_on"] = false
 
 quest_start = "Hey sexy. If you find my shades of cobalt we can find somewhere more private for me to give you your reward."
 quest_success = "Great, you found my cobalt shades. Now, about your reward..."
