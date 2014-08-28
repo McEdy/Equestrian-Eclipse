@@ -118,13 +118,14 @@ phy_fixed_rotation = true;
             <string>///Handle Input
 
 if(keyboard_check(ord("A"))){
-sprite_index = global.character_left;
+    sprite_index = global.character_left;
 
     if(keyboard_check(vk_shift) &amp;&amp; stamina &gt; 0){
         phy_position_x -=3;
         stamina -= 2/60;
         status_running = true;
-    }else
+    }
+    else
     {
         phy_position_x -=1.5;
     }
@@ -132,13 +133,14 @@ sprite_index = global.character_left;
 
 
 if(keyboard_check(ord("D"))){
-sprite_index = global.character_right;
+    sprite_index = global.character_right;
 
     if(keyboard_check(vk_shift) &amp;&amp; stamina &gt; 0){
         phy_position_x +=3;
         stamina -= 2/60;
         status_running = true;
-    }else
+    }
+    else
     {
         phy_position_x +=1.5;
     }
@@ -146,13 +148,14 @@ sprite_index = global.character_right;
 
 
 if(keyboard_check(ord("W"))){
-sprite_index = global.character_up;
+    sprite_index = global.character_up;
 
     if(keyboard_check(vk_shift) &amp;&amp; stamina &gt; 0){
         phy_position_y -=3;
         stamina -= 2/60;
         status_running = true;
-    }else
+    }
+    else
     {
         phy_position_y -=1.5;
     }
@@ -160,14 +163,16 @@ sprite_index = global.character_up;
 
 status_running = false;
 
-if(keyboard_check(ord("S"))){
-sprite_index = global.character_down;
+if(keyboard_check(ord("S")))
+{
+    sprite_index = global.character_down;
 
     if(keyboard_check(vk_shift) &amp;&amp; stamina &gt; 0){
         phy_position_y +=3;
         stamina -= 2/60;
         status_running = true;
-    }else
+    }
+    else
     {
         phy_position_y +=1.5;
     }
@@ -175,11 +180,13 @@ sprite_index = global.character_down;
 
 
 //Interaction
-if(keyboard_check(ord("E"))){
-action = true;
-}else
+if(keyboard_check(ord("E")))
 {
-action = false;
+    action = true;
+}
+else
+{
+    action = false;
 }
 
 //Stamina regeneration
@@ -220,6 +227,42 @@ if(magic &lt; max_magic)
     global.dest_y = dest_y;
 
     room_goto(respawn_room);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Display
+//Display interactables
+
+obj_closest = instance_nearest(x,y,obj_interactable);
+dist_interact = point_distance(phy_position_x, phy_position_y, obj_closest.x, obj_closest.y);
+
+if(dist_interact &lt; 50)
+{
+    obj_bubble.active = true;
+    obj_bubble.x = obj_closest.x;
+    obj_bubble.y = obj_closest.y - 20;
+}
+else
+{
+    obj_bubble.active = false;
+}
 </string>
           </argument>
         </arguments>

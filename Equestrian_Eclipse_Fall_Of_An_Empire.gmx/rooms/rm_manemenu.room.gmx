@@ -53,6 +53,7 @@
   <instances>
     <instance objName="obj_gamestate" x="26" y="25" name="inst_207F50F6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_manemenu" x="25" y="58" name="inst_44F9DE7A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bubble" x="96" y="96" name="inst_06920FAE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

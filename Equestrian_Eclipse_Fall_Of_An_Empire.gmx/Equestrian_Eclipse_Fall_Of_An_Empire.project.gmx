@@ -109,6 +109,7 @@
         <sprite>sprites\spr_enemy_collission</sprite>
       </sprites>
       <sprite>sprites\spr_pathguide</sprite>
+      <sprite>sprites\spr_bubble</sprite>
     </sprites>
     <sprites name="Attacks">
       <sprites name="Player atatcks">
@@ -136,6 +137,7 @@
   <objects name="objects">
     <objects name="System">
       <object>objects\obj_gamestate</object>
+      <object>objects\obj_interactable</object>
       <object>objects\obj_obstacles</object>
       <object>objects\obj_collision</object>
       <object>objects\obj_button</object>
@@ -148,6 +150,7 @@
         <object>objects\obj_base_warp</object>
         <object>objects\obj_hero_reposition</object>
       </objects>
+      <object>objects\obj_bubble</object>
     </objects>
     <objects name="Ponies">
       <objects name="Playable">
@@ -205,7 +208,7 @@
     <room>rooms\rm_cave_boss</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41877.593140787</constant>
+    <constant name="GM_build_date">41879,7827224537</constant>
     <constant name="GM_version">'0.0.0.1'</constant>
   </constants>
   <help>
