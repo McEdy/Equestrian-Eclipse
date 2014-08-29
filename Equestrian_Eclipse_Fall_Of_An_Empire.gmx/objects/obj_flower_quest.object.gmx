@@ -50,9 +50,10 @@ active = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Image Speed
+            <string>///Variables
 
-image_speed = 0.015
+image_speed = 0.015;
+active = false;
 </string>
           </argument>
         </arguments>
@@ -79,13 +80,16 @@ image_speed = 0.015
 
 dist_interact = point_distance(phy_position_x, phy_position_y, obj_player.phy_position_x, obj_player.phy_position_y);
 
-if(dist_interact &lt; 50)
+if(obj_gamestate.switches[? "quest_flower_on"] == true)
 {
-    if(keyboard_check(ord("E")))
+    if(dist_interact &lt; 50)
     {
-        obj_gamestate.switches[? "quest_flower_get"] = true;
-        show_message("Flower picked up.");
-        instance_destroy();
+        if(keyboard_check(ord("E")))
+        {
+            obj_gamestate.switches[? "quest_flower_get"] = true;
+            show_message("Flower picked up.");
+            instance_destroy();
+        }
     }
 }
 </string>

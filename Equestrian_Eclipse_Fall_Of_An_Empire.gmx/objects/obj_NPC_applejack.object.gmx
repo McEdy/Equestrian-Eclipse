@@ -29,19 +29,18 @@
 
 event_inherited();
 
-hasquest         = true
-quest_name       = "Flower"
-quest_active     = "quest_flower_on"
-quest_condition1 = "quest_flower_get"
-quest_object1    = obj_flower_quest
+active           = true;
+hasquest         = true;
+quest_name       = "Flower";
+quest_active     = "quest_flower_on";
+quest_condition1 = "quest_flower_get";
+quest_object1    = obj_flower_quest;
 
-obj_gamestate.switches[? "quest_flower_get"] = false
-obj_gamestate.switches[? "quest_flower_on"] = false
 
-quest_start = "Hey, ya! I need a flower, because... ehm, 'cause why not! Don't question me, I'm just an NPC!"
-quest_success = "Yeehaw, you found it! Your reward is... nothing - suprise!"
-quest_uncompleted = "I still need that flower. Please, would you be so kind to bring it to me?"
-quest_none = "Sorry partner, but I don't have other things for you to do."
+quest_start = "Hey, ya! I need a flower, because... ehm, 'cause why not! Don't question me, I'm just an NPC!";
+quest_success = "Yeehaw, you found it! Your reward is... nothing - suprise!";
+quest_uncompleted = "I still need that flower. Please, would you be so kind to bring it to me?";
+quest_none = "Sorry partner, but I don't have other things for you to do.";
 </string>
           </argument>
         </arguments>

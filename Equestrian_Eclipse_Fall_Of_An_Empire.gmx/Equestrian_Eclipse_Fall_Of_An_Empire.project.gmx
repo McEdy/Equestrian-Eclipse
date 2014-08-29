@@ -138,10 +138,9 @@
     <objects name="System">
       <object>objects\obj_gamestate</object>
       <object>objects\obj_interactable</object>
+      <object>objects\obj_notme</object>
       <object>objects\obj_obstacles</object>
       <object>objects\obj_collision</object>
-      <object>objects\obj_button</object>
-      <object>objects\obj_button_quit</object>
       <object>objects\obj_manemenu</object>
       <objects name="Window">
         <object>objects\obj_window_base</object>
@@ -150,7 +149,11 @@
         <object>objects\obj_base_warp</object>
         <object>objects\obj_hero_reposition</object>
       </objects>
-      <object>objects\obj_bubble</object>
+      <objects name="Interface">
+        <object>objects\obj_bubble</object>
+        <object>objects\obj_button</object>
+        <object>objects\obj_button_quit</object>
+      </objects>
     </objects>
     <objects name="Ponies">
       <objects name="Playable">
@@ -208,7 +211,7 @@
     <room>rooms\rm_cave_boss</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41879,7827224537</constant>
+    <constant name="GM_build_date">41880,6180105903</constant>
     <constant name="GM_version">'0.0.0.1'</constant>
   </constants>
   <help>

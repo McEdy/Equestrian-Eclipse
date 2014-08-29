@@ -31,9 +31,12 @@ phy_fixed_rotation = true;
 
 sprite_index = global.character_right;
 
+//Variables
 action = false;
 attack_type = 1;
+notme = true;
 
+//Status
 max_hp = 10;
 hp = max_hp;
 
@@ -220,13 +223,20 @@ if(magic &lt; max_magic)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Respawn
+            <string>///Miscellaneous
 
-/*if(hp &lt; 0)
+/*
+if(hp &lt; 0)
     global.dest_x = dest_x;
     global.dest_y = dest_y;
 
     room_goto(respawn_room);
+*/
+
+//Deactivation of objects outside of the view
+//instance_deactivate_region(view_xview[0], view_yview[0], view_wview[0], view_hview[0], false, true);
+instance_deactivate_region(0, 0, room_width, room_height, false, true);
+instance_activate_region(view_xview[0], view_yview[0], view_wview[0], view_hview[0], true);
 </string>
           </argument>
         </arguments>
@@ -253,15 +263,18 @@ if(magic &lt; max_magic)
 obj_closest = instance_nearest(x,y,obj_interactable);
 dist_interact = point_distance(phy_position_x, phy_position_y, obj_closest.x, obj_closest.y);
 
-if(dist_interact &lt; 50)
+if(obj_closest.active == true)
 {
-    obj_bubble.active = true;
-    obj_bubble.x = obj_closest.x;
-    obj_bubble.y = obj_closest.y - 20;
-}
-else
-{
-    obj_bubble.active = false;
+    if(dist_interact &lt; 50)
+    {
+        obj_bubble.active = true;
+        obj_bubble.x = obj_closest.x;
+        obj_bubble.y = obj_closest.y - 20;
+    }
+    else
+    {
+        obj_bubble.active = false;
+    }
 }
 </string>
           </argument>
@@ -331,7 +344,9 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (attack_type == 4)
+            <string>///Switch Attack Type
+
+if (attack_type == 4)
 {
     attack_type = 1;
 }
@@ -361,7 +376,9 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>dir = point_direction(phy_position_x, phy_position_y, mouse_x, mouse_y);
+            <string>///Magic
+
+dir = point_direction(phy_position_x, phy_position_y, mouse_x, mouse_y);
 spawn_x = lengthdir_x(25, dir);
 spawn_y = lengthdir_y(25, dir);
 
@@ -441,7 +458,8 @@ if(global.character_race == "unicorn")
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_text(150, 10, "attack_type: " + string(attack_type));
+            <string>//Interface
+draw_text(150, 10, "attack_type: " + string(attack_type));
 draw_text(150, 50, "Health: " + string(hp) + "/" + string(max_hp));
 draw_text(150, 50, "#Stamina: " + string(stamina) + "/" + string(max_stamina));
 
