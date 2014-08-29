@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>///Input Logic + Pos
 
-if(room == rm_test)
+/*if(room == rm_test)
 {
     x = view_xview[0]+610
     y = view_yview[0]+30
@@ -50,38 +50,44 @@ if(room == rm_forest)
     x = view_xview[0]+610
     y = view_yview[0]+30
 }
+*/
+
+if(room != rm_manemenu)
+{
+    instance_destroy();
+}
+
 
 if(position_meeting(mouse_x,mouse_y,self))
 {
-    image_blend = c_gray
+    image_blend = c_gray;
 }
 else
 {
-    image_blend = c_white
+    image_blend = c_white;
 }
-
 
 if(mouse_check_button_released(mb_left) &amp;&amp; sprite_index == spr_button_quit_pressed)
 {
     //Action
-    game_end()
+    game_end();
 }
 
 
 if(mouse_check_button(mb_left) &amp;&amp; image_blend == c_gray)
 {
-    sprite_index = spr_button_quit_pressed
+    sprite_index = spr_button_quit_pressed;
 }
 else
 {
-    sprite_index = spr_button_quit
+    sprite_index = spr_button_quit;
 }
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="0">
+    <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
         <id>603</id>

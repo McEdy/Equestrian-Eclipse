@@ -458,15 +458,28 @@ if(global.character_race == "unicorn")
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Interface
-draw_text(150, 10, "attack_type: " + string(attack_type));
-draw_text(150, 50, "Health: " + string(hp) + "/" + string(max_hp));
-draw_text(150, 50, "#Stamina: " + string(stamina) + "/" + string(max_stamina));
+            <string>///Interface
+
+//Health bar
+draw_healthbar(20, 20, 200, 30, hp/max_hp *100, c_black, c_red, c_red, 0, true, true);
+
+//Stamina bar
+draw_healthbar(20, 40, 200, 50, stamina/max_stamina *100, c_black, c_blue, c_blue, 0, true, true);
+//draw_text(150, 50, "#Stamina: " + string(stamina) + "/" + string(max_stamina));
 
 if(global.character_race == "unicorn")
 {
-    draw_text(150, 50, "##Magic: " + string(magic) + "/" + string(max_magic));
+    draw_healthbar(20, 60, 200, 70, magic/max_magic *100, c_black, c_purple, c_purple, 0, true, true);
+    //draw_text(150, 50, "##Magic: " + string(magic) + "/" + string(max_magic));
 }
+
+//Health bar text
+draw_set_halign(fa_center);
+draw_text((200-20)/2 +20, 20, string(hp) + "/" + string(max_hp));
+
+//Attack type (Debug)
+draw_set_halign(0);
+draw_text(20, 80, "attack_type: " + string(attack_type));
 </string>
           </argument>
         </arguments>
@@ -489,7 +502,7 @@ if(global.character_race == "unicorn")
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Physics Debug
+            <string>///Physics + Health
 
 physics_draw_debug()
 draw_self()
