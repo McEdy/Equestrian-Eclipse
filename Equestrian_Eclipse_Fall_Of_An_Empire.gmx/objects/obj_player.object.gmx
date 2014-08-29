@@ -502,7 +502,7 @@ draw_text(20, 80, "attack_type: " + string(attack_type));
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Physics + Health
+            <string>///Physics
 
 physics_draw_debug()
 draw_self()
