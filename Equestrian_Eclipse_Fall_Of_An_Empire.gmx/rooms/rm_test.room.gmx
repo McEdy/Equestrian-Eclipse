@@ -109,7 +109,7 @@
     <instance objName="obj_hero_reposition" x="16" y="16" name="inst_9BDF399C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_base_warp" x="1184" y="448" name="inst_4BC32361" locked="0" code="event_inherited();&#xA;dest_room = rm_everfree_lv1_1;&#xA;dest_x = 48;&#xA;dest_y = 208;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_NPC_derpy" x="240" y="176" name="inst_5449BAF4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_base_warp" x="224" y="0" name="inst_44FCF524" locked="0" code="event_inherited();&#xA;dest_room = rm_everfree_lv1_1;&#xA;dest_x = 48;&#xA;dest_y = 208;&#xA;" scaleX="3" scaleY="0.5" colour="4294967295" rotation="0"/>
+    <instance objName="obj_base_warp" x="224" y="0" name="inst_44FCF524" locked="0" code="event_inherited();&#xA;dest_room = rm_everfree_lv1_1;&#xA;dest_x =352;&#xA;dest_y = 96;&#xA;" scaleX="3" scaleY="0.5" colour="4294967295" rotation="0"/>
     <instance objName="obj_house" x="843" y="389" name="inst_EA014766" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_house" x="971" y="390" name="inst_4DDBFAF6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bush_red" x="352" y="192" name="inst_19F71CEE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
