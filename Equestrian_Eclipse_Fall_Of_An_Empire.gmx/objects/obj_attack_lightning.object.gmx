@@ -72,18 +72,19 @@ force = 40;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hit_angle = point_direction(x, y, other.phy_position_x, other.phy_position_y);
+            <string>hit_angle = point_direction(origin_x, origin_y, other.phy_position_x, other.phy_position_y);
 hit_dx = lengthdir_x(80, hit_angle);
 hit_dy= -lengthdir_y(80, hit_angle);
 
 damage = 2; //+irandom(1);
 
-with(other){
-
-    hp -= other.damage
+with(other)
+{
+    hp -= other.damage;
     physics_apply_impulse(x, y, other.hit_dx, other.hit_dy);
 
-    if(hp &lt;= 0){
+    if(hp &lt;= 0)
+    {
         instance_destroy();
     }
 }

@@ -72,7 +72,7 @@ force = 30;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hit_angle = point_direction(x, y, other.phy_position_x, other.phy_position_y);
+            <string>hit_angle = point_direction(origin_x, origin_y, other.phy_position_x, other.phy_position_y);
 hit_dx = lengthdir_x(10, hit_angle);
 hit_dy= -lengthdir_y(10, hit_angle);
 

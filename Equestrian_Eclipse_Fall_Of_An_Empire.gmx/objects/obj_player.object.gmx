@@ -391,6 +391,11 @@ switch(attack_type)
     {
         attack = instance_create(phy_position_x + spawn_x, phy_position_y + spawn_y, obj_attack_magic);
         magic -= 5;
+        with(attack)
+        {
+            origin_x = phy_position_x;
+            origin_y = phy_position_y;
+        }
         break;
     }
 
@@ -399,6 +404,11 @@ switch(attack_type)
     {
         attack = instance_create(phy_position_x + spawn_x, phy_position_y + spawn_y, obj_attack_fire);
         magic -= 5;
+        with(attack)
+        {
+            origin_x = phy_position_x;
+            origin_y = phy_position_y;
+        }
         break;
     }
     
@@ -407,6 +417,11 @@ switch(attack_type)
     {
         attack = instance_create(phy_position_x + spawn_x, phy_position_y + spawn_y, obj_attack_ice);
         magic -= 5;
+        with(attack)
+        {
+            origin_x = phy_position_x;
+            origin_y = phy_position_y;
+        }
         break;
     }
     
@@ -415,27 +430,23 @@ switch(attack_type)
     {
         attack = instance_create(phy_position_x + spawn_x, phy_position_y + spawn_y, obj_attack_lightning);
         magic -= 5;
+        with(attack)
+        {
+            origin_x = phy_position_x;
+            origin_y = phy_position_y;
+        }
         break;
     }
-    /*
-    case 5:
-    if(magic &gt;= 3 &amp;&amp; global.character_race == "unicorn")
-    {
-        attack = instance_create(phy_position_x + spawn_x, phy_position_y + spawn_y, obj_attack_[something]);
-        magic -= 5;
-        break;
-    }
-    */
 }
 
 if(global.character_race == "unicorn")
 {
-    with(attack){
-
+    with(attack)
+    {
     force_x = lengthdir_x(force, other.dir);
     force_y = lengthdir_y(force, other.dir);
-
-    phy_rotation = -other.dir
+    
+    phy_rotation = -other.dir;
     physics_apply_impulse(x, y, force_x, force_y);
     }
 }
