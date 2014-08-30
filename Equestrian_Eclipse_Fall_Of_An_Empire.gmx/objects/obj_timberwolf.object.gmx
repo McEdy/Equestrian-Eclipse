@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
+            <string>///Variables
+
+event_inherited();
 
 player_dist = 0;
 vision_r = 64 + random(32);
@@ -59,17 +61,21 @@ dy = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>player_dir = point_direction(x,y, obj_player.phy_position_x, obj_player.phy_position_y);
+            <string>///Attack
 
+//Direction of attack
+player_dir = point_direction(x,y, obj_player.phy_position_x, obj_player.phy_position_y);
 spawn_x = lengthdir_x(25, player_dir);
 spawn_y = lengthdir_y(25, player_dir);
+
+//Spawn attack
 attack = instance_create(phy_position_x + spawn_x, phy_position_y + spawn_y, obj_attack_energy);
 
 with(attack)
 {
     force_x = lengthdir_x(force, other.dir);
     force_y = lengthdir_y(force, other.dir);
-
+    
     phy_rotation = -other.player_dir;
     
     physics_apply_impulse(x, y, force_x, force_y);
@@ -96,21 +102,26 @@ with(attack)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(player_dist &lt; vision_r)
+            <string>///Movement + Interaction
+
+if(player_dist &lt; vision_r)
 {
-    dir = point_direction(x,y, obj_player.phy_position_x, obj_player.phy_position_y);
+    //Setup attack and movement towards player
+    dir = point_direction(x, y, obj_player.phy_position_x, obj_player.phy_position_y);
     alarm[1] = attack_speed;
 }
 else
 {   
+    //Move randomly
     dir = random(360);
 }
 
+//Movement
 dx = lengthdir_x(20, dir);
 dy = lengthdir_y(20, dir);
 physics_apply_impulse(x, y, dx, dy);
 
-alarm[0] = random(100);
+alarm[0] = 20+ random(80);
 </string>
           </argument>
         </arguments>
@@ -133,43 +144,20 @@ alarm[0] = random(100);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>player_dist = point_distance(phy_position_x, phy_position_y, obj_player.phy_position_x, obj_player.phy_position_y)
+            <string>///Faster When Player Nearby
 
-if(player_dist &lt; vision_r){
-    alarm[0] = random(10)
-}else{
+player_dist = point_distance(phy_position_x, phy_position_y, obj_player.phy_position_x, obj_player.phy_position_y);
 
-    alarm[0] = random(200)
+if(player_dist &lt; vision_r)
+{
+    //Fast action frequency
+    alarm[0] = random(10);
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>draw_self();
-
-/*if(player_dist &lt; 128){
-draw_circle_colour(x, y, 64, c_red, c_red, 1);
-}else{
-draw_circle_colour(x, y, 64, c_green, c_green, 1);
-}/*
+else
+{
+    //Slow action frequency
+    alarm[0] = random(200);
+}
 </string>
           </argument>
         </arguments>

@@ -235,8 +235,10 @@ if(hp &lt; 0)
 
 //Deactivation of objects outside of the view
 //instance_deactivate_region(view_xview[0], view_yview[0], view_wview[0], view_hview[0], false, true);
+
 instance_deactivate_region(0, 0, room_width, room_height, false, true);
-instance_activate_region(view_xview[0], view_yview[0], view_wview[0], view_hview[0], true);
+//instance_activate_region(view_xview[1], view_yview[1], view_wview[1], view_hview[1], true);
+instance_activate_region(view_xview[0] -150, view_yview[0] -150, view_wview[0] +150, view_hview[0] +150, true);
 </string>
           </argument>
         </arguments>
@@ -382,47 +384,48 @@ dir = point_direction(phy_position_x, phy_position_y, mouse_x, mouse_y);
 spawn_x = lengthdir_x(25, dir);
 spawn_y = lengthdir_y(25, dir);
 
-switch(attack_type){
-
-case 1:
-if(magic &gt;= 5 &amp;&amp; global.character_race == "unicorn")
+switch(attack_type)
 {
-    attack = instance_create(phy_position_x + spawn_x, phy_position_y + spawn_y, obj_attack_magic);
-    magic -= 5;
-    break;
-}
-else
-{}
+    case 1:
+    if(magic &gt;= 5 &amp;&amp; global.character_race == "unicorn")
+    {
+        attack = instance_create(phy_position_x + spawn_x, phy_position_y + spawn_y, obj_attack_magic);
+        magic -= 5;
+        break;
+    }
 
-case 2:
-if(magic &gt;= 5 &amp;&amp; global.character_race == "unicorn")
-{
-    attack = instance_create(phy_position_x + spawn_x, phy_position_y + spawn_y, obj_attack_fire);
-    magic -= 5;
-    break;
-}
-else
-{}
-
-case 3:
-if(magic &gt;= 5 &amp;&amp; global.character_race == "unicorn")
-{
-    attack = instance_create(phy_position_x + spawn_x, phy_position_y + spawn_y, obj_attack_ice);
-    magic -= 5;
-    break;
-}
-else
-{}
-
-case 4:
-if(magic &gt;= 5 &amp;&amp; global.character_race == "unicorn")
-{
-    attack = instance_create(phy_position_x + spawn_x, phy_position_y + spawn_y, obj_attack_lightning);
-    magic -= 5;
-    break;
-}
-else{}
-
+    case 2:
+    if(magic &gt;= 5 &amp;&amp; global.character_race == "unicorn")
+    {
+        attack = instance_create(phy_position_x + spawn_x, phy_position_y + spawn_y, obj_attack_fire);
+        magic -= 5;
+        break;
+    }
+    
+    case 3:
+    if(magic &gt;= 5 &amp;&amp; global.character_race == "unicorn")
+    {
+        attack = instance_create(phy_position_x + spawn_x, phy_position_y + spawn_y, obj_attack_ice);
+        magic -= 5;
+        break;
+    }
+    
+    case 4:
+    if(magic &gt;= 5 &amp;&amp; global.character_race == "unicorn")
+    {
+        attack = instance_create(phy_position_x + spawn_x, phy_position_y + spawn_y, obj_attack_lightning);
+        magic -= 5;
+        break;
+    }
+    /*
+    case 5:
+    if(magic &gt;= 3 &amp;&amp; global.character_race == "unicorn")
+    {
+        attack = instance_create(phy_position_x + spawn_x, phy_position_y + spawn_y, obj_attack_[something]);
+        magic -= 5;
+        break;
+    }
+    */
 }
 
 if(global.character_race == "unicorn")
@@ -478,6 +481,7 @@ draw_set_halign(fa_center);
 draw_text((200-20)/2 +20, 20, string(hp) + "/" + string(max_hp));
 
 //Attack type (Debug)
+
 draw_set_halign(0);
 draw_text(20, 80, "attack_type: " + string(attack_type));
 </string>

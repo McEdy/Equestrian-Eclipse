@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>alarm[0] = 30;
-force = 20;
+force = 30;
 </string>
           </argument>
         </arguments>

@@ -112,7 +112,7 @@
       <sprite>sprites\spr_bubble</sprite>
     </sprites>
     <sprites name="Attacks">
-      <sprites name="Player atatcks">
+      <sprites name="Player attacks">
         <sprite>sprites\spr_attack_lightning</sprite>
         <sprite>sprites\spr_attack_ice</sprite>
         <sprite>sprites\spr_attack_fire</sprite>
@@ -197,8 +197,8 @@
     </objects>
     <objects name="Attacks">
       <object>objects\obj_attack_fire</object>
-      <object>objects\obj_attack_lightning</object>
       <object>objects\obj_attack_ice</object>
+      <object>objects\obj_attack_lightning</object>
       <object>objects\obj_attack_energy</object>
       <object>objects\obj_attack_magic</object>
     </objects>
@@ -211,7 +211,7 @@
     <room>rooms\rm_cave_boss</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41881.5511580324</constant>
+    <constant name="GM_build_date">41881,7776157986</constant>
     <constant name="GM_version">'0.0.0.1'</constant>
   </constants>
   <help>
