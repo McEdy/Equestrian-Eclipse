@@ -65,15 +65,14 @@ spawn_x = lengthdir_x(25, player_dir);
 spawn_y = lengthdir_y(25, player_dir);
 attack = instance_create(phy_position_x + spawn_x, phy_position_y + spawn_y, obj_attack_energy);
 
-with(attack){
-
+with(attack)
+{
     force_x = lengthdir_x(force, other.dir);
     force_y = lengthdir_y(force, other.dir);
 
-    phy_rotation = -other.player_dir
+    phy_rotation = -other.player_dir;
     
     physics_apply_impulse(x, y, force_x, force_y);
-
 }
 </string>
           </argument>
@@ -97,14 +96,14 @@ with(attack){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(player_dist &lt; vision_r){
-
+            <string>if(player_dist &lt; vision_r)
+{
     dir = point_direction(x,y, obj_player.phy_position_x, obj_player.phy_position_y);
-    alarm[1] = attack_speed
-}else{
-   
+    alarm[1] = attack_speed;
+}
+else
+{   
     dir = random(360);
-
 }
 
 dx = lengthdir_x(20, dir);
