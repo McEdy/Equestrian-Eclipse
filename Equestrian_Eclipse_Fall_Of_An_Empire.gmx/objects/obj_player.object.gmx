@@ -550,7 +550,14 @@ if(global.character_race == "unicorn")
 else
 {
     draw_set_valign(fa_top);
-    draw_text_ext(20, 100, "You are a(n) " + string(global.character_race) + ".#You cannot use spells!", 20, -1);
+    if(global.character_race == "earthpony")
+    {
+        draw_text_ext(20, 100, "You are an " + string(global.character_race) + ".#You cannot use spells!", 20, -1);
+    }
+    else
+    {
+        draw_text_ext(20, 100, "You are a " + string(global.character_race) + ".#You cannot use spells!", 20, -1);
+    }
 }
 
 //Health bar text
