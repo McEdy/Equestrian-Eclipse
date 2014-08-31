@@ -92,7 +92,9 @@ if(dist &lt; 50)
             {
                 if(obj_gamestate.switches[? quest_condition1]) = true
                 {
-                    show_message(quest_success) 
+                    show_message(quest_success)
+                    global.message1 = "Quest completed: " + quest_name + ".";
+                    global.message2 = true;
                     show_debug_message("Quest completed: " + quest_name + ".")
                     hasquest = false;
                     obj_gamestate.switches[? quest_active] = false;
@@ -105,6 +107,8 @@ if(dist &lt; 50)
             else
             {
                 show_message(quest_start)
+                global.message1 = "Quest started: " + quest_name + ".";
+                global.message2 = true;
                 show_debug_message("Quest activated: " + quest_name + ".")
                 obj_gamestate.switches[? quest_active] = true
                 quest_object1.active = true

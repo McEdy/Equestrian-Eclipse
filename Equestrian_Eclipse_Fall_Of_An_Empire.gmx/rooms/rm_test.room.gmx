@@ -118,6 +118,9 @@
     <instance objName="obj_bush_red" x="776" y="173" name="inst_6B6468DA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bush_red" x="345" y="459" name="inst_BEFECB28" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bush_red" x="1056" y="432" name="inst_68102100" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_shades" x="496" y="144" name="inst_C25FF964" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_shades" x="544" y="80" name="inst_D4DE5122" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_flower_quest" x="544" y="144" name="inst_7CAF6CBC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tiles_1" x="224" y="240" w="32" h="32" xo="80" yo="16" id="10001332" name="inst_BEC45BE2" depth="1000001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
