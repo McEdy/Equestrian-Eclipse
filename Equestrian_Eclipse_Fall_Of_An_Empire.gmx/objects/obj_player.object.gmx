@@ -403,7 +403,7 @@ if(global.message2 == true)
     }
 }
 
-//Timer for pickup message
+//Timer for message
 if(message_1a != "" &amp;&amp; message_1b == true)
 {
     show_debug_message("Message: " + message_1a);
@@ -426,6 +426,22 @@ if(message_3a != "" &amp;&amp; message_3b == true)
     alarm[2] = 120;
     message_3b = false;
     global.message2 = false;
+}
+
+//Fade out
+if(alpha1 &lt; 1 &amp;&amp; alpha1 &gt; 0)
+{
+    alpha1 -= 0.05;
+}
+
+if(alpha2 &lt; 1 &amp;&amp; alpha2 &gt; 0)
+{
+    alpha2 -= 0.05;
+}
+
+if(alpha3 &lt; 1 &amp;&amp; alpha3 &gt; 0)
+{
+    alpha3 -= 0.05;
 }
 
 //Stop message
@@ -451,22 +467,6 @@ if(alpha3 == 0 &amp;&amp; message_3a != "" &amp;&amp; message_3c == true)
     message_3c = false;
     alpha3 = 1;
     show_debug_message("Finished message loop 3.");
-}
-
-//Fade out
-if(alpha1 &lt; 1 &amp;&amp; alpha1 &gt;= 0)
-{
-    alpha1 -= 0.05;
-}
-
-if(alpha2 &lt; 1 &amp;&amp; alpha2 &gt;= 0)
-{
-    alpha2 -= 0.05;
-}
-
-if(alpha3 &lt; 1 &amp;&amp; alpha3 &gt;= 0)
-{
-    alpha3 -= 0.05;
 }
 </string>
           </argument>
