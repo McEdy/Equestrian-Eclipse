@@ -86,7 +86,8 @@ if(obj_gamestate.switches[? "quest_cobaltshades_on"] == true)
         if(keyboard_check(ord("E")))
         {
             obj_gamestate.switches[? "quest_cobaltshades_get"] = true;
-            show_message("Shades picked up.");
+            global.pickup = "Shades";
+            global.picked_up = true;
             instance_destroy();
         }
     }

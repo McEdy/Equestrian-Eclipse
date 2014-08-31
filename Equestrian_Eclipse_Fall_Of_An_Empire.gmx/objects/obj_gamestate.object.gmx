@@ -31,6 +31,10 @@ global.gamespeed = 1.0;
 global.dest_x = 256;
 global.dest_y = 96;
 switches = ds_map_create();
+obj_button.colour = c_white;
+
+global.pickup = "";
+global.picked_up = false;
 
 //Switches game start
 obj_gamestate.switches[? "quest_cobaltshades_get"] = false;

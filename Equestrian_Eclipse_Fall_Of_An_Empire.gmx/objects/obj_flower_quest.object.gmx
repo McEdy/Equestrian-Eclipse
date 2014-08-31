@@ -87,7 +87,8 @@ if(obj_gamestate.switches[? "quest_flower_on"] == true)
         if(keyboard_check(ord("E")))
         {
             obj_gamestate.switches[? "quest_flower_get"] = true;
-            show_message("Flower picked up.");
+            global.pickup = "Flower";
+            global.picked_up = true;
             instance_destroy();
         }
     }
