@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>obj_NPC_base</parentName>
+  <parentName>obj_NPC_base1</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -29,9 +29,10 @@
 
 event_inherited();
 
+active   = true;
 hasquest = false;
 
-quest_none = "I like muffins!"
+quest_none = "I like muffins...and the delicious taste of spicy horse semen!";
 
 my_path = path_test;
 

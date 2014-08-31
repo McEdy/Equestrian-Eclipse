@@ -2,7 +2,7 @@
 <object>
   <spriteName>spr_collision</spriteName>
   <solid>0</solid>
-  <visible>-1</visible>
+  <visible>0</visible>
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>obj_obstacles</parentName>
@@ -15,7 +15,7 @@
   <PhysicsObjectRestitution>0.100000001490116</PhysicsObjectRestitution>
   <PhysicsObjectGroup>0</PhysicsObjectGroup>
   <PhysicsObjectLinearDamping>0.100000001490116</PhysicsObjectLinearDamping>
-  <PhysicsObjectAngularDamping>0.100000001490116</PhysicsObjectAngularDamping>
+  <PhysicsObjectAngularDamping>9001</PhysicsObjectAngularDamping>
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>

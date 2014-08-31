@@ -50,7 +50,7 @@ var dest_y = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///deal with player collission
+            <string>///Deal with Player Collission
 
 global.dest_x = dest_x;
 global.dest_y = dest_y;

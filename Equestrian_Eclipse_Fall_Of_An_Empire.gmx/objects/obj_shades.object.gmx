@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_interactable</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -34,6 +34,29 @@ active = false;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Variables
+
+active = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="3" enumb="0">
       <action>
@@ -52,39 +75,22 @@ active = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(obj_gamestate.switches[? "quest_cobaltshades_on"]) == true{
+            <string>///Interaction
 
-    active = true;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_player">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Collide With
+dist_interact = point_distance(phy_position_x, phy_position_y, obj_player.phy_position_x, obj_player.phy_position_y);
 
 if(obj_gamestate.switches[? "quest_cobaltshades_on"] == true)
 {
-    obj_gamestate.switches[? "quest_cobaltshades_get"] = true;
-    show_message("Shades picked up.")
-    instance_destroy();
+    if(dist_interact &lt; 50)
+    {
+        if(keyboard_check(ord("E")))
+        {
+            obj_gamestate.switches[? "quest_cobaltshades_get"] = true;
+            global.message1 = "Item picked up: Shades.";
+            global.message2 = true;
+            instance_destroy();
+        }
+    }
 }
 </string>
           </argument>
@@ -108,7 +114,8 @@ if(obj_gamestate.switches[? "quest_cobaltshades_on"] == true)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(active == true){
+            <string>if(active == true)
+{
     draw_self();
 }
 </string>

@@ -25,8 +25,143 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>sprite_index = global.character_right
-action = false
+            <string>///Setup
+
+phy_fixed_rotation = true;
+sprite_index = global.character_right;
+
+//Variables
+action = false;
+attack_type = 1;
+notme = true;
+
+message_1a = "";    //Message 1 content
+message_1b = false; //Message 1 start timer
+message_1c = false; //Message 1 to be stopped
+message_2a = "";
+message_2b = false;
+message_2c = false;
+message_3a = "";
+message_3b = false;
+message_3c = false;
+
+alpha1 = 1;
+alpha2 = 1;
+alpha3 = 1;
+
+//Status
+max_hp = 10;
+hp = max_hp;
+
+max_stamina = 30;
+stamina = max_stamina;
+
+max_magic = 30;
+magic = max_magic;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Respawn
+
+/*dest_x = 272;
+dest_y = 112;
+
+respawn_room = rm_test;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Message 3
+
+alpha3 = 0.95;
+message_3c = true;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Message 2
+
+alpha2 = 0.95;
+message_2c = true;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Message 1
+
+alpha1 = 0.95;
+message_1c = true;
 </string>
           </argument>
         </arguments>
@@ -52,6 +187,8 @@ action = false
             <string>///Depth
 
 depth = (phy_position_y - 15) * -1
+
+phy_fixed_rotation = true;
 </string>
           </argument>
         </arguments>
@@ -75,11 +212,14 @@ depth = (phy_position_y - 15) * -1
             <string>///Handle Input
 
 if(keyboard_check(ord("A"))){
-sprite_index = global.character_left;
+    sprite_index = global.character_left;
 
-    if(keyboard_check(vk_shift)){
+    if(keyboard_check(vk_shift) &amp;&amp; stamina &gt; 0){
         phy_position_x -=3;
-    }else
+        stamina -= 2/60;
+        status_running = true;
+    }
+    else
     {
         phy_position_x -=1.5;
     }
@@ -87,11 +227,14 @@ sprite_index = global.character_left;
 
 
 if(keyboard_check(ord("D"))){
-sprite_index = global.character_right;
+    sprite_index = global.character_right;
 
-    if(keyboard_check(vk_shift)){
+    if(keyboard_check(vk_shift) &amp;&amp; stamina &gt; 0){
         phy_position_x +=3;
-    }else
+        stamina -= 2/60;
+        status_running = true;
+    }
+    else
     {
         phy_position_x +=1.5;
     }
@@ -99,23 +242,31 @@ sprite_index = global.character_right;
 
 
 if(keyboard_check(ord("W"))){
-sprite_index = global.character_up;
+    sprite_index = global.character_up;
 
-    if(keyboard_check(vk_shift)){
+    if(keyboard_check(vk_shift) &amp;&amp; stamina &gt; 0){
         phy_position_y -=3;
-    }else
+        stamina -= 2/60;
+        status_running = true;
+    }
+    else
     {
         phy_position_y -=1.5;
     }
 }
 
+status_running = false;
 
-if(keyboard_check(ord("S"))){
-sprite_index = global.character_down;
+if(keyboard_check(ord("S")))
+{
+    sprite_index = global.character_down;
 
-    if(keyboard_check(vk_shift)){
+    if(keyboard_check(vk_shift) &amp;&amp; stamina &gt; 0){
         phy_position_y +=3;
-    }else
+        stamina -= 2/60;
+        status_running = true;
+    }
+    else
     {
         phy_position_y +=1.5;
     }
@@ -123,18 +274,206 @@ sprite_index = global.character_down;
 
 
 //Interaction
-if(keyboard_check(ord("E"))){
-action = true;
-}else
+if(keyboard_check(ord("E")))
 {
-action = false;
+    action = true;
+}
+else
+{
+    action = false;
+}
+
+//Stamina regeneration
+if(status_running == false &amp;&amp; stamina &lt; max_stamina)
+{
+    stamina += 1/60;
+}
+
+//Magic regeneration
+if(magic &lt; max_magic)
+{
+    magic += 1/60;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Miscellaneous
+
+/*
+if(hp &lt; 0)
+    global.dest_x = dest_x;
+    global.dest_y = dest_y;
+
+    room_goto(respawn_room);
+*/
+
+//instance_deactivate_region(view_xview[0], view_yview[0], view_wview[0], view_hview[0], false, true);
+instance_deactivate_region(0, 0, room_width, room_height, false, true);
+//instance_activate_region(view_xview[1], view_yview[1], view_wview[1], view_hview[1], true);
+instance_activate_region(view_xview[0] -150, view_yview[0] -150, view_wview[0] +150, view_hview[0] +150, true);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Display
+//Display interactables
+
+obj_closest = instance_nearest(x,y,obj_interactable);
+dist_interact = point_distance(phy_position_x, phy_position_y, obj_closest.x, obj_closest.y);
+
+if(obj_closest.active == true)
+{
+    if(dist_interact &lt; 50)
+    {
+        obj_bubble.active = true;
+        obj_bubble.x = obj_closest.x;
+        obj_bubble.y = obj_closest.y - 20;
+    }
+    else
+    {
+        obj_bubble.active = false;
+    }
+}
+
+//Message assignment
+if(global.message2 == true)
+{
+    if(message_1a == "")
+    {
+        message_1a = global.message1;
+        message_1b = true;
+        show_debug_message("Message assignment 1.");
+    }
+    else
+    {
+        if(message_2a == "")
+        {
+            message_2a = global.message1;
+            message_2b = true;
+            show_debug_message("Message assignment 2.");
+        }
+        else
+        {
+            if(message_3a == "")
+            {
+                message_3a = global.message1;
+                message_3b = true;
+                show_debug_message("Message assignment 3.");
+            }
+            else
+            {
+                message_1a = global.message1;
+                message_1b = true;
+                show_debug_message("Message assignment O.");
+            }
+        }
+    }
+}
+
+//Timer for message
+if(message_1a != "" &amp;&amp; message_1b == true)
+{
+    show_debug_message("Message: " + message_1a);
+    alarm[0] = 120;
+    message_1b = false;
+    global.message2 = false;
+}
+
+if(message_2a != "" &amp;&amp; message_2b == true)
+{
+    show_debug_message("Message: " + message_2a);
+    alarm[1] = 120;
+    message_2b = false;
+    global.message2 = false;
+}
+
+if(message_3a != "" &amp;&amp; message_3b == true)
+{
+    show_debug_message("Message: " + message_3a);
+    alarm[2] = 120;
+    message_3b = false;
+    global.message2 = false;
+}
+
+//Fade out
+if(alpha1 &lt; 1 &amp;&amp; alpha1 &gt; 0)
+{
+    alpha1 -= 0.05;
+}
+
+if(alpha2 &lt; 1 &amp;&amp; alpha2 &gt; 0)
+{
+    alpha2 -= 0.05;
+}
+
+if(alpha3 &lt; 1 &amp;&amp; alpha3 &gt; 0)
+{
+    alpha3 -= 0.05;
+}
+
+//Stop message
+if(alpha1 == 0 &amp;&amp; message_1a != "" &amp;&amp; message_1c == true)
+{
+    message_1a = "";
+    message_1c = false;
+    alpha1 = 1;
+    show_debug_message("Finished message loop 1.");
+}
+
+if(alpha2 == 0 &amp;&amp; message_2a != "" &amp;&amp; message_2c == true)
+{
+    message_2a = "";
+    message_2c = false;
+    alpha2 = 1;
+    show_debug_message("Finished message loop 2.");
+}
+
+if(alpha3 == 0 &amp;&amp; message_3a != "" &amp;&amp; message_3c == true)
+{
+    message_3a = "";
+    message_3c = false;
+    alpha3 = 1;
+    show_debug_message("Finished message loop 3.");
 }
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_NPC_base">
+    <event eventtype="4" ename="obj_NPC_base1">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -180,6 +519,209 @@ action = false;
         </arguments>
       </action>
     </event>
+    <event eventtype="6" enumb="54">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Switch Attack Type
+
+if (attack_type == 4)
+{
+    attack_type = 1;
+}
+else
+{
+    attack_type +=1;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="53">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Magic
+
+dir = point_direction(phy_position_x, phy_position_y, mouse_x, mouse_y);
+spawn_x = lengthdir_x(25, dir);
+spawn_y = lengthdir_y(25, dir);
+
+switch(attack_type)
+{
+    case 1:
+    if(magic &gt;= 5 &amp;&amp; global.character_race == "unicorn")
+    {
+        attack = instance_create(phy_position_x + spawn_x, phy_position_y + spawn_y, obj_attack_magic);
+        magic -= 5;
+        with(attack)
+        {
+            origin_x = phy_position_x;
+            origin_y = phy_position_y;
+        }
+        break;
+    }
+
+    case 2:
+    if(magic &gt;= 5 &amp;&amp; global.character_race == "unicorn")
+    {
+        attack = instance_create(phy_position_x + spawn_x, phy_position_y + spawn_y, obj_attack_fire);
+        magic -= 5;
+        with(attack)
+        {
+            origin_x = phy_position_x;
+            origin_y = phy_position_y;
+        }
+        break;
+    }
+    
+    case 3:
+    if(magic &gt;= 5 &amp;&amp; global.character_race == "unicorn")
+    {
+        attack = instance_create(phy_position_x + spawn_x, phy_position_y + spawn_y, obj_attack_ice);
+        magic -= 5;
+        with(attack)
+        {
+            origin_x = phy_position_x;
+            origin_y = phy_position_y;
+        }
+        break;
+    }
+    
+    case 4:
+    if(magic &gt;= 5 &amp;&amp; global.character_race == "unicorn")
+    {
+        attack = instance_create(phy_position_x + spawn_x, phy_position_y + spawn_y, obj_attack_lightning);
+        magic -= 5;
+        with(attack)
+        {
+            origin_x = phy_position_x;
+            origin_y = phy_position_y;
+        }
+        break;
+    }
+}
+
+if(global.character_race == "unicorn")
+{
+    with(attack)
+    {
+    force_x = lengthdir_x(force, other.dir);
+    force_y = lengthdir_y(force, other.dir);
+    
+    phy_rotation = -other.dir;
+    physics_apply_impulse(x, y, force_x, force_y);
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Interface
+
+//Health + Stamina bar
+draw_healthbar(20, 20, 200, 30, hp/max_hp *100, c_black, c_red, c_red, 0, true, true);
+draw_healthbar(20, 40, 200, 50, stamina/max_stamina *100, c_black, c_blue, c_blue, 0, true, true);
+
+
+//Attack type (Debug)
+draw_set_halign(0);
+draw_text(20, 80, "attack_type: " + string(attack_type));
+
+//Item pickup
+draw_set_alpha(alpha1);
+if(message_1a != "")
+{
+    draw_text(20, 500, message_1a);
+}
+
+draw_set_alpha(alpha2);
+if(message_2a != "")
+{
+    draw_text(20, 520, message_2a);
+}
+
+draw_set_alpha(alpha3);
+if(message_3a != "")
+{
+    draw_text(20, 540, message_3a);
+}
+
+draw_set_alpha(1);
+
+
+//Magic bar
+if(global.character_race == "unicorn")
+{
+    draw_healthbar(20, 60, 200, 70, magic/max_magic *100, c_black, c_purple, c_purple, 0, true, true);
+}
+else
+{
+    draw_set_valign(fa_top);
+    if(global.character_race == "earthpony")
+    {
+        draw_text_ext(20, 100, "You are an " + string(global.character_race) + ".#You cannot use spells!", 20, -1);
+    }
+    else
+    {
+        draw_text_ext(20, 100, "You are a " + string(global.character_race) + ".#You cannot use spells!", 20, -1);
+    }
+}
+
+//Health bar text
+draw_set_valign(fa_middle);
+draw_set_halign(fa_center);
+draw_text((200-20)/2 +20, 20, string(hp) + "/" + string(max_hp));
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -197,7 +739,7 @@ action = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Physics Debug
+            <string>///Physics
 
 physics_draw_debug()
 draw_self()
@@ -213,8 +755,8 @@ draw_self()
   <PhysicsObjectDensity>0.100000001490116</PhysicsObjectDensity>
   <PhysicsObjectRestitution>0.100000001490116</PhysicsObjectRestitution>
   <PhysicsObjectGroup>0</PhysicsObjectGroup>
-  <PhysicsObjectLinearDamping>0.100000001490116</PhysicsObjectLinearDamping>
-  <PhysicsObjectAngularDamping>0.100000001490116</PhysicsObjectAngularDamping>
+  <PhysicsObjectLinearDamping>100</PhysicsObjectLinearDamping>
+  <PhysicsObjectAngularDamping>10000</PhysicsObjectAngularDamping>
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>

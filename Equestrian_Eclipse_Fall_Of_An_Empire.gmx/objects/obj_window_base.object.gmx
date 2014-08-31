@@ -106,7 +106,7 @@ start = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///draw window
+            <string>///Draw Window
 
 //Draw Background
 
