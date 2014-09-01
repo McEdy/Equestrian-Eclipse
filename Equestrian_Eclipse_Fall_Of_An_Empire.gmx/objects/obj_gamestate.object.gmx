@@ -44,7 +44,8 @@ global.pickup2 = "";
 global.pickup3 = "";
 global.pickup4 = "";
 
-global.pickup5 = false;         //Object was picked up
+global.pickup_a = false;        //Object was picked up
+global.pickup_b = false;        //Pause for picking up
 global.pickup_success = 0;      //0: Not active; 1: Successful; 2: Unsuccessful
 global.pickup_target = "";      //Name of target object
 

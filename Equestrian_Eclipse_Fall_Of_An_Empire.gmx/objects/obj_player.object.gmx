@@ -545,7 +545,7 @@ if(global.damage_popup2 == true)
             <kind>1</kind>
             <string>///Inventory
 
-if(global.pickup5 == true)
+if(global.pickup_a == true)
 {
     if(global.items[0,0] == "")
     {
@@ -554,7 +554,7 @@ if(global.pickup5 == true)
         global.items[0,2] = global.pickup3; //Type (Weapon, Armour, Status, Misc)
         global.items[0,3] = global.pickup4; //Price
         
-        global.pickup5 = false;
+        global.pickup_a = false;
         global.pickup_target = global.pickup1;
         global.pickup_success = 1;
         inv_slots_used += 1;
@@ -570,7 +570,7 @@ if(global.pickup5 == true)
             global.items[1,2] = global.pickup3;
             global.items[1,3] = global.pickup4;
             
-            global.pickup5 = false;
+            global.pickup_a = false;
             global.pickup_target = global.pickup1;
             global.pickup_success = 1;
             inv_slots_used += 1;
@@ -586,7 +586,7 @@ if(global.pickup5 == true)
                 global.items[2,2] = global.pickup3;
                 global.items[2,3] = global.pickup4;
             
-                global.pickup5 = false;
+                global.pickup_a = false;
                 global.pickup_target = global.pickup1;
                 global.pickup_success = 1;
                 inv_slots_used += 1;
@@ -595,9 +595,9 @@ if(global.pickup5 == true)
             }
             else
             {
+                global.pickup_a = false;
                 global.pickup_target = global.pickup1;
                 global.pickup_success = 2;
-                global.pickup5 = false;
                 
                 show_debug_message("Item pickup assignment no space.");
             }
