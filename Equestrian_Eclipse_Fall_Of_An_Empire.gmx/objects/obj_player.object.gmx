@@ -34,6 +34,7 @@ sprite_index = global.character_right;
 action = false;
 attack_type = 1;
 notme = true;
+interaction_delay = false;
 
 message_1a = "";    //Message 1 content
 message_1b = false; //Message 1 start timer
@@ -49,6 +50,9 @@ alpha1 = 1;
 alpha2 = 1;
 alpha3 = 1;
 
+inv_show = false;
+inv_slots_used = 0;
+
 //Status
 max_hp = 10;
 hp = max_hp;
@@ -58,6 +62,13 @@ stamina = max_stamina;
 
 max_magic = 30;
 magic = max_magic;
+
+//Inventory
+for(i = 0; i &lt;= 25 *4; i += 1)
+{
+    global.items[i,0] = "";
+    show_debug_message("Item " + string(i) + " created with content: " + string(global.items[i,0]) + ".");
+}
 </string>
           </argument>
         </arguments>
@@ -84,6 +95,29 @@ magic = max_magic;
 dest_y = 112;
 
 respawn_room = rm_test;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>timer = true;
 </string>
           </argument>
         </arguments>
@@ -294,6 +328,16 @@ if(magic &lt; max_magic)
 {
     magic += 1/60;
 }
+
+//Inventory
+if(keyboard_check(ord("Q")))
+{
+    inv_show = true;
+}
+else
+{
+    inv_show = false;
+}
 </string>
           </argument>
         </arguments>
@@ -468,6 +512,98 @@ if(alpha3 == 0 &amp;&amp; message_3a != "" &amp;&amp; message_3c == true)
     alpha3 = 1;
     show_debug_message("Finished message loop 3.");
 }
+
+//Damage popup
+if(global.damage_popup2 == true)
+{
+    with(instance_create(x, y, obj_damage_popup))
+    {
+        character = other.id;
+        damage_amount = string(global.damage_popup1);
+        global.damage_popup2 = false;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Inventory
+
+if(global.pickup5 == true)
+{
+    if(global.items[0,0] == "")
+    {
+        global.items[0,0] = global.pickup1; //Name
+        global.items[0,1] = global.pickup2; //Description
+        global.items[0,2] = global.pickup3; //Type (Weapon, Armour, Status, Misc)
+        global.items[0,3] = global.pickup4; //Price
+        
+        global.pickup5 = false;
+        global.pickup_target = global.pickup1;
+        global.pickup_success = 1;
+        inv_slots_used += 1;
+        
+        show_debug_message("Item pickup assignment 1.");
+    }
+    else
+    {
+        if(global.items[1,0] == "")
+        {
+            global.items[1,0] = global.pickup1;
+            global.items[1,1] = global.pickup2;
+            global.items[1,2] = global.pickup3;
+            global.items[1,3] = global.pickup4;
+            
+            global.pickup5 = false;
+            global.pickup_target = global.pickup1;
+            global.pickup_success = 1;
+            inv_slots_used += 1;
+            
+            show_debug_message("Item pickup assignment 2.");
+        }
+        else
+        {
+            if(global.items[2,0] == "")
+            {
+                global.items[2,0] = global.pickup1;
+                global.items[2,1] = global.pickup2;
+                global.items[2,2] = global.pickup3;
+                global.items[2,3] = global.pickup4;
+            
+                global.pickup5 = false;
+                global.pickup_target = global.pickup1;
+                global.pickup_success = 1;
+                inv_slots_used += 1;
+                
+                show_debug_message("Item pickup assignment 3.");
+            }
+            else
+            {
+                global.pickup_target = global.pickup1;
+                global.pickup_success = 2;
+                global.pickup5 = false;
+                
+                show_debug_message("Item pickup assignment no space.");
+            }
+        }
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -538,13 +674,35 @@ if(alpha3 == 0 &amp;&amp; message_3a != "" &amp;&amp; message_3c == true)
             <kind>1</kind>
             <string>///Switch Attack Type
 
-if (attack_type == 4)
+if(attack_type == 1)
 {
-    attack_type = 1;
+    attack_type = 2;
+    global.message1 = "Fire: Range low, Damage high.";
+    global.message2 = true;
 }
 else
 {
-    attack_type +=1;
+    if(attack_type == 2)
+    {
+        attack_type = 3;
+        global.message1 = "Ice: Range medium, Damage medium.";
+        global.message2 = true;
+    }
+    else
+    {
+        if(attack_type == 3)
+        {
+            attack_type = 4;
+            global.message1 = "Lightning: Range very high, Damage low.";
+            global.message2 = true;
+        }
+        else
+        {
+            attack_type = 1;
+            global.message1 = "Energy: Range very low, Damage very high.";
+            global.message2 = true;
+        }
+    }
 }
 </string>
           </argument>
@@ -645,6 +803,37 @@ if(global.character_race == "unicorn")
         </arguments>
       </action>
     </event>
+    <event eventtype="6" enumb="52">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Debug damage popup
+
+if(timer = true)
+{
+    global.damage_popup1 = 3;
+    global.damage_popup2 = true;
+    alarm[10] = 30;
+    timer = false;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
@@ -717,6 +906,16 @@ else
 draw_set_valign(fa_middle);
 draw_set_halign(fa_center);
 draw_text((200-20)/2 +20, 20, string(hp) + "/" + string(max_hp));
+
+//Inventory
+if(inv_show == true)
+{
+    draw_text(640, 200, "Inventory");
+    for(i = 0; i &lt;= (inv_slots_used -1); i += 1)
+    {
+        draw_text(640, 230 + 20 *i, global.items[i,0]);
+    }
+}
 </string>
           </argument>
         </arguments>

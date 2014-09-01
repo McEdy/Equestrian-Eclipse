@@ -133,6 +133,7 @@
   </paths>
   <fonts name="fonts">
     <font>fonts\font_eq</font>
+    <font>fonts\font_popup</font>
   </fonts>
   <objects name="objects">
     <objects name="System">
@@ -153,6 +154,7 @@
         <object>objects\obj_bubble</object>
         <object>objects\obj_button</object>
         <object>objects\obj_button_quit</object>
+        <object>objects\obj_damage_popup</object>
       </objects>
     </objects>
     <objects name="Ponies">
@@ -211,7 +213,7 @@
     <room>rooms\rm_cave_boss</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41882.8632915394</constant>
+    <constant name="GM_build_date">41883.8122708333</constant>
     <constant name="GM_version">'0.0.0.1'</constant>
   </constants>
   <help>

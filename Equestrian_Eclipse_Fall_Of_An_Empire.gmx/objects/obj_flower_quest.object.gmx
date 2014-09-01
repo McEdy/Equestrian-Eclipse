@@ -84,14 +84,37 @@ if(obj_gamestate.switches[? "quest_flower_on"] == true)
 {
     if(dist_interact &lt; 50)
     {
-        if(keyboard_check(ord("E")))
+        if(keyboard_check(ord("E")) &amp;&amp; global.pickup5 == false &amp;&amp; global.pickup_success == 0)
         {
-            obj_gamestate.switches[? "quest_flower_get"] = true;
-            global.message1 = "Item picked up: Flower.";
-            global.message2 = true;
-            instance_destroy();
+            global.pickup1 = "Flower";
+            global.pickup2 = "A normal flower.";
+            global.pickup3 = "3";
+            global.pickup4 = "0";
+            
+            global.pickup5 = true;
+            show_debug_message("Item pickup preparation.");
         }
     }
+}
+
+if(global.pickup_target == "Flower" &amp;&amp; global.pickup_success == 1)
+{
+    obj_gamestate.switches[? "quest_flower_get"] = true;
+    
+    global.message1 = "Item picked up: Flower.";
+    global.message2 = true;
+    global.pickup_success = 0;
+    show_debug_message("Item pickup success.");
+    
+    instance_destroy();
+}
+
+if(global.pickup_target == "Flower" &amp;&amp; global.pickup_success == 2)
+{
+    global.message1 = "Item picked failed due to missing space!";
+    global.message2 = true;
+    global.pickup_success = 0;
+    show_debug_message("Item pickup unsuccessful.");
 }
 </string>
           </argument>

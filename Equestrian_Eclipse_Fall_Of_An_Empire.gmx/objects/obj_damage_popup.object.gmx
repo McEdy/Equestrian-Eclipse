@@ -4,8 +4,8 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>-1</persistent>
-  <parentName>obj_notme</parentName>
+  <persistent>0</persistent>
+  <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,41 +25,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Initialise IVARs
+            <string>///Variables
 
-global.gamespeed = 1.0;
-global.dest_x = 256;
-global.dest_y = 96;
-switches = ds_map_create();
-obj_button.colour = c_white;
-
-global.message1 = "";       //Sending message
-global.message2 = false;    //A message was sent
-
-global.damage_popup1 = "";      //Amount of dealt damage
-global.damage_popup2 = false;   //Damage was dealt
-
-global.pickup1 = "";
-global.pickup2 = "";
-global.pickup3 = "";
-global.pickup4 = "";
-
-global.pickup5 = false;         //Object was picked up
-global.pickup_success = 0;      //0: Not active; 1: Successful; 2: Unsuccessful
-global.pickup_target = "";      //Name of target object
-
-//Switches game start
-obj_gamestate.switches[? "quest_cobaltshades_get"] = false;
-obj_gamestate.switches[? "quest_cobaltshades_on"] = false;
-
-obj_gamestate.switches[? "quest_flower_get"] = false;
-obj_gamestate.switches[? "quest_flower_on"] = false;
+y_offset = 50;
+character = noone;
+damage_amount = "";
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="6" enumb="53">
+    <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -76,11 +52,24 @@ obj_gamestate.switches[? "quest_flower_on"] = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*with(instance_create(mouse_x - 32, mouse_y - 32, obj_window_base)){
-image_xscale = 1 + random(4);
-image_yscale = 1 + random(2);
-event_user(0);
-}/*
+            <string>///Show number
+
+y_offset += 0.5;
+
+x = (character.x -view_xview) *2;
+y = (character.y -view_yview) *2 - y_offset;
+
+draw_set_font(font_popup);
+draw_set_color(c_red);
+draw_text(x , y, global.damage_popup1);
+
+if(y_offset &gt; 70)
+{
+    instance_destroy();
+}
+
+draw_set_color(c_white);
+draw_set_font(font_eq);
 </string>
           </argument>
         </arguments>

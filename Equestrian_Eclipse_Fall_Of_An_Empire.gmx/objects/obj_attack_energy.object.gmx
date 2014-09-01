@@ -111,22 +111,24 @@ with(other){
             <kind>1</kind>
             <string>hit_angle = point_direction(x, y, other.phy_position_x, other.phy_position_y);
 hit_dx = lengthdir_x(10, hit_angle);
-hit_dy= -lengthdir_y(10, hit_angle);
+hit_dy = -lengthdir_y(10, hit_angle);
 
 damage = 1 +irandom(3);
+global.damage_popup1 = damage;
+global.damage_popup2 = true;
 
-with(other){
-
-    hp -= other.damage
+with(other)
+{
+    hp -= other.damage;
     physics_apply_impulse(x, y, other.hit_dx, other.hit_dy);
 
-    if(hp &lt;= 0){
+    if(hp &lt;= 0)
+    {
         //Handle game over
-        show_debug_message("You died in Equestrian Eclipse. You're bad at this game and you should feel bad")
-            
-        //respawn
-        show_message("You died. Bad player, I expected more from you!")
-            
+        show_debug_message("You died in Equestrian Eclipse. You're bad at this game and you should feel bad");
+          
+        //Respawn
+        show_message("You died. Bad player, I expected more from you!");
     }
 }
 </string>
