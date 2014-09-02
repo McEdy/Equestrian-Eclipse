@@ -83,7 +83,7 @@ if(obj_gamestate.switches[? "quest_cobaltshades_on"] == true)
 {
     if(dist_interact &lt; 50)
     {
-        if(keyboard_check(ord("E")) &amp;&amp; global.pickup_a == false)
+        if(keyboard_check(ord("E")) &amp;&amp; global.pickup_a == false &amp;&amp; global.pickup_b == false)
         {
             global.pickup1 = "Shades";
             global.pickup2 = "Cobalt's shades.";
@@ -93,28 +93,29 @@ if(obj_gamestate.switches[? "quest_cobaltshades_on"] == true)
             global.pickup_a = true;
             show_debug_message("Item pickup preparation.");
         }
+        
+        if(global.pickup_target == "Shades" &amp;&amp; global.pickup_success == 1)
+        {
+            global.message1 = "Item picked up: Shades.";
+            global.message2 = true;
+            global.pickup_success = 0;
+            global.pickup_b = false;
+            obj_player.inv_assigned = false;
+            show_debug_message("Item pickup success.");
+            
+            instance_destroy();
+        }
+    
+        if(global.pickup_target == "Shades" &amp;&amp; global.pickup_success == 2)
+        {
+            global.message1 = "Item picked failed due to missing space!";
+            global.message2 = true;
+            global.pickup_success = 0;
+            global.pickup_b = false;
+            obj_player.inv_assigned = false;
+            show_debug_message("Item pickup unsuccessful.");
+        }
     }
-}
-
-if(global.pickup_target == "Shades" &amp;&amp; global.pickup_success == 1)
-{
-    obj_gamestate.switches[? "quest_cobaltshades_get"] = true;
-    destroyed = true;
-    
-    global.message1 = "Item picked up: Shades.";
-    global.message2 = true;
-    global.pickup_success = 0;
-    show_debug_message("Item pickup success.");
-    
-    instance_destroy();
-}
-    
-if(global.pickup_target == "Shades" &amp;&amp; global.pickup_success == 2)
-{
-    global.message1 = "Item picked failed due to missing space!";
-    global.message2 = true;
-    global.pickup_success = 0;
-    show_debug_message("Item pickup unsuccessful.");
 }
 </string>
           </argument>

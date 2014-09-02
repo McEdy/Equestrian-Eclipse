@@ -63,6 +63,9 @@
         <sprite>sprites\spr_changeling_up</sprite>
         <sprite>sprites\spr_changeling_down</sprite>
       </sprites>
+      <sprites name="Fluttertree">
+        <sprite>sprites\spr_fluttertree</sprite>
+      </sprites>
     </sprites>
     <sprites name="Nature">
       <sprite>sprites\spr_tree</sprite>
@@ -71,6 +74,8 @@
       <sprite>sprites\spr_bush_red</sprite>
       <sprites name="Cave">
         <sprite>sprites\spr_stalagmite</sprite>
+        <sprite>sprites\spr_gate</sprite>
+        <sprite>sprites\spr_boss_start</sprite>
       </sprites>
     </sprites>
     <sprites name="Town">
@@ -204,6 +209,9 @@
       <object>objects\obj_attack_energy</object>
       <object>objects\obj_attack_magic</object>
     </objects>
+    <object>objects\obj_fluttertree</object>
+    <object>objects\obj_boss_start</object>
+    <object>objects\obj_gate</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_manemenu</room>
@@ -213,7 +221,7 @@
     <room>rooms\rm_cave_boss</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41883.8723138194</constant>
+    <constant name="GM_build_date">41884.8265363773</constant>
     <constant name="GM_version">'0.0.0.1'</constant>
   </constants>
   <help>

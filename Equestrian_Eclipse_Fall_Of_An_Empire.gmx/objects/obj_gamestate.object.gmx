@@ -33,8 +33,8 @@ global.dest_y = 96;
 switches = ds_map_create();
 obj_button.colour = c_white;
 
-global.message1 = "";       //Sending message
-global.message2 = false;    //A message was sent
+global.message1 = "";           //Sending message
+global.message2 = false;        //A message was sent
 
 global.damage_popup1 = "";      //Amount of dealt damage
 global.damage_popup2 = false;   //Damage was dealt
@@ -45,9 +45,11 @@ global.pickup3 = "";
 global.pickup4 = "";
 
 global.pickup_a = false;        //Object was picked up
-global.pickup_b = false;        //Pause for picking up
+global.pickup_b = false;        //Pickup assigned -&gt; successful or unsuccessful
 global.pickup_success = 0;      //0: Not active; 1: Successful; 2: Unsuccessful
 global.pickup_target = "";      //Name of target object
+
+global.inv_slots = 10;
 
 //Switches game start
 obj_gamestate.switches[? "quest_cobaltshades_get"] = false;

@@ -35,6 +35,7 @@ action = false;
 attack_type = 1;
 notme = true;
 interaction_delay = false;
+popup_test_timer = true;
 
 message_1a = "";    //Message 1 content
 message_1b = false; //Message 1 start timer
@@ -51,7 +52,7 @@ alpha2 = 1;
 alpha3 = 1;
 
 inv_show = false;
-inv_slots_used = 0;
+inv_assigned = false;
 
 //Status
 max_hp = 10;
@@ -117,7 +118,9 @@ respawn_room = rm_test;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>timer = true;
+            <string>///Popup test
+
+popup_test_timer = true;
 </string>
           </argument>
         </arguments>
@@ -547,61 +550,39 @@ if(global.damage_popup2 == true)
 
 if(global.pickup_a == true)
 {
-    if(global.items[0,0] == "")
+    i = 0;
+    while(inv_assigned == false &amp;&amp; i &lt; 10)
     {
-        global.items[0,0] = global.pickup1; //Name
-        global.items[0,1] = global.pickup2; //Description
-        global.items[0,2] = global.pickup3; //Type (Weapon, Armour, Status, Misc)
-        global.items[0,3] = global.pickup4; //Price
-        
-        global.pickup_a = false;
-        global.pickup_target = global.pickup1;
-        global.pickup_success = 1;
-        inv_slots_used += 1;
-        
-        show_debug_message("Item pickup assignment 1.");
-    }
-    else
-    {
-        if(global.items[1,0] == "")
+        if(global.items[i,0] == "")
         {
-            global.items[1,0] = global.pickup1;
-            global.items[1,1] = global.pickup2;
-            global.items[1,2] = global.pickup3;
-            global.items[1,3] = global.pickup4;
+            global.items[i,0] = global.pickup1; //Name
+            global.items[i,1] = global.pickup2; //Description
+            global.items[i,2] = global.pickup3; //Type (Weapon, Armour, Status, Misc)
+            global.items[i,3] = global.pickup4; //Price
             
             global.pickup_a = false;
+            global.pickup_b = true;
             global.pickup_target = global.pickup1;
             global.pickup_success = 1;
-            inv_slots_used += 1;
             
-            show_debug_message("Item pickup assignment 2.");
+            show_debug_message("Item pickup assignment " + string(i) + ".");
+            inv_assigned = true;
         }
         else
         {
-            if(global.items[2,0] == "")
-            {
-                global.items[2,0] = global.pickup1;
-                global.items[2,1] = global.pickup2;
-                global.items[2,2] = global.pickup3;
-                global.items[2,3] = global.pickup4;
-            
-                global.pickup_a = false;
-                global.pickup_target = global.pickup1;
-                global.pickup_success = 1;
-                inv_slots_used += 1;
-                
-                show_debug_message("Item pickup assignment 3.");
-            }
-            else
-            {
-                global.pickup_a = false;
-                global.pickup_target = global.pickup1;
-                global.pickup_success = 2;
-                
-                show_debug_message("Item pickup assignment no space.");
-            }
+            i += 1;
         }
+    }
+    
+    if(i == 10)
+    {
+        global.pickup_a = false;
+        global.pickup_b = true;
+        global.pickup_target = global.pickup1;
+        global.pickup_success = 2;
+           
+        show_debug_message("Item pickup assignment no space.");
+        i = 0;
     }
 }
 </string>
@@ -822,13 +803,18 @@ if(global.character_race == "unicorn")
             <kind>1</kind>
             <string>///Debug damage popup
 
-if(timer = true)
+if(popup_test_timer = true)
 {
-    global.damage_popup1 = 3;
+    global.damage_popup1 = "Debugging!";
     global.damage_popup2 = true;
     alarm[10] = 30;
-    timer = false;
+    popup_test_timer = false;
 }
+
+//Debugging justifies cheating
+hp = max_hp
+stamina = max_stamina
+magic = max_magic
 </string>
           </argument>
         </arguments>
@@ -910,11 +896,27 @@ draw_text((200-20)/2 +20, 20, string(hp) + "/" + string(max_hp));
 //Inventory
 if(inv_show == true)
 {
+    draw_set_alpha(0.3);
+    draw_set_colour(c_black);
+    draw_rectangle(0, 0, 1280, 720, false);
+    
+    draw_set_alpha(0.5);
+    draw_set_colour(c_white);
+    draw_rectangle(640 -150, 200 -30, 640 +150, 200 +200 +30, false);
+    
+    draw_set_alpha(1);
+    draw_set_colour(c_black);
     draw_text(640, 200, "Inventory");
-    for(i = 0; i &lt;= (inv_slots_used -1); i += 1)
+    for(i = 0; i &lt;= (10 -1); i += 1)    //10 = space in inventory
     {
         draw_text(640, 230 + 20 *i, global.items[i,0]);
     }
+    
+    draw_set_colour(c_white);
+    draw_set_halign(fa_right);
+    draw_text(1280 - 20, 20, "Available Slots: " + string(global.inv_slots) + ".");
+    
+    draw_set_halign(fa_left);
 }
 </string>
           </argument>

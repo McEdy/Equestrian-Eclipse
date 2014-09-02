@@ -35,6 +35,7 @@ quest_name       = "Cobalt Shades";
 quest_active     = "quest_cobaltshades_on";
 quest_condition1 = "quest_cobaltshades_get";
 quest_object1    = obj_shades;
+quest_item_name  = "Shades";
 
 
 quest_start = "Hey sexy. If you find my shades of cobalt we can find somewhere more private for me to give you your reward.";

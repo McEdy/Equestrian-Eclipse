@@ -27,8 +27,7 @@
             <kind>1</kind>
             <string>///Depth
 
-depth = y * -1
-
+depth = y * -1;
 active = false;
 </string>
           </argument>
@@ -52,7 +51,7 @@ active = false;
             <kind>1</kind>
             <string>///Variables
 
-image_speed = 0.015;
+image_speed = 0.013 + random(0.003);
 active = false;
 </string>
           </argument>
@@ -84,38 +83,39 @@ if(obj_gamestate.switches[? "quest_flower_on"] == true)
 {
     if(dist_interact &lt; 50)
     {
-        if(keyboard_check(ord("E")) &amp;&amp; global.pickup_a == false)
+        if(keyboard_check(ord("E")) &amp;&amp; global.pickup_a == false &amp;&amp; global.pickup_b == false)
         {
             global.pickup1 = "Flower";
-            global.pickup2 = "A normal flower.";
+            global.pickup2 = "A common flower.";
             global.pickup3 = "3";
             global.pickup4 = "0";
             
             global.pickup_a = true;
             show_debug_message("Item pickup preparation.");
         }
+        
+        if(global.pickup_target == "Flower" &amp;&amp; global.pickup_success == 1)
+        {
+            global.message1 = "Item picked up: Flower.";
+            global.message2 = true;
+            global.pickup_success = 0;
+            global.pickup_b = false;
+            obj_player.inv_assigned = false;
+            show_debug_message("Item pickup success.");
+            
+            instance_destroy();
+        }
+    
+        if(global.pickup_target == "Flower" &amp;&amp; global.pickup_success == 2)
+        {
+            global.message1 = "Item picked failed due to missing space!";
+            global.message2 = true;
+            global.pickup_success = 0;
+            global.pickup_b = false;
+            obj_player.inv_assigned = false;
+            show_debug_message("Item pickup unsuccessful.");
+        }
     }
-}
-
-if(global.pickup_target == "Flower" &amp;&amp; global.pickup_success == 1)
-{
-    obj_gamestate.switches[? "quest_flower_get"] = true;
-    destroyed = true;
-    
-    global.message1 = "Item picked up: Flower.";
-    global.message2 = true;
-    global.pickup_success = 0;
-    show_debug_message("Item pickup success.");
-    
-    instance_destroy();
-}
-    
-if(global.pickup_target == "Flower" &amp;&amp; global.pickup_success == 2)
-{
-    global.message1 = "Item picked failed due to missing space!";
-    global.message2 = true;
-    global.pickup_success = 0;
-    show_debug_message("Item pickup unsuccessful.");
 }
 </string>
           </argument>

@@ -28,6 +28,7 @@
             <string>///Initiate IVars
 
 var hasquest = false;
+search = "";
 
 my_target = instance_create(x,y,obj_pathguide);
 my_path = -1
@@ -90,12 +91,30 @@ if(dist &lt; 50)
         {
             if(obj_gamestate.switches[? quest_active]) = true
             {
-                if(obj_gamestate.switches[? quest_condition1]) = true
+                i = 0;
+                while(search != quest_item_name &amp;&amp; i &lt; global.inv_slots) //Runs = global.inv_slots
+                {
+                    search = global.items[i,0];
+                    i += 1;
+                    show_debug_message("Search inventory run " + string(i) + ".");
+                }
+                
+                if(search == quest_item_name)
                 {
                     show_message(quest_success)
+                    show_debug_message("Quest completed: " + quest_name + ".")
+                
+                    i -= 1;
+                    show_message("Item slot [" + string(i) + "] selected for deletion.");
+                    global.items[i,0] = "";
+                    global.items[i,1] = "";
+                    global.items[i,2] = "";
+                    global.items[i,3] = "";
+                    show_debug_message("Erasing item out of inventory successful.");
+                    
                     global.message1 = "Quest completed: " + quest_name + ".";
                     global.message2 = true;
-                    show_debug_message("Quest completed: " + quest_name + ".")
+                    
                     hasquest = false;
                     obj_gamestate.switches[? quest_active] = false;
                 }
