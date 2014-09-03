@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Set to inactive when spawned
+            <string>///Set to inactive when spawned
 
 phy_active = false;
 image_alpha = 0;
@@ -51,7 +51,7 @@ image_alpha = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(phy_active)
+            <string>if(global.boss_battle_start = true)
 {
     image_alpha = lerp(image_alpha, 1.0, 0.1);
 }

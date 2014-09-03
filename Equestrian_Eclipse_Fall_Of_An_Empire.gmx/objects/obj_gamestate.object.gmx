@@ -57,6 +57,8 @@ global.quest_b = false;
 global.quest_target = "";
 global.quest_success = "";
 
+global.boss_battle_start = false; //Starts boss room script
+
 /*
 //Switches game start
 obj_gamestate.switches[? "quest_cobaltshades_on"] = false;
