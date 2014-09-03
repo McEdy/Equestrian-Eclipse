@@ -26,8 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>draw_self();
-            physics_draw_debug();
-            </string>
+physics_draw_debug();          
+</string>
           </argument>
         </arguments>
       </action>

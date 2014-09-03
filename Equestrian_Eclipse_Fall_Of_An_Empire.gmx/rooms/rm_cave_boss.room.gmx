@@ -79,6 +79,9 @@
     <instance objName="obj_collision" x="43" y="382" name="inst_A959CC4A" locked="0" code="" scaleX="1.3125" scaleY="21.9400005340576" colour="4294967295" rotation="0"/>
     <instance objName="obj_hero_reposition" x="32" y="32" name="inst_C798E030" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_base_warp" x="352" y="1024" name="inst_11952832" locked="0" code="event_inherited();&#xA;dest_room = rm_test;&#xA;dest_x = 240;&#xA;dest_y = 304;&#xA;" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_gate" x="384" y="736" name="inst_2AC41AFA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_fluttertree" x="384" y="320" name="inst_02F9E6D9" locked="0" code="" scaleX="4.5" scaleY="4.5" colour="4294967295" rotation="0"/>
+    <instance objName="obj_boss_start" x="384" y="672" name="inst_CEB350A7" locked="0" code="" scaleX="20.03125" scaleY="1.71875" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="caves" x="0" y="0" w="32" h="32" xo="80" yo="48" id="10005103" name="inst_579D7F37" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
