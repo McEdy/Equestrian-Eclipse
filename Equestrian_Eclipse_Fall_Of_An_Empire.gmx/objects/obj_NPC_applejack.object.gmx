@@ -33,7 +33,6 @@ active           = true;
 hasquest         = true;
 quest_name       = "Flower";
 quest_active     = "quest_flower_on";
-quest_condition1 = "quest_flower_get";
 quest_object1    = obj_flower_quest;
 quest_item_name  = "Flower";
 

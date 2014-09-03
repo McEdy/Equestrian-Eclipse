@@ -33,7 +33,6 @@ active           = true;
 hasquest         = true;
 quest_name       = "Cobalt Shades";
 quest_active     = "quest_cobaltshades_on";
-quest_condition1 = "quest_cobaltshades_get";
 quest_object1    = obj_shades;
 quest_item_name  = "Shades";
 

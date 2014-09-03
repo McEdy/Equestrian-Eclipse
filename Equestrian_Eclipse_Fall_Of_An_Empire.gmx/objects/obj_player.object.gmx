@@ -53,6 +53,8 @@ alpha3 = 1;
 
 inv_show = false;
 inv_assigned = false;
+quests_show = false;
+quest_assigned = false;
 
 //Status
 max_hp = 10;
@@ -68,7 +70,14 @@ magic = max_magic;
 for(i = 0; i &lt;= 25 *4; i += 1)
 {
     global.items[i,0] = "";
-    show_debug_message("Item " + string(i) + " created with content: " + string(global.items[i,0]) + ".");
+    show_debug_message("Item " + string(i) + " created with content: " + chr(34) + string(global.items[i,0]) + chr(34) + ".");
+}
+
+//Quests
+for(i = 0; i &lt;= 5; i += 1)
+{
+    global.quests[i,0] = "";
+    show_debug_message("Quest " + string(i) + " created with content: " + chr(34) + string(global.quests[i,0]) + chr(34) + ".");
 }
 </string>
           </argument>
@@ -309,17 +318,6 @@ if(keyboard_check(ord("S")))
     }
 }
 
-
-//Interaction
-if(keyboard_check(ord("E")))
-{
-    action = true;
-}
-else
-{
-    action = false;
-}
-
 //Stamina regeneration
 if(status_running == false &amp;&amp; stamina &lt; max_stamina)
 {
@@ -333,13 +331,35 @@ if(magic &lt; max_magic)
 }
 
 //Inventory
-if(keyboard_check(ord("Q")))
+if(keyboard_check_released(vk_tab) &amp;&amp; inv_show_prepare)
 {
-    inv_show = true;
+    if(inv_show == false)
+    {
+        inv_show = true;
+    }
+    else
+    {
+        inv_show = false;
+    }
+}
+
+if(keyboard_check(vk_tab))
+{
+    inv_show_prepare = true;
 }
 else
 {
-    inv_show = false;
+    inv_show_prepare = false;
+}
+
+//Quest screen
+if(keyboard_check(ord("Q")))
+{
+    quests_show = true;
+}
+else
+{
+    quests_show = false;
 }
 </string>
           </argument>
@@ -508,7 +528,7 @@ if(alpha2 == 0 &amp;&amp; message_2a != "" &amp;&amp; message_2c == true)
     show_debug_message("Finished message loop 2.");
 }
 
-if(alpha3 == 0 &amp;&amp; message_3a != "" &amp;&amp; message_3c == true)
+if(alpha2 == 0 &amp;&amp; message_3a != "" &amp;&amp; message_3c == true)
 {
     message_3a = "";
     message_3c = false;
@@ -546,7 +566,8 @@ if(global.damage_popup2 == true)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Inventory
+            <string>///Inventory + Quests
+//Inventory
 
 if(global.pickup_a == true)
 {
@@ -582,6 +603,42 @@ if(global.pickup_a == true)
         global.pickup_success = 2;
            
         show_debug_message("Item pickup assignment no space.");
+        i = 0;
+    }
+}
+
+//Quests
+if(global.quest_a == true)
+{
+    i = 0;
+    while(quest_assigned == false &amp;&amp; i &lt; 1)
+    {
+        if(global.quests[i,0] == "")
+        {
+            global.quests[i,0] = global.quest1; //Quest name
+            
+            global.quest_a = false;
+            global.quest_b = true;
+            global.quest_target = global.quest1;
+            global.quest_success = 1;
+            
+            show_debug_message("Quest assignment " + string(i) + ".");
+            quest_assigned = true;
+        }
+        else
+        {
+            i += 1;
+        }
+    }
+    
+    if(i == 5)
+    {
+        global.quest_a = false;
+        global.quest_b = true;
+        global.quest_target = global.quest1;
+        global.quest_success = 2;
+           
+        show_debug_message("Quest assignment no space.");
         i = 0;
     }
 }
@@ -918,6 +975,32 @@ if(inv_show == true)
     
     draw_set_halign(fa_left);
 }
+
+//Quest screen
+if(quests_show == true)
+{
+    draw_set_alpha(0.3);
+    draw_set_colour(c_black);
+    draw_rectangle(0, 0, 1280, 720, false);
+    
+    draw_set_alpha(0.5);
+    draw_set_colour(c_white);
+    draw_rectangle(640 -150, 200 -30, 640 +150, 200 +200 +30, false);
+    
+    draw_set_alpha(1);
+    draw_set_colour(c_black);
+    draw_text(640, 200, "Running Quests");
+    for(i = 0; i &lt;= (5 -1); i += 1)    //5 = space in inventory
+    {
+        draw_text(640, 230 + 20 *i, global.quests[i,0]);
+    }
+    
+    draw_set_colour(c_white);
+    draw_set_halign(fa_right);
+    draw_text(1280 - 20, 20, "Limit of quests/same time: 5.");
+    
+    draw_set_halign(fa_left);
+}
 </string>
           </argument>
         </arguments>
@@ -944,6 +1027,8 @@ if(inv_show == true)
 
 physics_draw_debug()
 draw_self()
+
+draw_circle(x, y, 50, true);
 </string>
           </argument>
         </arguments>

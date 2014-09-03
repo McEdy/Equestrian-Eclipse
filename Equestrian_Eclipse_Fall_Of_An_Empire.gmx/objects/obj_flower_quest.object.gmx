@@ -79,8 +79,8 @@ active = false;
 
 dist_interact = point_distance(phy_position_x, phy_position_y, obj_player.phy_position_x, obj_player.phy_position_y);
 
-if(obj_gamestate.switches[? "quest_flower_on"] == true)
-{
+//if(obj_gamestate.switches[? "quest_cobaltshades_on"] == true)
+//{
     if(dist_interact &lt; 50)
     {
         if(keyboard_check(ord("E")) &amp;&amp; global.pickup_a == false &amp;&amp; global.pickup_b == false)
@@ -88,8 +88,7 @@ if(obj_gamestate.switches[? "quest_flower_on"] == true)
             global.pickup1 = "Flower";
             global.pickup2 = "A common flower.";
             global.pickup3 = "3";
-            global.pickup4 = "0";
-            
+            global.pickup4 = "0"; 
             global.pickup_a = true;
             show_debug_message("Item pickup preparation.");
         }
@@ -108,7 +107,7 @@ if(obj_gamestate.switches[? "quest_flower_on"] == true)
     
         if(global.pickup_target == "Flower" &amp;&amp; global.pickup_success == 2)
         {
-            global.message1 = "Item picked failed due to missing space!";
+            global.message1 = "Item pickup failed due to missing space!";
             global.message2 = true;
             global.pickup_success = 0;
             global.pickup_b = false;
@@ -116,7 +115,7 @@ if(obj_gamestate.switches[? "quest_flower_on"] == true)
             show_debug_message("Item pickup unsuccessful.");
         }
     }
-}
+//}
 </string>
           </argument>
         </arguments>
@@ -142,6 +141,7 @@ if(obj_gamestate.switches[? "quest_flower_on"] == true)
             <string>if(active == true)
 {
     draw_self();
+    draw_circle(x, y, 50 -25, true);
 }
 </string>
           </argument>

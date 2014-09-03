@@ -51,11 +51,15 @@ global.pickup_target = "";      //Name of target object
 
 global.inv_slots = 10;
 
-//Switches game start
-obj_gamestate.switches[? "quest_cobaltshades_get"] = false;
-obj_gamestate.switches[? "quest_cobaltshades_on"] = false;
+global.quest_1 = "";
+global.quest_a = false;
+global.quest_b = false;
+global.quest_target = "";
+global.quest_success = "";
 
-obj_gamestate.switches[? "quest_flower_get"] = false;
+/*
+//Switches game start
+obj_gamestate.switches[? "quest_cobaltshades_on"] = false;
 obj_gamestate.switches[? "quest_flower_on"] = false;
 </string>
           </argument>
