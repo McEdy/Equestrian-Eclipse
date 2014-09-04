@@ -209,9 +209,11 @@
       <object>objects\obj_attack_energy</object>
       <object>objects\obj_attack_magic</object>
     </objects>
-    <object>objects\obj_fluttertree</object>
-    <object>objects\obj_boss_start</object>
-    <object>objects\obj_gate</object>
+    <objects name="Boss">
+      <object>objects\obj_gate</object>
+      <object>objects\obj_boss_start</object>
+      <object>objects\obj_fluttertree</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_manemenu</room>
@@ -221,7 +223,7 @@
     <room>rooms\rm_cave_boss</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41885.9077893981</constant>
+    <constant name="GM_build_date">41886.9805091782</constant>
     <constant name="GM_version">'100'</constant>
   </constants>
   <help>

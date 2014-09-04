@@ -39,8 +39,8 @@ quest_item_name  = "Shades";
 
 quest_start = "Hey sexy. If you find my shades of cobalt we can find somewhere more private for me to give you your reward.";
 quest_success = "Great, you found my cobalt shades. Now, about your reward...";
-quest_uncompleted = "You haven't got my cobalt shades yet. Bring them me, si senior?";
-quest_none = "Sorry, I don't have a quest for you at the moment. Check back later maybe.";
+quest_uncompleted = "You haven't got my cobalt shades yet. Bring the ropes and chai...shades to me and I'll give you your reward.";
+quest_none = "Sorry, I don't have a quest for you at the moment. Check back at night. Screeeee!";
 </string>
           </argument>
         </arguments>

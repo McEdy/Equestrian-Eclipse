@@ -32,7 +32,7 @@ event_inherited();
 active   = true;
 hasquest = false;
 
-quest_none = "I like muffins...and the delicious taste of spicy horse semen!";
+quest_none = "I'm mentally retarded!";
 
 my_path = path_test;
 
