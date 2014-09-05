@@ -115,6 +115,8 @@
       </sprites>
       <sprite>sprites\spr_pathguide</sprite>
       <sprite>sprites\spr_bubble</sprite>
+      <sprite>sprites\spr_cursor_normal</sprite>
+      <sprite>sprites\spr_cursor_aiming</sprite>
     </sprites>
     <sprites name="Attacks">
       <sprites name="Player attacks">
@@ -223,8 +225,8 @@
     <room>rooms\rm_cave_boss</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41886.9805091782</constant>
-    <constant name="GM_version">'100'</constant>
+    <constant name="GM_build_date">41887,6923082639</constant>
+    <constant name="GM_version">'0.0.0.1'</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

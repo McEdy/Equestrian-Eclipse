@@ -30,6 +30,8 @@
 global.gamespeed = 1.0;
 global.dest_x = 256;
 global.dest_y = 96;
+
+cursor_sprite = spr_cursor_normal;
 switches = ds_map_create();
 obj_button.colour = c_white;
 
