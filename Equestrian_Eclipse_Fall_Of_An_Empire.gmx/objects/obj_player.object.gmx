@@ -434,6 +434,10 @@ if(obj_closest.active == true)
         obj_bubble.active = false;
     }
 }
+else
+{
+    obj_bubble.active = false;
+}
 
 //Message assignment
 if(global.message2 == true)
@@ -631,14 +635,18 @@ if(global.quest_a == true)
         }
     }
     
-    if(i == 5)
+    if(i == 1)  //Maximum amount
     {
         global.quest_a = false;
         global.quest_b = true;
         global.quest_target = global.quest1;
         global.quest_success = 2;
-           
+        
         show_debug_message("Quest assignment no space.");
+        i = 0;
+    }
+    else
+    {
         i = 0;
     }
 }
@@ -903,7 +911,7 @@ draw_healthbar(20, 40, 200, 50, stamina/max_stamina *100, c_black, c_blue, c_blu
 
 //Attack type (Debug)
 draw_set_halign(0);
-draw_text(20, 80, "attack_type: " + string(attack_type));
+draw_text(20, 80, "attack_type: " + string(attack_type) + " - x popup: " + string((x -view_xview) *2) + " - y popup: " + string((y -view_yview) *2));
 
 //Item pickup
 draw_set_alpha(alpha1);
@@ -997,7 +1005,7 @@ if(quests_show == true)
     
     draw_set_colour(c_white);
     draw_set_halign(fa_right);
-    draw_text(1280 - 20, 20, "Limit of quests/same time: 5.");
+    draw_text(1280 - 20, 20, "Limit of quests/same time: 5 (Currently just 1 due to testing).");
     
     draw_set_halign(fa_left);
 }
@@ -1029,6 +1037,9 @@ physics_draw_debug()
 draw_self()
 
 draw_circle(x, y, 50, true);
+
+//Line from player to cursor
+draw_line(phy_position_x, phy_position_y, mouse_x, mouse_y);
 </string>
           </argument>
         </arguments>

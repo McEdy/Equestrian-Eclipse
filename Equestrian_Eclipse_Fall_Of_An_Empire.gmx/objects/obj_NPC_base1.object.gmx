@@ -29,6 +29,7 @@
 
 var hasquest = false;
 quest_started = false;
+quest_assigned = false;
 search_quest = "";
 search_item = "";
 
@@ -87,34 +88,34 @@ var dist = point_distance(obj_player.phy_position_x, obj_player.phy_position_y,p
 
 if(dist &lt; 50)
 {
-    if(keyboard_check(ord("E")))
+    if(hasquest == true)
     {
-        if(hasquest == true)
+        //Quest start confirmed
+        if(global.quest_target == quest_name &amp;&amp; global.quest_success == 1 &amp;&amp; global.quest_b == true)
         {
-            //Quest start confirmed
-            if(global.quest_target == quest_name &amp;&amp; global.quest_success == 1 &amp;&amp; global.quest_b == true)
-            {
-                show_message(quest_start)
-                global.message1 = "Quest started: " + quest_name + ".";
-                global.message2 = true;
-                show_debug_message("Quest activated: " + quest_name + ".")
-                
-                quest_object1.active = true
-                obj_player.quest_assigned = false;
-                global.quest_b = false;
-                
-                quest_started = true;
-                obj_gamestate.switches[? "quest_cobaltshades_on"] = true;
-            }
+            show_message(quest_start)
+            global.message1 = "Quest started: " + quest_name + ".";
+            global.message2 = true;
+            show_debug_message("Quest activated: " + quest_name + ".");
+        
+            quest_object1.active = true;
+            obj_player.quest_assigned = false;
+            global.quest_b = false;
+        
+            quest_started = true;
+            obj_gamestate.switches[? quest_active] = true;
+        }
             
-            //Quest start prohibited
-            if(global.quest_target == quest_name &amp;&amp; global.quest_success == 2 &amp;&amp; global.quest_b == true)
-            {
-                show_message("Sorry, you already have enough quests.#Come back when you have finished some.")
-                obj_player.quest_assigned = false;
-                global.quest_b = false;
-            }
-            
+        //Quest start prohibited
+        if(global.quest_target == quest_name &amp;&amp; global.quest_success == 2 &amp;&amp; global.quest_b == true)
+        {
+            show_message("Sorry, you already have enough quests.#Come back when you have finished some.");
+            obj_player.quest_assigned = false;
+            global.quest_b = false;
+        }
+    
+        if(keyboard_check(ord("E")))
+        {
             if(quest_started == false)
             {
                 i = 0;
@@ -144,7 +145,7 @@ if(dist &lt; 50)
                     if(search_item == quest_item_name)
                     {
                         show_message(quest_success)
-                        show_debug_message("Quest completed: " + quest_name + ".")
+                        show_debug_message("Quest completed: " + quest_name + ".");
                         
                         i -= 1;
                         show_message("Item slot [" + string(i) + "] selected for deletion.");
@@ -159,7 +160,7 @@ if(dist &lt; 50)
                         global.message1 = "Quest completed: " + quest_name + ".";
                         global.message2 = true;
                             
-                        obj_gamestate.switches[? "quest_cobaltshades_on"] = false;
+                        obj_gamestate.switches[? quest_active] = false;
                         hasquest = false;
                     }
                     //Quest uncompleted
@@ -186,11 +187,15 @@ if(dist &lt; 50)
                 quest_started = false;
             }
         }
-        else
+    }
+    else
+    {
+        if(keyboard_check(ord("E")))
         {
-            show_message(quest_none)
+            show_message(quest_none);
         }
     }
+    
 }
 </string>
           </argument>

@@ -53,7 +53,15 @@ image_alpha = 0;
             <kind>1</kind>
             <string>if(global.boss_battle_start = true)
 {
-    image_alpha = lerp(image_alpha, 1.0, 0.1);
+    if(global.boss_defeated == false)
+    {
+        image_alpha = lerp(image_alpha, 1.0, 0.1);
+    }
+    else
+    {
+        instance_destroy();
+        //Have to be changed soon
+    }
 }
 </string>
           </argument>

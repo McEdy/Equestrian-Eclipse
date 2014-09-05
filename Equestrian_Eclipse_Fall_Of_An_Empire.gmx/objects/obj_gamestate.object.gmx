@@ -53,11 +53,11 @@ global.pickup_target = "";      //Name of target object
 
 global.inv_slots = 10;
 
-global.quest_1 = "";
-global.quest_a = false;
-global.quest_b = false;
+global.quest_1 = "";            //Quest name
+global.quest_a = false;         //Quest handeling request
+global.quest_b = false;         //Quest response
 global.quest_target = "";
-global.quest_success = "";
+global.quest_success = "";      //Success (1) or prohibition (2) of quest
 
 global.boss_battle_start = false; //Starts boss room script
 

@@ -28,7 +28,10 @@
             <string>alarm[0] = 0;
 
 hero_dist = 0;
-name = "Fluttertree";
+name = "Fluttertree the Frightening";
+
+boss_timer = true;
+global.boss_defeated = false;
 
 max_hp = 90;
 hp = max_hp;
@@ -54,7 +57,9 @@ hp = max_hp;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>show_message("I'll fuk U up m8. ur b8 isn't gr8 m8 and I am not even slightly ir8.");
+            <string>///Timer For Speech
+
+boss_timer = true;
 </string>
           </argument>
         </arguments>
@@ -77,8 +82,10 @@ hp = max_hp;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(alarm[0] = 0)
+            <string>if(boss_timer == true)
 {
+    show_message("I'll fuk U up m8. ur b8 isn't gr8 m8 and I am not even slightly ir8.");
+    boss_timer = false;
     alarm[0] = 60;
 }
 </string>
@@ -105,9 +112,10 @@ hp = max_hp;
             <kind>1</kind>
             <string>if(hero_dist &lt;250)
 {
+    draw_healthbar(640 -140, 20, 640 +140, 25, hp, c_blue, c_red, c_green, 0, false, true);
+
     draw_set_halign(fa_center);
     draw_text(640, 10, name);
-    draw_healthbar(640 -140, 20, 640 +140, 24, hp, c_blue, c_red, c_green, 0, false, true);
 }
 </string>
           </argument>
