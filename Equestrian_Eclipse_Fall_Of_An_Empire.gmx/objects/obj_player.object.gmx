@@ -47,9 +47,15 @@ message_3a = "";
 message_3b = false;
 message_3c = false;
 
+message_big_1a = "";
+message_big_1b = "";
+message_big_1c = "";
+
 alpha1 = 1;
 alpha2 = 1;
 alpha3 = 1;
+
+alpha_big1 = 1;
 
 inv_show = false;
 inv_assigned = false;
@@ -130,6 +136,32 @@ respawn_room = rm_test;
             <string>///Popup test
 
 popup_test_timer = true;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Message Big 1
+
+alpha_big1 = 0.95;
+message_big_1c = true;
 </string>
           </argument>
         </arguments>
@@ -550,6 +582,50 @@ if(global.damage_popup2 == true)
         global.damage_popup2 = false;
     }
 }
+
+//Show big text top middle
+//Message assignment
+if(global.message_big2 == true)
+{
+    if(message_big_1a == "")
+    {
+        message_big_1a = global.message_big1;
+        message_big_1b = true;
+        show_debug_message("Message assignment (big) 1.");
+    }
+    else
+    {
+        message_big_1a = global.message_big1;
+        message_big_1b = true;
+        show_debug_message("Message assignment (big) O.");
+    }
+}
+
+//Timer for message
+if(message_big_1a != "" &amp;&amp; message_big_1b == true)
+{
+    show_debug_message("Message: " + message_big_1a);
+    alarm[3] = 120;
+    message_big_1b = false;
+    global.message_big2 = false;
+}
+
+
+//Fade out
+if(alpha_big1 &lt; 1 &amp;&amp; alpha_big1 &gt; 0)
+{
+    alpha_big1 -= 0.05;
+}
+
+
+//Stop message
+if(alpha_big1 == 0 &amp;&amp; message_big_1a != "" &amp;&amp; message_big_1c == true)
+{
+    message_big_1a = "";
+    message_big_1c = false;
+    alpha_big1 = 1;
+    show_debug_message("Finished message (big) loop 1.");
+}
 </string>
           </argument>
         </arguments>
@@ -874,6 +950,11 @@ if(popup_test_timer = true)
     global.damage_popup2 = true;
     alarm[10] = 30;
     popup_test_timer = false;
+    
+    global.message_big1 = "Everfree Forest";
+    global.message_big2 = true;
+    global.message_big_x = 640;
+    global.message_big_y = 40;
 }
 
 //Debugging justifies cheating
@@ -913,7 +994,7 @@ draw_healthbar(20, 40, 200, 50, stamina/max_stamina *100, c_black, c_blue, c_blu
 draw_set_halign(0);
 draw_text(20, 80, "attack_type: " + string(attack_type) + " - x popup: " + string((x -view_xview) *2) + " - y popup: " + string((y -view_yview) *2));
 
-//Item pickup
+//Messages
 draw_set_alpha(alpha1);
 if(message_1a != "")
 {
@@ -932,6 +1013,16 @@ if(message_3a != "")
     draw_text(20, 540, message_3a);
 }
 
+//Big Messages
+draw_set_alpha(alpha_big1);
+draw_set_halign(fa_center);
+draw_set_font(font_popup);
+if(message_big_1a != "")
+{
+    draw_text(global.message_big_x, global.message_big_y, message_big_1a);
+}
+
+draw_set_font(font_eq);
 draw_set_alpha(1);
 
 
@@ -943,6 +1034,7 @@ if(global.character_race == "unicorn")
 else
 {
     draw_set_valign(fa_top);
+    draw_set_halign(0);
     if(global.character_race == "earthpony")
     {
         draw_text_ext(20, 100, "You are an " + string(global.character_race) + ".#You cannot use spells!", 20, -1);

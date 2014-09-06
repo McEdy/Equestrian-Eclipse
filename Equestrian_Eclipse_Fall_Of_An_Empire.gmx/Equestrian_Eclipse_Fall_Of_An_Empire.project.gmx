@@ -79,7 +79,8 @@
       </sprites>
     </sprites>
     <sprites name="Town">
-      <sprite>sprites\spr_lamp</sprite>
+      <sprite>sprites\spr_lantern_off</sprite>
+      <sprite>sprites\spr_lantern_on</sprite>
       <sprite>sprites\house_1</sprite>
       <sprite>sprites\shop_1</sprite>
     </sprites>
@@ -194,6 +195,7 @@
         <objects name="Cave">
           <object>objects\obj_stalagmite</object>
         </objects>
+        <object>objects\obj_lantern</object>
       </objects>
       <objects name="Town">
         <object>objects\obj_lamp</object>
@@ -205,11 +207,15 @@
       <object>objects\obj_flower_quest</object>
     </objects>
     <objects name="Attacks">
-      <object>objects\obj_attack_fire</object>
-      <object>objects\obj_attack_ice</object>
-      <object>objects\obj_attack_lightning</object>
-      <object>objects\obj_attack_magic</object>
-      <object>objects\obj_attack_energy</object>
+      <objects name="Magic">
+        <object>objects\obj_attack_fire</object>
+        <object>objects\obj_attack_ice</object>
+        <object>objects\obj_attack_lightning</object>
+        <object>objects\obj_attack_magic</object>
+      </objects>
+      <objects name="Enemy">
+        <object>objects\obj_attack_energy</object>
+      </objects>
     </objects>
     <objects name="Boss">
       <object>objects\obj_gate</object>
@@ -225,7 +231,7 @@
     <room>rooms\rm_cave_boss</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41887.9722816898</constant>
+    <constant name="GM_build_date">41888,5423820023</constant>
     <constant name="GM_version">'0.0.0.1'</constant>
   </constants>
   <help>

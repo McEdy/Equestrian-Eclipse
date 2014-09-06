@@ -59,8 +59,8 @@ image_alpha = 0;
     }
     else
     {
-        instance_destroy();
-        //Have to be changed soon
+        image_alpha = 0;
+        phy_active = false;
     }
 }
 </string>

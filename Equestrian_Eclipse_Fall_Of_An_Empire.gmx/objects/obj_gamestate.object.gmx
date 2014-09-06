@@ -38,6 +38,11 @@ obj_button.colour = c_white;
 global.message1 = "";           //Sending message
 global.message2 = false;        //A message was sent
 
+global.message_big1 = "";
+global.message_big2 = false;
+global.message_big_x = 0;
+global.message_big_y = 0;
+
 global.damage_popup1 = "";      //Amount of dealt damage
 global.damage_popup2 = false;   //Damage was dealt
 

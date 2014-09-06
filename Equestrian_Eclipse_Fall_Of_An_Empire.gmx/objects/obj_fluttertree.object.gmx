@@ -28,7 +28,7 @@
             <string>alarm[0] = 0;
 
 hero_dist = 0;
-name = "Fluttertree the Frightening";
+name = "Fluttertree";
 
 boss_timer = true;
 global.boss_defeated = false;
@@ -110,9 +110,9 @@ boss_timer = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(hero_dist &lt;250)
+            <string>if(hero_dist &lt;100)
 {
-    draw_healthbar(640 -140, 20, 640 +140, 25, hp, c_blue, c_red, c_green, 0, false, true);
+    draw_healthbar(640 -140, 20, 640 +140, 30, hp/max_hp *100, c_black, c_red, c_red, 0, true, true);
 
     draw_set_halign(fa_center);
     draw_text(640, 10, name);

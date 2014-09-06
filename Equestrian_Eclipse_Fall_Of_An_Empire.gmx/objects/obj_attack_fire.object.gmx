@@ -92,6 +92,7 @@ with(other){
         global.boss_defeated = true;
         global.message1 = "You defeated Fluttertree. Congratulations!";
         global.message2 = true;
+        
     }
 }
 </string>
