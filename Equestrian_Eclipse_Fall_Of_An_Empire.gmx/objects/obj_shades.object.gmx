@@ -83,7 +83,7 @@ dist_interact = point_distance(phy_position_x, phy_position_y, obj_player.phy_po
 //{
     if(dist_interact &lt; 50)
     {
-        if(keyboard_check(ord("E")) &amp;&amp; obj_gamestate.switches[? "quest_cobaltshades_on"] == true&amp;&amp; global.pickup_a == false &amp;&amp; global.pickup_b == false)
+        if(keyboard_check(ord("E")) &amp;&amp; obj_gamestate.switches[? "quest_cobaltshades_on"] == true &amp;&amp; global.pickup_a == false &amp;&amp; global.pickup_b == false)
         {
             global.pickup1 = "Shades";
             global.pickup2 = "Cobalt's shades.";

@@ -73,18 +73,18 @@ max_magic = 30;
 magic = max_magic;
 
 //Inventory
-for(i = 0; i &lt;= 25 *4; i += 1)
+for(var i = 100; i &gt; -1; i--;)
 {
     global.items[i,0] = "";
-    show_debug_message("Item " + string(i) + " created with content: " + chr(34) + string(global.items[i,0]) + chr(34) + ".");
 }
+show_debug_message("Inventory array finished.");
 
 //Quests
-for(i = 0; i &lt;= 5; i += 1)
+for(var i = 5; i &gt; -1; i--;)
 {
     global.quests[i,0] = "";
-    show_debug_message("Quest " + string(i) + " created with content: " + chr(34) + string(global.quests[i,0]) + chr(34) + ".");
 }
+show_debug_message("Quest array finished.");
 </string>
           </argument>
         </arguments>
@@ -264,8 +264,7 @@ message_1c = true;
             <kind>1</kind>
             <string>///Depth
 
-depth = (phy_position_y - 15) * -1
-
+depth = (phy_position_y - 15) * -1;
 phy_fixed_rotation = true;
 </string>
           </argument>
@@ -292,44 +291,45 @@ phy_fixed_rotation = true;
 if(keyboard_check(ord("A"))){
     sprite_index = global.character_left;
 
-    if(keyboard_check(vk_shift) &amp;&amp; stamina &gt; 0){
-        phy_position_x -=3;
+    if(keyboard_check(vk_shift) &amp;&amp; stamina &gt; 0)
+    {
+        phy_position_x -= 3;
         stamina -= 2/60;
         status_running = true;
     }
     else
     {
-        phy_position_x -=1.5;
+        phy_position_x -= 1.5;
     }
 }
 
-
-if(keyboard_check(ord("D"))){
+if(keyboard_check(ord("D")))
+{
     sprite_index = global.character_right;
 
     if(keyboard_check(vk_shift) &amp;&amp; stamina &gt; 0){
-        phy_position_x +=3;
+        phy_position_x += 3;
         stamina -= 2/60;
         status_running = true;
     }
     else
     {
-        phy_position_x +=1.5;
+        phy_position_x += 1.5;
     }
 }
 
-
-if(keyboard_check(ord("W"))){
+if(keyboard_check(ord("W")))
+{
     sprite_index = global.character_up;
 
     if(keyboard_check(vk_shift) &amp;&amp; stamina &gt; 0){
-        phy_position_y -=3;
+        phy_position_y -= 3;
         stamina -= 2/60;
         status_running = true;
     }
     else
     {
-        phy_position_y -=1.5;
+        phy_position_y -= 1.5;
     }
 }
 
@@ -340,13 +340,13 @@ if(keyboard_check(ord("S")))
     sprite_index = global.character_down;
 
     if(keyboard_check(vk_shift) &amp;&amp; stamina &gt; 0){
-        phy_position_y +=3;
+        phy_position_y += 3;
         stamina -= 2/60;
         status_running = true;
     }
     else
     {
-        phy_position_y +=1.5;
+        phy_position_y += 1.5;
     }
 }
 
@@ -651,7 +651,7 @@ if(alpha_big1 == 0 &amp;&amp; message_big_1a != "" &amp;&amp; message_big_1c == 
 
 if(global.pickup_a == true)
 {
-    i = 0;
+    var i = 0;
     while(inv_assigned == false &amp;&amp; i &lt; 10)
     {
         if(global.items[i,0] == "")
@@ -984,7 +984,6 @@ magic = max_magic
           <argument>
             <kind>1</kind>
             <string>///Interface
-
 //Health + Stamina bar
 draw_healthbar(20, 20, 200, 30, hp/max_hp *100, c_black, c_red, c_red, 0, true, true);
 draw_healthbar(20, 40, 200, 50, stamina/max_stamina *100, c_black, c_blue, c_blue, 0, true, true);
@@ -1125,8 +1124,8 @@ if(quests_show == true)
             <kind>1</kind>
             <string>///Physics
 
-physics_draw_debug()
-draw_self()
+physics_draw_debug();
+draw_self();
 
 draw_circle(x, y, 50, true);
 

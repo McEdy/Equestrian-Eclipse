@@ -56,8 +56,6 @@ global.pickup_b = false;        //Pickup assigned -&gt; successful or unsuccessf
 global.pickup_success = 0;      //0: Not active; 1: Successful; 2: Unsuccessful
 global.pickup_target = "";      //Name of target object
 
-global.inv_slots = 10;
-
 global.quest_1 = "";            //Quest name
 global.quest_a = false;         //Quest handeling request
 global.quest_b = false;         //Quest response

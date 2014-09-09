@@ -118,7 +118,7 @@ if(dist &lt; 50)
         {
             if(quest_started == false)
             {
-                i = 0;
+                var i = 0;
                 while(search_quest != quest_name &amp;&amp; i &lt; 1) //Runs = 5
                 {
                     search_quest = global.quests[i,0];
