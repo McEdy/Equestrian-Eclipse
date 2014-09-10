@@ -190,6 +190,7 @@ if(dist &lt; 50)
     }
     else
     {
+        //No Quest can be given
         if(keyboard_check(ord("E")))
         {
             show_message(quest_none);

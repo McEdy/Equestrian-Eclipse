@@ -73,7 +73,7 @@ max_magic = 30;
 magic = max_magic;
 
 //Inventory
-for(var i = 100; i &gt; -1; i--;)
+for(var i = 99; i &gt; -1; i--;)
 {
     global.items[i,0] = "";
 }
