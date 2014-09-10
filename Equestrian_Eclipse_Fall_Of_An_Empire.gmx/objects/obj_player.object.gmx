@@ -1070,7 +1070,7 @@ if(inv_show == true)
     
     draw_set_colour(c_white);
     draw_set_halign(fa_right);
-    draw_text(1280 - 20, 20, "Available Slots: " + string(global.inv_slots) + ".");
+    draw_text(1280 - 20, 20, "Available Slots: 10.");
     
     draw_set_halign(fa_left);
 }

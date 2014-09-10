@@ -134,7 +134,7 @@ if(dist &lt; 50)
                     show_debug_message("Quest found in quest database.");
                     
                     i = 0;
-                    while(search_item != quest_item_name &amp;&amp; i &lt; global.inv_slots) //Runs = global.inv_slots
+                    while(search_item != quest_item_name &amp;&amp; i &lt; 10) //Runs = 10
                     {
                         search_item = global.items[i,0];
                         i += 1;
