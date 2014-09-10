@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>0</persistent>
+  <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -79,17 +79,17 @@
             <kind>1</kind>
             <string>target_y = y;
 start_y = y;
-y = start_y
+y = start_y;
 
 target_yscale = image_yscale;
-image_yscale = 0;
+image_yscale = 1;
 start = true;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="0">
+    <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -110,8 +110,10 @@ start = true;
 
 //Draw Background
 
+//draw_self();
+
 //draw_sprite_stretched(spr_window_base,0,x + 4,y  + 4,sprite_width - 8, sprite_height);
-draw_sprite_stretched_ext(spr_window_base,0,x + 4,y  + 4,sprite_width - 8, sprite_height, c_yellow, 0.6)
+draw_sprite_stretched_ext(spr_window_base,0,x + 4,y  + 4,sprite_width - 8, sprite_height, c_blue, 1)
 
 // Draw H &amp; V Axis
 
@@ -127,6 +129,10 @@ draw_sprite(spr_window_tl,0,x,y);
 draw_sprite(spr_window_tr,0,x + sprite_width - 16,y);
 draw_sprite(spr_window_bl,0,x,y + sprite_height - 8);
 draw_sprite(spr_window_br,0,x + sprite_width - 16,y + sprite_height - 8);
+
+//Draw text
+
+draw_text(obj_window_base.x,obj_window_base.y,"Windows are teh best"); //I'd move it, but I'm too tired
 </string>
           </argument>
         </arguments>
