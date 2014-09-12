@@ -77,8 +77,8 @@ hit_dx = lengthdir_x(10, hit_angle);
 hit_dy = -lengthdir_y(10, hit_angle);
 
 damage = 1 +irandom(3);
-global.damage_popup1 = damage;
-global.damage_popup2 = true;
+global.damage_popup = damage;
+global.damage_popup1 = true;
 
 with(other)
 {
@@ -88,10 +88,10 @@ with(other)
     if(hp &lt;= 0)
     {
         //Handle game over
-        show_debug_message("You died in Equestrian Eclipse. You're bad at this game and you should feel bad");
+        show_debug_message("You died in Equestrian Eclipse. You're bad at this game and you should feel bad!");
           
         //Respawn
-        show_message("You died. Bad player, I expected more from you!");
+        show_message("You died. Bad player, I expected more from you! (You can even cheat, dumbass...)");
     }
 }
 </string>

@@ -36,6 +36,29 @@ hp = max_hp;
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>image_alpha = 1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -54,45 +77,15 @@ hp = max_hp;
           <argument>
             <kind>1</kind>
             <string>///Damage popup
-if(global.damage_popup4 == true)
+
+if(global.damage_popup2 == true)
 {
+    show_debug_message("Test");
     with(instance_create(x, y, obj_damage_popup))
     {
         character = other.id;
-        damage_amount = string(global.damage_popup3);
-        global.damage_popup4 = false;
+        global.damage_popup2 = false;
     }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_attack_fire">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/*hit_angle = point_direction(x, y, other.phy_position_x, other.phy_position_y);
-hit_dx = lengthdir_x(10, hit_angle);
-hit_dy= -lengthdir_y(10, hit_angle);
-
-with(other){
-
-    physics_apply_impulse(x, y, other.hit_dx, other.hit_dy);
-
 }
 </string>
           </argument>

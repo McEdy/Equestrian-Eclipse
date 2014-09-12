@@ -124,12 +124,14 @@ hit_dx = lengthdir_x(10, hit_angle);
 hit_dy= -lengthdir_y(10, hit_angle);
 
 damage = 4; //+irandom(1);
-global.damage_popup3 = damage;
-global.damage_popup4 = true;
+global.damage_popup = damage;
+global.damage_popup2 = true;
 
 with(other){
-
     hp -= other.damage
+    image_alpha = 0.8;
+    alarm[10] = 10;
+    
     physics_apply_impulse(x, y, other.hit_dx, other.hit_dy);
 
     if(hp &lt;= 0){

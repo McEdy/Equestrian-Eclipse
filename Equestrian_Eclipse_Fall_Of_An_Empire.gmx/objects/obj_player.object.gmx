@@ -573,13 +573,13 @@ if(alpha2 == 0 &amp;&amp; message_3a != "" &amp;&amp; message_3c == true)
 }
 
 //Damage popup
-if(global.damage_popup2 == true)
+if(global.damage_popup1 == true)
 {
     with(instance_create(x, y, obj_damage_popup))
     {
         character = other.id;
-        damage_amount = string(global.damage_popup1);
-        global.damage_popup2 = false;
+        //damage_amount = string(global.damage_popup);
+        global.damage_popup1 = false;
     }
 }
 
@@ -946,8 +946,8 @@ if(global.character_race == "unicorn")
 
 if(popup_test_timer = true)
 {
-    global.damage_popup1 = "Debugging!";
-    global.damage_popup2 = true;
+    global.damage_popup = "Debugging!";
+    global.damage_popup1 = true;
     alarm[10] = 30;
     popup_test_timer = false;
     
