@@ -25,31 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>start = false;
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>image_xscale = 12
-image_yscale = 3
+            <string>image_xscale = 12;
+image_yscale = 3;
 
-test_t = false
+start = false;
+test_t = false;
 
 target_y = y;
 start_y = y;
@@ -79,11 +59,10 @@ image_yscale = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (start == true) {
+            <string>if(start == true)
+{
     image_yscale = lerp(image_yscale, target_yscale, 0.6);
-    
     progress = image_yscale / target_yscale;
-    
     y = lerp(start_y, target_y, progress);
 }
 </string>
@@ -109,7 +88,8 @@ image_yscale = 1;
           <argument>
             <kind>1</kind>
             <string>/*if(test_t == true)
-with(instance_create(0, 520, obj_window_base)){
+with(instance_create(0, 520, obj_window_base))
+{
 
 start = true;
 }

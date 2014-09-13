@@ -1153,15 +1153,14 @@ draw_line(phy_position_x, phy_position_y, mouse_x, mouse_y);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///test windows
-with(instance_create(0, 520, obj_window_base)){
+            <string>///Test Windows
 
-image_xscale = 12
-image_yscale = 3
-
-event_user(0);
-
-show_debug_message("it works")
+with(instance_create(200, 520, obj_window_base))
+{
+    image_xscale = 12;
+    image_yscale = 3;
+    
+    event_user(0);
 }
 </string>
           </argument>
