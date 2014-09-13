@@ -30,6 +30,37 @@
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>image_xscale = 12
+image_yscale = 3
+
+test_t = false
+
+target_y = y;
+start_y = y;
+y = start_y;
+
+target_yscale = image_yscale;
+image_yscale = 1;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="3" enumb="0">
       <action>
@@ -77,13 +108,19 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>target_y = y;
-start_y = y;
-y = start_y;
+            <string>/*if(test_t == true)
+with(instance_create(0, 520, obj_window_base)){
 
-target_yscale = image_yscale;
-image_yscale = 1;
 start = true;
+}
+else
+{
+obj_window_base.image_alpha = 0
+test_t = true
+show_debug_message("zigger")
+}*/
+
+obj_window_base.image_alpha = 0;
 </string>
           </argument>
         </arguments>
@@ -132,7 +169,7 @@ draw_sprite(spr_window_br,0,x + sprite_width - 16,y + sprite_height - 8);
 
 //Draw text
 
-draw_text(obj_window_base.x,obj_window_base.y,"Windows are teh best"); //I'd move it, but I'm too tired
+draw_text(obj_window_base.x + 200,obj_window_base.y + 100,"Windows are teh best"); //I'd move it, but I'm too tired
 </string>
           </argument>
         </arguments>
