@@ -946,7 +946,7 @@ if(global.character_race == "unicorn")
 
 if(popup_test_timer = true)
 {
-    global.damage_popup = "Debugging!";
+    global.damage_popup = "Debugging ziggers!";
     global.damage_popup1 = true;
     alarm[10] = 30;
     popup_test_timer = false;
@@ -1155,9 +1155,21 @@ draw_line(phy_position_x, phy_position_y, mouse_x, mouse_y);
             <kind>1</kind>
             <string>///Test Windows
 
+//Text window
+
 with(instance_create(200, 520, obj_window_base))
 {
     image_xscale = 12;
+    image_yscale = 3;
+    
+    event_user(0);
+}
+
+//Avatar window
+
+with(instance_create(0, 520, obj_window_base))
+{
+    image_xscale = 3;
     image_yscale = 3;
     
     event_user(0);
