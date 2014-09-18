@@ -93,7 +93,27 @@ if(dist &lt; 50)
         //Quest start confirmed
         if(global.quest_target == quest_name &amp;&amp; global.quest_success == 1 &amp;&amp; global.quest_b == true)
         {
-            show_message(quest_start)
+            //Text
+            with(instance_create(200, 520, obj_window_base))
+            {
+                image_xscale = 12;
+                image_yscale = 3;
+                window_message1 = other.quest_start;
+                window_speaker = other.sprite;
+                
+                event_user(0);
+            }
+            //Avatar
+            with(instance_create(0, 520, obj_window_base))
+            {
+                image_xscale = 3;
+                image_yscale = 3;
+                window_speaker = other.sprite;
+                
+                event_user(0);
+            }
+            //show_message(quest_start)
+            
             global.message1 = "Quest started: " + quest_name + ".";
             global.message2 = true;
             show_debug_message("Quest activated: " + quest_name + ".");
@@ -109,7 +129,26 @@ if(dist &lt; 50)
         //Quest start prohibited
         if(global.quest_target == quest_name &amp;&amp; global.quest_success == 2 &amp;&amp; global.quest_b == true)
         {
-            show_message("Sorry, you already have enough quests.#Come back when you have finished some.");
+            //Text
+            with(instance_create(200, 520, obj_window_base))
+            {
+                image_xscale = 12;
+                image_yscale = 3;
+                window_message1 = "Sorry, you already have enough quests.#Come back when you have finished some.";
+                window_speaker = other.sprite;
+                
+                event_user(0);
+            }
+            //Avatar
+            with(instance_create(0, 520, obj_window_base))
+            {
+                image_xscale = 3;
+                image_yscale = 3;
+                window_speaker = other.sprite;
+                
+                event_user(0);
+            }
+            
             obj_player.quest_assigned = false;
             global.quest_b = false;
         }
@@ -126,7 +165,7 @@ if(dist &lt; 50)
                     show_debug_message("Search quests run " + string(i) + ".");
                 }
                 
-                delete = i -1;
+                delete = i;
                 
                 //Quest already assigned -&gt; check if completed
                 if(search_quest == quest_name)
@@ -144,7 +183,27 @@ if(dist &lt; 50)
                     //Quest completed
                     if(search_item == quest_item_name)
                     {
-                        show_message(quest_success)
+                        //Text
+                        with(instance_create(200, 520, obj_window_base))
+                        {
+                            image_xscale = 12;
+                            image_yscale = 3;
+                            window_message1 = other.quest_success;
+                            window_speaker = other.sprite;
+                            
+                            event_user(0);
+                        }
+                        //Avatar
+                        with(instance_create(0, 520, obj_window_base))
+                        {
+                            image_xscale = 3;
+                            image_yscale = 3;
+                            window_speaker = other.sprite;
+                            
+                            event_user(0);
+                        }
+                        //show_message(quest_success)
+                        
                         show_debug_message("Quest completed: " + quest_name + ".");
                         
                         i -= 1;
@@ -166,7 +225,26 @@ if(dist &lt; 50)
                     //Quest uncompleted
                     else
                     {
-                       show_message(quest_uncompleted);
+                        //Text
+                        with(instance_create(200, 520, obj_window_base))
+                        {
+                            image_xscale = 12;
+                            image_yscale = 3;
+                            window_message1 = other.quest_uncompleted;
+                            window_speaker = other.sprite;
+                            
+                            event_user(0);
+                        }
+                        //Avatar
+                        with(instance_create(0, 520, obj_window_base))
+                        {
+                            image_xscale = 3;
+                            image_yscale = 3;
+                            window_speaker = other.sprite;
+                            
+                            event_user(0);
+                        }
+                        //show_message(quest_uncompleted);
                     }
                 }
                 //Quest will be assigned
@@ -193,7 +271,26 @@ if(dist &lt; 50)
         //No Quest can be given
         if(keyboard_check(ord("E")))
         {
-            show_message(quest_none);
+            //Text
+            with(instance_create(200, 520, obj_window_base))
+            {
+                image_xscale = 12;
+                image_yscale = 3;
+                window_message1 = other.quest_none;
+                window_speaker = other.sprite;
+                
+                event_user(0);
+            }
+            //Avatar
+            with(instance_create(0, 520, obj_window_base))
+            {
+                image_xscale = 3;
+                image_yscale = 3;
+                window_speaker = other.sprite;
+                
+                event_user(0);
+            }
+            //show_message(quest_none);
         }
     }
     

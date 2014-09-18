@@ -8,7 +8,7 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="0" enumb="0">
+    <event eventtype="4" ename="obj_player">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -25,16 +25,38 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Variables
+            <string>hit_angle = point_direction(x, y, other.phy_position_x, other.phy_position_y);
+hit_dx = lengthdir_x(10, hit_angle);
+hit_dy = -lengthdir_y(10, hit_angle);
 
-y_offset = 50;
-character = noone;
+with(instance_create(x, y, obj_damage_popup))
+{
+    damage_popup = other.damage;
+    character = obj_player.id;
+}
+
+with(other)
+{
+    hp -= other.damage;
+    physics_apply_impulse(x, y, other.hit_dx, other.hit_dy);
+
+    if(hp &lt;= 0)
+    {
+        //Handle game over
+        show_debug_message("You died in Equestrian Eclipse. You're bad at this game and you should feel bad!");
+          
+        //Respawn
+        show_message("You died. Bad player, I expected more from you! (You can even cheat, dumbass...)");
+    }
+}
+
+instance_destroy();
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="64">
+    <event eventtype="4" ename="obj_collision">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -51,21 +73,7 @@ character = noone;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Show number
-
-y_offset += 1;
-
-draw_set_font(font_popup);
-draw_set_color(c_red);
-draw_text((character.x -view_xview) *2, ((character.y -view_yview) *2) - y_offset, damage_popup);
-
-if(y_offset &gt; 90)
-{
-    instance_destroy();
-}
-
-draw_set_color(c_white);
-draw_set_font(font_eq);
+            <string>instance_destroy();
 </string>
           </argument>
         </arguments>

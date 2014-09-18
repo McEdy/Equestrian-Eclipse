@@ -65,7 +65,7 @@ global.quest_success = "";      //Success (1) or prohibition (2) of quest
 
 global.boss_battle_start = false; //Starts boss room script
 
-global.window_avatar = "spr_cobalt_right";
+global.window = false;
 
 /*
 //Switches game start

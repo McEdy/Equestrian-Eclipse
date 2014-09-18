@@ -162,6 +162,10 @@
         <object>objects\obj_bubble</object>
         <object>objects\obj_button</object>
         <object>objects\obj_button_quit</object>
+      </objects>
+      <objects name="Attack / Damage">
+        <object>objects\obj_attack_player</object>
+        <object>objects\obj_attack_enemy</object>
         <object>objects\obj_damage_popup</object>
       </objects>
     </objects>
@@ -206,8 +210,8 @@
       <object>objects\obj_shades</object>
       <object>objects\obj_flower_quest</object>
     </objects>
-    <objects name="Attacks">
-      <objects name="Magic">
+    <objects name="Spells">
+      <objects name="Player">
         <object>objects\obj_attack_fire</object>
         <object>objects\obj_attack_ice</object>
         <object>objects\obj_attack_lightning</object>
@@ -231,7 +235,7 @@
     <room>rooms\rm_cave_boss</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41896.7840176157</constant>
+    <constant name="GM_build_date">41900,7830328935</constant>
     <constant name="GM_version">'0.0.0.1'</constant>
   </constants>
   <help>

@@ -31,16 +31,18 @@ event_inherited();
 
 active           = true;
 hasquest         = true;
+sprite           = spr_cobalt_right;
+
 quest_name       = "Cobalt Shades";
 quest_active     = "quest_cobaltshades_on";
 quest_object1    = obj_shades;
 quest_item_name  = "Shades";
 
 
-quest_start = "Hey sexy. If you find my shades of cobalt we can find somewhere more private for me to give you your reward.";
+quest_start = "Hey sexy. If you find my shades of cobalt we can find#somewhere more private for me to give you your reward.";
 quest_success = "Great, you found my cobalt shades. Now, about your reward...";
-quest_uncompleted = "You haven't got my cobalt shades yet. Bring the ropes and chai...shades to me and I'll give you your reward.";
-quest_none = "Sorry, I don't have a quest for you at the moment. Check back at night. Screeeee!";
+quest_uncompleted = "You haven't got my cobalt shades yet. Bring the#ropes and chai...shades to me and I'll give you your reward.";
+quest_none = "Sorry, I don't have a quest for you at the moment.#Check back at night. Screeeee!";
 </string>
           </argument>
         </arguments>

@@ -59,7 +59,9 @@ alpha_big1 = 1;
 
 inv_show = false;
 inv_assigned = false;
-quests_show = false;
+quest_show = false;
+quest_show_prepare = false;
+
 quest_assigned = false;
 
 //Status
@@ -288,7 +290,8 @@ phy_fixed_rotation = true;
             <kind>1</kind>
             <string>///Handle Input
 
-if(keyboard_check(ord("A"))){
+if(keyboard_check(ord("A")))
+{
     sprite_index = global.character_left;
 
     if(keyboard_check(vk_shift) &amp;&amp; stamina &gt; 0)
@@ -307,7 +310,8 @@ if(keyboard_check(ord("D")))
 {
     sprite_index = global.character_right;
 
-    if(keyboard_check(vk_shift) &amp;&amp; stamina &gt; 0){
+    if(keyboard_check(vk_shift) &amp;&amp; stamina &gt; 0)
+    {
         phy_position_x += 3;
         stamina -= 2/60;
         status_running = true;
@@ -322,7 +326,8 @@ if(keyboard_check(ord("W")))
 {
     sprite_index = global.character_up;
 
-    if(keyboard_check(vk_shift) &amp;&amp; stamina &gt; 0){
+    if(keyboard_check(vk_shift) &amp;&amp; stamina &gt; 0)
+    {
         phy_position_y -= 3;
         stamina -= 2/60;
         status_running = true;
@@ -339,7 +344,8 @@ if(keyboard_check(ord("S")))
 {
     sprite_index = global.character_down;
 
-    if(keyboard_check(vk_shift) &amp;&amp; stamina &gt; 0){
+    if(keyboard_check(vk_shift) &amp;&amp; stamina &gt; 0)
+    {
         phy_position_y += 3;
         stamina -= 2/60;
         status_running = true;
@@ -351,9 +357,12 @@ if(keyboard_check(ord("S")))
 }
 
 //Stamina regeneration
-if(status_running == false &amp;&amp; stamina &lt; max_stamina)
+if(status_running == false)
+{
+if(stamina &lt; max_stamina)
 {
     stamina += 1/60;
+}
 }
 
 //Magic regeneration
@@ -363,7 +372,9 @@ if(magic &lt; max_magic)
 }
 
 //Inventory
-if(keyboard_check_released(vk_tab) &amp;&amp; inv_show_prepare)
+if(keyboard_check_released(vk_tab))
+{
+if(inv_show_prepare == true)
 {
     if(inv_show == false)
     {
@@ -373,6 +384,7 @@ if(keyboard_check_released(vk_tab) &amp;&amp; inv_show_prepare)
     {
         inv_show = false;
     }
+}
 }
 
 if(keyboard_check(vk_tab))
@@ -385,13 +397,28 @@ else
 }
 
 //Quest screen
+if(keyboard_check_released(ord("Q")))
+{
+if(quest_show_prepare == true)
+{
+    if(quest_show == false)
+    {
+        quest_show = true;
+    }
+    else
+    {
+        quest_show = false;
+    }
+}
+}
+
 if(keyboard_check(ord("Q")))
 {
-    quests_show = true;
+    quest_show_prepare = true;
 }
 else
 {
-    quests_show = false;
+    quest_show_prepare = false;
 }
 </string>
           </argument>
@@ -946,8 +973,12 @@ if(global.character_race == "unicorn")
 
 if(popup_test_timer = true)
 {
-    global.damage_popup = "Debugging ziggers!";
-    global.damage_popup1 = true;
+    with(instance_create(x, y, obj_damage_popup))
+    {
+        damage_popup = "Debug!";
+        character = other.id;
+    }
+    
     alarm[10] = 30;
     popup_test_timer = false;
     
@@ -991,7 +1022,7 @@ draw_healthbar(20, 40, 200, 50, stamina/max_stamina *100, c_black, c_blue, c_blu
 
 //Attack type (Debug)
 draw_set_halign(0);
-draw_text(20, 80, "attack_type: " + string(attack_type) + " - x popup: " + string((x -view_xview) *2) + " - y popup: " + string((y -view_yview) *2));
+draw_text(20, 80, "attack_type: " + string(attack_type));
 
 //Messages
 draw_set_alpha(alpha1);
@@ -1076,7 +1107,7 @@ if(inv_show == true)
 }
 
 //Quest screen
-if(quests_show == true)
+if(quest_show == true)
 {
     draw_set_alpha(0.3);
     draw_set_colour(c_black);
@@ -1154,47 +1185,29 @@ draw_line(phy_position_x, phy_position_y, mouse_x, mouse_y);
           <argument>
             <kind>1</kind>
             <string>///Test Windows
-
 //Text window
 
+//Text window
 with(instance_create(200, 520, obj_window_base))
 {
     image_xscale = 12;
     image_yscale = 3;
+    window_message1 = "Rape is just sex with more fun.";
     
     event_user(0);
 }
 
 //Avatar window
-
 with(instance_create(0, 520, obj_window_base))
 {
     image_xscale = 3;
     image_yscale = 3;
+    window_speaker = spr_cobalt_right;
     
     event_user(0);
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>obj_window_base.test_t = true;
+
+obj_window_base.test_t = true;
 </string>
           </argument>
         </arguments>

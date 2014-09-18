@@ -31,16 +31,18 @@ event_inherited();
 
 active           = true;
 hasquest         = true;
+sprite           = spr_applejack_right;
+
 quest_name       = "Flower";
 quest_active     = "quest_flower_on";
 quest_object1    = obj_flower_quest;
 quest_item_name  = "Flower";
 
 
-quest_start = "Hey, ya! I need a flower, because... ehm, 'cause why not! Don't question me, I'm just an NPC!";
+quest_start = "Hey, ya! I need a flower, because... ehm, 'cause why not!#Don't question me, I'm just an NPC!";
 quest_success = "Yeehaw, you found it! Your reward is... muh dick - suprise!";
-quest_uncompleted = "I still need that flower, which I definately cannot pick up. Please, would you be so kind to bring it to me?";
-quest_none = "Sorry partner, but I don't have other things for you to do, like killing Rarity.";
+quest_uncompleted = "I still need that flower, which I definately cannot pick up.#Please, would you be so kind to bring it to me?";
+quest_none = "Sorry partner, but I don't have other things for you to do,#like killing Rarity.";
 </string>
           </argument>
         </arguments>

@@ -31,6 +31,7 @@ event_inherited();
 
 active   = true;
 hasquest = false;
+sprite   = spr_derpy_right;
 
 quest_none = "I'm mentally retarded!";
 
