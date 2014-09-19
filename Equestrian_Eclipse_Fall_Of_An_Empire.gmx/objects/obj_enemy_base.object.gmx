@@ -76,7 +76,7 @@ hp = max_hp;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Damage popup
+            <string>///Damage popup [OUTDATED!]
 
 if(global.damage_popup2 == true)
 {

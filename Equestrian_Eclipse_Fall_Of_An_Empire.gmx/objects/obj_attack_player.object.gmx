@@ -50,8 +50,6 @@ with(other)
         
     }
 }
-
-instance_destroy();
 </string>
           </argument>
         </arguments>
@@ -94,8 +92,6 @@ with(other)
         instance_destroy();
     }
 }
-
-instance_destroy();
 </string>
           </argument>
         </arguments>

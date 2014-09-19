@@ -118,6 +118,8 @@
       <sprite>sprites\spr_bubble</sprite>
       <sprite>sprites\spr_cursor_normal</sprite>
       <sprite>sprites\spr_cursor_aiming</sprite>
+      <sprite>sprites\spr_pressE_1</sprite>
+      <sprite>sprites\spr_pressE_2</sprite>
     </sprites>
     <sprites name="Attacks">
       <sprites name="Player attacks">
@@ -174,13 +176,13 @@
         <object>objects\obj_player</object>
       </objects>
       <objects name="NPCs">
-        <object>objects\obj_NPC_cobalt</object>
-        <object>objects\obj_NPC_applejack</object>
-        <object>objects\obj_NPC_derpy</object>
-        <objects name="Base">
+        <objects name="Base 1">
+          <object>objects\obj_NPC_cobalt</object>
+          <object>objects\obj_NPC_applejack</object>
+          <object>objects\obj_NPC_derpy</object>
           <object>objects\obj_NPC_base1</object>
-          <object>objects\obj_pathguide</object>
         </objects>
+        <object>objects\obj_pathguide</object>
       </objects>
     </objects>
     <objects name="Enemies">
@@ -235,7 +237,7 @@
     <room>rooms\rm_cave_boss</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41900,7830328935</constant>
+    <constant name="GM_build_date">41901.869433125</constant>
     <constant name="GM_version">'0.0.0.1'</constant>
   </constants>
   <help>

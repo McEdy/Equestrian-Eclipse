@@ -34,7 +34,7 @@ search_quest = "";
 search_item = "";
 
 my_target = instance_create(x,y,obj_pathguide);
-my_path = -1
+my_path = -1;
 
 phy_fixed_rotation = true;
 </string>
@@ -376,8 +376,9 @@ if(my_path !=-1){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with(my_target){
-    path_start(other.my_path,1,1,true);
+            <string>with(my_target)
+{
+    path_start(other.my_path, 1, 1, true);
 }
 </string>
           </argument>

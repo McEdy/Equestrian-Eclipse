@@ -49,8 +49,6 @@ with(other)
         show_message("You died. Bad player, I expected more from you! (You can even cheat, dumbass...)");
     }
 }
-
-instance_destroy();
 </string>
           </argument>
         </arguments>
