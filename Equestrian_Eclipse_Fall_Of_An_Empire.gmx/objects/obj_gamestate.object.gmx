@@ -56,12 +56,13 @@ global.pickup_a = false;        //Object was picked up
 global.pickup_b = false;        //Pickup assigned -&gt; successful or unsuccessful
 global.pickup_success = 0;      //0: Not active; 1: Successful; 2: Unsuccessful
 global.pickup_target = "";      //Name of target object
+global.pickup_size = 1;         //Number of slots an item takes
 
 global.quest_1 = "";            //Quest name
 global.quest_a = false;         //Quest handeling request
 global.quest_b = false;         //Quest response
 global.quest_target = "";
-global.quest_success = "";      //Success (1) or prohibition (2) of quest
+global.quest_success = 0;      //Success (1) or prohibition (2) of quest
 
 global.boss_battle_start = false; //Starts boss room script
 

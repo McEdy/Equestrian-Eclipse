@@ -91,7 +91,9 @@ if(dist &lt; 50)
     if(hasquest == true)
     {
         //Quest start confirmed
-        if(global.quest_target == quest_name &amp;&amp; global.quest_success == 1 &amp;&amp; global.quest_b == true)
+        if(global.quest_success == 1)
+        {
+        if(global.quest_target == quest_name &amp;&amp; global.quest_b == true)
         {
             //Text
             with(instance_create(200, 520, obj_window_base))
@@ -123,11 +125,14 @@ if(dist &lt; 50)
             global.quest_b = false;
         
             quest_started = true;
-            obj_gamestate.switches[? quest_active] = true;
+            obj_gamestate.switches[quest_active] = true;
+        }
         }
             
         //Quest start prohibited
-        if(global.quest_target == quest_name &amp;&amp; global.quest_success == 2 &amp;&amp; global.quest_b == true)
+        if(global.quest_success == 2)
+        {
+        if(global.quest_target == quest_name &amp;&amp; global.quest_b == true)
         {
             //Text
             with(instance_create(200, 520, obj_window_base))
@@ -152,11 +157,12 @@ if(dist &lt; 50)
             obj_player.quest_assigned = false;
             global.quest_b = false;
         }
-    
+        }
+        
         if(keyboard_check(ord("E")))
         {
             if(quest_started == false)
-            {
+            {   
                 var i = 0;
                 while(search_quest != quest_name &amp;&amp; i &lt; 1) //Runs = 5
                 {
@@ -219,7 +225,7 @@ if(dist &lt; 50)
                         global.message1 = "Quest completed: " + quest_name + ".";
                         global.message2 = true;
                             
-                        obj_gamestate.switches[? quest_active] = false;
+                        obj_gamestate.switches[quest_active] = false;
                         hasquest = false;
                     }
                     //Quest uncompleted
