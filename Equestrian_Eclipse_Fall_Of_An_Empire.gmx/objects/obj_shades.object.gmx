@@ -91,8 +91,9 @@ dist_interact = point_distance(phy_position_x, phy_position_y, obj_player.phy_po
         {
             global.pickup1 = "Shades";
             global.pickup2 = "Cobalt's shades.";
-            global.pickup3 = "3";
-            global.pickup4 = "0";
+            global.pickup3 = 3;
+            global.pickup4 = 0;
+            global.pickup5 = spr_shades;
             global.pickup_a = true;
             global.pickup_size = 2;
             show_debug_message("Item pickup preparation.");

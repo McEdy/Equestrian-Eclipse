@@ -51,6 +51,7 @@ global.pickup1 = "";
 global.pickup2 = "";
 global.pickup3 = "";
 global.pickup4 = "";
+global.pickup5 = "";
 
 global.pickup_a = false;        //Object was picked up
 global.pickup_b = false;        //Pickup assigned -&gt; successful or unsuccessful

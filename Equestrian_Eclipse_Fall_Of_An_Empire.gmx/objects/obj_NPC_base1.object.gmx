@@ -218,6 +218,7 @@ if(dist &lt; 50)
                         global.items[i,1] = "";
                         global.items[i,2] = "";
                         global.items[i,3] = "";
+                        global.items[i,4] = spr_none;
                         show_debug_message("Erasing item out of inventory successful.");
                         
                         show_message("Quest slot [" + string(delete) + "] selected for deletion.");
