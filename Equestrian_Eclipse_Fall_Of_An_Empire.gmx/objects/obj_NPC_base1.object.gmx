@@ -259,10 +259,16 @@ if(dist &lt; 50)
                 {
                     show_debug_message("Quest not found in quest database.");
                     
-                    if(global.quest_a == false &amp;&amp; global.quest_b == false)
+                    if(global.quest_b == false)
                     {
                         global.quest1 = quest_name;
-                        global.quest_a = true;
+                        
+                        with(obj_player)
+                        { 
+                            inv_quest = 1;
+                            event_user(0);
+                        }
+                        
                         show_debug_message("Quest setup preparation.");
                     }
                 }
