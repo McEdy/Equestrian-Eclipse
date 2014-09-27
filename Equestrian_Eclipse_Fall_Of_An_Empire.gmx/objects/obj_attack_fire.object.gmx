@@ -28,6 +28,39 @@
             <string>alarm[0] = 30;
 force = 30;
 damage = 4;
+status_effect = "fire"
+status_effect_damage = 2;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>with(other)
+{
+    hp -= other.status_effect_damage;
+
+    if(hp &lt;= 0)
+    {
+        instance_destroy();
+    }
+}
 </string>
           </argument>
         </arguments>
