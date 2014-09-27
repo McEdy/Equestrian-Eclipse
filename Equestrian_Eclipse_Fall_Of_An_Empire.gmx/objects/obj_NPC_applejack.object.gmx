@@ -34,7 +34,6 @@ hasquest         = true;
 sprite           = spr_applejack_right;
 
 quest_name       = "Flower";
-quest_active     = "quest_flower_on";
 quest_object1    = obj_flower_quest;
 quest_item_name  = "Flower";
 

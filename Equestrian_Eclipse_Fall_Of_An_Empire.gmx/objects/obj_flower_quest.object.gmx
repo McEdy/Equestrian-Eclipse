@@ -53,12 +53,13 @@ active = false;
 
 image_speed = 0.013 + random(0.003);
 active = false;
+search_quest = "";
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="5" enumb="69">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -79,57 +80,59 @@ active = false;
 
 dist_interact = point_distance(phy_position_x, phy_position_y, obj_player.phy_position_x, obj_player.phy_position_y);
 
-//if(obj_gamestate.switches[? "quest_cobaltshades_on"] == true)
-//{
-    if(dist_interact &lt; 50)
+if(dist_interact &lt; 50)
+{
+    var i = 0;
+    while(search_quest != "Flower" &amp;&amp; i &lt; 1) //Runs = 5
     {
-        if(keyboard_check(ord("E")))
+        search_quest = global.quests[i,0];
+        i += 1;
+        //show_debug_message("Search quests run " + string(i) + ".");
+    }
+    
+    if(search_quest == "Flower")
+    {
+    if(global.pickup_a == false &amp;&amp; global.pickup_b == false)
+    {
+        global.pickup1 = "Flower";
+        global.pickup2 = "A normal flower.";
+        global.pickup3 = 3;
+        global.pickup4 = 0;
+        global.pickup5 = spr_flower_blue;
+        global.pickup_size = 2;
+        
+        with(obj_player)
         {
-        if(obj_gamestate.switches["quest_flower_on"] == true)
-        {
-        if(global.pickup_a == false &amp;&amp; global.pickup_b == false)
-        {
-            global.pickup1 = "Flower";
-            global.pickup2 = "A common flower.";
-            global.pickup3 = 3;
-            global.pickup4 = 0; 
-            global.pickup5 = spr_flower_blue;
-            global.pickup_size = 1;
-            
-            with(obj_player)
-            {
-                inv_quest = 0;
-                event_user(0);
-            }
-            
-            show_debug_message("Item pickup preparation.");
-        }
-        }
+            inv_quest = 0;
+            event_user(0);
         }
         
-        if(global.pickup_target == "Flower" &amp;&amp; global.pickup_success == 1)
-        {
-            global.message1 = "Item picked up: Flower.";
-            global.message2 = true;
-            global.pickup_success = 0;
-            global.pickup_b = false;
-            obj_player.inv_assigned = false;
-            show_debug_message("Item pickup success.");
-            
-            instance_destroy();
-        }
-    
-        if(global.pickup_target == "Flower" &amp;&amp; global.pickup_success == 2)
-        {
-            global.message1 = "Item pickup failed due to missing space!";
-            global.message2 = true;
-            global.pickup_success = 0;
-            global.pickup_b = false;
-            obj_player.inv_assigned = false;
-            show_debug_message("Item pickup unsuccessful.");
-        }
+        show_debug_message("Item pickup preparation.");
     }
-//}
+    }
+}
+        
+if(global.pickup_target == "Flower" &amp;&amp; global.pickup_success == 1)
+{
+    global.message1 = "Item picked up: Flower.";
+    global.message2 = true;
+    global.pickup_success = 0;
+    global.pickup_b = false;
+    obj_player.inv_assigned = false;
+    show_debug_message("Item pickup success.");
+    
+    instance_destroy();
+}
+
+if(global.pickup_target == "Flower" &amp;&amp; global.pickup_success == 2)
+{
+    global.message1 = "Item pickup failed due to missing space!";
+    global.message2 = true;
+    global.pickup_success = 0;
+    global.pickup_b = false;
+    obj_player.inv_assigned = false;
+    show_debug_message("Item pickup unsuccessful.");
+}
 </string>
           </argument>
         </arguments>

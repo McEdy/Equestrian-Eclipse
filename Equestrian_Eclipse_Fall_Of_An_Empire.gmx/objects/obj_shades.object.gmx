@@ -53,12 +53,13 @@ active = false;
             <string>///Variables
 
 active = false;
+search_quest = "";
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="5" enumb="69">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -79,57 +80,59 @@ active = false;
 
 dist_interact = point_distance(phy_position_x, phy_position_y, obj_player.phy_position_x, obj_player.phy_position_y);
 
-//if(obj_gamestate.switches[? "quest_cobaltshades_on"] == true)
-//{
-    if(dist_interact &lt; 50)
+if(dist_interact &lt; 50)
+{
+    var i = 0;
+    while(search_quest != "Cobalt Shades" &amp;&amp; i &lt; 1) //Runs = 5
     {
-        if(keyboard_check(ord("E")))
-        {
-        if(obj_gamestate.switches["quest_cobaltshades_on"] == true)
-        {
-        if(global.pickup_a == false &amp;&amp; global.pickup_b == false)
-        {
-            global.pickup1 = "Shades";
-            global.pickup2 = "Cobalt's shades.";
-            global.pickup3 = 3;
-            global.pickup4 = 0;
-            global.pickup5 = spr_shades;
-            global.pickup_size = 2;
+        search_quest = global.quests[i,0];
+        i += 1;
+        //show_debug_message("Search quests run " + string(i) + ".");
+    }
     
-            with(obj_player)
-            {
-                inv_quest = 0;
-                event_user(0);
-            }
-            
-            show_debug_message("Item pickup preparation.");
-        }
-        }
+    if(search_quest == "Cobalt Shades")
+    {
+    if(global.pickup_a == false &amp;&amp; global.pickup_b == false)
+    {
+        global.pickup1 = "Shades";
+        global.pickup2 = "Cobalt's shades.";
+        global.pickup3 = 3;
+        global.pickup4 = 0;
+        global.pickup5 = spr_shades;
+        global.pickup_size = 2;
+        
+        with(obj_player)
+        {
+            inv_quest = 0;
+            event_user(0);
         }
         
-        if(global.pickup_target == "Shades" &amp;&amp; global.pickup_success == 1)
-        {
-            global.message1 = "Item picked up: Shades.";
-            global.message2 = true;
-            global.pickup_success = 0;
-            global.pickup_b = false;
-            obj_player.inv_assigned = false;
-            show_debug_message("Item pickup success.");
-            
-            instance_destroy();
-        }
-    
-        if(global.pickup_target == "Shades" &amp;&amp; global.pickup_success == 2)
-        {
-            global.message1 = "Item pickup failed due to missing space!";
-            global.message2 = true;
-            global.pickup_success = 0;
-            global.pickup_b = false;
-            obj_player.inv_assigned = false;
-            show_debug_message("Item pickup unsuccessful.");
-        }
+        show_debug_message("Item pickup preparation.");
     }
-//}
+    }
+}
+        
+if(global.pickup_target == "Shades" &amp;&amp; global.pickup_success == 1)
+{
+    global.message1 = "Item picked up: Shades.";
+    global.message2 = true;
+    global.pickup_success = 0;
+    global.pickup_b = false;
+    obj_player.inv_assigned = false;
+    show_debug_message("Item pickup success.");
+    
+    instance_destroy();
+}
+
+if(global.pickup_target == "Shades" &amp;&amp; global.pickup_success == 2)
+{
+    global.message1 = "Item pickup failed due to missing space!";
+    global.message2 = true;
+    global.pickup_success = 0;
+    global.pickup_b = false;
+    obj_player.inv_assigned = false;
+    show_debug_message("Item pickup unsuccessful.");
+}
 </string>
           </argument>
         </arguments>

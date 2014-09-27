@@ -34,7 +34,6 @@ hasquest         = true;
 sprite           = spr_cobalt_right;
 
 quest_name       = "Cobalt Shades";
-quest_active     = "quest_cobaltshades_on";
 quest_object1    = obj_shades;
 quest_item_name  = "Shades";
 

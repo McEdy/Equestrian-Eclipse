@@ -29,6 +29,7 @@
 
 y_offset = 50;
 character = noone;
+colour = c_red;
 </string>
           </argument>
         </arguments>
@@ -55,9 +56,20 @@ character = noone;
 
 y_offset += 1;
 
+if(instance_exists(character) == true)
+{
+    x = character.x;
+    y = character.y;
+}
+else
+{
+    //x = x;
+    //y = y;
+}
+
 draw_set_font(font_popup);
-draw_set_color(c_red);
-draw_text((character.x -view_xview) *2, ((character.y -view_yview) *2) - y_offset, damage_popup);
+draw_set_color(colour);
+draw_text((x -view_xview) *2, ((y -view_yview) *2) - y_offset, damage_popup);
 
 if(y_offset &gt; 90)
 {

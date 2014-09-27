@@ -27,31 +27,6 @@
             <kind>1</kind>
             <string>///Input Logic + Pos
 
-/*if(room == rm_test)
-{
-    x = view_xview[0]+610
-    y = view_yview[0]+30
-}
-
-if(room == rm_cave_boss)
-{
-    x = view_xview[0]+610
-    y = view_yview[0]+30
-}
-
-if(room == rm_everfree_lv1_1)
-{
-    x = view_xview[0]+610
-    y = view_yview[0]+30
-}
-
-if(room == rm_forest)
-{
-    x = view_xview[0]+610
-    y = view_yview[0]+30
-}
-*/
-
 if(room != rm_manemenu)
 {
     instance_destroy();
@@ -106,7 +81,7 @@ else
             <kind>1</kind>
             <string>///Draw Text
 
-draw_self()
+draw_self();
 </string>
           </argument>
         </arguments>

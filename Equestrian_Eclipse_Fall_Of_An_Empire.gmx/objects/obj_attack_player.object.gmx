@@ -35,6 +35,7 @@ with(instance_create(x, y, obj_damage_popup))
 {
     damage_popup = other.damage;
     character = obj_fluttertree.id;
+    colour = c_orange;
 }
 
 with(other)
@@ -79,7 +80,8 @@ hit_dy = -lengthdir_y(force, hit_angle);
 with(instance_create(x, y, obj_damage_popup))
 {
     damage_popup = other.damage;
-    character = obj_player.id;
+    character = instance_nearest(x, y, obj_enemy_base);
+    colour = c_orange;
 }
 
 with(other)

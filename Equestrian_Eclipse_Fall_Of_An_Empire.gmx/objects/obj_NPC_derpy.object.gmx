@@ -29,6 +29,7 @@
 
 event_inherited();
 
+notme = true;
 active   = true;
 hasquest = false;
 sprite   = spr_derpy_right;

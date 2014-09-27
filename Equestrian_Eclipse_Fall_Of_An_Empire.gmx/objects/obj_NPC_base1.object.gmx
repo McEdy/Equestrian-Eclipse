@@ -125,7 +125,6 @@ if(dist &lt; 50)
             global.quest_b = false;
         
             quest_started = true;
-            obj_gamestate.switches[quest_active] = true;
         }
         }
             
@@ -158,155 +157,7 @@ if(dist &lt; 50)
             global.quest_b = false;
         }
         }
-        
-        if(keyboard_check(ord("E")))
-        {
-            if(quest_started == false)
-            {   
-                var i = 0;
-                while(search_quest != quest_name &amp;&amp; i &lt; 1) //Runs = 5
-                {
-                    search_quest = global.quests[i,0];
-                    i += 1;
-                    show_debug_message("Search quests run " + string(i) + ".");
-                }
-                
-                delete = i;
-                
-                //Quest already assigned -&gt; check if completed
-                if(search_quest == quest_name)
-                {
-                    show_debug_message("Quest found in quest database.");
-                    
-                    i = 0;
-                    while(search_item != quest_item_name &amp;&amp; i &lt; 10) //Runs = 10
-                    {
-                        search_item = global.items[i,0];
-                        i += 1;
-                        show_debug_message("Search inventory run " + string(i) + ".");
-                    }
-                    
-                    //Quest completed
-                    if(search_item == quest_item_name)
-                    {
-                        //Text
-                        with(instance_create(200, 520, obj_window_base))
-                        {
-                            image_xscale = 12;
-                            image_yscale = 3;
-                            window_message1 = other.quest_success;
-                            window_speaker = other.sprite;
-                            
-                            event_user(0);
-                        }
-                        //Avatar
-                        with(instance_create(0, 520, obj_window_base))
-                        {
-                            image_xscale = 3;
-                            image_yscale = 3;
-                            window_speaker = other.sprite;
-                            
-                            event_user(0);
-                        }
-                        //show_message(quest_success)
-                        
-                        show_debug_message("Quest completed: " + quest_name + ".");
-                        
-                        i -= 1;
-                        show_message("Item slot [" + string(i) + "] selected for deletion.");
-                        global.items[i,0] = "";
-                        global.items[i,1] = "";
-                        global.items[i,2] = "";
-                        global.items[i,3] = "";
-                        global.items[i,4] = spr_none;
-                        show_debug_message("Erasing item out of inventory successful.");
-                        
-                        show_message("Quest slot [" + string(delete) + "] selected for deletion.");
-                        global.quests[delete,0] = "";
-                        global.message1 = "Quest completed: " + quest_name + ".";
-                        global.message2 = true;
-                            
-                        obj_gamestate.switches[quest_active] = false;
-                        hasquest = false;
-                    }
-                    //Quest uncompleted
-                    else
-                    {
-                        //Text
-                        with(instance_create(200, 520, obj_window_base))
-                        {
-                            image_xscale = 12;
-                            image_yscale = 3;
-                            window_message1 = other.quest_uncompleted;
-                            window_speaker = other.sprite;
-                            
-                            event_user(0);
-                        }
-                        //Avatar
-                        with(instance_create(0, 520, obj_window_base))
-                        {
-                            image_xscale = 3;
-                            image_yscale = 3;
-                            window_speaker = other.sprite;
-                            
-                            event_user(0);
-                        }
-                        //show_message(quest_uncompleted);
-                    }
-                }
-                //Quest will be assigned
-                else
-                {
-                    show_debug_message("Quest not found in quest database.");
-                    
-                    if(global.quest_b == false)
-                    {
-                        global.quest1 = quest_name;
-                        
-                        with(obj_player)
-                        { 
-                            inv_quest = 1;
-                            event_user(0);
-                        }
-                        
-                        show_debug_message("Quest setup preparation.");
-                    }
-                }
-            }
-            else
-            {
-                quest_started = false;
-            }
-        }
     }
-    else
-    {
-        //No Quest can be given
-        if(keyboard_check(ord("E")))
-        {
-            //Text
-            with(instance_create(200, 520, obj_window_base))
-            {
-                image_xscale = 12;
-                image_yscale = 3;
-                window_message1 = other.quest_none;
-                window_speaker = other.sprite;
-                
-                event_user(0);
-            }
-            //Avatar
-            with(instance_create(0, 520, obj_window_base))
-            {
-                image_xscale = 3;
-                image_yscale = 3;
-                window_speaker = other.sprite;
-                
-                event_user(0);
-            }
-            //show_message(quest_none);
-        }
-    }
-    
 }
 </string>
           </argument>
@@ -367,6 +218,177 @@ if(my_path !=-1){
           <argument>
             <kind>1</kind>
             <string>///Collide With
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="5" enumb="69">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Interaction
+
+var dist = point_distance(obj_player.phy_position_x, obj_player.phy_position_y,phy_position_x,phy_position_y);
+
+if(dist &lt; 50)
+{
+    if(hasquest == true)
+    {
+        if(quest_started == false)
+        {   
+            var i = 0;
+            while(search_quest != quest_name &amp;&amp; i &lt; 1) //Runs = 5
+            {
+                search_quest = global.quests[i,0];
+                i += 1;
+                show_debug_message("Search quests run " + string(i) + ".");
+            }
+            
+            delete = i;
+            
+            //Quest already assigned -&gt; check if completed
+            if(search_quest == quest_name)
+            {
+                show_debug_message("Quest found in quest database.");
+                
+                i = 0;
+                while(search_item != quest_item_name &amp;&amp; i &lt; 25) //Runs = 25
+                {
+                    search_item = global.items[i,0];
+                    i += 1;
+                    show_debug_message("Search inventory run " + string(i) + ".");
+                }
+                
+                //Quest completed
+                if(search_item == quest_item_name)
+                {
+                    //Text
+                    with(instance_create(200, 520, obj_window_base))
+                    {
+                        image_xscale = 12;
+                        image_yscale = 3;
+                        window_message1 = other.quest_success;
+                        window_speaker = other.sprite;
+                        
+                        event_user(0);
+                    }
+                    //Avatar
+                    with(instance_create(0, 520, obj_window_base))
+                    {
+                        image_xscale = 3;
+                        image_yscale = 3;
+                        window_speaker = other.sprite;
+                        
+                        event_user(0);
+                    }
+                    //show_message(quest_success)
+                    
+                    show_debug_message("Quest completed: " + quest_name + ".");
+                    
+                    i -= 1;
+                    show_message("Item slot [" + string(i) + "] selected for deletion.");
+                    global.items[i,0] = "";
+                    global.items[i,1] = "";
+                    global.items[i,2] = "";
+                    global.items[i,3] = "";
+                    global.items[i,4] = spr_none;
+                    show_debug_message("Erasing item out of inventory successful.");
+                    
+                    show_message("Quest slot [" + string(delete) + "] selected for deletion.");
+                    global.quests[delete,0] = "";
+                    global.message1 = "Quest completed: " + quest_name + ".";
+                    global.message2 = true;
+                      
+                    hasquest = false;
+                }
+                //Quest uncompleted
+                else
+                {
+                    //Text
+                    with(instance_create(200, 520, obj_window_base))
+                    {
+                        image_xscale = 12;
+                        image_yscale = 3;
+                        window_message1 = other.quest_uncompleted;
+                        window_speaker = other.sprite;
+                        
+                        event_user(0);
+                    }
+                    //Avatar
+                    with(instance_create(0, 520, obj_window_base))
+                    {
+                        image_xscale = 3;
+                        image_yscale = 3;
+                        window_speaker = other.sprite;
+                        
+                        event_user(0);
+                    }
+                    //show_message(quest_uncompleted);
+                }
+            }
+            //Quest will be assigned
+            else
+            {
+                show_debug_message("Quest not found in quest database.");
+                
+                if(global.quest_b == false)
+                {
+                    global.quest1 = quest_name;
+                    
+                    with(obj_player)
+                    { 
+                        inv_quest = 1;
+                        event_user(0);
+                    }
+                    
+                    show_debug_message("Quest setup preparation.");
+                }
+            }
+        }
+        else
+        {
+            quest_started = false;
+        }
+    }
+    else
+    {
+        //No Quest can be given
+        //Text
+        with(instance_create(200, 520, obj_window_base))
+        {
+            image_xscale = 12;
+            image_yscale = 3;
+            window_message1 = other.quest_none;
+            window_speaker = other.sprite;
+            
+            event_user(0);
+        }
+        //Avatar
+        with(instance_create(0, 520, obj_window_base))
+        {
+            image_xscale = 3;
+            image_yscale = 3;
+            window_speaker = other.sprite;
+            
+            event_user(0);
+        }
+    //show_message(quest_none);
+    }
+}
 </string>
           </argument>
         </arguments>
