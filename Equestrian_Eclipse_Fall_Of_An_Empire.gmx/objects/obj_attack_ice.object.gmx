@@ -28,6 +28,7 @@
             <string>alarm[0] = 50;
 force = 30;
 damage = 3;
+status_effect_damage = 2;
 </string>
           </argument>
         </arguments>
