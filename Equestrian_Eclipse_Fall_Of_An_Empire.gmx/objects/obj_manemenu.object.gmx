@@ -35,7 +35,7 @@ with(instance_create(view_wport[0]/2+200,128,obj_button))
     pony_left   = spr_applejack_left
     pony_up     = spr_applejack_up
     pony_down   = spr_applejack_down
-    name        = "Apfeljack"
+    name        = "Apple"
     race        = "earthpony"
 }
 
@@ -81,7 +81,7 @@ with(instance_create(view_wport[0]/2-200,128,obj_button))
     pony_left   = spr_pinkie_left
     pony_up     = spr_pinkie_up
     pony_down   = spr_pinkie_down
-    name        = "Ponka"
+    name        = "Ponka Po"
     race        = "earthpony"
 }
 

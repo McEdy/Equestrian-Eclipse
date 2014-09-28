@@ -28,6 +28,10 @@
             <string>alarm[0] = 40;
 force = 80;
 damage = 2;
+status_effect_0 = false;
+status_effect_1 = false;
+status_effect_2 = false;
+status_effect_3 = true;
 status_effect_damage = 1;
 </string>
           </argument>

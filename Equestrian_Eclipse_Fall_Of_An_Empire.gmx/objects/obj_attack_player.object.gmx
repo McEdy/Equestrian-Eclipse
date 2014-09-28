@@ -145,10 +145,41 @@ with(other)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//if status_effect = "fire"
+            <string>///Handle status effect type &amp; begin alarm loop
+
+//No status effect
+
+if(status_effect_0 = true)
+{
+show_debug_message("No status effect.");
+}
+
+//Status effect type 1
+
+if(status_effect_1 = true)
 {
     with(other)
     alarm[2] = 60;
+    counter = 1;
+    show_debug_message("alarm has been activated")
+}
+
+//Status effect type 2
+
+if(status_effect_2 = true)
+{
+    with(other)
+    alarm[3] = 60;
+    counter = 1;
+    show_debug_message("alarm has been activated")
+}
+
+//Status effect type 3
+
+if(status_effect_3 = true)
+{
+    with(other)
+    alarm[4] = 60;
     counter = 1;
     show_debug_message("alarm has been activated")
 }
