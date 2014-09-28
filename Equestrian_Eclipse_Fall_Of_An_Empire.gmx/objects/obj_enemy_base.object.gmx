@@ -87,7 +87,15 @@ counter_3 = 0;
             <kind>1</kind>
             <string>status_effect_3 = true;
 
-hp -= 1;
+damage = 1;
+hp -= damage;
+
+with(instance_create(x, y, obj_damage_popup))
+{
+    damage_popup = other.damage;
+    character = instance_nearest(x, y, obj_enemy_base);
+    colour = c_orange;
+}
 
 show_debug_message("Status effect 3 initiated.");
 
@@ -123,7 +131,15 @@ if(hp &lt;= 0)
             <kind>1</kind>
             <string>status_effect_2 = true;
 
-hp -= 1;
+damage = 1;
+hp -= damage;
+
+with(instance_create(x, y, obj_damage_popup))
+{
+    damage_popup = other.damage;
+    character = instance_nearest(x, y, obj_enemy_base);
+    colour = c_orange;
+}
 
 show_debug_message("Status effect 2 initiated.");
 
@@ -159,7 +175,15 @@ if(hp &lt;= 0)
             <kind>1</kind>
             <string>status_effect_1 = true;
 
-hp -= 1;
+damage = 1;
+hp -= damage;
+
+with(instance_create(x, y, obj_damage_popup))
+{
+    damage_popup = other.damage;
+    character = instance_nearest(x, y, obj_enemy_base);
+    colour = c_orange;
+}
 
 show_debug_message("Status effect 1 initiated.");
 
