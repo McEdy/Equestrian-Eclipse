@@ -61,6 +61,9 @@ inv_display = 0;        //Slot number for display
 inv_quest = 0;          //Choice if inventory or quest assignment (0 = inv, other = quest);
 inv_show = false;
 inv_assigned = false;
+inv_slot_selected = false;
+inv_preview_x = 0;
+inv_preview_y = 0;
 quest_show = false;
 quest_show_prepare = false;
 
@@ -387,11 +390,13 @@ if(inv_show_prepare == true)
     if(inv_show == false)
     {
         inv_show = true;
+        inv_slot_selected = false;
         cursor_sprite = spr_cursor_normal;
     }
     else
     {
         inv_show = false;
+        inv_slot_selected = false;
         cursor_sprite = spr_cursor_aiming;
     }
 }
@@ -885,153 +890,245 @@ if(global.character_race == "unicorn")
 if(inv_show == true)
 {
     //Column 1
-    if(640+70 &lt;= ((mouse_x -view_xview) *2) &amp;&amp; ((mouse_x -view_xview) *2) &lt;= 640+70+100)
+    if(640 +70 &lt;= ((mouse_x -view_xview) *2) &amp;&amp; ((mouse_x -view_xview) *2) &lt;= 640 +70+100)
     {
         //Slot 0
         if(150 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 250)
         {
             inv_display = 0;
+            inv_slot_selected = true;
+            inv_preview_x = 640 +70;
+            inv_preview_y = 150;
         }
         //Slot 1
         if(250 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 350)
         {
             inv_display = 1;
+            inv_slot_selected = true;
+            inv_preview_x = 640 +70;
+            inv_preview_y = 250;
         }
         //Slot 2
         if(350 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 450)
         {
             inv_display = 2;
+            inv_slot_selected = true;
+            inv_preview_x = 640 +70;
+            inv_preview_y = 350;
         }
         //Slot 3
         if(450 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 550)
         {
             inv_display = 3;
+            inv_slot_selected = true;
+            inv_preview_x = 640 +70;
+            inv_preview_y = 450;
         }
         //Slot 4
         if(550 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 650)
         {
             inv_display = 4;
+            inv_slot_selected = true;
+            inv_preview_x = 640 +70;
+            inv_preview_y = 550;
         }
     }
     
     //Column 2
-    if(640+70+100 &lt;= ((mouse_x -view_xview) *2) &amp;&amp; ((mouse_x -view_xview) *2) &lt;= 640+70+200)
+    if(740 +70 &lt;= ((mouse_x -view_xview) *2) &amp;&amp; ((mouse_x -view_xview) *2) &lt;= 640 +70+200)
     {
         //Slot 5
         if(150 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 250)
         {
             inv_display = 5;
+            inv_slot_selected = true;
+            inv_preview_x = 740 +70;
+            inv_preview_y = 150;
         }
         //Slot 6
         if(250 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 350)
         {
             inv_display = 6;
+            inv_slot_selected = true;
+            inv_preview_x = 740 +70;
+            inv_preview_y = 250;
         }
         //Slot 7
         if(350 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 450)
         {
             inv_display = 7;
+            inv_slot_selected = true;
+            inv_preview_x = 740 +70;
+            inv_preview_y = 350;
         }
         //Slot 8
         if(450 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 550)
         {
             inv_display = 8;
+            inv_slot_selected = true;
+            inv_preview_x = 740 +70;
+            inv_preview_y = 450;
         }
         //Slot 9
         if(550 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 650)
         {
             inv_display = 9;
+            inv_slot_selected = true;
+            inv_preview_x = 740 +70;
+            inv_preview_y = 550;
         }
     }
     
     //Column 3
-    if(640+70+200 &lt;= ((mouse_x -view_xview) *2) &amp;&amp; ((mouse_x -view_xview) *2) &lt;= 640+70+300)
+    if(840 +70 &lt;= ((mouse_x -view_xview) *2) &amp;&amp; ((mouse_x -view_xview) *2) &lt;= 640 +70+300)
     {
         //Slot 10
         if(150 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 250)
         {
             inv_display = 10;
+            inv_slot_selected = true;
+            inv_preview_x = 840 +70;
+            inv_preview_y = 150;
         }
         //Slot 11
         if(250 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 350)
         {
             inv_display = 11;
+            inv_slot_selected = true;
+            inv_preview_x = 840 +70;
+            inv_preview_y = 250;
         }
         //Slot 12
         if(350 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 450)
         {
             inv_display = 12;
+            inv_slot_selected = true;
+            inv_preview_x = 840 +70;
+            inv_preview_y = 350;
         }
         //Slot 13
         if(450 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 550)
         {
             inv_display = 13;
+            inv_slot_selected = true;
+            inv_preview_x = 840 +70;
+            inv_preview_y = 450;
         }
         //Slot 14
         if(550 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 650)
         {
             inv_display = 14;
+            inv_slot_selected = true;
+            inv_preview_x = 840 +70;
+            inv_preview_y = 550;
         }
     }
     
     //Column 4
-    if(640+70+300 &lt;= ((mouse_x -view_xview) *2) &amp;&amp; ((mouse_x -view_xview) *2) &lt;= 640+70+400)
+    if(940 +70 &lt;= ((mouse_x -view_xview) *2) &amp;&amp; ((mouse_x -view_xview) *2) &lt;= 640 +70+400)
     {
         //Slot 15
         if(150 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 250)
         {
             inv_display = 15;
+            inv_slot_selected = true;
+            inv_preview_x = 940 +70;
+            inv_preview_y = 150;
         }
         //Slot 16
         if(250 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 350)
         {
             inv_display = 16;
+            inv_slot_selected = true;
+            inv_preview_x = 940 +70;
+            inv_preview_y = 250;
         }
         //Slot 17
         if(350 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 450)
         {
             inv_display = 17;
+            inv_slot_selected = true;
+            inv_preview_x = 940 +70;
+            inv_preview_y = 350;
         }
         //Slot 18
         if(450 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 550)
         {
             inv_display = 18;
+            inv_slot_selected = true;
+            inv_preview_x = 940 +70;
+            inv_preview_y = 450;
         }
         //Slot 19
         if(550 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 650)
         {
             inv_display = 19;
+            inv_slot_selected = true;
+            inv_preview_x = 940 +70;
+            inv_preview_y = 550;
         }
     }
     
     //Column 5
-    if(640+70+400 &lt;= ((mouse_x -view_xview) *2) &amp;&amp; ((mouse_x -view_xview) *2) &lt;= 640+70+500)
+    if(1040 +70 &lt;= ((mouse_x -view_xview) *2) &amp;&amp; ((mouse_x -view_xview) *2) &lt;= 640 +70+500)
     {
         //Slot 20
         if(150 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 250)
         {
             inv_display = 20;
+            inv_slot_selected = true;
+            inv_preview_x = 1040 +70;
+            inv_preview_y = 150;
         }
         //Slot 21
         if(250 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 350)
         {
             inv_display = 21;
+            inv_slot_selected = true;
+            inv_preview_x = 1040 +70;
+            inv_preview_y = 250;
         }
         //Slot 22
         if(350 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 450)
         {
             inv_display = 22;
+            inv_slot_selected = true;
+            inv_preview_x = 1040 +70;
+            inv_preview_y = 350;
         }
         //Slot 23
         if(450 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 550)
         {
             inv_display = 23;
+            inv_slot_selected = true;
+            inv_preview_x = 1040 +70;
+            inv_preview_y = 450;
         }
         //Slot 24
         if(550 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 650)
         {
             inv_display = 24;
+            inv_slot_selected = true;
+            inv_preview_x = 1040 +70;
+            inv_preview_y = 550;
         }
+    }
+    
+    if(inv_slot_selected == true)
+    {
+    if(640 +68-100 &lt;= ((mouse_x -view_xview) *2) &amp;&amp; ((mouse_x -view_xview) *2) &lt;= 640 +68)
+    {
+    if(720 -70-100 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 720 -70)
+    {
+        global.items[inv_display,0] = "";
+        global.items[inv_display,1] = "";
+        global.items[inv_display,2] = "";
+        global.items[inv_display,3] = "";
+        global.items[inv_display,4] = spr_none;
+        
+        inv_slot_selected = false;
+    }
+    }
     }
 }
 </string>
@@ -1390,45 +1487,59 @@ if(quest_show == false)
     draw_set_colour(c_dkgray);
     draw_rectangle(640 +68, 720 -72-500, 1280 -68, 720 -68, false);
     
+    //Delete box
+    draw_rectangle(640 +68-100, 720 -70-100, 640 +68, 720 -70, false);
+    
     //Text
     draw_set_colour(c_white);
     draw_text(450, 150, "Inventory");
+    draw_text(640+68-50, 720 -70-50, "DEL");
     
-    if(global.items[inv_display,0] == "" &amp;&amp; global.items[inv_display,1] == "" &amp;&amp; global.items[inv_display,2] == "" &amp;&amp; global.items[inv_display,3] == "")
+    if(inv_slot_selected == true)
     {
-        draw_text(450, 250, "No item");
-    }
-    else
-    {
-        draw_text(450, 250, string(global.items[inv_display,0]));
-        draw_text(450, 270, string(global.items[inv_display,1]));
+        draw_set_colour(c_navy);
+        draw_rectangle(inv_preview_x, inv_preview_y,inv_preview_x +100, inv_preview_y +100, false);
+        draw_set_colour(c_white);
         
-        if(global.items[inv_display,2] == 0)
+        if(global.items[inv_display,0] == "" &amp;&amp; global.items[inv_display,4] == spr_none)
         {
-            draw_text(450, 290, "Type: Weapon");
+            draw_text(450, 250, "No item");
         }
         else
         {
-            if(global.items[inv_display,2] == 1)
+            draw_text(450, 250, string(global.items[inv_display,0]));
+            draw_text(450, 270, string(global.items[inv_display,1]));
+            
+            if(global.items[inv_display,2] == 0)
             {
-                draw_text(450, 290, "Type: Armour");
+                draw_text(450, 290, "Type: Weapon");
             }
             else
             {
-                if(global.items[inv_display,2] == 2)
+                if(global.items[inv_display,2] == 1)
                 {
-                    draw_text(450, 290, "Type: Potion");
+                    draw_text(450, 290, "Type: Armour");
                 }
                 else
                 {
-                    draw_text(450, 290, "Type: Other");
+                    if(global.items[inv_display,2] == 2)
+                    {
+                        draw_text(450, 290, "Type: Potion");
+                    }
+                    else
+                    {
+                        draw_text(450, 290, "Type: Other");
+                    }
                 }
             }
+            
+            draw_text(450, 310, "Price: " + string(global.items[inv_display,3]) + " Bits");
         }
-        
-        draw_text(450, 310, "Price: " + string(global.items[inv_display,3]) + " Bits");
     }
-    
+    else
+    {
+        draw_text(450, 250, "No item");
+    }
     
     //Item slots frame
     draw_set_alpha(0.5);

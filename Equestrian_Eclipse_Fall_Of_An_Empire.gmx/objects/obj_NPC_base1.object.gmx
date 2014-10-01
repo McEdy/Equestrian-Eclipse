@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Initiate IVars
+            <string>///Setup
 
 var hasquest = false;
 quest_started = false;
@@ -61,7 +61,7 @@ phy_fixed_rotation = true;
             <kind>1</kind>
             <string>///Depth
 
-depth = y * -1
+depth = y * -1;
 </string>
           </argument>
         </arguments>
@@ -180,19 +180,45 @@ if(dist &lt; 50)
           <argument>
             <kind>1</kind>
             <string>///Follow path if available
-if(my_path !=-1){
+
+if(my_path != -1)
+{
     dir = point_direction(my_target.x, my_target.y, phy_position_x, phy_position_y);
     dist = point_distance(my_target.x, my_target.y, phy_position_x, phy_position_y);
-
+    
     dx = lengthdir_x(1, dir);
     dy = lengthdir_y(1, dir);
     
-    phy_position_x -= dx
-    phy_position_y -= dy
+    phy_position_x -= dx;
+    phy_position_y -= dy;
     
-    if(dist &gt; 32){
-    phy_position_x = my_target.x
-    phy_position_y = my_target.y
+    if(dist &gt; 32)
+    {
+        phy_position_x = my_target.x;
+        phy_position_y = my_target.y;
+    }
+    
+    if(dir &lt; 225 &amp;&amp; dir &lt; 315)
+    {
+        sprite_index = spr_derpy_left;
+    }
+    else
+    {
+        if(dir &lt; 135 &amp;&amp; dir &lt; 225)
+        {
+            sprite_index = spr_derpy_right;
+        }
+        else
+        {
+            if(dir &lt; 45 &amp;&amp; dir &lt; 135)
+            {
+                sprite_index = spr_derpy_down;
+            }
+            else
+            {
+                sprite_index = spr_derpy_up;
+            }
+        }
     }
 }
 </string>
@@ -439,8 +465,8 @@ if(dist &lt; 50)
             <kind>1</kind>
             <string>///Physics Debug
 
-physics_draw_debug()
-draw_self()
+physics_draw_debug();
+draw_self();
 </string>
           </argument>
         </arguments>
