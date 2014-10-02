@@ -98,6 +98,52 @@ for(var i = 5; i &gt; -1; i--;)
 }
 
 show_debug_message("Quest array finished.");
+
+//Character name
+switch(sprite_index)
+{
+    case spr_cobalt_right:
+    {
+        obj_NPC_base1.player_name = "Cobalt Shade";
+        break;
+    }
+    case spr_trixie_right:
+    {
+        obj_NPC_base1.player_name = "Trixie";
+        break;
+    }
+    case spr_applejack_right:
+    {
+        obj_NPC_base1.player_name = "Applejack";
+        break;
+    }
+    case spr_derpy_right:
+    {
+        obj_NPC_base1.player_name = "Derpy";
+        break;
+    }
+    case spr_shining_right:
+    {
+        obj_NPC_base1.player_name = "Shining Armor";
+        break;
+    }
+    case spr_pinkie_right:
+    {
+        obj_NPC_base1.player_name = "Pinkie Pie";
+        break;
+    }
+    case spr_rarity_right:
+    {
+        obj_NPC_base1.player_name = "Rarity";
+        break;
+    }
+    case spr_rainbowdash_right:
+    {
+        obj_NPC_base1.player_name = "Rainbow Dash";
+        break;
+    }
+}
+
 </string>
           </argument>
         </arguments>
@@ -1175,13 +1221,13 @@ if(popup_test_timer = true)
         }
     }
     
-    alarm[10] = 30;
-    popup_test_timer = false;
-    
     global.message_big1 = "Everfree Forest";
     global.message_big2 = true;
     global.message_big_x = 640;
     global.message_big_y = 40;
+    
+    alarm[10] = 30;
+    popup_test_timer = false;
 }
 
 //Debugging justifies cheating
@@ -1440,7 +1486,7 @@ if(inv_show == false)
     draw_set_colour(c_black);
     draw_text(640, 200, "Running Quests");
     
-    for(i = 0; i &lt;= (5 -1); i += 1)    //5 = space in inventory
+    for(i = 0; i &lt;= (5 -1); i += 1)    //5 = space for quests
     {
         draw_text(640, 230 + 20 *i, global.quests[i,0]);
     }

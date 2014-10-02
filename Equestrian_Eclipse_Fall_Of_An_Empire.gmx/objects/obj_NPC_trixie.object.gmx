@@ -29,13 +29,12 @@
 
 event_inherited();
 
-player_name = "Cobalt";
 notme = true;
 active   = true;
 hasquest = false;
 sprite   = spr_trixie_right;
 
-quest_none = "Hello string(player_name)";
+quest_none = "Hello " + string(player_name) + "!";
 
 event_user(0);
 </string>
