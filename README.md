@@ -26,12 +26,11 @@ To commit your changes follow these steps:
 4. Pick a proper name and a description for everything you have edited
 
 The layout should be like that:
+
 Added:
 - xxx
-
 Fixed:
 - xxx
-
 Bugs:
 - xxx
 
