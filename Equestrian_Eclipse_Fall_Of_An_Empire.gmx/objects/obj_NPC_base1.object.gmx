@@ -37,6 +37,7 @@ my_target = instance_create(x,y,obj_pathguide);
 my_path = -1;
 
 phy_fixed_rotation = true;
+npc_base_prepare = false;   //If E was pressed -&gt; check if released
 </string>
           </argument>
         </arguments>
@@ -179,95 +180,18 @@ if(dist &lt; 50)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Follow path if available
+            <string>///E press
 
-if(my_path != -1)
+if(keyboard_check(ord("E")))
 {
-    dir = point_direction(my_target.x, my_target.y, phy_position_x, phy_position_y);
-    dist = point_distance(my_target.x, my_target.y, phy_position_x, phy_position_y);
-    
-    dx = lengthdir_x(1, dir);
-    dy = lengthdir_y(1, dir);
-    
-    phy_position_x -= dx;
-    phy_position_y -= dy;
-    
-    if(dist &gt; 32)
-    {
-        phy_position_x = my_target.x;
-        phy_position_y = my_target.y;
-    }
-    
-    if(dir &lt; 225 &amp;&amp; dir &lt; 315)
-    {
-        sprite_index = spr_derpy_left;
-    }
-    else
-    {
-        if(dir &lt; 135 &amp;&amp; dir &lt; 225)
-        {
-            sprite_index = spr_derpy_right;
-        }
-        else
-        {
-            if(dir &lt; 45 &amp;&amp; dir &lt; 135)
-            {
-                sprite_index = spr_derpy_down;
-            }
-            else
-            {
-                sprite_index = spr_derpy_up;
-            }
-        }
-    }
+    npc_base_prepare = true;
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_obstacles">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Collide With
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="5" enumb="69">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Interaction
 
+if(keyboard_check_released(ord("E")))
+{
+if(npc_base_prepare == true)
+{
+npc_base_prepare = false;
 var dist = point_distance(obj_player.phy_position_x, obj_player.phy_position_y,phy_position_x,phy_position_y);
 
 if(dist &lt; 50)
@@ -284,7 +208,7 @@ if(dist &lt; 50)
                 show_debug_message("Search quests run " + string(i) + ".");
             }
             
-            delete = i;
+            delete = i -1;
             
             //Quest already assigned -&gt; check if completed
             if(search_quest == quest_name)
@@ -415,6 +339,93 @@ if(dist &lt; 50)
     //show_message(quest_none);
     }
 }
+}
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Follow path if available
+
+if(my_path != -1)
+{
+    dir = point_direction(my_target.x, my_target.y, phy_position_x, phy_position_y);
+    dist = point_distance(my_target.x, my_target.y, phy_position_x, phy_position_y);
+    
+    dx = lengthdir_x(1, dir);
+    dy = lengthdir_y(1, dir);
+    
+    phy_position_x -= dx;
+    phy_position_y -= dy;
+    
+    if(dist &gt; 32)
+    {
+        phy_position_x = my_target.x;
+        phy_position_y = my_target.y;
+    }
+    
+    if(dir &lt; 225 &amp;&amp; dir &lt; 315)
+    {
+        sprite_index = spr_derpy_left;
+    }
+    else
+    {
+        if(dir &lt; 135 &amp;&amp; dir &lt; 225)
+        {
+            sprite_index = spr_derpy_right;
+        }
+        else
+        {
+            if(dir &lt; 45 &amp;&amp; dir &lt; 135)
+            {
+                sprite_index = spr_derpy_down;
+            }
+            else
+            {
+                sprite_index = spr_derpy_up;
+            }
+        }
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_obstacles">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Collide With
 </string>
           </argument>
         </arguments>

@@ -35,7 +35,7 @@ action = false;
 attack_type = 1;
 notme = true;
 interaction_delay = false;
-popup_test_timer = true;
+general_timer = true;
 
 message_1a = "";    //Message 1 content
 message_1b = false; //Message 1 start timer
@@ -192,9 +192,9 @@ respawn_room = rm_test;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Popup test
+            <string>///General timer
 
-popup_test_timer = true;
+general_timer = true;
 </string>
           </argument>
         </arguments>
@@ -703,7 +703,7 @@ if(alpha_big1 == 0 &amp;&amp; message_big_1a != "" &amp;&amp; message_big_1c == 
             <string>///Miscellaneous
 
 /*
-if(hp &lt; 0)
+if(hp &lt;= 0)
     global.dest_x = dest_x;
     global.dest_y = dest_y;
 
@@ -711,8 +711,8 @@ if(hp &lt; 0)
 */
 
 //instance_deactivate_region(view_xview[0], view_yview[0], view_wview[0], view_hview[0], false, true);
-instance_deactivate_region(0, 0, room_width, room_height, false, true);
 //instance_activate_region(view_xview[1], view_yview[1], view_wview[1], view_hview[1], true);
+instance_deactivate_region(0, 0, room_width, room_height, false, true);
 instance_activate_region(view_xview[0] -150, view_yview[0] -150, view_wview[0] +150, view_hview[0] +150, true);
 </string>
           </argument>
@@ -1201,7 +1201,7 @@ if(inv_show == true)
             <kind>1</kind>
             <string>///Debug damage popup
 
-if(popup_test_timer = true)
+if(general_timer = true)
 {
     with(instance_create(x, y, obj_damage_popup))
     {
@@ -1227,7 +1227,7 @@ if(popup_test_timer = true)
     global.message_big_y = 40;
     
     alarm[10] = 30;
-    popup_test_timer = false;
+    general_timer = false;
 }
 
 //Debugging justifies cheating
@@ -1266,7 +1266,7 @@ if(inv_quest == 0)
         //Size = 1
         
         var i = 0;
-        while(inv_assigned == false &amp;&amp; i &lt; 25)
+        while(inv_assigned == false &amp;&amp; i &lt; 25)       //i &lt; NUMBER -&gt; space in inv
         {
             if(global.items[i,0] == "")
             {
@@ -1303,7 +1303,7 @@ if(inv_quest == 0)
         //Size = 2
         
         var i = 0;
-        while(inv_assigned == false &amp;&amp; i &lt; 25)
+        while(inv_assigned == false &amp;&amp; i &lt; 5)      //i &lt; NUMBER -&gt; space in inv
         {
             if(global.items[i,0] == "" &amp;&amp; global.items[i+1,0] == "")
             {
@@ -1331,7 +1331,7 @@ if(inv_quest == 0)
                 i += 2;
             }
         }
-        if(i == 26)
+        if(i == 5) //26
         {
             global.pickup_b = true;
             global.pickup_target = global.pickup1;
