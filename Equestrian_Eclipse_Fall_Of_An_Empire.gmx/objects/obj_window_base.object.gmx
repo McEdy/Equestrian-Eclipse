@@ -45,6 +45,8 @@ target_yscale = image_yscale;
 image_yscale = 1;
 
 global.window_status = true;
+
+destroy = false;
 </string>
           </argument>
         </arguments>
@@ -131,7 +133,11 @@ else
             <kind>1</kind>
             <string>///Removal
 
-instance_destroy();
+if(destroy = true)
+{
+    instance_destroy();
+    show_debug_message("Window destroyed.");
+}
 </string>
           </argument>
         </arguments>

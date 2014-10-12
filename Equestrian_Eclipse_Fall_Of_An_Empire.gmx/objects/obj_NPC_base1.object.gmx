@@ -32,12 +32,32 @@ quest_started = false;
 quest_assigned = false;
 search_quest = "";
 search_item = "";
+character = noone;
 
 my_target = instance_create(x,y,obj_pathguide);
 my_path = -1;
 
 phy_fixed_rotation = true;
 npc_base_prepare = false;   //If E was pressed -&gt; check if released
+
+//Quest Messages
+
+speech_active_counter = 0;
+
+speaking = false;
+
+quest_message = 1;
+
+quest_message_1_1 = "test 1";
+quest_message_1_2 = "test 2";
+quest_message_1_3 = "test 3";
+quest_message_1_4 = "test 4";
+quest_message_1_5 = "test 5";
+
+//Handle Text Loop
+
+text_loop = 0;
+text_loop_limit = 6;
 </string>
           </argument>
         </arguments>
@@ -85,7 +105,12 @@ depth = y * -1;
             <kind>1</kind>
             <string>///Interaction
 
-var dist = point_distance(obj_player.phy_position_x, obj_player.phy_position_y,phy_position_x,phy_position_y);
+with(obj_player)
+{
+    character = instance_nearest(x, y, obj_NPC_base1);
+}
+
+var dist = point_distance(obj_player.phy_position_x, obj_player.phy_position_y, character.x, character.y);
 
 if(dist &lt; 50)
 {
@@ -185,6 +210,7 @@ if(dist &lt; 50)
 if(keyboard_check(ord("E")))
 {
     npc_base_prepare = true;
+    
 }
 
 if(keyboard_check_released(ord("E")))
@@ -322,6 +348,7 @@ if(dist &lt; 50)
         {
             image_xscale = 12;
             image_yscale = 3;
+            event_user(1);
             window_message1 = other.quest_none;
             window_speaker = other.sprite;
             
@@ -407,6 +434,70 @@ if(my_path != -1)
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///E pressed &amp; speaking
+
+if(dist &lt; 50)
+{
+    if(hasquest = false)
+    {
+        if(keyboard_check(ord("E")))
+        {
+            speech_active_counter = 1;
+            //show_debug_message("speech step 1");
+        }
+    
+        if(speech_active_counter = 1)
+        {
+            if(keyboard_check_released(ord("E")))
+            {
+                speech_active_counter = 2;
+                text_loop += 1;
+                event_user(1);
+                //show_debug_message("speech step 2");
+            }
+        }
+    }
+    else
+    {
+        text_loop = 0;
+        speech_active_counter = 0;
+    }
+}
+
+/*if(keyboard_check(ord("E")))
+{
+    if(speaking = false)
+    {
+    speaking = true;
+    event_user(1);
+    show_debug_message("The speech system has been activated");
+    }
+    if(speaking = true)
+    {
+    event_user(1);
+    show_debug_message("Still working");
+    }
+}*/
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="4" ename="obj_obstacles">
       <action>
@@ -426,6 +517,128 @@ if(my_path != -1)
           <argument>
             <kind>1</kind>
             <string>///Collide With
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//Handle Quest 1
+
+if(quest_message = 1)
+{
+    //Prepare window for deletion on "E" press
+    if(text_loop = text_loop_limit - 1)
+    {
+        obj_window_base.destroy = true;
+    }
+    
+    //Begin messages
+    
+    if(text_loop = text_loop_limit)
+    {
+        text_loop = 0;
+        //speech_active_counter = 0;
+        show_debug_message("end message");
+    }
+    
+    if(text_loop = 1)
+    {
+        //Draw text box on first message
+    
+        with(instance_create(200, 520, obj_window_base))
+        {
+            image_xscale = 12;
+            image_yscale = 3;
+            window_message1 = other.quest_message_1_1;
+            window_speaker = other.sprite;
+            
+            event_user(0);
+        }
+        //Draw avatar
+    
+        with(instance_create(0, 520, obj_window_base))
+        {
+            image_xscale = 3;
+            image_yscale = 3;
+            window_speaker = other.sprite;
+              
+            event_user(0);
+        }
+    
+        //speech_active_counter = 0;
+        draw_text(100,100,quest_message_1_1);
+        show_debug_message("quest message 1")
+    }
+    
+    if(text_loop = 2)
+    {
+        with(obj_window_base)
+        {
+            window_message1 = other.quest_message_1_2;
+            event_user(0);
+        }
+        
+        //speech_active_counter = 0;
+        draw_text(100,100,quest_message_1_2);
+        show_debug_message("quest message 2");
+    }
+    
+    if(text_loop = 3)
+    {
+        with(obj_window_base)
+        {
+            window_message1 = other.quest_message_1_3;
+            event_user(0);
+        }
+        
+        //speech_active_counter = 0;
+        draw_text(100,100,quest_message_1_3);
+        show_debug_message("quest message 3");
+    }
+    
+    if(text_loop = 4)
+    {
+        with(obj_window_base)
+        {
+            window_message1 = other.quest_message_1_4;
+            event_user(0);
+        }
+        
+        //speech_active_counter = 0;
+        draw_text(100,100,quest_message_1_4);
+        show_debug_message("quest message 4");
+    }
+    
+    if(text_loop = 5)
+    {
+        with(obj_window_base)
+        {
+            window_message1 = other.quest_message_1_5;
+            event_user(0);
+        }
+        
+        //speech_active_counter = 0;
+        draw_text(100,100,quest_message_1_5);
+        show_debug_message("quest message 5");
+    }
+}
 </string>
           </argument>
         </arguments>

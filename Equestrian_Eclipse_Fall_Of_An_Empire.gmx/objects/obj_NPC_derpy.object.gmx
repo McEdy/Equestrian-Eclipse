@@ -39,6 +39,14 @@ quest_none = "I'm mentally retarded!";
 my_path = path_test;
 
 event_user(0);
+
+//Set messages
+
+quest_message_1_1 = "Wud";
+quest_message_1_2 = "u";
+quest_message_1_3 = "liek";
+quest_message_1_4 = "sum";
+quest_message_1_5 = "chocolat milch?";
 </string>
           </argument>
         </arguments>

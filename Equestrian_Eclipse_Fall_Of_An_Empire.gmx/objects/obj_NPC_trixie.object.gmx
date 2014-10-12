@@ -34,9 +34,17 @@ active   = true;
 hasquest = false;
 sprite   = spr_trixie_right;
 
-quest_none = "Hello " + string(player_name) + "!";
+quest_none = "Hello " + /*string(player_name)*/ + "!";
 
 event_user(0);
+
+//Set messages
+
+quest_message_1_1 = "Would you like some horse milk?";
+quest_message_1_2 = "Are you sure?";
+quest_message_1_3 = "You really want to drink milk from an equine?";
+quest_message_1_4 = "Are you sure you want my milk?";
+quest_message_1_5 = "You are disgusting, Anon.";
 </string>
           </argument>
         </arguments>
@@ -46,7 +54,7 @@ event_user(0);
   <PhysicsObject>-1</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
   <PhysicsObjectShape>0</PhysicsObjectShape>
-  <PhysicsObjectDensity>0.5</PhysicsObjectDensity>
+  <PhysicsObjectDensity>0.100000001490116</PhysicsObjectDensity>
   <PhysicsObjectRestitution>0.100000001490116</PhysicsObjectRestitution>
   <PhysicsObjectGroup>0</PhysicsObjectGroup>
   <PhysicsObjectLinearDamping>0.100000001490116</PhysicsObjectLinearDamping>
@@ -56,6 +64,6 @@ event_user(0);
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
   <PhysicsShapePoints>
     <point>25,25</point>
-    <point>25,25</point>
+    <point>17,25</point>
   </PhysicsShapePoints>
 </object>
