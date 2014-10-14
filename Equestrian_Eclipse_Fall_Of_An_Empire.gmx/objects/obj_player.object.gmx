@@ -67,6 +67,7 @@ inv_preview_y = 0;
 quest_show = false;
 quest_show_prepare = false;
 
+quest1 = "";
 quest_assigned = false;
 
 //Status
@@ -98,6 +99,20 @@ for(var i = 5; i &gt; -1; i--;)
 }
 
 show_debug_message("Quest array finished.");
+
+//Window messages
+for(var i = 6; i &gt; -1; i--;)        //6 = amount of cases
+{
+    msg[i, 0] = 5;                  //Length of conversation
+    msg[i, 1] = spr_inv_test;       //Sprite for conversation
+    msg[i, 2] = "No message (1).";  //First message
+    msg[i, 3] = "No message (2).";
+    msg[i, 4] = "No message (3).";
+    msg[i, 5] = "No message (4).";
+    msg[i, 6] = "No message (5).";  //Last possible message
+}
+
+show_debug_message("Message array finished.");
 
 //Character name
 switch(sprite_index)
@@ -144,6 +159,17 @@ switch(sprite_index)
     }
 }
 
+//Sample messages
+speaking = false;
+
+//Handle text loop
+text_loop = 0;
+text_loop_limit = 5;
+speech_active_counter = 0;
+
+//Message array system variables
+msg_pony = 0;
+msg_conv = 0;
 </string>
           </argument>
         </arguments>
@@ -718,6 +744,47 @@ instance_activate_region(view_xview[0] -150, view_yview[0] -150, view_wview[0] +
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Z press test event
+
+if(keyboard_check(ord("Z")))    //Prepare Z press action
+{
+    speech_active_counter = 1;
+}
+
+if(speech_active_counter = 1)
+{
+if(keyboard_check_released(ord("Z")))   //Launch action when Z is released
+{
+    speech_active_counter = 0;
+    with(obj_player)
+    {
+        text_loop += 1; //Next part of the conversation
+        msg_pony = 1;   //NPC base gives player pony name
+        msg_conv = 0;   //NPC base gives player conversation number
+        event_user(1);  //Launch of conversation script
+    }
+}
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="4" ename="obj_NPC_base1">
       <action>
@@ -1239,6 +1306,99 @@ magic = max_magic
         </arguments>
       </action>
     </event>
+    <event eventtype="7" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Window messages
+
+if(text_loop &gt; other.msg[global.msg_case, 0])
+{
+    with(obj_window_base)   //Destroy window after last message
+    {
+        destroy = true;
+        instance_destroy();
+    }
+    
+    text_loop = 0;
+}
+else
+{
+    switch(text_loop)   //Switch through messages
+    {
+        case 1:  //Message 1
+        with(obj_window_base)  //Setup for 1st message window
+        {
+            image_xscale = 12;
+            image_yscale = 3;
+            window_speaker  = other.msg[global.msg_case, 1];
+            window_message1 = other.msg[global.msg_case, 2];
+            
+            event_user(0);
+        }
+        
+        show_debug_message("Message 1")
+        break;
+        
+        case 2:  //Message 2
+        with(obj_window_base)
+        {
+            window_message1 = other.msg[global.msg_case, 3];
+            event_user(0);
+        }
+        
+        show_debug_message("Message 2");
+        break;
+        
+        case 3:  //Message 3
+        with(obj_window_base)
+        {
+            window_message1 = other.msg[global.msg_case, 4];
+            event_user(0);
+        }
+        
+        show_debug_message("Message 3");
+        break;
+        
+        case 4:  //Message 4
+        with(obj_window_base)
+        {
+            window_message1 = other.msg[global.msg_case, 5];
+            event_user(0);
+        }
+        
+        show_debug_message("Message 4");
+        break;
+        
+        case 5:  //Message 5
+        with(obj_window_base)
+        {
+            window_message1 = other.msg[global.msg_case, 6];
+            event_user(0);
+        }
+        
+        show_debug_message("Message 5");
+        break; 
+}
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="10">
       <action>
         <libid>1</libid>
@@ -1260,11 +1420,11 @@ magic = max_magic
 
 if(inv_quest == 0)
 {
+    var inv_assigned = false;
+    
     //Inventory
-    if(global.pickup_size == 1)
+    if(global.pickup_size == 1) //Size = 1
     {
-        //Size = 1
-        
         var i = 0;
         while(inv_assigned == false &amp;&amp; i &lt; 25)       //i &lt; NUMBER -&gt; space in inv
         {
@@ -1298,10 +1458,8 @@ if(inv_quest == 0)
             i = 0;
         }
     }
-    else
+    else    //Size = 2
     {
-        //Size = 2
-        
         var i = 0;
         while(inv_assigned == false &amp;&amp; i &lt; 5)      //i &lt; NUMBER -&gt; space in inv
         {
@@ -1324,7 +1482,7 @@ if(inv_quest == 0)
                 global.pickup_success = 1;
                 
                 show_debug_message("Item pickup assignment " + string(i) + " with size " + string(global.pickup_size) + ".");
-                inv_assigned = true;
+                inv_assigned = true;                //End loop
             }
             else
             {
@@ -1342,23 +1500,25 @@ if(inv_quest == 0)
         }
     }
 }
-else
+else    //Quests
 {
-    //Quests
+    var quest_assigned = false;
     
     var i = 0;
     while(quest_assigned == false &amp;&amp; i &lt; 1)
     {
         if(global.quests[i,0] == "")
         {
-            global.quests[i,0] = global.quest1; //Quest name
+            global.quests[i,0] = quest1; //Quest name
             
-            global.quest_b = true;
-            global.quest_target = global.quest1;
-            global.quest_success = 1;
+            with(obj_NPC_base1)
+            {
+                q_target = other.quest1 //Make sure correct NPC launches code
+                event_user(14);         //Acception event
+            }
             
             show_debug_message("Quest assignment " + string(i) + ".");
-            quest_assigned = true;
+            quest_assigned = true;      //End loop
         }
         else
         {
@@ -1368,9 +1528,11 @@ else
     
     if(i == 1)  //Maximum amount
     {
-        global.quest_b = true;
-        global.quest_target = global.quest1;
-        global.quest_success = 2;
+        with(obj_NPC_base1)
+        {
+            q_target = other.quest1 //Make sure correct NPC launches code
+            event_user(15);         //Denial event
+        }
         
         show_debug_message("Quest assignment no space.");
         i = 0;
@@ -1706,24 +1868,11 @@ draw_line(phy_position_x, phy_position_y, mouse_x, mouse_y);
 //Text window
 with(instance_create(200, 520, obj_window_base))
 {
-    image_xscale = 12;
-    image_yscale = 3;
-    window_message1 = "Rape is just sex with more fun.";
+    //window_message1 = "Rape is just sex with more fun.";
+    //window_speaker = spr_cobalt_right;
     
     event_user(0);
 }
-
-//Avatar window
-with(instance_create(0, 520, obj_window_base))
-{
-    image_xscale = 3;
-    image_yscale = 3;
-    window_speaker = spr_cobalt_right;
-    
-    event_user(0);
-}
-
-obj_window_base.test_t = true;
 </string>
           </argument>
         </arguments>

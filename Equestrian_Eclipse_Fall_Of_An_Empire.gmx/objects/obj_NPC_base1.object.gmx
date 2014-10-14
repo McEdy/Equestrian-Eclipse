@@ -33,6 +33,7 @@ quest_assigned = false;
 search_quest = "";
 search_item = "";
 character = noone;
+var_e_pressed = false;
 
 my_target = instance_create(x,y,obj_pathguide);
 my_path = -1;
@@ -40,24 +41,11 @@ my_path = -1;
 phy_fixed_rotation = true;
 npc_base_prepare = false;   //If E was pressed -&gt; check if released
 
-//Quest Messages
-
 speech_active_counter = 0;
 
-speaking = false;
-
-quest_message = 1;
-
-quest_message_1_1 = "test 1";
-quest_message_1_2 = "test 2";
-quest_message_1_3 = "test 3";
-quest_message_1_4 = "test 4";
-quest_message_1_5 = "test 5";
-
-//Handle Text Loop
-
-text_loop = 0;
-text_loop_limit = 6;
+msg_pony = 0;
+msg_conv = 0;
+msg_case = 0;
 </string>
           </argument>
         </arguments>
@@ -103,87 +91,120 @@ depth = y * -1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Interaction
+            <string>///Quest system 2.0
 
-with(obj_player)
-{
-    character = instance_nearest(x, y, obj_NPC_base1);
-}
-
-var dist = point_distance(obj_player.phy_position_x, obj_player.phy_position_y, character.x, character.y);
+var dist = point_distance(obj_player.phy_position_x, obj_player.phy_position_y,phy_position_x,phy_position_y);
 
 if(dist &lt; 50)
 {
+if(var_e_pressed == true)
+{
+if(keyboard_check_released(ord("E")))
+{
+if(obj_player.text_loop == 0)
+{
+    var_e_pressed = false;
+    
     if(hasquest == true)
     {
-        //Quest start confirmed
-        if(global.quest_success == 1)
+        var q_runs = 0; 
+        var q_search = "";                          //Look if quest assigned already
+        while(q_search != quest_name &amp;&amp; q_runs &lt; 1) //Runs = 1
         {
-        if(global.quest_target == quest_name &amp;&amp; global.quest_b == true)
-        {
-            //Text
-            with(instance_create(200, 520, obj_window_base))
-            {
-                image_xscale = 12;
-                image_yscale = 3;
-                window_message1 = other.quest_start;
-                window_speaker = other.sprite;
-                
-                event_user(0);
-            }
-            //Avatar
-            with(instance_create(0, 520, obj_window_base))
-            {
-                image_xscale = 3;
-                image_yscale = 3;
-                window_speaker = other.sprite;
-                
-                event_user(0);
-            }
-            //show_message(quest_start)
-            
-            global.message1 = "Quest started: " + quest_name + ".";
-            global.message2 = true;
-            show_debug_message("Quest activated: " + quest_name + ".");
+            q_search = global.quests[q_runs,0];
+            q_runs += 1;
+            show_debug_message("Search quests run " + string(q_runs) + ".");
+        }
         
-            quest_object1.active = true;
-            obj_player.quest_assigned = false;
-            global.quest_b = false;
-        
-            quest_started = true;
-        }
-        }
-            
-        //Quest start prohibited
-        if(global.quest_success == 2)
+        if(q_search == quest_name) //If quest was assigned
         {
-        if(global.quest_target == quest_name &amp;&amp; global.quest_b == true)
-        {
-            //Text
-            with(instance_create(200, 520, obj_window_base))
+            var i_runs = 0;
+            var i_search = "";                                  //Look for quest item
+            while(i_search != quest_item_name &amp;&amp; i_runs &lt; 25)   //Runs = 25
             {
-                image_xscale = 12;
-                image_yscale = 3;
-                window_message1 = "Sorry, you already have enough quests.#Come back when you have finished some.";
-                window_speaker = other.sprite;
-                
-                event_user(0);
-            }
-            //Avatar
-            with(instance_create(0, 520, obj_window_base))
-            {
-                image_xscale = 3;
-                image_yscale = 3;
-                window_speaker = other.sprite;
-                
-                event_user(0);
+                i_search = global.items[i_runs,0];
+                i_runs += 1;
+                show_debug_message("Search inventory run " + string(i_search) + ".");
             }
             
-            obj_player.quest_assigned = false;
-            global.quest_b = false;
+            if(i_search == quest_item_name)  //If quest is fulfilled
+            {
+                with(instance_create(200, 520, obj_window_base))  //Create message window
+                {
+                    //window_message1 = other.quest_success;
+                    //window_speaker = other.sprite;
+                    
+                    event_user(0);
+                }
+                
+                global.msg_case = 5;   //Case = Success
+                
+                //Give reward
+                
+                global.items[i_runs,0] = "";    //Delete item out of inventory
+                global.items[i_runs,1] = "";
+                global.items[i_runs,2] = "";
+                global.items[i_runs,3] = "";
+                global.items[i_runs,4] = spr_none;
+                
+                global.quests[q_runs,0] = "";   //Delete quest
+                
+                global.message1 = "Quest completed: " + quest_name + "."; //Message success
+                global.message2 = true;
+                      
+                hasquest = false;               //No quests anymore
+                show_debug_message("Quest " + quest_name + " successful.");
+            }
+            else
+            {
+                //Quest uncompleted
+                with(instance_create(200, 520, obj_window_base))
+                {
+                    //window_message1 = other.quest_uncompleted;
+                    //window_speaker = other.sprite;
+                    
+                    event_user(0);
+                }
+                
+                global.msg_case = 4;  //Case uncompleted
+                show_debug_message("Quest " + quest_name + " still uncompleted.");
+            }
         }
+        else
+        {
+            //Quest will be assigned     
+            with(obj_player)
+            { 
+                inv_quest = 1;
+                quest1 = other.quest_name;
+                event_user(0);
+            }
         }
     }
+    else
+    {
+        //Has no quest
+        with(instance_create(200, 520, obj_window_base))
+        {
+            //window_message1 = other.quest_none;
+            //window_speaker = other.sprite;
+            
+            event_user(0);
+        }
+        with(obj_player)
+        {
+            msg_case = 6;   //Case = No quests
+        }
+        
+        show_debug_message("This NPC does not have any quests.");
+    }
+}
+}
+}
+if(keyboard_check(ord("E")))
+{
+    var_e_pressed = true;
+}
 }
 </string>
           </argument>
@@ -205,167 +226,31 @@ if(dist &lt; 50)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///E press
-
-if(keyboard_check(ord("E")))
-{
-    npc_base_prepare = true;
-    
-}
-
-if(keyboard_check_released(ord("E")))
-{
-if(npc_base_prepare == true)
-{
-npc_base_prepare = false;
-var dist = point_distance(obj_player.phy_position_x, obj_player.phy_position_y,phy_position_x,phy_position_y);
+            <string>///Window E press
 
 if(dist &lt; 50)
 {
-    if(hasquest == true)
+if(hasquest = false)
+{
+    if(keyboard_check(ord("E")))    //Prepare E press action
     {
-        if(quest_started == false)
-        {   
-            var i = 0;
-            while(search_quest != quest_name &amp;&amp; i &lt; 1) //Runs = 5
-            {
-                search_quest = global.quests[i,0];
-                i += 1;
-                show_debug_message("Search quests run " + string(i) + ".");
-            }
-            
-            delete = i -1;
-            
-            //Quest already assigned -&gt; check if completed
-            if(search_quest == quest_name)
-            {
-                show_debug_message("Quest found in quest database.");
-                
-                i = 0;
-                while(search_item != quest_item_name &amp;&amp; i &lt; 25) //Runs = 25
-                {
-                    search_item = global.items[i,0];
-                    i += 1;
-                    show_debug_message("Search inventory run " + string(i) + ".");
-                }
-                
-                //Quest completed
-                if(search_item == quest_item_name)
-                {
-                    //Text
-                    with(instance_create(200, 520, obj_window_base))
-                    {
-                        image_xscale = 12;
-                        image_yscale = 3;
-                        window_message1 = other.quest_success;
-                        window_speaker = other.sprite;
-                        
-                        event_user(0);
-                    }
-                    //Avatar
-                    with(instance_create(0, 520, obj_window_base))
-                    {
-                        image_xscale = 3;
-                        image_yscale = 3;
-                        window_speaker = other.sprite;
-                        
-                        event_user(0);
-                    }
-                    //show_message(quest_success)
-                    
-                    show_debug_message("Quest completed: " + quest_name + ".");
-                    
-                    i -= 1;
-                    show_message("Item slot [" + string(i) + "] selected for deletion.");
-                    global.items[i,0] = "";
-                    global.items[i,1] = "";
-                    global.items[i,2] = "";
-                    global.items[i,3] = "";
-                    global.items[i,4] = spr_none;
-                    show_debug_message("Erasing item out of inventory successful.");
-                    
-                    show_message("Quest slot [" + string(delete) + "] selected for deletion.");
-                    global.quests[delete,0] = "";
-                    global.message1 = "Quest completed: " + quest_name + ".";
-                    global.message2 = true;
-                      
-                    hasquest = false;
-                }
-                //Quest uncompleted
-                else
-                {
-                    //Text
-                    with(instance_create(200, 520, obj_window_base))
-                    {
-                        image_xscale = 12;
-                        image_yscale = 3;
-                        window_message1 = other.quest_uncompleted;
-                        window_speaker = other.sprite;
-                        
-                        event_user(0);
-                    }
-                    //Avatar
-                    with(instance_create(0, 520, obj_window_base))
-                    {
-                        image_xscale = 3;
-                        image_yscale = 3;
-                        window_speaker = other.sprite;
-                        
-                        event_user(0);
-                    }
-                    //show_message(quest_uncompleted);
-                }
-            }
-            //Quest will be assigned
-            else
-            {
-                show_debug_message("Quest not found in quest database.");
-                
-                if(global.quest_b == false)
-                {
-                    global.quest1 = quest_name;
-                    
-                    with(obj_player)
-                    { 
-                        inv_quest = 1;
-                        event_user(0);
-                    }
-                    
-                    show_debug_message("Quest setup preparation.");
-                }
-            }
-        }
-        else
+        speech_active_counter = 1;
+    }
+        
+    if(speech_active_counter = 1)
+    {
+    if(keyboard_check_released(ord("E")))   //Launch action when E is released
+    {
+        speech_active_counter = 0;
+        with(obj_player)
         {
-            quest_started = false;
+            text_loop += 1; //Next part of the conversation
+            msg_pony = 1;   //NPC base gives player pony name
+            msg_conv = 0;   //NPC base gives player conversation number
+            event_user(1);  //Launch of conversation script
         }
     }
-    else
-    {
-        //No Quest can be given
-        //Text
-        with(instance_create(200, 520, obj_window_base))
-        {
-            image_xscale = 12;
-            image_yscale = 3;
-            event_user(1);
-            window_message1 = other.quest_none;
-            window_speaker = other.sprite;
-            
-            event_user(0);
-        }
-        //Avatar
-        with(instance_create(0, 520, obj_window_base))
-        {
-            image_xscale = 3;
-            image_yscale = 3;
-            window_speaker = other.sprite;
-            
-            event_user(0);
-        }
-    //show_message(quest_none);
     }
-}
 }
 }
 </string>
@@ -434,70 +319,6 @@ if(my_path != -1)
           </argument>
         </arguments>
       </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///E pressed &amp; speaking
-
-if(dist &lt; 50)
-{
-    if(hasquest = false)
-    {
-        if(keyboard_check(ord("E")))
-        {
-            speech_active_counter = 1;
-            //show_debug_message("speech step 1");
-        }
-    
-        if(speech_active_counter = 1)
-        {
-            if(keyboard_check_released(ord("E")))
-            {
-                speech_active_counter = 2;
-                text_loop += 1;
-                event_user(1);
-                //show_debug_message("speech step 2");
-            }
-        }
-    }
-    else
-    {
-        text_loop = 0;
-        speech_active_counter = 0;
-    }
-}
-
-/*if(keyboard_check(ord("E")))
-{
-    if(speaking = false)
-    {
-    speaking = true;
-    event_user(1);
-    show_debug_message("The speech system has been activated");
-    }
-    if(speaking = true)
-    {
-    event_user(1);
-    show_debug_message("Still working");
-    }
-}*/
-</string>
-          </argument>
-        </arguments>
-      </action>
     </event>
     <event eventtype="4" ename="obj_obstacles">
       <action>
@@ -522,7 +343,7 @@ if(dist &lt; 50)
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="11">
+    <event eventtype="7" enumb="25">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -539,105 +360,63 @@ if(dist &lt; 50)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Handle Quest 1
+            <string>///Quest denial
 
-if(quest_message = 1)
+if(q_target == quest_name)
 {
-    //Prepare window for deletion on "E" press
-    if(text_loop = text_loop_limit - 1)
+    with(instance_create(200, 520, obj_window_base))  //Window message
     {
-        obj_window_base.destroy = true;
-    }
-    
-    //Begin messages
-    
-    if(text_loop = text_loop_limit)
-    {
-        text_loop = 0;
-        //speech_active_counter = 0;
-        show_debug_message("end message");
-    }
-    
-    if(text_loop = 1)
-    {
-        //Draw text box on first message
-    
-        with(instance_create(200, 520, obj_window_base))
-        {
-            image_xscale = 12;
-            image_yscale = 3;
-            window_message1 = other.quest_message_1_1;
-            window_speaker = other.sprite;
-            
-            event_user(0);
-        }
-        //Draw avatar
-    
-        with(instance_create(0, 520, obj_window_base))
-        {
-            image_xscale = 3;
-            image_yscale = 3;
-            window_speaker = other.sprite;
-              
-            event_user(0);
-        }
-    
-        //speech_active_counter = 0;
-        draw_text(100,100,quest_message_1_1);
-        show_debug_message("quest message 1")
-    }
-    
-    if(text_loop = 2)
-    {
-        with(obj_window_base)
-        {
-            window_message1 = other.quest_message_1_2;
-            event_user(0);
-        }
+        //window_message1 = "Sorry, you already have enough quests.#Come back when you have finished some.";
+        //window_speaker = other.sprite;
         
-        //speech_active_counter = 0;
-        draw_text(100,100,quest_message_1_2);
-        show_debug_message("quest message 2");
+        event_user(0);
     }
     
-    if(text_loop = 3)
+    global.msg_case = 3;   //Case = Offer denial
+    
+    global.message1 = "Quest denial: " + quest_name + ".";
+    global.message2 = true;
+    show_debug_message("Quest " + quest_name + " denied.");
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="24">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Quest acception
+
+if(q_target == quest_name)
+{
+    with(instance_create(200, 520, obj_window_base))  //Window message
     {
-        with(obj_window_base)
-        {
-            window_message1 = other.quest_message_1_3;
-            event_user(0);
-        }
+        //window_message1 = other.quest_start;
+        //window_speaker = other.sprite;
         
-        //speech_active_counter = 0;
-        draw_text(100,100,quest_message_1_3);
-        show_debug_message("quest message 3");
+        event_user(0);
     }
     
-    if(text_loop = 4)
-    {
-        with(obj_window_base)
-        {
-            window_message1 = other.quest_message_1_4;
-            event_user(0);
-        }
-        
-        //speech_active_counter = 0;
-        draw_text(100,100,quest_message_1_4);
-        show_debug_message("quest message 4");
-    }
+    global.msg_case = 2;   //Case = Offer success
     
-    if(text_loop = 5)
-    {
-        with(obj_window_base)
-        {
-            window_message1 = other.quest_message_1_5;
-            event_user(0);
-        }
-        
-        //speech_active_counter = 0;
-        draw_text(100,100,quest_message_1_5);
-        show_debug_message("quest message 5");
-    }
+    global.message1 = "Quest started: " + quest_name + ".";
+    global.message2 = true;
+    show_debug_message("Quest " + quest_name + " started.");
 }
 </string>
           </argument>
@@ -661,7 +440,9 @@ if(quest_message = 1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with(my_target)
+            <string>///Path
+
+with(my_target)
 {
     path_start(other.my_path, 1, 1, true);
 }

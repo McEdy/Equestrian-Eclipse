@@ -27,8 +27,8 @@
             <kind>1</kind>
             <string>///Setup
 
-image_xscale = 1;
-image_yscale = 1;
+image_xscale = 12;
+image_yscale = 3;
 
 start = false;
 test_t = false;
@@ -37,6 +37,8 @@ pressE_change = true;
 window_message1 = "-- Window message error --";
 window_speaker = spr_cobalt_right;
 
+x1 = 0;
+y1 = 520;
 target_y = y;
 start_y = y;
 y = start_y;
@@ -185,10 +187,28 @@ if(destroy = true)
             <kind>1</kind>
             <string>///Draw Window
 
-//Draw Background
-
 //draw_self();
 
+//Draw avatar text window
+//Background
+draw_sprite_stretched_ext(spr_window_base, 0, x1 + 4, y1  + 4, 3*64 - 8, 3*64, c_blue, 1);
+
+//Draw H &amp; V Axis
+draw_sprite_stretched(spr_window_t, 0, x1 + 8, y1, 3*64 - 16, 16);
+draw_sprite_stretched(spr_window_b, 0, x1 + 8, y1 + 3*64 - 8, 3*64 - 16, 16);
+
+draw_sprite_stretched(spr_window_l, 0, x1, y1 + 8, 16, 3*64 - 8);
+draw_sprite_stretched(spr_window_r, 0, x1 + 3*64 - 16, y1 + 8, 16, 3*64 - 8);
+
+//Draw Corners
+draw_sprite(spr_window_tl, 0, x1, y1);
+draw_sprite(spr_window_tr, 0, x1 + 3*64 - 16, y1);
+draw_sprite(spr_window_bl, 0, x1, y1 + 3*64 - 8);
+draw_sprite(spr_window_br, 0, x1 + 3*64 - 16, y1 + 3*64 - 8);
+
+
+//Draw text window
+//Background
 //draw_sprite_stretched(spr_window_base, 0, x + 4, y  + 4,sprite_width - 8, sprite_height);
 draw_sprite_stretched_ext(spr_window_base, 0, x + 4, y  + 4, sprite_width - 8, sprite_height, c_blue, 1);
 
