@@ -103,13 +103,17 @@ show_debug_message("Quest array finished.");
 //Window messages
 for(var i = 6; i &gt; -1; i--;)        //6 = amount of cases
 {
-    msg[i, 0] = 5;                  //Length of conversation
-    msg[i, 1] = spr_inv_test;       //Sprite for conversation
-    msg[i, 2] = "No message (1).";  //First message
-    msg[i, 3] = "No message (2).";
-    msg[i, 4] = "No message (3).";
-    msg[i, 5] = "No message (4).";
-    msg[i, 6] = "No message (5).";  //Last possible message
+    msg[i, 0] = 5;                  //Length of whole conversation
+    msg[i, 1] = spr_inv_test;       //Sprite 1st message
+    msg[i, 2] = "No message (1).";  //1st message
+    msg[i, 3] = spr_inv_test;       //Sprite 2nd message
+    msg[i, 4] = "No message (2).";  //2nd message
+    msg[i, 5] = spr_inv_test;       //Sprite 3rd message
+    msg[i, 6] = "No message (3).";  //3nd message
+    msg[i, 7] = spr_inv_test;       //Sprite 4th message
+    msg[i, 8] = "No message (4).";  //4th message
+    msg[i, 9] = spr_inv_test;       //Sprite 5th message
+    msg[i, 10] = "No message (5)."; //5th message
 }
 
 show_debug_message("Message array finished.");
@@ -170,6 +174,7 @@ speech_active_counter = 0;
 //Message array system variables
 msg_pony = 0;
 msg_conv = 0;
+msg_case = 0;
 </string>
           </argument>
         </arguments>
@@ -1323,9 +1328,122 @@ magic = max_magic
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>///Message database
+
+switch(msg_pony)
+{
+    case 0:  //Nopony
+    msg[msg_case, 0] = 5;                    //Length of whole conversation
+    msg[msg_case, 1] = spr_inv_test;         //Sprite 1st message
+    msg[msg_case, 2] = "No message (1).";    //1st message
+    msg[msg_case, 3] = spr_inv_test;         //Sprite 2nd message
+    msg[msg_case, 4] = "No message (2).";    //2nd message
+    msg[msg_case, 5] = spr_inv_test;         //Sprite 3rd message
+    msg[msg_case, 6] = "No message (3).";    //3nd message
+    msg[msg_case, 7] = spr_inv_test;         //Sprite 4th message
+    msg[msg_case, 8] = "No message (4).";    //4th message
+    msg[msg_case, 9] = spr_inv_test;         //Sprite 5th message
+    msg[msg_case, 10] = "No message (5).";   //5th message
+    break;
+    
+    case 1:  //Cobalt Shade
+    if(msg_conv == 0)
+    {
+        if(msg_case == 0)
+        {
+            msg[0, 0] = 3;
+            msg[0, 1] = spr_cobalt_right;
+            msg[0, 2] = "Hello 0! Could you do that for me?";
+            msg[0, 3] = global.character_right;
+            msg[0, 4] = "Do you think I can do it?";
+            msg[0, 5] = spr_cobalt_right;
+            msg[0, 6] = "I know you since a while now and I am certain that you are capable.";
+        }
+        if(msg_case == 1)
+        {
+            msg[0, 0] = 3;
+            msg[0, 1] = spr_cobalt_right;
+            msg[0, 2] = "Hello 1! Could you do that for me?";
+            msg[0, 3] = global.character_right;
+            msg[0, 4] = "Do you think I can do it?";
+            msg[0, 5] = spr_cobalt_right;
+            msg[0, 6] = "I know you since a while now and I am certain that you are capable.";
+        }
+        if(msg_case == 2)
+        {
+            msg[0, 0] = 3;
+            msg[0, 1] = spr_cobalt_right;
+            msg[0, 2] = "Hello 2! Could you do that for me?";
+            msg[0, 3] = global.character_right;
+            msg[0, 4] = "Do you think I can do it?";
+            msg[0, 5] = spr_cobalt_right;
+            msg[0, 6] = "I know you since a while now and I am certain that you are capable.";
+        }
+        if(msg_case == 3)
+        {
+            msg[0, 0] = 3;
+            msg[0, 1] = spr_cobalt_right;
+            msg[0, 2] = "Hello 3! Could you do that for me?";
+            msg[0, 3] = global.character_right;
+            msg[0, 4] = "Do you think I can do it?";
+            msg[0, 5] = spr_cobalt_right;
+            msg[0, 6] = "I know you since a while now and I am certain that you are capable.";
+        }
+        if(msg_case == 4)
+        {
+            msg[0, 0] = 3;
+            msg[0, 1] = spr_cobalt_right;
+            msg[0, 2] = "Hello 4! Could you do that for me?";
+            msg[0, 3] = global.character_right;
+            msg[0, 4] = "Do you think I can do it?";
+            msg[0, 5] = spr_cobalt_right;
+            msg[0, 6] = "I know you since a while now and I am certain that you are capable.";
+        }
+        if(msg_case == 5)
+        {
+            msg[0, 0] = 3;
+            msg[0, 1] = spr_cobalt_right;
+            msg[0, 2] = "Hello 5! Could you do that for me?";
+            msg[0, 3] = global.character_right;
+            msg[0, 4] = "Do you think I can do it?";
+            msg[0, 5] = spr_cobalt_right;
+            msg[0, 6] = "I know you since a while now and I am certain that you are capable.";
+        }
+        if(msg_case == 6)
+        {
+            msg[0, 0] = 3;
+            msg[0, 1] = spr_cobalt_right;
+            msg[0, 2] = "Hello 6! Could you fuck that for me?";
+            msg[0, 3] = global.character_right;
+            msg[0, 4] = "Do you think I can do it?";
+            msg[0, 5] = spr_cobalt_right;
+            msg[0, 6] = "I know you since a while now and I am certain that you are capable.";
+        }
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>///Window messages
 
-if(text_loop &gt; other.msg[global.msg_case, 0])
+if(text_loop &gt; msg[msg_case, 0])
 {
     with(obj_window_base)   //Destroy window after last message
     {
@@ -1344,8 +1462,8 @@ else
         {
             image_xscale = 12;
             image_yscale = 3;
-            window_speaker  = other.msg[global.msg_case, 1];
-            window_message1 = other.msg[global.msg_case, 2];
+            window_speaker  = other.msg[other.msg_case, 1];
+            window_message1 = other.msg[other.msg_case, 2];
             
             event_user(0);
         }
@@ -1356,7 +1474,8 @@ else
         case 2:  //Message 2
         with(obj_window_base)
         {
-            window_message1 = other.msg[global.msg_case, 3];
+            window_speaker  = other.msg[other.msg_case, 3];
+            window_message1 = other.msg[other.msg_case, 4];
             event_user(0);
         }
         
@@ -1366,7 +1485,8 @@ else
         case 3:  //Message 3
         with(obj_window_base)
         {
-            window_message1 = other.msg[global.msg_case, 4];
+            window_speaker  = other.msg[other.msg_case, 5];
+            window_message1 = other.msg[other.msg_case, 6];
             event_user(0);
         }
         
@@ -1376,7 +1496,8 @@ else
         case 4:  //Message 4
         with(obj_window_base)
         {
-            window_message1 = other.msg[global.msg_case, 5];
+            window_speaker  = other.msg[other.msg_case, 7];
+            window_message1 = other.msg[other.msg_case, 8];
             event_user(0);
         }
         
@@ -1386,7 +1507,8 @@ else
         case 5:  //Message 5
         with(obj_window_base)
         {
-            window_message1 = other.msg[global.msg_case, 6];
+            window_speaker  = other.msg[other.msg_case, 9];
+            window_message1 = other.msg[other.msg_case, 10];
             event_user(0);
         }
         
@@ -1863,14 +1985,10 @@ draw_line(phy_position_x, phy_position_y, mouse_x, mouse_y);
           <argument>
             <kind>1</kind>
             <string>///Test Windows
-//Text window
 
 //Text window
 with(instance_create(200, 520, obj_window_base))
 {
-    //window_message1 = "Rape is just sex with more fun.";
-    //window_speaker = spr_cobalt_right;
-    
     event_user(0);
 }
 </string>

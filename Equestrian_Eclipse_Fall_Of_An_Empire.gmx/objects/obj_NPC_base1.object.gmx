@@ -28,6 +28,7 @@
             <string>///Setup
 
 var hasquest = false;
+quest_name = "";
 quest_started = false;
 quest_assigned = false;
 search_quest = "";
@@ -45,7 +46,6 @@ speech_active_counter = 0;
 
 msg_pony = 0;
 msg_conv = 0;
-msg_case = 0;
 </string>
           </argument>
         </arguments>
@@ -124,7 +124,7 @@ if(obj_player.text_loop == 0)
             {
                 i_search = global.items[i_runs,0];
                 i_runs += 1;
-                show_debug_message("Search inventory run " + string(i_search) + ".");
+                show_debug_message("Search inventory run " + string(i_runs) + ".");
             }
             
             if(i_search == quest_item_name)  //If quest is fulfilled
@@ -137,7 +137,7 @@ if(obj_player.text_loop == 0)
                     event_user(0);
                 }
                 
-                global.msg_case = 5;   //Case = Success
+                obj_player.msg_case = 5;   //Case = Success
                 
                 //Give reward
                 
@@ -166,7 +166,7 @@ if(obj_player.text_loop == 0)
                     event_user(0);
                 }
                 
-                global.msg_case = 4;  //Case uncompleted
+                obj_player.msg_case = 4;  //Case uncompleted
                 show_debug_message("Quest " + quest_name + " still uncompleted.");
             }
         }
@@ -186,15 +186,10 @@ if(obj_player.text_loop == 0)
         //Has no quest
         with(instance_create(200, 520, obj_window_base))
         {
-            //window_message1 = other.quest_none;
-            //window_speaker = other.sprite;
-            
             event_user(0);
         }
-        with(obj_player)
-        {
-            msg_case = 6;   //Case = No quests
-        }
+        
+        obj_player.msg_case = 6;   //Case = No quests
         
         show_debug_message("This NPC does not have any quests.");
     }
