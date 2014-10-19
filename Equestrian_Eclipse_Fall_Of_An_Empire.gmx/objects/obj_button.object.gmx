@@ -62,6 +62,7 @@ if(mouse_check_button_released(mb_left) &amp;&amp; sprite_index == spr_button_pr
     global.character_up     = pony_up;
     global.character_down   = pony_down;
     global.character_race   = race;
+    global.player_name      = player_name;
     
     cursor_sprite = spr_cursor_aiming;
 }

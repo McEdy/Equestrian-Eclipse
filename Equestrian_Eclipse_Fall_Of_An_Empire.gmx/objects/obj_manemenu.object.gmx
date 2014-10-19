@@ -28,98 +28,106 @@
             <string>///Create Buttons
 
 //Solar Empire
-with(instance_create(view_wport[0]/2+200,128,obj_button))
+with(instance_create(view_wport[0]/2+200, 128, obj_button))
 {
-    room_dest   = rm_test
-    pony_right  = spr_applejack_right
-    pony_left   = spr_applejack_left
-    pony_up     = spr_applejack_up
-    pony_down   = spr_applejack_down
-    name        = "Apple"
-    race        = "earthpony"
+    room_dest   = rm_test;
+    pony_right  = spr_applejack_right;
+    pony_left   = spr_applejack_left;
+    pony_up     = spr_applejack_up;
+    pony_down   = spr_applejack_down;
+    name        = "Apple";
+    race        = "earthpony";
+    player_name = "Applejack";
 }
 
-with(instance_create(view_wport[0]/2+200,128+80,obj_button))
+with(instance_create(view_wport[0]/2+200, 128+80, obj_button))
 {
-    room_dest   = rm_test
-    pony_right  = spr_rainbowdash_right
-    pony_left   = spr_rainbowdash_left
-    pony_up     = spr_rainbowdash_up
-    pony_down   = spr_rainbowdash_down
-    name        = "LGBT Rights Pony"
-    race        = "pegasus"
+    room_dest   = rm_test;
+    pony_right  = spr_rainbowdash_right;
+    pony_left   = spr_rainbowdash_left;
+    pony_up     = spr_rainbowdash_up;
+    pony_down   = spr_rainbowdash_down;
+    name        = "LGBT Rights Pony";
+    race        = "pegasus";
+    player_name = "Rainbow Dash";
 }
 
-with(instance_create(view_wport[0]/2+200,128+160,obj_button))
+with(instance_create(view_wport[0]/2+200, 128+160, obj_button))
 {
-    room_dest   = rm_test
-    pony_right  = spr_rarity_right
-    pony_left   = spr_rarity_left
-    pony_up     = spr_rarity_up
-    pony_down   = spr_rarity_down
-    name        = "Rarara"
-    race        = "unicorn"
+    room_dest   = rm_test;
+    pony_right  = spr_rarity_right;
+    pony_left   = spr_rarity_left;
+    pony_up     = spr_rarity_up;
+    pony_down   = spr_rarity_down;
+    name        = "Rarara";
+    race        = "unicorn";
+    player_name = "Rarity";
 }
 
-with(instance_create(view_wport[0]/2+200,128+240,obj_button))
+with(instance_create(view_wport[0]/2+200, 128+240, obj_button))
 {
-    room_dest   = rm_test
-    pony_right  = spr_shining_right
-    pony_left   = spr_shining_left
-    pony_up     = spr_shining_up
-    pony_down   = spr_shining_down
-    name        = "Shining Armour"
-    race        = "unicorn"
+    room_dest   = rm_test;
+    pony_right  = spr_shining_right;
+    pony_left   = spr_shining_left;
+    pony_up     = spr_shining_up;
+    pony_down   = spr_shining_down;
+    name        = "Shining Armour";
+    race        = "unicorn";
+    player_name = "Shining Armor";
 }
 
 
 //Lunar Republic
-with(instance_create(view_wport[0]/2-200,128,obj_button))
+with(instance_create(view_wport[0]/2-200, 128, obj_button))
 {
-    room_dest   = rm_test
-    pony_right  = spr_pinkie_right
-    pony_left   = spr_pinkie_left
-    pony_up     = spr_pinkie_up
-    pony_down   = spr_pinkie_down
-    name        = "Ponka Po"
-    race        = "earthpony"
+    room_dest   = rm_test;
+    pony_right  = spr_pinkie_right;
+    pony_left   = spr_pinkie_left;
+    pony_up     = spr_pinkie_up;
+    pony_down   = spr_pinkie_down;
+    name        = "Ponka Po";
+    race        = "earthpony";
+    player_name = "Pinkie Pie";
 }
 
-with(instance_create(view_wport[0]/2-200,128+80,obj_button))
+with(instance_create(view_wport[0]/2-200, 128+80, obj_button))
 {
-    room_dest   = rm_test
-    pony_right  = spr_derpy_right
-    pony_left   = spr_derpy_left
-    pony_up     = spr_derpy_up
-    pony_down   = spr_derpy_down
-    name        = "Derpy"
-    race        = "pegasus"
+    room_dest   = rm_test;
+    pony_right  = spr_derpy_right;
+    pony_left   = spr_derpy_left;
+    pony_up     = spr_derpy_up;
+    pony_down   = spr_derpy_down;
+    name        = "Derpy";
+    race        = "pegasus";
+    player_name = "Derpy";
 }
 
-with(instance_create(view_wport[0]/2-200,128+160,obj_button))
+with(instance_create(view_wport[0]/2-200, 128+160, obj_button))
 {
-    room_dest   = rm_test
-    pony_right  = spr_trixie_right
-    pony_left   = spr_trixie_left
-    pony_up     = spr_trixie_up
-    pony_down   = spr_trixie_down
-    name        = "Best Pony"
-    race        = "unicorn"
+    room_dest   = rm_test;
+    pony_right  = spr_trixie_right;
+    pony_left   = spr_trixie_left;
+    pony_up     = spr_trixie_up;
+    pony_down   = spr_trixie_down;
+    name        = "Best Pony";
+    race        = "unicorn";
+    player_name = "Trixie Lunamoon";
 }
 
-with(instance_create(view_wport[0]/2-200,128+240,obj_button))
+with(instance_create(view_wport[0]/2-200, 128+240, obj_button))
 {
-    room_dest   = rm_test
-    pony_right  = spr_cobalt_right
-    pony_left   = spr_cobalt_left
-    pony_up     = spr_cobalt_up
-    pony_down   = spr_cobalt_down
-    name        = "World's Sexiest Unicorn"
-    race        = "unicorn"
+    room_dest   = rm_test;
+    pony_right  = spr_cobalt_right;
+    pony_left   = spr_cobalt_left;
+    pony_up     = spr_cobalt_up;
+    pony_down   = spr_cobalt_down;
+    name        = "World's Sexiest Unicorn";
+    race        = "unicorn";
+    player_name = "Cobalt Shade";
 }
 
 
-instance_create(view_wport[0]-64,64,obj_button_quit)
+instance_create(view_wport[0]-64, 64, obj_button_quit)
 </string>
           </argument>
         </arguments>
@@ -142,7 +150,7 @@ instance_create(view_wport[0]-64,64,obj_button_quit)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Mane Menu Text
+            <string>///Mane menu text
 
 draw_set_font(font_eq);
 draw_set_color(c_black);

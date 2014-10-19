@@ -118,51 +118,6 @@ for(var i = 6; i &gt; -1; i--;)        //6 = amount of cases
 
 show_debug_message("Message array finished.");
 
-//Character name
-switch(sprite_index)
-{
-    case spr_cobalt_right:
-    {
-        obj_NPC_base1.player_name = "Cobalt Shade";
-        break;
-    }
-    case spr_trixie_right:
-    {
-        obj_NPC_base1.player_name = "Trixie";
-        break;
-    }
-    case spr_applejack_right:
-    {
-        obj_NPC_base1.player_name = "Applejack";
-        break;
-    }
-    case spr_derpy_right:
-    {
-        obj_NPC_base1.player_name = "Derpy";
-        break;
-    }
-    case spr_shining_right:
-    {
-        obj_NPC_base1.player_name = "Shining Armor";
-        break;
-    }
-    case spr_pinkie_right:
-    {
-        obj_NPC_base1.player_name = "Pinkie Pie";
-        break;
-    }
-    case spr_rarity_right:
-    {
-        obj_NPC_base1.player_name = "Rarity";
-        break;
-    }
-    case spr_rainbowdash_right:
-    {
-        obj_NPC_base1.player_name = "Rainbow Dash";
-        break;
-    }
-}
-
 //Sample messages
 speaking = false;
 
@@ -1333,6 +1288,7 @@ magic = max_magic
 switch(msg_pony)
 {
     case 0:  //Nopony
+    show_debug_message("Default pony selected.");
     msg[msg_case, 0] = 5;                    //Length of whole conversation
     msg[msg_case, 1] = spr_inv_test;         //Sprite 1st message
     msg[msg_case, 2] = "No message (1).";    //1st message
@@ -1349,75 +1305,174 @@ switch(msg_pony)
     case 1:  //Cobalt Shade
     if(msg_conv == 0)
     {
-        if(msg_case == 0)
+        show_debug_message("Pony 1 Conversation 0 selected.");
+        if(msg_case == 0)   //Error
         {
             msg[0, 0] = 3;
             msg[0, 1] = spr_cobalt_right;
-            msg[0, 2] = "Hello 0! Could you do that for me?";
+            msg[0, 2] = "Error message! Something was apparently not set...";
             msg[0, 3] = global.character_right;
-            msg[0, 4] = "Do you think I can do it?";
+            msg[0, 4] = "Dumb developers, right?";
             msg[0, 5] = spr_cobalt_right;
-            msg[0, 6] = "I know you since a while now and I am certain that you are capable.";
+            msg[0, 6] = "No, it is just hard to keep an eye on everything that could break.";
         }
-        if(msg_case == 1)
+        if(msg_case == 1)   //Offer
         {
             msg[0, 0] = 3;
             msg[0, 1] = spr_cobalt_right;
-            msg[0, 2] = "Hello 1! Could you do that for me?";
+            msg[0, 2] = "Hey sexy. If you find my shades of cobalt we can find#somewhere more private for me to give you your reward.";
             msg[0, 3] = global.character_right;
-            msg[0, 4] = "Do you think I can do it?";
+            msg[0, 4] = "Alright. Sounds fun, I think...?";
             msg[0, 5] = spr_cobalt_right;
-            msg[0, 6] = "I know you since a while now and I am certain that you are capable.";
+            msg[0, 6] = "You want it. I can see that in your eyes.";
         }
-        if(msg_case == 2)
+        if(msg_case == 2)   //Offer success
         {
-            msg[0, 0] = 3;
+            msg[0, 0] = 1;
             msg[0, 1] = spr_cobalt_right;
-            msg[0, 2] = "Hello 2! Could you do that for me?";
-            msg[0, 3] = global.character_right;
-            msg[0, 4] = "Do you think I can do it?";
-            msg[0, 5] = spr_cobalt_right;
-            msg[0, 6] = "I know you since a while now and I am certain that you are capable.";
+            msg[0, 2] = "Great. Thank you for your help!";
         }
-        if(msg_case == 3)
+        if(msg_case == 3)   //Offer denial
         {
-            msg[0, 0] = 3;
+            msg[0, 0] = 1;
             msg[0, 1] = spr_cobalt_right;
-            msg[0, 2] = "Hello 3! Could you do that for me?";
-            msg[0, 3] = global.character_right;
-            msg[0, 4] = "Do you think I can do it?";
-            msg[0, 5] = spr_cobalt_right;
-            msg[0, 6] = "I know you since a while now and I am certain that you are capable.";
+            msg[0, 2] = "Aww, alright then. See you next time then!";
         }
-        if(msg_case == 4)
+        if(msg_case == 4)   //Uncompleted
         {
-            msg[0, 0] = 3;
+            msg[0, 0] = 2;
             msg[0, 1] = spr_cobalt_right;
-            msg[0, 2] = "Hello 4! Could you do that for me?";
+            msg[0, 2] = "You haven't got my cobalt shades yet. Bring the#cobalt shades to me and I'll give you your reward.";
             msg[0, 3] = global.character_right;
-            msg[0, 4] = "Do you think I can do it?";
-            msg[0, 5] = spr_cobalt_right;
-            msg[0, 6] = "I know you since a while now and I am certain that you are capable.";
+            msg[0, 4] = "Ok. I will get them.";
         }
-        if(msg_case == 5)
+        if(msg_case == 5)   //Success
         {
             msg[0, 0] = 3;
             msg[0, 1] = spr_cobalt_right;
-            msg[0, 2] = "Hello 5! Could you do that for me?";
+            msg[0, 2] = "Great, you found my cobalt shades. Now, about your reward...";
             msg[0, 3] = global.character_right;
-            msg[0, 4] = "Do you think I can do it?";
+            msg[0, 4] = "Yay, what is it?";
             msg[0, 5] = spr_cobalt_right;
-            msg[0, 6] = "I know you since a while now and I am certain that you are capable.";
+            msg[0, 6] = "It is me, surprise! In which way shall I please you, master?";
         }
-        if(msg_case == 6)
+        if(msg_case == 6)   //No quests
+        {
+            msg[0, 0] = 2;
+            msg[0, 1] = spr_cobalt_right;
+            msg[0, 2] = "Sorry, I don't have a quest for you at the moment.#Check back at night. Screeeee!";
+            msg[0, 3] = global.character_right;
+            msg[0, 4] = "I will surely come back later.";
+        }
+    }
+    
+    case 2:  //Applejack
+    if(msg_conv == 0)
+    {
+        show_debug_message("Pony 2 Conversation 0 selected.");
+        if(msg_case == 0)   //Error
         {
             msg[0, 0] = 3;
-            msg[0, 1] = spr_cobalt_right;
-            msg[0, 2] = "Hello 6! Could you fuck that for me?";
+            msg[0, 1] = spr_applejack_right;
+            msg[0, 2] = "Error message! Something was apparently not set...";
             msg[0, 3] = global.character_right;
-            msg[0, 4] = "Do you think I can do it?";
-            msg[0, 5] = spr_cobalt_right;
-            msg[0, 6] = "I know you since a while now and I am certain that you are capable.";
+            msg[0, 4] = "Dumb developers, right?";
+            msg[0, 5] = spr_applejack_right;
+            msg[0, 6] = "No, it is just hard to keep an eye on everything that could break.";
+        }
+        if(msg_case == 1)   //Offer
+        {
+            msg[0, 0] = 1;
+            msg[0, 1] = spr_applejack_right;
+            msg[0, 2] = "Hey, ya! I need a flower, because... ehm, 'cause why not!#Don't question me, I'm just an NPC!";
+        }
+        if(msg_case == 2)   //Offer success
+        {
+            msg[0, 0] = 1;
+            msg[0, 1] = spr_applejack_right;
+            msg[0, 2] = "Yeehaw, I knew that I can count on ya!";
+        }
+        if(msg_case == 3)   //Offer denial
+        {
+            msg[0, 0] = 1;
+            msg[0, 1] = spr_applejack_right;
+            msg[0, 2] = "Darn, I was so sure you could do it..";
+        }
+        if(msg_case == 4)   //Uncompleted
+        {
+            msg[0, 0] = 2;
+            msg[0, 1] = spr_applejack_right;
+            msg[0, 2] = "I still need that flower, which I definitely cannot pick up.#Please, bring it to me.";
+            msg[0, 3] = global.character_right;
+            msg[0, 4] = "Ok. I am on my way.";
+        }
+        if(msg_case == 5)   //Success
+        {
+            msg[0, 0] = 3;
+            msg[0, 1] = spr_applejack_right;
+            msg[0, 2] = "Yeehaw, you found it! Your reward is...";
+            msg[0, 3] = global.character_right;
+            msg[0, 4] = "Yes? It is?";
+            msg[0, 5] = spr_applejack_right;
+            msg[0, 6] = "...muh dick - suprise!";
+        }
+        if(msg_case == 6)   //No quests
+        {
+            msg[0, 0] = 2;
+            msg[0, 1] = spr_applejack_right;
+            msg[0, 2] = "Sorry partner, but I don't have other things for you to do,#like killing Rarity.";
+            msg[0, 3] = global.character_right;
+            msg[0, 4] = "Alright, goodbye.";
+        }
+    }
+    
+    case 3:  //Trixie Lunamoon
+    if(msg_conv == 0)
+    {
+        show_debug_message("Pony 3 Conversation 0 selected.");
+        if(msg_case == 0)   //Error
+        {
+            msg[0, 0] = 3;
+            msg[0, 1] = spr_trixie_right;
+            msg[0, 2] = "Error message! Something was apparently not set...";
+            msg[0, 3] = global.character_right;
+            msg[0, 4] = "Dumb developers, right?";
+            msg[0, 5] = spr_trixie_right;
+            msg[0, 6] = "No, it is just hard to keep an eye on everything that could break.";
+        }
+        if(msg_case == 6)   //No quests
+        {
+            msg[0, 0] = 4;
+            msg[0, 1] = spr_trixie_right;
+            msg[0, 2] = "Hello " + string(global.player_name) + "!#You really want to drink milk from an equine?";
+            msg[0, 3] = spr_trixie_right;
+            msg[0, 4] = "Are you sure you want my milk?";
+            msg[0, 5] = global.character_right;
+            msg[0, 6] = "Yes, I do.";
+            msg[0, 7] = spr_trixie_right;
+            msg[0, 8] = "You are disgusting, Anon.";
+        }
+    }
+    
+    case 4:  //Derpy
+    if(msg_conv == 0)
+    {
+        show_debug_message("Pony 4 Conversation 0 selected.");
+        if(msg_case == 0)   //Error
+        {
+            msg[0, 0] = 3;
+            msg[0, 1] = spr_derpy_right;
+            msg[0, 2] = "Error message! Something was apparently not set...";
+            msg[0, 3] = global.character_right;
+            msg[0, 4] = "Dumb developers, right?";
+            msg[0, 5] = spr_derpy_right;
+            msg[0, 6] = "No, it is just hard to keep an eye on everything that could break.";
+        }
+        if(msg_case == 6)   //No quests
+        {
+            msg[0, 0] = 1;
+            msg[0, 1] = spr_derpy_right;
+            msg[0, 2] = "I am mentally retarded.";
         }
     }
 }
@@ -1443,7 +1498,7 @@ switch(msg_pony)
             <kind>1</kind>
             <string>///Window messages
 
-if(text_loop &gt; msg[msg_case, 0])
+if(text_loop &gt; msg[0, 0])
 {
     with(obj_window_base)   //Destroy window after last message
     {
@@ -1452,20 +1507,22 @@ if(text_loop &gt; msg[msg_case, 0])
     }
     
     text_loop = 0;
+    show_debug_message("Delete window.");
 }
 else
 {
     switch(text_loop)   //Switch through messages
     {
         case 1:  //Message 1
-        with(obj_window_base)  //Setup for 1st message window
+        with(instance_create(200, 520, obj_window_base))  //Create 1st message window
         {
             image_xscale = 12;
             image_yscale = 3;
-            window_speaker  = other.msg[other.msg_case, 1];
-            window_message1 = other.msg[other.msg_case, 2];
+            window_speaker  = other.msg[0, 1];
+            window_message1 = other.msg[0, 2];
             
             event_user(0);
+            show_debug_message("Setup for window done.");
         }
         
         show_debug_message("Message 1")
@@ -1474,8 +1531,8 @@ else
         case 2:  //Message 2
         with(obj_window_base)
         {
-            window_speaker  = other.msg[other.msg_case, 3];
-            window_message1 = other.msg[other.msg_case, 4];
+            window_speaker  = other.msg[0, 3];
+            window_message1 = other.msg[0, 4];
             event_user(0);
         }
         
@@ -1485,8 +1542,8 @@ else
         case 3:  //Message 3
         with(obj_window_base)
         {
-            window_speaker  = other.msg[other.msg_case, 5];
-            window_message1 = other.msg[other.msg_case, 6];
+            window_speaker  = other.msg[0, 5];
+            window_message1 = other.msg[0, 6];
             event_user(0);
         }
         
@@ -1496,8 +1553,8 @@ else
         case 4:  //Message 4
         with(obj_window_base)
         {
-            window_speaker  = other.msg[other.msg_case, 7];
-            window_message1 = other.msg[other.msg_case, 8];
+            window_speaker  = other.msg[0, 7];
+            window_message1 = other.msg[0, 8];
             event_user(0);
         }
         
@@ -1507,8 +1564,8 @@ else
         case 5:  //Message 5
         with(obj_window_base)
         {
-            window_speaker  = other.msg[other.msg_case, 9];
-            window_message1 = other.msg[other.msg_case, 10];
+            window_speaker  = other.msg[0, 9];
+            window_message1 = other.msg[0, 10];
             event_user(0);
         }
         

@@ -37,11 +37,8 @@ quest_name       = "Cobalt Shades";
 quest_object1    = obj_shades;
 quest_item_name  = "Shades";
 
-
-quest_start = "Hey sexy. If you find my shades of cobalt we can find#somewhere more private for me to give you your reward.";
-quest_success = "Great, you found my cobalt shades. Now, about your reward...";
-quest_uncompleted = "You haven't got my cobalt shades yet. Bring the#cobalt shades to me and I'll give you your reward.";
-quest_none = "Sorry, I don't have a quest for you at the moment.#Check back at night. Screeeee!";
+msg_pony = 1;
+msg_conv = 0;
 </string>
           </argument>
         </arguments>
