@@ -27,8 +27,7 @@
             <kind>1</kind>
             <string>///Depth
 
-depth = y * -1
-
+depth = y * -1;
 active = false;
 </string>
           </argument>
@@ -87,7 +86,6 @@ if(dist_interact &lt; 50)
     {
         search_quest = global.quests[i,0];
         i += 1;
-        //show_debug_message("Search quests run " + string(i) + ".");
     }
     
     if(search_quest == "Cobalt Shades")
@@ -99,7 +97,7 @@ if(dist_interact &lt; 50)
         global.pickup3 = 3;
         global.pickup4 = 0;
         global.pickup5 = spr_shades;
-        global.pickup_size = 2;
+        global.pickup_size = 1;
         
         with(obj_player)
         {

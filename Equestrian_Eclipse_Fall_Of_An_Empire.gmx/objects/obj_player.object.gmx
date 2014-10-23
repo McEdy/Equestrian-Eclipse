@@ -1287,7 +1287,7 @@ magic = max_magic
 
 switch(msg_pony)
 {
-    case 0:  //Nopony
+    case 0:   //Nopony
     show_debug_message("Default pony selected.");
     msg[msg_case, 0] = 5;                    //Length of whole conversation
     msg[msg_case, 1] = spr_inv_test;         //Sprite 1st message
@@ -1302,10 +1302,9 @@ switch(msg_pony)
     msg[msg_case, 10] = "No message (5).";   //5th message
     break;
     
-    case 1:  //Cobalt Shade
+    case 1:                 //Cobalt Shade
     if(msg_conv == 0)
     {
-        show_debug_message("Pony 1 Conversation 0 selected.");
         if(msg_case == 0)   //Error
         {
             msg[0, 0] = 3;
@@ -1364,12 +1363,18 @@ switch(msg_pony)
             msg[0, 3] = global.character_right;
             msg[0, 4] = "I will surely come back later.";
         }
+        if(msg_case == 7)   //No space
+        {
+            msg[0, 0] = 1;
+            msg[0, 1] = spr_cobalt_right;
+            msg[0, 2] = "Sorry, it seems that you already have enough quests.#Come back after you have finished some.";
+        }
     }
+    break;
     
-    case 2:  //Applejack
+    case 2:                 //Applejack
     if(msg_conv == 0)
     {
-        show_debug_message("Pony 2 Conversation 0 selected.");
         if(msg_case == 0)   //Error
         {
             msg[0, 0] = 3;
@@ -1424,12 +1429,18 @@ switch(msg_pony)
             msg[0, 3] = global.character_right;
             msg[0, 4] = "Alright, goodbye.";
         }
+        if(msg_case == 7)   //No space
+        {
+            msg[0, 0] = 1;
+            msg[0, 1] = spr_applejack_right;
+            msg[0, 2] = "Sorry, it seems that you already have enough quests.#Come back after you have finished some.";
+        }
     }
+    break;
     
-    case 3:  //Trixie Lunamoon
+    case 3:  //Trixie Lulamoon
     if(msg_conv == 0)
     {
-        show_debug_message("Pony 3 Conversation 0 selected.");
         if(msg_case == 0)   //Error
         {
             msg[0, 0] = 3;
@@ -1448,16 +1459,22 @@ switch(msg_pony)
             msg[0, 3] = spr_trixie_right;
             msg[0, 4] = "Are you sure you want my milk?";
             msg[0, 5] = global.character_right;
-            msg[0, 6] = "Yes, I do.";
+            msg[0, 6] = "Yes, I am.";
             msg[0, 7] = spr_trixie_right;
-            msg[0, 8] = "You are disgusting, Anon.";
+            msg[0, 8] = "You are disgusting, " + string(global.player_name) +".";
+        }
+        if(msg_case == 7)   //No space
+        {
+            msg[0, 0] = 1;
+            msg[0, 1] = spr_trixie_right;
+            msg[0, 2] = "Sorry, it seems that you already have enough quests.#Come back after you have finished some.";
         }
     }
+    break;
     
     case 4:  //Derpy
     if(msg_conv == 0)
     {
-        show_debug_message("Pony 4 Conversation 0 selected.");
         if(msg_case == 0)   //Error
         {
             msg[0, 0] = 3;
@@ -1474,7 +1491,14 @@ switch(msg_pony)
             msg[0, 1] = spr_derpy_right;
             msg[0, 2] = "I am mentally retarded.";
         }
+        if(msg_case == 7)   //No space
+        {
+            msg[0, 0] = 1;
+            msg[0, 1] = spr_derpy_right;
+            msg[0, 2] = "Sorry, it seems that you already have enough quests.#Come back after you have finished some.";
+        }
     }
+    break;
 }
 </string>
           </argument>
@@ -1605,7 +1629,7 @@ if(inv_quest == 0)
     if(global.pickup_size == 1) //Size = 1
     {
         var i = 0;
-        while(inv_assigned == false &amp;&amp; i &lt; 25)       //i &lt; NUMBER -&gt; space in inv
+        while(inv_assigned == false &amp;&amp; i &lt; 25)      //i &lt; NUMBER -&gt; space in inv
         {
             if(global.items[i,0] == "")
             {
@@ -1640,7 +1664,7 @@ if(inv_quest == 0)
     else    //Size = 2
     {
         var i = 0;
-        while(inv_assigned == false &amp;&amp; i &lt; 5)      //i &lt; NUMBER -&gt; space in inv
+        while(inv_assigned == false &amp;&amp; i &lt; 5)       //i &lt; NUMBER -&gt; space in inv
         {
             if(global.items[i,0] == "" &amp;&amp; global.items[i+1,0] == "")
             {
@@ -1688,16 +1712,16 @@ else    //Quests
     {
         if(global.quests[i,0] == "")
         {
-            global.quests[i,0] = quest1; //Quest name
+            global.quests[i,0] = quest1;  //Quest name
             
             with(obj_NPC_base1)
             {
-                q_target = other.quest1 //Make sure correct NPC launches code
-                event_user(14);         //Acception event
+                q_target = other.quest1;  //Make sure correct NPC launches code
+                event_user(12);           //Quest decision event
             }
             
             show_debug_message("Quest assignment " + string(i) + ".");
-            quest_assigned = true;      //End loop
+            quest_assigned = true;        //End loop
         }
         else
         {
@@ -1705,12 +1729,12 @@ else    //Quests
         }
     }
     
-    if(i == 1)  //Maximum amount
+    if(i == 1)  //1 = Maximum amount
     {
         with(obj_NPC_base1)
         {
-            q_target = other.quest1 //Make sure correct NPC launches code
-            event_user(15);         //Denial event
+            q_target = other.quest1;//Make sure correct NPC launches code
+            event_user(13);         //No space event
         }
         
         show_debug_message("Quest assignment no space.");

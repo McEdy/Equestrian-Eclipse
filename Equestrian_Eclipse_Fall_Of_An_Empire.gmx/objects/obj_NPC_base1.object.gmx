@@ -31,6 +31,7 @@ var hasquest = false;
 quest_name = "";
 quest_started = false;
 quest_assigned = false;
+q_object1 = "";
 search_quest = "";
 search_item = "";
 character = noone;
@@ -93,7 +94,7 @@ depth = y * -1;
             <kind>1</kind>
             <string>///Quest system 2.0
 
-var dist = point_distance(obj_player.phy_position_x, obj_player.phy_position_y,phy_position_x,phy_position_y);
+var dist = point_distance(obj_player.phy_position_x, obj_player.phy_position_y, phy_position_x, phy_position_y);
 
 if(dist &lt; 50)
 {
@@ -115,6 +116,7 @@ if(obj_player.text_loop == 0)
             q_runs += 1;
             show_debug_message("Search quests run " + string(q_runs) + ".");
         }
+        q_runs -= 1;
         
         if(q_search == quest_name) //If quest was assigned
         {
@@ -126,6 +128,7 @@ if(obj_player.text_loop == 0)
                 i_runs += 1;
                 show_debug_message("Search inventory run " + string(i_runs) + ".");
             }
+            i_runs -= 1;
             
             if(i_search == quest_item_name)  //If quest is fulfilled
             {
@@ -167,6 +170,12 @@ if(obj_player.text_loop == 0)
         }
         else
         {
+            with(obj_player)
+            {
+                msg_case = 1;   //Case = Offer
+                event_user(1);  //Launch message system
+            }
+            
             //Quest will be assigned     
             with(obj_player)
             { 
@@ -389,13 +398,80 @@ if(q_target == quest_name)
     with(obj_player)
     {
         msg_case = 2;   //Case = Offer success
-        event_user(1); //Launch message system
+        event_user(1);  //Launch message system
     }
 
     global.message1 = "Quest started: " + quest_name + ".";
     global.message2 = true;
     show_debug_message("Quest " + quest_name + " started.");
+    
+    if(q_object1 != -1) //Maybe change later
+    {
+        q_object1.active = true;
+    }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="23">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///No quest space
+
+if(q_target == quest_name)
+{
+    with(obj_player)
+    {
+        msg_case = 7;  //Case = No space
+        event_user(1); //Launch message system
+    }
+    
+    global.message1 = "No space more for new quests.";
+    global.message2 = true;
+    show_debug_message("No more quest space.");
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="22">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Offer decision
+
+event_user(14);
+show_debug_message("Offer decision: To be changed later.");
 </string>
           </argument>
         </arguments>

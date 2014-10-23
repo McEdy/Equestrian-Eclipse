@@ -29,13 +29,13 @@
 
 event_inherited();
 
-active           = true;
-hasquest         = true;
-sprite           = spr_applejack_right;
+active          = true;
+hasquest        = true;
+sprite          = spr_applejack_right;
 
-quest_name       = "Flower";
-quest_object1    = obj_flower_quest;
-quest_item_name  = "Flower";
+quest_name      = "Flower";
+q_object1       = obj_flower_quest;
+quest_item_name = "Flower";
 
 msg_pony = 2;
 msg_conv = 0;

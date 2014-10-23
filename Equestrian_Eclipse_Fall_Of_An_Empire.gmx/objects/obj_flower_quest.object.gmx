@@ -99,7 +99,7 @@ if(dist_interact &lt; 50)
         global.pickup3 = 3;
         global.pickup4 = 0;
         global.pickup5 = spr_flower_blue;
-        global.pickup_size = 2;
+        global.pickup_size = 1;
         
         with(obj_player)
         {

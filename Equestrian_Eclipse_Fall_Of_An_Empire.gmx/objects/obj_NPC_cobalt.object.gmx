@@ -29,13 +29,13 @@
 
 event_inherited();
 
-active           = true;
-hasquest         = true;
-sprite           = spr_cobalt_right;
+active          = true;
+hasquest        = true;
+sprite          = spr_cobalt_right;
 
-quest_name       = "Cobalt Shades";
-quest_object1    = obj_shades;
-quest_item_name  = "Shades";
+quest_name      = "Cobalt Shades";
+q_object1       = obj_shades;
+quest_item_name = "Shades";
 
 msg_pony = 1;
 msg_conv = 0;
