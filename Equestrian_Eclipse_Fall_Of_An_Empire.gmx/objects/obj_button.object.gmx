@@ -43,7 +43,7 @@ else
     }
 }
 
-if(position_meeting(mouse_x,mouse_y,self))
+if(position_meeting(mouse_x, mouse_y, self))
 {
     image_blend = c_white;
 }
@@ -53,9 +53,10 @@ else
 }
 
 
-if(mouse_check_button_released(mb_left) &amp;&amp; sprite_index == spr_button_pressed)
+if(mouse_check_button_released(mb_left))    //Action
 {
-    //Action
+if(sprite_index == spr_button_pressed)
+{
     room_goto(room_dest);
     global.character_right  = pony_right;
     global.character_left   = pony_left;
@@ -65,6 +66,7 @@ if(mouse_check_button_released(mb_left) &amp;&amp; sprite_index == spr_button_pr
     global.player_name      = player_name;
     
     cursor_sprite = spr_cursor_aiming;
+}
 }
 
 
@@ -102,7 +104,7 @@ else
 
 draw_self();
 
-if(position_meeting(mouse_x,mouse_y,self))
+if(position_meeting(mouse_x, mouse_y, self))
 {
     draw_set_color(c_black);
 }
@@ -115,7 +117,7 @@ draw_set_font(font_eq);
 
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
-draw_text(x,y,name);
+draw_text(x, y, name);
 </string>
           </argument>
         </arguments>

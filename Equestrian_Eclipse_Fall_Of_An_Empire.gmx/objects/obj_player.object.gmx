@@ -69,6 +69,7 @@ quest_show_prepare = false;
 
 quest1 = "";
 quest_assigned = false;
+q_success = false;
 
 //Status
 max_hp = 10;
@@ -732,12 +733,29 @@ if(speech_active_counter = 1)
 if(keyboard_check_released(ord("Z")))   //Launch action when Z is released
 {
     speech_active_counter = 0;
-    with(obj_player)
+    
+    if(instance_exists(obj_window_base))    //If window was already created
     {
-        text_loop += 1; //Next part of the conversation
-        msg_pony = 1;   //NPC base gives player pony name
-        msg_conv = 0;   //NPC base gives player conversation number
-        event_user(1);  //Launch of conversation script
+        if(obj_window_base.locked == false) //Only if window is not locked
+        {
+            with(obj_player)
+            {
+                text_loop += 1; //Next part of the conversation
+                msg_pony = 1;   //NPC base gives player pony name
+                msg_conv = 0;   //NPC base gives player conversation number
+                event_user(1);  //Launch of conversation script
+            }
+        }
+    }
+    else                    //First creation of window
+    {
+        with(obj_player)
+        {
+            text_loop += 1; //Next part of the conversation
+            msg_pony = 1;   //NPC base gives player pony name
+            msg_conv = 0;   //NPC base gives player conversation number
+            event_user(1);  //Launch of conversation script
+        }
     }
 }
 }
@@ -763,7 +781,7 @@ if(keyboard_check_released(ord("Z")))   //Launch action when Z is released
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Collide With
+            <string>///Collide with
 </string>
           </argument>
         </arguments>
@@ -786,7 +804,7 @@ if(keyboard_check_released(ord("Z")))   //Launch action when Z is released
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Collide With
+            <string>///Collide with
 </string>
           </argument>
         </arguments>
@@ -1287,7 +1305,7 @@ magic = max_magic
 
 switch(msg_pony)
 {
-    case 0:   //Nopony
+    case 0:     //Nopony
     show_debug_message("Default pony selected.");
     msg[msg_case, 0] = 5;                    //Length of whole conversation
     msg[msg_case, 1] = spr_inv_test;         //Sprite 1st message
@@ -1522,12 +1540,11 @@ switch(msg_pony)
             <kind>1</kind>
             <string>///Window messages
 
-if(text_loop &gt; msg[0, 0])
+if(text_loop &gt; msg[0, 0])   //If last message is reached
 {
     with(obj_window_base)   //Destroy window after last message
     {
-        destroy = true;
-        instance_destroy();
+        event_user(1);
     }
     
     text_loop = 0;
@@ -1595,6 +1612,32 @@ else
         
         show_debug_message("Message 5");
         break; 
+    }
+}
+
+if(text_loop &gt; (msg[0, 0] -1))  //If last message is shown -&gt; lock
+{
+if(msg_case = 1)                //-&gt; Only for offer cases
+{
+if(q_success = true)            //-&gt; Only if quest space is there
+{
+    with(instance_create(100, 100, obj_button_yesno))   //Create "Yes" button
+    {
+        name = "Yes";
+    }
+    with(instance_create(100, 200, obj_button_yesno))   //Create "No" button
+    {
+        name = "No";
+    }
+
+    with(obj_window_base)       //Lock window (decision has to be done)
+    {
+        locked = true;
+    }
+    
+    q_success = false;
+    show_debug_message("Window locked now.");
+}
 }
 }
 </string>
@@ -1707,29 +1750,21 @@ else    //Quests
 {
     var quest_assigned = false;
     
-    var i = 0;
-    while(quest_assigned == false &amp;&amp; i &lt; 1)
+    q_decis_runs = 0;
+    while(quest_assigned == false &amp;&amp; q_decis_runs &lt; 1)
     {
-        if(global.quests[i,0] == "")
+        if(global.quests[q_decis_runs,0] == "") //Enough space for quest
         {
-            global.quests[i,0] = quest1;  //Quest name
-            
-            with(obj_NPC_base1)
-            {
-                q_target = other.quest1;  //Make sure correct NPC launches code
-                event_user(12);           //Quest decision event
-            }
-            
-            show_debug_message("Quest assignment " + string(i) + ".");
-            quest_assigned = true;        //End loop
+            q_success = true;
+            quest_assigned = true;  //End loop
         }
-        else
+        else                        //Next quest slot check
         {
-            i += 1;
+            q_decis_runs += 1;
         }
     }
     
-    if(i == 1)  //1 = Maximum amount
+    if(q_decis_runs == 1)           //1 = Maximum amount
     {
         with(obj_NPC_base1)
         {
@@ -1738,11 +1773,7 @@ else    //Quests
         }
         
         show_debug_message("Quest assignment no space.");
-        i = 0;
-    }
-    else
-    {
-        i = 0;
+        q_decis_runs = 0;
     }
 }
 </string>
@@ -1768,6 +1799,7 @@ else    //Quests
           <argument>
             <kind>1</kind>
             <string>///Interface
+
 //Health + Stamina bar
 draw_healthbar(20, 20, 200, 30, hp/max_hp *100, c_black, c_red, c_red, 0, true, true);
 draw_healthbar(20, 40, 200, 50, stamina/max_stamina *100, c_black, c_blue, c_blue, 0, true, true);
@@ -2036,6 +2068,7 @@ if(quest_show == false)
             <kind>1</kind>
             <string>///Physics
 
+draw_set_colour(c_white);
 physics_draw_debug();
 draw_self();
 
@@ -2043,35 +2076,6 @@ draw_circle(x, y, 50, true);
 
 //Line from player to cursor
 draw_line(phy_position_x, phy_position_y, mouse_x, mouse_y);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="84">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Test Windows
-
-//Text window
-with(instance_create(200, 520, obj_window_base))
-{
-    event_user(0);
-}
 </string>
           </argument>
         </arguments>

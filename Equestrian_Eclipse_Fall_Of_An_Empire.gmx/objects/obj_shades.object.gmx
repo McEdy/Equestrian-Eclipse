@@ -104,8 +104,6 @@ if(dist_interact &lt; 50)
             inv_quest = 0;
             event_user(0);
         }
-        
-        show_debug_message("Item pickup preparation.");
     }
     }
 }

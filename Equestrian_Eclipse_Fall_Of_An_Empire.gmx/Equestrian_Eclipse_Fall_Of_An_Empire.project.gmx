@@ -107,6 +107,8 @@
         <sprite>sprites\spr_button_quit</sprite>
         <sprite>sprites\spr_button_quit_pressed</sprite>
         <sprite>sprites\spr_button</sprite>
+        <sprite>sprites\spr_button_green</sprite>
+        <sprite>sprites\spr_button_red</sprite>
         <sprite>sprites\spr_button_pressed</sprite>
       </sprites>
       <sprites name="Collisions">
@@ -165,6 +167,7 @@
       <objects name="Interface">
         <object>objects\obj_bubble</object>
         <object>objects\obj_button</object>
+        <object>objects\obj_button_yesno</object>
         <object>objects\obj_button_quit</object>
       </objects>
       <objects name="Attack / Damage">
@@ -238,7 +241,7 @@
     <room>rooms\rm_cave_boss</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41935.8894629398</constant>
+    <constant name="GM_build_date">41936.9183076273</constant>
     <constant name="GM_version">'0.0.0.1'</constant>
   </constants>
   <help>

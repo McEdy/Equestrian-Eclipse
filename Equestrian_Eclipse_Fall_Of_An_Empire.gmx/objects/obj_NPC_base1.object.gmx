@@ -163,23 +163,18 @@ if(obj_player.text_loop == 0)
                     event_user(1); //Launch message system
                 }
                 
-                global.message1 = "Quest still uncompleted: " + quest_name + ".";
-                global.message2 = true;
                 show_debug_message("Quest " + quest_name + " still uncompleted.");
             }
         }
         else
         {
+            //Quest will be assigned
             with(obj_player)
             {
                 msg_case = 1;   //Case = Offer
                 event_user(1);  //Launch message system
-            }
-            
-            //Quest will be assigned     
-            with(obj_player)
-            { 
-                inv_quest = 1;
+                
+                inv_quest = 1;  //Start quest assignment script
                 quest1 = other.quest_name;
                 event_user(0);
             }
@@ -238,12 +233,29 @@ if(dist &lt; 50)
     if(keyboard_check_released(ord("E"))) //Launch action when E is released
     {
         speech_active_counter = 0;
-        with(obj_player)
+        
+        if(instance_exists(obj_window_base))    //If window was already created
         {
-            text_loop += 1;             //Next part of the conversation
-            msg_pony = other.msg_pony;  //NPC base gives player pony name
-            msg_conv = other.msg_conv;  //NPC base gives player conversation number
-            event_user(1);              //Launch of conversation script
+            if(obj_window_base.locked == false) //Only if window is not locked
+            {
+                with(obj_player)
+                {
+                    text_loop += 1;             //Next part of the conversation
+                    msg_pony = other.msg_pony;  //NPC base gives player pony name
+                    msg_conv = other.msg_conv;  //NPC base gives player conversation number
+                    event_user(1);              //Launch of conversation script
+                }
+            }
+        }
+        else                                //First creation of window
+        {
+            with(obj_player)
+            {
+                text_loop += 1;             //Next part of the conversation
+                msg_pony = other.msg_pony;  //NPC base gives player pony name
+                msg_conv = other.msg_conv;  //NPC base gives player conversation number
+                event_user(1);              //Launch of conversation script
+            }
         }
     }
     }
@@ -332,7 +344,7 @@ if(my_path != -1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Collide With
+            <string>///Collide with
 </string>
           </argument>
         </arguments>
@@ -355,18 +367,20 @@ if(my_path != -1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Quest denial
+            <string>///Quest denial by user
 
 if(q_target == quest_name)
 {
     with(obj_player)
     {
-        msg_case = 3;   //Case = Offer denial
-        event_user(1); //Launch message system
+        text_loop += 1;             //Prepare first message
+        
+        msg_pony = other.msg_pony;  //NPC base gives player pony name
+        msg_conv = other.msg_conv;  //NPC base gives player conversation number
+        msg_case = 3;               //Case = Offer denial
+        event_user(1);              //Launch message system
     }
     
-    global.message1 = "Quest denial: " + quest_name + ".";
-    global.message2 = true;
     show_debug_message("Quest " + quest_name + " denied.");
 }
 </string>
@@ -391,14 +405,18 @@ if(q_target == quest_name)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Quest acception
+            <string>///Quest acception by player
 
 if(q_target == quest_name)
 {
     with(obj_player)
     {
-        msg_case = 2;   //Case = Offer success
-        event_user(1);  //Launch message system
+        text_loop += 1;             //Prepare first message
+    
+        msg_pony = other.msg_pony;  //NPC base gives player pony name
+        msg_conv = other.msg_conv;  //NPC base gives player conversation number
+        msg_case = 2;               //Case = Offer success
+        event_user(1);              //Launch message system
     }
 
     global.message1 = "Quest started: " + quest_name + ".";
@@ -451,32 +469,6 @@ if(q_target == quest_name)
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="22">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Offer decision
-
-event_user(14);
-show_debug_message("Offer decision: To be changed later.");
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="7" enumb="10">
       <action>
         <libid>1</libid>
@@ -522,8 +514,9 @@ with(my_target)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Physics Debug
+            <string>///Physics debug
 
+draw_set_colour(c_white);
 physics_draw_debug();
 draw_self();
 </string>
