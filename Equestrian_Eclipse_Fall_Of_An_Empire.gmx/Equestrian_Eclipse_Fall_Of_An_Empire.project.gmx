@@ -157,6 +157,7 @@
       <object>objects\obj_obstacles</object>
       <object>objects\obj_collision</object>
       <object>objects\obj_manemenu</object>
+      <object>objects\obj_items</object>
       <objects name="Window">
         <object>objects\obj_window_base</object>
       </objects>
@@ -204,11 +205,10 @@
         <object>objects\obj_flower_blue</object>
         <object>objects\obj_tree</object>
         <object>objects\obj_bush_red</object>
-        <object>objects\obj_lantern</object>
         <object>objects\obj_stalagmite</object>
       </objects>
       <objects name="Town">
-        <object>objects\obj_lamp</object>
+        <object>objects\obj_lantern</object>
         <object>objects\obj_house</object>
       </objects>
     </objects>
@@ -241,7 +241,7 @@
     <room>rooms\rm_cave_boss</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41937.681833588</constant>
+    <constant name="GM_build_date">41937.9005460301</constant>
     <constant name="GM_version">'0.0.0.1'</constant>
   </constants>
   <help>

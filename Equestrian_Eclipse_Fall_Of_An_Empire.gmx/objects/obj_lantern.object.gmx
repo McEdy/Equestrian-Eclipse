@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>///Depth
 
-depth = (y + 50) * -1
+depth = (y + 50) * -1;
 </string>
           </argument>
         </arguments>
@@ -52,7 +52,14 @@ depth = (y + 50) * -1
             <kind>1</kind>
             <string>///Turn On
 
-sprite_index = spr_lantern_on;
+if(sprite_index == spr_lantern_off)
+{
+    sprite_index = spr_lantern_on;
+}
+else
+{
+    sprite_index = spr_lantern_off;
+}
 </string>
           </argument>
         </arguments>
@@ -71,9 +78,9 @@ sprite_index = spr_lantern_on;
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
   <PhysicsShapePoints>
-    <point>5,32</point>
-    <point>10,32</point>
-    <point>10,64</point>
-    <point>5,64</point>
+    <point>3.75,60</point>
+    <point>11.25,60</point>
+    <point>11.25,64</point>
+    <point>3.75,64</point>
   </PhysicsShapePoints>
 </object>

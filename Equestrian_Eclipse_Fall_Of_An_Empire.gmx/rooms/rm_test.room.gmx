@@ -114,7 +114,7 @@
     <instance objName="obj_house" x="971" y="390" name="inst_4DDBFAF6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bush_red" x="352" y="192" name="inst_19F71CEE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bush_red" x="166" y="174" name="inst_31A21C7A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_bush_red" x="342" y="73" name="inst_736DCF24" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bush_red" x="352" y="80" name="inst_736DCF24" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bush_red" x="776" y="173" name="inst_6B6468DA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bush_red" x="345" y="459" name="inst_BEFECB28" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_bush_red" x="1056" y="432" name="inst_68102100" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -123,13 +123,14 @@
     <instance objName="obj_shades" x="256" y="384" name="inst_AE9840CD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_flower_quest" x="320" y="32" name="inst_72FF506E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_flower_quest" x="128" y="160" name="inst_3FCB5FF5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_lamp" x="208" y="32" name="inst_E9A8FA2D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_lamp" x="560" y="64" name="inst_35A917A7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_lamp" x="768" y="416" name="inst_040CC596" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_lamp" x="208" y="128" name="inst_E9700612" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_lamp" x="560" y="128" name="inst_63900BD5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_lamp" x="704" y="448" name="inst_A402B21E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_NPC_derpy" x="272" y="192" name="inst_60F2E30D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_lantern" x="208" y="32" name="inst_93FDCC10" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_lantern" x="208" y="128" name="inst_59AA3FBD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_lantern" x="704" y="448" name="inst_D1506B5E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_lantern" x="336" y="128" name="inst_632381F0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_lantern" x="560" y="64" name="inst_7FFAAD44" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_lantern" x="560" y="128" name="inst_D7C86919" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_lantern" x="752" y="416" name="inst_EA8CBF37" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tiles_1" x="224" y="240" w="32" h="32" xo="80" yo="16" id="10001332" name="inst_BEC45BE2" depth="1000001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

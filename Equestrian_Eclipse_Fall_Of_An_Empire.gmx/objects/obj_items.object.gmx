@@ -4,8 +4,8 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>-1</persistent>
-  <parentName>obj_notme</parentName>
+  <persistent>0</persistent>
+  <parentName>obj_interactable</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,43 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Initialise IVARs
+            <string>///Setup
 
-global.gamespeed = 1.0;
-global.dest_x = 256;
-global.dest_y = 96;
-
-cursor_sprite = spr_cursor_normal;
-switches = ds_map_create();
-obj_button.colour = c_white;
-
-global.message1 = "";           //Sending message
-global.message2 = false;        //A message was sent
-
-global.message_big1 = "";
-global.message_big2 = false;
-global.message_big_x = 0;
-global.message_big_y = 0;
-
-global.damage_popup  = "";      //Amount of dealt damage
-global.damage_popup1 = false;   //Damage was dealt to player
-global.damage_popup2 = false;   //Damage was dealt by player
-
-global.pickup1 = "";
-global.pickup2 = "";
-global.pickup3 = "";
-global.pickup4 = "";
-global.pickup5 = "";
-
-global.pickup_a = false;        //Object was picked up
-global.pickup_b = false;        //Pickup assigned -&gt; successful or unsuccessful
-global.pickup_success = 0;      //0: Not active; 1: Successful; 2: Unsuccessful
-global.pickup_target = "";      //Name of target object
-
-global.boss_battle_start = false;   //Starts boss room script
-
-global.window = false;
-global.msg_case = 0;            //Case for message handeling (0=rrror, 1=offer, 2=offer success, 3=offer denial, 4=uncompleted, 5=success, 6=no quest)
+p_target = "";
+p_success = 0;
+timer_no_space = true;
 </string>
           </argument>
         </arguments>

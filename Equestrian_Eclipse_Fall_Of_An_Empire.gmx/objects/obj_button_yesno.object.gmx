@@ -34,116 +34,6 @@ prepare = false;
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Input logic
-/*
-if(name == "Yes")                               //Set colour
-{
-    colour = c_green;
-}
-else
-{
-    colour = c_red;
-}
-
-if(position_meeting(mouse_x, mouse_y, self))    //If mouse hovers over
-{
-    image_blend = c_white;
-}
-else
-{
-    image_blend = colour;
-}
-
-
-if(mouse_check_button_released(mb_left))        //Action (if mouse is released)
-{
-if(sprite_index == spr_button_pressed)
-{
-    if(name == "Yes")                           //It is the "Yes" button
-    {
-        with(obj_player)
-        {
-            global.quests[q_decis_runs,0] = quest1; //Write quest into slot
-            
-            with(obj_window_base)                   //Destroy decision window
-            {
-                destroy = true;
-                instance_destroy();
-            }
-            
-            text_loop = 0;
-            show_debug_message("Delete window.");
-        }
-        
-        with(obj_NPC_base1)
-        {
-            q_target = obj_player.quest1;       //Make sure correct NPC launches code
-            event_user(14);                     //Quest acception event
-        }
-        
-        show_debug_message("Quest number " + string(obj_player.q_decis_runs) + " accepted.");
-    }
-    else                                        //It is the "No" button
-    {
-        with(obj_player)
-        {
-            with(obj_window_base)               //Destroy decision window
-            {
-                destroy = true;
-                instance_destroy();
-            }
-            
-            text_loop = 0;
-            show_debug_message("Delete window.");
-        }
-    
-        with(obj_NPC_base1)                     //Player denied quest
-        {
-            q_target = obj_player.quest1;       //Make sure correct NPC launches code
-            event_user(15);                     //Quest denial event
-        }
-        
-        show_debug_message("Quest number " + string(obj_player.q_decis_runs) + " denied.");
-    }
-    
-    with(obj_button_yesno)                      //Destroy all yes/no buttons
-    {
-        instance_destroy();
-    }
-}
-}
-
-
-if(mouse_check_button(mb_left) &amp;&amp; image_blend == c_white)   //Prepare mouse click action
-{
-    sprite_index = spr_button_pressed;
-}
-else
-{
-    sprite_index = spr_button;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
@@ -161,7 +51,7 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Draw self and text
+            <string>///Draw + logics
 //Body
 
 if(name == "Yes")                               //Set body colour
@@ -270,7 +160,7 @@ draw_set_font(font_eq);
 draw_set_alpha(1);
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
-draw_text(x +128, y +64, name);
+draw_text(x +128, y +32, name);
 </string>
           </argument>
         </arguments>
