@@ -153,10 +153,14 @@ msg_case = 0;
             <kind>1</kind>
             <string>///Respawn
 
-/*dest_x = 272;
+dest_x = 272;
 dest_y = 112;
+dest_room = rm_test;
+respawn = false;
 
-respawn_room = rm_test;
+//Temporary
+
+money = 10;
 </string>
           </argument>
         </arguments>
@@ -1279,6 +1283,53 @@ if(general_timer = true)
 hp = max_hp
 stamina = max_stamina
 magic = max_magic
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="12">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Handle respawn
+
+if(respawn = true)
+{
+
+    //Variables reset
+    
+    hp = max_hp;
+    magic = max_magic;
+    stamina = max_stamina;
+    
+    //Warp event script
+    
+    global.dest_x = dest_x;
+    global.dest_y = dest_y;
+
+    room_goto(dest_room);
+
+    if(money &gt;= 10)
+    {
+        money -= 10;
+    }
+
+respawn = false
+}
 </string>
           </argument>
         </arguments>
