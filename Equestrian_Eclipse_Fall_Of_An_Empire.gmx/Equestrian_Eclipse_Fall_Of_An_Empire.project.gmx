@@ -86,6 +86,7 @@
     </sprites>
     <sprites name="Items">
       <sprite>sprites\spr_shades</sprite>
+      <sprite>sprites\spr_coinbag</sprite>
     </sprites>
     <sprites name="System">
       <sprites name="Window">
@@ -215,6 +216,7 @@
     <objects name="Quest">
       <object>objects\obj_shades</object>
       <object>objects\obj_flower_quest</object>
+      <object>objects\obj_coinbag</object>
     </objects>
     <objects name="Spells">
       <objects name="Player">
@@ -241,7 +243,7 @@
     <room>rooms\rm_cave_boss</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41937.681833588</constant>
+    <constant name="GM_build_date">41937.8244656481</constant>
     <constant name="GM_version">'0.0.0.1'</constant>
   </constants>
   <help>

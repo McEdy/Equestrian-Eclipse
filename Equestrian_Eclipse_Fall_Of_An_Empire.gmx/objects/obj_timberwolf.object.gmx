@@ -41,6 +41,9 @@ hp = max_hp;
 alarm[0] = random(30);
 dx = 0;
 dy = 0;
+
+l_value = 1;
+h_value = 9;
 </string>
           </argument>
         </arguments>
