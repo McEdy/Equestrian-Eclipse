@@ -314,6 +314,8 @@ message_1c = true;
             <kind>1</kind>
             <string>///Depth
 
+show_debug_message(string(money));
+
 depth = (phy_position_y - 15) * -1;
 phy_fixed_rotation = true;
 </string>
@@ -1369,7 +1371,7 @@ switch(msg_pony)
             msg[0, 3] = global.character_right;
             msg[0, 4] = "Dumb developers, right?";
             msg[0, 5] = spr_cobalt_right;
-            msg[0, 6] = "No, it is just hard to keep an eye on everything that could break.";
+            msg[0, 6] = "No, it is just hard to keep an eye on everything that could break, but yes.";
         }
         if(msg_case == 1)   //Offer
         {
@@ -1407,7 +1409,7 @@ switch(msg_pony)
             msg[0, 1] = spr_cobalt_right;
             msg[0, 2] = "Great, you found my cobalt shades. Now, about your reward...";
             msg[0, 3] = global.character_right;
-            msg[0, 4] = "Yay, what is it?";
+            msg[0, 4] = "I came spoons!";
             msg[0, 5] = spr_cobalt_right;
             msg[0, 6] = "It is me, surprise! In which way shall I please you, master?";
         }

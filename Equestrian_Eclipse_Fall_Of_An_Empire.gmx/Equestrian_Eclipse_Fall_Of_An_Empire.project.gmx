@@ -86,6 +86,7 @@
     </sprites>
     <sprites name="Items">
       <sprite>sprites\spr_shades</sprite>
+      <sprite>sprites\spr_coinbag</sprite>
     </sprites>
     <sprites name="System">
       <sprites name="Window">
@@ -215,6 +216,7 @@
     <objects name="Quest">
       <object>objects\obj_shades</object>
       <object>objects\obj_flower_quest</object>
+      <object>objects\obj_coinbag</object>
     </objects>
     <objects name="Spells">
       <objects name="Player">

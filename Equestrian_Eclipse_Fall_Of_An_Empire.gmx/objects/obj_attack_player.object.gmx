@@ -122,7 +122,7 @@ with(other)
 
     if(hp &lt;= 0)
     {
-        instance_destroy();
+        event_user(1);
     }
 }
 </string>
