@@ -40,6 +40,15 @@ status_effect_3 = false;
 counter_1 = 0;
 counter_2 = 0;
 counter_3 = 0;
+
+l_value = 1;
+h_value = 10;
+money_drop = false;
+money_drop_c = 1;
+item_drop_1 = false;
+item_drop_2 = false;
+item_drop_c = 1;
+item_drop_tc = 1;
 </string>
           </argument>
         </arguments>
@@ -319,10 +328,51 @@ if(global.damage_popup2 == true)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with(instance_create(x, y, obj_coinbag))
+            <string>///Handle drops
+
+//Money drop
+
+money_drop_c = irandom_range(1, 2);
+
+if(money_drop = true)
+{
+    if(money_drop_c = 1)
+    {
+        with(instance_create(x + irandom_range(-8, 8), y + irandom_range(-8, 8), obj_coinbag))
+            {
+                value = irandom_range(other.l_value, other.h_value);
+            }
+    }
+}
+
+//Item drop
+
+item_drop_c = irandom_range(1, 2);
+
+if(item_drop_c = 1)
+{
+    if(item_drop_1 != false)
+    {
         {
-            value = irandom_range(other.l_value, other.h_value);
+            item_drop_tc = irandom_range(1, 100);
+        
+            if(item_drop_tc &lt;=90)
+            {
+                instance_create(x + irandom_range(-8, 8), y + irandom_range(-8, 8), item_drop_1)
+            }
+                else
+            {
+                if(item_drop_2 != false)
+                {
+                    instance_create(x + irandom_range(-8, 8), y + irandom_range(-8, 8), item_drop_2)
+                }
+            }
         }
+    }
+}
+
+//Destroy self
+
 instance_destroy();
 </string>
           </argument>
