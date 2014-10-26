@@ -314,8 +314,6 @@ message_1c = true;
             <kind>1</kind>
             <string>///Depth
 
-show_debug_message(string(money));
-
 depth = (phy_position_y - 15) * -1;
 phy_fixed_rotation = true;
 </string>

@@ -243,7 +243,7 @@
     <room>rooms\rm_cave_boss</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41937.9005460301</constant>
+    <constant name="GM_build_date">41938.116980544</constant>
     <constant name="GM_version">'0.0.0.1'</constant>
   </constants>
   <help>
