@@ -32,6 +32,8 @@ phy_fixed_rotation = true;
 max_hp = 10;
 hp = max_hp;
 
+dir = 0;
+
 //Set variables for status effects
 
 status_effect_1 = false;
@@ -235,6 +237,99 @@ if(global.damage_popup2 == true)
     {
         character = other.id;
         global.damage_popup2 = false;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Handle direction
+
+/*show_debug_message(string(dir));
+
+if(dir &gt;= 180)
+{
+    sprite_index = spr_changeling_down;
+}
+else
+{
+    sprite_index = spr_changeling_up;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Handle direction
+
+if(dir &gt;= 45)
+{
+    if(dir &lt; 135)
+    {
+        sprite_index = spr_changeling_up;
+    }
+}
+
+if(dir &gt;= 135)
+{
+    if(dir &lt; 225)
+    {
+        sprite_index = spr_changeling_left;
+    }
+}
+
+if(dir &gt;= 225)
+{
+    if(dir &lt; 315)
+    {
+        sprite_index = spr_changeling_down;
+    }
+}
+
+if(dir &gt;= 315)
+{
+    if(dir &lt;= 360)
+    {
+        sprite_index = spr_changeling_right;
+    }
+}
+
+if(dir &gt;= 0)
+{
+    if(dir &lt; 45)
+    {
+        sprite_index = spr_changeling_right;
     }
 }
 </string>
