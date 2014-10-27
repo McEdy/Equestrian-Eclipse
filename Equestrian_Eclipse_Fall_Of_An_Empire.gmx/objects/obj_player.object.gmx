@@ -84,14 +84,18 @@ magic = max_magic;
 //Inventory
 for(var i = 99; i &gt; -1; i--;)
 {
-    global.items[i,0] = "";
-    global.items[i,1] = "";
-    global.items[i,2] = "";
-    global.items[i,3] = "";
-    global.items[i,4] = spr_none;
+    global.items[i,0] = "";         //Name
+    global.items[i,1] = "";         //Description
+    global.items[i,2] = 0;          //Type
+    global.items[i,3] = 0;          //Price
+    global.items[i,4] = spr_none;   //Sprite
+    global.items[i,5] = 0;          //Weight
 }
 
 show_debug_message("Inventory array finished.");
+
+weight = 0;
+weight_limit = 3;
 
 //Quests
 for(var i = 5; i &gt; -1; i--;)
@@ -1824,33 +1828,52 @@ if(inv_quest == 0)
     {
         if(global.items[p_runs,0] == "")
         {
-            global.items[p_runs,0] = global.pickup1; //Name
-            global.items[p_runs,1] = global.pickup2; //Description
-            global.items[p_runs,2] = global.pickup3; //Type (Weapon, Armour, Status, Misc)
-            global.items[p_runs,3] = global.pickup4; //Price
-            global.items[p_runs,4] = global.pickup5; //Sprite
-            
-            with(obj_items)                     //Gives item success answer
+            if(weight + global.pickup5 &lt;= weight_limit)
             {
-                p_target = global.pickup1;
-                p_success = 1;
-                event_user(0);
+                global.items[p_runs,0] = global.pickup0;    //Name
+                global.items[p_runs,1] = global.pickup1;    //Description
+                global.items[p_runs,2] = global.pickup2;    //Type (Weapon, Armour, Status, Misc)
+                global.items[p_runs,3] = global.pickup3;    //Price
+                global.items[p_runs,4] = global.pickup4;    //Sprite
+                global.items[p_runs,5] = global.pickup5;    //Weight
+                
+                weight = weight + global.pickup5;           //Weight calculation
+                
+                with(obj_items)                             //Gives item success answer
+                {
+                    p_target = global.pickup0;
+                    p_success = 1;
+                   event_user(0);
+                }
+                
+                show_debug_message("Item pickup assignment " + string(p_runs) + ".");
             }
             
-            show_debug_message("Item pickup assignment " + string(p_runs) + ".");
-            inv_assigned = true;                //End loop
+            inv_assigned = true;                            //End loop
         }
-        else                                    //Next inv slot check
+        else                                                //Next inv slot check
         {
-        p_runs += 1;
+            p_runs += 1;
         }
     }
     
-    if(p_runs == 5) //To be changed into 25 again
+    if(p_runs == 5)                             //To be changed into 25 again
     {
         with(obj_items)                         //Gives item failure answer
         {
-            p_target = global.pickup1;
+            p_target = global.pickup0;
+            p_success = 2;
+            event_user(0);
+        }
+        
+        p_runs = 0;
+    }
+    
+    if(weight + global.pickup5 &gt;= weight_limit) //If item was too heavy
+    {
+        with(obj_items)                         //Gives item failure answer
+        {
+            p_target = global.pickup0;
             p_success = 2;
             event_user(0);
         }
@@ -2207,11 +2230,16 @@ if(quest_show == false)
     draw_set_halign(fa_left);
     draw_set_valign(fa_top);
     draw_set_font(font_popup);
-    draw_text(75, 40, "Weapons");
+    draw_text(75, 30, "Weapons");                       //Inventory page title
+    draw_sprite(spr_arrow_left, 0, 25, 30);             //Left arrow
+    draw_sprite(spr_arrow_right, 0, 400, 30);           //Left arrow
     
-    //draw_set_halign(fa_center);
+    draw_rectangle(7, 105, 647, 106, false);            //Horizontal line
+    
+    draw_sprite(spr_weight, 0, 500, 116);               //"Weight" symbol
+    draw_sprite(spr_money, 0, 560, 130);                //"Price" symbol
+    
     draw_set_font(font_eq);
-    draw_text(580, 150, "Price");
     
     //Selection marker
     if(inv_slot_selected == true)
@@ -2228,8 +2256,8 @@ if(quest_show == false)
         draw_set_font(font_medium);
         draw_text(980, 80, string(global.items[inv_display,1]));            //Description of selected item
         
-        var size_x = sprite_get_width(global.items[inv_display,1]);         //Get sprite size
-        draw_sprite_ext(global.items[inv_display,4], 0, 800, 185, 250 /size_x , 250 /size_x, 0, -1, 1); //Draw sprite in 250x250
+        var size_x = sprite_get_width(global.items[inv_display,4]);         //Get sprite size
+        draw_sprite_ext(global.items[inv_display,4], 0, 800, 200, 200 /size_x , 200 /size_x, 0, -1, 1); //Draw sprite in 250x250
     }
     
     
@@ -2237,13 +2265,50 @@ if(quest_show == false)
     draw_set_font(font_eq);
     draw_set_halign(fa_left);
     
-    //Names
-    draw_text(50, 175, string(global.items[0,0]) + "#" + string(global.items[1,0]) + "#" + string(global.items[2,0]) + "#" + string(global.items[3,0]) + "#" + string(global.items[4,0]));
-    //Price
-    draw_text(580, 175, string(global.items[0,3]) + "#" + string(global.items[1,3]) + "#" + string(global.items[2,3]) + "#" + string(global.items[3,3]) + "#" + string(global.items[4,3]));
+    if(global.items[0,0] != "") //Item 0
+    {
+        draw_text(50, 175, string(global.items[0,0]));  //Name
+        draw_text(500, 175, string(global.items[0,5])); //Weight
+        draw_text(580, 175, string(global.items[0,3])); //Price
+    }
+    if(global.items[1,0] != "") //Item 1
+    {
+        draw_text(50, 175, "#" + string(global.items[1,0]));
+        draw_text(500, 175, "#" + string(global.items[1,5]));
+        draw_text(580, 175, "#" + string(global.items[1,3]));
+    }
+    if(global.items[2,0] != "") //Item 2
+    {
+        draw_text(50, 175, "##" + string(global.items[2,0]));
+        draw_text(500, 175, "##" + string(global.items[2,5]));
+        draw_text(580, 175, "##" + string(global.items[2,3]));
+    }
+    if(global.items[3,0] != "") //Item 3
+    {
+        draw_text(50, 175, "###" + string(global.items[3,0]));
+        draw_text(500, 175, "###" + string(global.items[3,5]));
+        draw_text(580, 175, "###" + string(global.items[3,3]));
+    }
+    if(global.items[4,0] != "") //Item 4
+    {
+        draw_text(50, 175, "####" + string(global.items[4,0]));
+        draw_text(500, 175, "####" + string(global.items[4,5]));
+        draw_text(580, 175, "####" + string(global.items[4,3]));
+    }
     
+    
+    //Below inventory
+    var weight = 0;
+    for(var i = 0; i &lt; 5; i++)
+    {
+        weight = weight + global.items[i,5];
+    }
+    
+    draw_set_font(font_medium);
+    draw_text(50, 650, "Weight: " + string(weight) + "kg of " + string(weight_limit) + "kg");
     
     //External information (to be deleted later)
+    draw_set_font(font_eq);
     draw_set_colour(c_white);
     draw_set_halign(fa_right);
     draw_text(1280 - 20, 20, "Available Slots: 25. | Mouse x: " + string((mouse_x -view_xview) *2));

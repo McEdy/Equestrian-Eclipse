@@ -117,8 +117,14 @@
         <sprite>sprites\spr_collision</sprite>
         <sprite>sprites\spr_enemy_collission</sprite>
       </sprites>
+      <sprites name="Interface">
+        <sprite>sprites\spr_bubble</sprite>
+        <sprite>sprites\spr_arrow_right</sprite>
+        <sprite>sprites\spr_arrow_left</sprite>
+        <sprite>sprites\spr_money</sprite>
+        <sprite>sprites\spr_weight</sprite>
+      </sprites>
       <sprite>sprites\spr_pathguide</sprite>
-      <sprite>sprites\spr_bubble</sprite>
       <sprite>sprites\spr_cursor_normal</sprite>
       <sprite>sprites\spr_cursor_aiming</sprite>
       <sprite>sprites\spr_pressE_1</sprite>
@@ -248,7 +254,7 @@
     <room>rooms\rm_cave_boss</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41939,5515854745</constant>
+    <constant name="GM_build_date">41939.6283852199</constant>
     <constant name="GM_version">'0.0.0.1'</constant>
   </constants>
   <help>

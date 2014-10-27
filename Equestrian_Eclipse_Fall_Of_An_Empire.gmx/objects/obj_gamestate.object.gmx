@@ -46,16 +46,6 @@ global.message_big_y = 0;
 global.damage_popup  = "";      //Amount of dealt damage
 global.damage_popup1 = false;   //Damage was dealt to player
 global.damage_popup2 = false;   //Damage was dealt by player
-
-global.pickup1 = "";
-global.pickup2 = "";
-global.pickup3 = "";
-global.pickup4 = "";
-global.pickup5 = "";
-
-global.pickup_a = false;        //Object was picked up
-global.pickup_b = false;        //Pickup assigned -&gt; successful or unsuccessful
-global.pickup_success = 0;      //0: Not active; 1: Successful; 2: Unsuccessful
 global.pickup_target = "";      //Name of target object
 
 global.boss_battle_start = false;   //Starts boss room script

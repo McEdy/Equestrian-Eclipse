@@ -120,20 +120,18 @@ if(dist_interact &lt; 50)
     
     if(search_quest == "Flower")
     {
-    if(global.pickup_a == false &amp;&amp; global.pickup_b == false)
-    {
-        global.pickup1 = "Flower";
-        global.pickup2 = "A normal flower.";
-        global.pickup3 = 3;
-        global.pickup4 = 0;
-        global.pickup5 = spr_flower_blue;
+        global.pickup0 = "Flower";
+        global.pickup1 = "A normal flower.";
+        global.pickup2 = 3;
+        global.pickup3 = 0;
+        global.pickup4 = spr_flower_blue;
+        global.pickup5 = 0.5;
         
         with(obj_player)
         {
             inv_quest = 0;
             event_user(0);
         }
-    }
     }
 }
 </string>
@@ -181,7 +179,7 @@ if(dist_interact &lt; 50)
     {
     if(timer_no_space == true)
     {
-        global.message1 = "Item pickup failed due to missing space!";
+        global.message1 = "Item too heavy to pick up!";
         global.message2 = true;
         
         timer_no_space = false;
