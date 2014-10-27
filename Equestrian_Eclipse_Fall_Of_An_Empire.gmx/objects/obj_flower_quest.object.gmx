@@ -123,9 +123,9 @@ if(dist_interact &lt; 50)
         global.pickup0 = "Flower";
         global.pickup1 = "A normal flower.";
         global.pickup2 = 3;
-        global.pickup3 = 0;
-        global.pickup4 = spr_flower_blue;
-        global.pickup5 = 0.5;
+        global.pickup3 = spr_flower_blue;
+        global.pickup4 = 0.5;
+        global.pickup5 = 1;
         
         with(obj_player)
         {

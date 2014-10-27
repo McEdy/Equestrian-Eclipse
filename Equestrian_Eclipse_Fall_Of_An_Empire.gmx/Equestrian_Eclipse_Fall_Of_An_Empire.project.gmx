@@ -123,6 +123,7 @@
         <sprite>sprites\spr_arrow_left</sprite>
         <sprite>sprites\spr_money</sprite>
         <sprite>sprites\spr_weight</sprite>
+        <sprite>sprites\spr_quadrat_gr1</sprite>
       </sprites>
       <sprite>sprites\spr_pathguide</sprite>
       <sprite>sprites\spr_cursor_normal</sprite>
@@ -254,7 +255,7 @@
     <room>rooms\rm_cave_boss</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41939.6283852199</constant>
+    <constant name="GM_build_date">41939,8984783796</constant>
     <constant name="GM_version">'0.0.0.1'</constant>
   </constants>
   <help>

@@ -122,9 +122,9 @@ if(dist_interact &lt; 50)
         global.pickup0 = "Shades";
         global.pickup1 = "Cobalt's shades.";
         global.pickup2 = 3;
-        global.pickup3 = 0;
-        global.pickup4 = spr_shades;
-        global.pickup5 = 1;
+        global.pickup3 = spr_shades;
+        global.pickup4 = 1;
+        global.pickup5 = 0;
         
         with(obj_player)
         {

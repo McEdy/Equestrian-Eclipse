@@ -140,11 +140,14 @@ if(obj_player.text_loop == 0)
                 
                 //Give reward
                 
+                obj_player.weight = obj_player.weight - global.items[i_runs,4]; //Remove weight
+                
                 global.items[i_runs,0] = "";    //Delete item out of inventory
                 global.items[i_runs,1] = "";
-                global.items[i_runs,2] = "";
-                global.items[i_runs,3] = "";
-                global.items[i_runs,4] = spr_none;
+                global.items[i_runs,2] = -1;
+                global.items[i_runs,3] = spr_none;
+                global.items[i_runs,4] = 0;
+                global.items[i_runs,5] = 0;
                 
                 global.quests[q_runs,0] = "";   //Delete quest
                 
