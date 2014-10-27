@@ -314,8 +314,6 @@ message_1c = true;
             <kind>1</kind>
             <string>///Depth
 
-show_debug_message(string(money));
-
 depth = (phy_position_y - 15) * -1;
 phy_fixed_rotation = true;
 </string>
@@ -2043,6 +2041,7 @@ if(quest_show == false)
     draw_set_colour(c_white);
     draw_set_halign(fa_right);
     draw_text(1280 - 20, 20, "Available Slots: 25.");
+    draw_text(1280 - 20, 40, "Money: " + string(money) + ".");
     
     draw_set_halign(fa_left);
 }

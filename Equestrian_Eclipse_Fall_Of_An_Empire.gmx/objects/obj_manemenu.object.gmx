@@ -111,7 +111,7 @@ with(instance_create(view_wport[0]/2-200, 128+160, obj_button))
     pony_down   = spr_trixie_down;
     name        = "Best Pony";
     race        = "unicorn";
-    player_name = "Trixie Lunamoon";
+    player_name = "Trixie Lulamoon";
 }
 
 with(instance_create(view_wport[0]/2-200, 128+240, obj_button))
