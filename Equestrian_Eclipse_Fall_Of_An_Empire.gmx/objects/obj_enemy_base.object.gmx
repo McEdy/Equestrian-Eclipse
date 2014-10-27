@@ -32,6 +32,8 @@ phy_fixed_rotation = true;
 max_hp = 10;
 hp = max_hp;
 
+dir = 0;
+
 //Set variables for status effects
 
 status_effect_1 = false;
@@ -40,6 +42,15 @@ status_effect_3 = false;
 counter_1 = 0;
 counter_2 = 0;
 counter_3 = 0;
+
+l_value = 1;
+h_value = 10;
+money_drop = false;
+money_drop_c = 1;
+item_drop_1 = false;
+item_drop_2 = false;
+item_drop_c = 1;
+item_drop_tc = 1;
 </string>
           </argument>
         </arguments>
@@ -105,7 +116,7 @@ event_user(0);
 
 if(hp &lt;= 0)
 {
-    instance_destroy();
+    event_user(1);
 }
 </string>
           </argument>
@@ -193,7 +204,7 @@ event_user(0);
 
 if(hp &lt;= 0)
 {
-    instance_destroy();
+    event_user(1);
 }
 </string>
           </argument>
@@ -226,6 +237,99 @@ if(global.damage_popup2 == true)
     {
         character = other.id;
         global.damage_popup2 = false;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Handle direction
+
+/*show_debug_message(string(dir));
+
+if(dir &gt;= 180)
+{
+    sprite_index = spr_changeling_down;
+}
+else
+{
+    sprite_index = spr_changeling_up;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Handle direction
+
+if(dir &gt;= 45)
+{
+    if(dir &lt; 135)
+    {
+        sprite_index = spr_changeling_up;
+    }
+}
+
+if(dir &gt;= 135)
+{
+    if(dir &lt; 225)
+    {
+        sprite_index = spr_changeling_left;
+    }
+}
+
+if(dir &gt;= 225)
+{
+    if(dir &lt; 315)
+    {
+        sprite_index = spr_changeling_down;
+    }
+}
+
+if(dir &gt;= 315)
+{
+    if(dir &lt;= 360)
+    {
+        sprite_index = spr_changeling_right;
+    }
+}
+
+if(dir &gt;= 0)
+{
+    if(dir &lt; 45)
+    {
+        sprite_index = spr_changeling_right;
     }
 }
 </string>
@@ -319,10 +423,51 @@ if(global.damage_popup2 == true)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with(instance_create(x, y, obj_coinbag))
+            <string>///Handle drops
+
+//Money drop
+
+money_drop_c = irandom_range(1, 2);
+
+if(money_drop = true)
+{
+    if(money_drop_c = 1)
+    {
+        with(instance_create(x + irandom_range(-8, 8), y + irandom_range(-8, 8), obj_coinbag))
+            {
+                value = irandom_range(other.l_value, other.h_value);
+            }
+    }
+}
+
+//Item drop
+
+item_drop_c = irandom_range(1, 2);
+
+if(item_drop_c = 1)
+{
+    if(item_drop_1 != false)
+    {
         {
-            value = irandom_range(other.l_value, other.h_value);
+            item_drop_tc = irandom_range(1, 100);
+        
+            if(item_drop_tc &lt;=90)
+            {
+                instance_create(x + irandom_range(-8, 8), y + irandom_range(-8, 8), item_drop_1)
+            }
+                else
+            {
+                if(item_drop_2 != false)
+                {
+                    instance_create(x + irandom_range(-8, 8), y + irandom_range(-8, 8), item_drop_2)
+                }
+            }
         }
+    }
+}
+
+//Destroy self
+
 instance_destroy();
 </string>
           </argument>

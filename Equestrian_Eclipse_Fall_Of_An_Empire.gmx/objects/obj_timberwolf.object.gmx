@@ -43,7 +43,15 @@ dx = 0;
 dy = 0;
 
 l_value = 1;
-h_value = 9;
+h_value = 10;
+money_drop = true;
+money_drop_tc = 1;
+item_drop_c = 1;
+item_drop_1 = obj_flower_orange;
+item_drop_2 = obj_tree;
+item_drop_c = 1;
+
+dir = 0;
 </string>
           </argument>
         </arguments>
@@ -151,6 +159,12 @@ alarm[0] = 20+ random(80);
             <kind>1</kind>
             <string>///Faster When Player Nearby
 
+//Dir script
+
+event_inherited();
+
+//Faster when player nearby
+
 player_dist = point_distance(phy_position_x, phy_position_y, obj_player.phy_position_x, obj_player.phy_position_y);
 
 if(player_dist &lt; vision_r)
@@ -163,47 +177,6 @@ else
     //Slow action frequency
     alarm[0] = random(200);
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Change sprite according to direction
-
-/*if(obj_timberwolf.dir = 90)
-{
-sprite_index = spr_changeling_right;
-}
-
-if(obj_timberwolf.dir = 180)
-{
-sprite_index = spr_changeling_down;
-}
-
-if(obj_timberwolf.dir = 270)
-{
-sprite_index = spr_changeling_left;
-}
-
-if(obj_timberwolf.dir = 0)
-{
-sprite_index = spr_changeling_up;
-}*/
 </string>
           </argument>
         </arguments>
