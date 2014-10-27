@@ -50,8 +50,6 @@ global.pickup_target = "";      //Name of target object
 
 global.boss_battle_start = false;   //Starts boss room script
 
-global.window = false;
-
 randomize();                    //Change seed for random functions -&gt; true random
 </string>
           </argument>
