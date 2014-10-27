@@ -299,29 +299,47 @@ if(my_path != -1)
         phy_position_y = my_target.y;
     }
     
-    if(dir &lt; 225 &amp;&amp; dir &lt; 315)
+    //Handle direction
+    if(dir &gt;= 45)
     {
-        sprite_index = spr_derpy_left;
+        if(dir &lt; 135)
+        {
+            sprite_index = spr_derpy_down;
+        }
     }
-    else
+    
+    if(dir &gt;= 135)
     {
-        if(dir &lt; 135 &amp;&amp; dir &lt; 225)
+        if(dir &lt; 225)
         {
             sprite_index = spr_derpy_right;
         }
-        else
+    }
+    
+    if(dir &gt;= 225)
+    {
+        if(dir &lt; 315)
         {
-            if(dir &lt; 45 &amp;&amp; dir &lt; 135)
-            {
-                sprite_index = spr_derpy_down;
-            }
-            else
-            {
-                sprite_index = spr_derpy_up;
-            }
+            sprite_index = spr_derpy_up;
         }
     }
-}
+    
+    if(dir &gt;= 315)
+    {
+        if(dir &lt;= 360)
+        {
+            sprite_index = spr_derpy_left;
+        }
+    }
+    
+    if(dir &gt;= 0)
+    {
+        if(dir &lt; 45)
+        {
+            sprite_index = spr_derpy_left;
+        }
+    }
+    }
 </string>
           </argument>
         </arguments>

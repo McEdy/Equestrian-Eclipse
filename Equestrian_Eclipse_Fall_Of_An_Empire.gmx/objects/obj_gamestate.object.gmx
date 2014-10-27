@@ -61,7 +61,8 @@ global.pickup_target = "";      //Name of target object
 global.boss_battle_start = false;   //Starts boss room script
 
 global.window = false;
-global.msg_case = 0;            //Case for message handeling (0=rrror, 1=offer, 2=offer success, 3=offer denial, 4=uncompleted, 5=success, 6=no quest)
+
+randomize();                    //Change seed for random functions -&gt; true random
 </string>
           </argument>
         </arguments>

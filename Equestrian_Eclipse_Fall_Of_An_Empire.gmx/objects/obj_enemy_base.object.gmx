@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.1;
+            <string>///Setup
+
+image_speed = 0.1;
 
 phy_fixed_rotation = true;
 
@@ -43,14 +45,14 @@ counter_1 = 0;
 counter_2 = 0;
 counter_3 = 0;
 
-l_value = 1;
-h_value = 10;
-money_drop = false;
-money_drop_c = 1;
-item_drop_1 = false;
-item_drop_2 = false;
-item_drop_c = 1;
-item_drop_tc = 1;
+l_value = 1;            //Lowest money drop possible
+h_value = 10;           //Highest money drop possible
+money_drop_c = 1;       //Roll of money drop chance
+money_drop = false;     //If money drop is enabled
+item_drop_c = 1;        //Roll of item drop chance (type decision)
+item_drop_tc = 1;       //Roll of 2nd item drop chance
+item_drop_1 = false;    //Common item drop
+item_drop_2 = false;    //Rare item drop´
 </string>
           </argument>
         </arguments>
@@ -96,7 +98,9 @@ item_drop_tc = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>status_effect_3 = true;
+            <string>///Status effect 3
+
+status_effect_3 = true;
 
 damage = 1;
 hp -= damage;
@@ -140,7 +144,9 @@ if(hp &lt;= 0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>status_effect_2 = true;
+            <string>///Status effect 2
+
+status_effect_2 = true;
 
 damage = 1;
 hp -= damage;
@@ -184,7 +190,9 @@ if(hp &lt;= 0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>status_effect_1 = true;
+            <string>///Status effect 1
+
+status_effect_1 = true;
 
 damage = 1;
 hp -= damage;
@@ -212,69 +220,6 @@ if(hp &lt;= 0)
       </action>
     </event>
     <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Damage popup [OUTDATED!]
-
-if(global.damage_popup2 == true)
-{
-    show_debug_message("Test");
-    with(instance_create(x, y, obj_damage_popup))
-    {
-        character = other.id;
-        global.damage_popup2 = false;
-    }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Handle direction
-
-/*show_debug_message(string(dir));
-
-if(dir &gt;= 180)
-{
-    sprite_index = spr_changeling_down;
-}
-else
-{
-    sprite_index = spr_changeling_up;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -426,48 +371,45 @@ if(dir &gt;= 0)
             <string>///Handle drops
 
 //Money drop
-
-money_drop_c = irandom_range(1, 2);
+money_drop_c = irandom_range(1, 2);             //Roll money drop chance
+show_debug_message("Random number: " + string(money_drop_c));
 
 if(money_drop = true)
 {
-    if(money_drop_c = 1)
+    if(money_drop_c = 1)                        //50% chance of money drop
     {
         with(instance_create(x + irandom_range(-8, 8), y + irandom_range(-8, 8), obj_coinbag))
-            {
-                value = irandom_range(other.l_value, other.h_value);
-            }
+        {
+            value = irandom_range(other.l_value, other.h_value);
+        }
     }
 }
 
 //Item drop
+item_drop_c = irandom_range(1, 2);              //Roll item drop chance
+show_debug_message("Random number: " + string(item_drop_c));
 
-item_drop_c = irandom_range(1, 2);
-
-if(item_drop_c = 1)
+if(item_drop_c = 1)                             //50% chance of item drop
 {
-    if(item_drop_1 != false)
+    if(item_drop_1 != false)                    //If drop exists
     {
-        {
-            item_drop_tc = irandom_range(1, 100);
+        item_drop_tc = irandom_range(1, 100);   //Roll second item drop chance
         
-            if(item_drop_tc &lt;=90)
+        if(item_drop_tc &lt;=90)                   //90% chance drop (common drop)
+        {
+            instance_create(x + irandom_range(-8, 8), y + irandom_range(-8, 8), item_drop_1)
+        }
+        else                                    //10% chance drop (rare drop)
+        {
+            if(item_drop_2 != false)            //If drop exists
             {
-                instance_create(x + irandom_range(-8, 8), y + irandom_range(-8, 8), item_drop_1)
-            }
-                else
-            {
-                if(item_drop_2 != false)
-                {
-                    instance_create(x + irandom_range(-8, 8), y + irandom_range(-8, 8), item_drop_2)
-                }
+                instance_create(x + irandom_range(-8, 8), y + irandom_range(-8, 8), item_drop_2)
             }
         }
     }
 }
 
 //Destroy self
-
 instance_destroy();
 </string>
           </argument>
@@ -496,50 +438,54 @@ instance_destroy();
 //Status effect type 1
 if(status_effect_1 = true)
 {
-    if(counter_1 &gt;=1)
-    if(counter_1 &lt;=9)
+    if(counter_1 &gt;= 1)
     {
-    alarm[2] = 60;
-    show_debug_message("Loop for status effect 1 in progress.");
+        if(counter_1 &lt;= 9)
+        {
+            alarm[2] = 60;
+            show_debug_message("Loop for status effect 1 in progress.");
         }
         else
-        counter_1 = 0;
-        status_effect_1 = false;
         {
+            counter_1 = 0;
+            status_effect_1 = false;
+        }
     }
 }
 
 //Status effect type 2
-
 if(status_effect_2 = true)
 {
     if(counter_2 &gt;=1)
-    if(counter_2 &lt;=6)
     {
-    alarm[3] = 60;
-    show_debug_message("Loop for status effect 2 in progress.");
+        if(counter_2 &lt;=6)
+        {
+            alarm[3] = 60;
+            show_debug_message("Loop for status effect 2 in progress.");
         }
         else
-        counter_2 = 0;
-        status_effect_2 = false;
         {
+            counter_2 = 0;
+            status_effect_2 = false;
+        }
     }
 }
 
 //Status effect type 3
-
 if(status_effect_3 = true)
 {
     if(counter_3 &gt;=1)
-    if(counter_3 &lt;=3)
     {
-    alarm[4] = 60;
-    show_debug_message("Loop for status effect 3 in progress.");
+        if(counter_3 &lt;=3)
+        {
+            alarm[4] = 60;
+            show_debug_message("Loop for status effect 3 in progress.");
         }
         else
-        counter_3 = 0;
-        status_effect_3 = false;
         {
+            counter_3 = 0;
+            status_effect_3 = false;
+        }
     }
 }
 </string>
@@ -564,15 +510,18 @@ if(status_effect_3 = true)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self();
+            <string>///Show graphical infos
 
+draw_self();
+
+//"Active" or "not active" circle
 if(player_dist &lt; vision_r)
 {
-draw_circle_colour(x, y, vision_r, c_red, c_red, 1);
+    draw_circle_colour(x, y, vision_r, c_red, c_red, 1);
 }
 else
 {
-draw_circle_colour(x, y, vision_r, c_green, c_green, 1);
+    draw_circle_colour(x, y, vision_r, c_green, c_green, 1);
 }
 
 ///Heath bar

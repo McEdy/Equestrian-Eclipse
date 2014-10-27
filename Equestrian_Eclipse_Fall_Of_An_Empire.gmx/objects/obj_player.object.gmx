@@ -522,7 +522,7 @@ else
     obj_bubble.active = false;
 }
 
-//Message assignment
+//Information assignment
 if(global.message2 == true)
 {
     if(message_1a == "")
@@ -557,70 +557,106 @@ if(global.message2 == true)
     }
 }
 
-//Timer for message
-if(message_1a != "" &amp;&amp; message_1b == true)
+//Timer for information
+if(message_1a != "")
+{
+if(message_1b == true)
 {
     show_debug_message("Message: " + message_1a);
     alarm[0] = 120;
     message_1b = false;
     global.message2 = false;
 }
+}
 
-if(message_2a != "" &amp;&amp; message_2b == true)
+if(message_2a != "")
+{
+if(message_2b == true)
 {
     show_debug_message("Message: " + message_2a);
     alarm[1] = 120;
     message_2b = false;
     global.message2 = false;
 }
+}
 
-if(message_3a != "" &amp;&amp; message_3b == true)
+if(message_3a != "")
+{
+if(message_3b == true)
 {
     show_debug_message("Message: " + message_3a);
     alarm[2] = 120;
     message_3b = false;
     global.message2 = false;
 }
+}
 
 //Fade out
-if(alpha1 &lt; 1 &amp;&amp; alpha1 &gt; 0)
+if(alpha1 &lt; 1)
+{
+if(alpha1 &gt; 0)
 {
     alpha1 -= 0.05;
 }
+}
 
-if(alpha2 &lt; 1 &amp;&amp; alpha2 &gt; 0)
+if(alpha2 &lt; 1)
+{
+if(alpha2 &gt; 0)
 {
     alpha2 -= 0.05;
 }
+}
 
-if(alpha3 &lt; 1 &amp;&amp; alpha3 &gt; 0)
+if(alpha3 &lt; 1)
+{
+if(alpha3 &gt; 0)
 {
     alpha3 -= 0.05;
 }
+}
 
-//Stop message
-if(alpha1 == 0 &amp;&amp; message_1a != "" &amp;&amp; message_1c == true)
+//Stop information
+if(alpha1 == 0)
+{
+if(message_1a != "")
+{
+if(message_1c == true)
 {
     message_1a = "";
     message_1c = false;
     alpha1 = 1;
     show_debug_message("Finished message loop 1.");
 }
+}
+}
 
-if(alpha2 == 0 &amp;&amp; message_2a != "" &amp;&amp; message_2c == true)
+if(alpha2 == 0)
+{
+if(message_2a != "")
+{
+if(message_2c == true)
 {
     message_2a = "";
     message_2c = false;
     alpha2 = 1;
     show_debug_message("Finished message loop 2.");
 }
+}
+}
 
-if(alpha2 == 0 &amp;&amp; message_3a != "" &amp;&amp; message_3c == true)
+if(alpha2 == 0)
+{
+if(message_3a != "")
+{
+if(message_3c == true)
 {
     message_3a = "";
     message_3c = false;
     alpha3 = 1;
     show_debug_message("Finished message loop 3.");
+}
+}
 }
 
 //Damage popup
@@ -635,7 +671,7 @@ if(global.damage_popup1 == true)
 }
 
 //Show big text top middle
-//Message assignment
+//Information assignment
 if(global.message_big2 == true)
 {
     if(message_big_1a == "")
@@ -652,30 +688,40 @@ if(global.message_big2 == true)
     }
 }
 
-//Timer for message
-if(message_big_1a != "" &amp;&amp; message_big_1b == true)
+//Timer for information
+if(message_big_1a != "")
+{
+if(message_big_1b == true)
 {
     show_debug_message("Message: " + message_big_1a);
     alarm[3] = 120;
     message_big_1b = false;
     global.message_big2 = false;
 }
-
+}
 
 //Fade out
-if(alpha_big1 &lt; 1 &amp;&amp; alpha_big1 &gt; 0)
+if(alpha_big1 &lt; 1)
+{
+if(alpha_big1 &gt; 0)
 {
     alpha_big1 -= 0.05;
 }
-
+}
 
 //Stop message
-if(alpha_big1 == 0 &amp;&amp; message_big_1a != "" &amp;&amp; message_big_1c == true)
+if(alpha_big1 == 0)
+{
+if(message_big_1a != "")
+{
+if(message_big_1c == true)
 {
     message_big_1a = "";
     message_big_1c = false;
     alpha_big1 = 1;
     show_debug_message("Finished message (big) loop 1.");
+}
+}
 }
 </string>
           </argument>
@@ -758,6 +804,7 @@ if(keyboard_check_released(ord("Z")))   //Launch action when Z is released
             text_loop += 1; //Next part of the conversation
             msg_pony = 1;   //NPC base gives player pony name
             msg_conv = 0;   //NPC base gives player conversation number
+            msg_case = 0;   //Error case
             event_user(1);  //Launch of conversation script
         }
     }
@@ -980,8 +1027,9 @@ if(global.character_race == "unicorn")
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Inventory user input
+            <string>///Inventory user input [OUTDATED]
 
+/*
 if(inv_show == true)
 {
     //Column 1
@@ -1224,6 +1272,70 @@ if(inv_show == true)
         inv_slot_selected = false;
     }
     }
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Inventory user input
+
+
+if(inv_show == true)
+{
+    if(8 &lt;= ((mouse_x -view_xview) *2) &amp;&amp; ((mouse_x -view_xview) *2) &lt;= 648)
+    {
+        //Slot 0
+        if(174 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 200)
+        {
+            inv_display = 0;
+            inv_slot_selected = true;
+            inv_preview_y = 174;
+        }
+        //Slot 1
+        if(201 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 227)
+        {
+            inv_display = 1;
+            inv_slot_selected = true;
+            inv_preview_y = 201;
+        }
+        //Slot 2
+        if(228 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 254)
+        {
+            inv_display = 2;
+            inv_slot_selected = true;
+            inv_preview_y = 228;
+        }
+        //Slot 3
+        if(255 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 281)
+        {
+            inv_display = 3;
+            inv_slot_selected = true;
+            inv_preview_y = 255;
+        }
+        //Slot 4
+        if(282 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 308)
+        {
+            inv_display = 4;
+            inv_slot_selected = true;
+            inv_preview_y = 282;
+        }
     }
 }
 </string>
@@ -1708,7 +1820,7 @@ if(inv_quest == 0)
     
     //Inventory
     var p_runs = 0;
-    while(inv_assigned == false &amp;&amp; p_runs &lt; 2)       //p_runs &lt; NUMBER -&gt; space in inv
+    while(inv_assigned == false &amp;&amp; p_runs &lt; 5)       //p_runs &lt; NUMBER -&gt; space in inv
     {
         if(global.items[p_runs,0] == "")
         {
@@ -1734,7 +1846,7 @@ if(inv_quest == 0)
         }
     }
     
-    if(p_runs == 2) //To be changed into 25 again
+    if(p_runs == 5) //To be changed into 25 again
     {
         with(obj_items)                         //Gives item failure answer
         {
@@ -1742,8 +1854,7 @@ if(inv_quest == 0)
             p_success = 2;
             event_user(0);
         }
-              
-        show_debug_message("Item pickup assignment no space.");
+        
         p_runs = 0;
     }
 }
@@ -1916,7 +2027,8 @@ if(inv_show == false)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Inventory
+            <string>///Inventory [OUTDATED]
+/*
 if(inv_show == true)
 {
 if(quest_show == false)
@@ -2044,6 +2156,98 @@ if(quest_show == false)
     draw_text(1280 - 20, 40, "Money: " + string(money) + ".");
     
     draw_set_halign(fa_left);
+}
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Inventory 2.0
+
+if(inv_show == true)
+{
+if(quest_show == false)
+{
+    //Blacken screen
+    draw_set_alpha(0.5);
+    draw_set_colour(c_black);
+    draw_rectangle(0, 0, 1280, 720, false);
+    
+    //Black outlines
+    draw_set_alpha(1);
+    draw_set_colour(c_black);
+    draw_rectangle(7, 7, 649, 720 -7, false);           //Inventory box
+    draw_rectangle(658, 7, 1280 -7, 356, false);        //Description box
+    draw_rectangle(658, 365, 1280 -7, 720 -7, false);   //Comparison box
+    
+    //Interface pages
+    draw_set_colour(make_color_rgb(214, 182, 135));
+    draw_rectangle(8, 8, 648, 720 -8, false);           //Inventory box
+    draw_rectangle(659, 8, 1280 -8, 355, false);        //Description box
+    draw_rectangle(659, 366, 1280 -8, 720 -8, false);   //Comparison box
+    
+    //Above inventory
+    draw_set_colour(c_black);
+    draw_set_halign(fa_left);
+    draw_set_valign(fa_top);
+    draw_set_font(font_popup);
+    draw_text(75, 40, "Weapons");
+    
+    //draw_set_halign(fa_center);
+    draw_set_font(font_eq);
+    draw_text(580, 150, "Price");
+    
+    //Selection marker
+    if(inv_slot_selected == true)
+    {
+        draw_set_alpha(0.5);
+        draw_set_colour(c_blue);
+        draw_rectangle(8, inv_preview_y, 648, inv_preview_y + 25, false);   //Selection marker
+        
+        //Description
+        draw_set_alpha(1);
+        draw_set_font(font_popup);
+        draw_set_colour(c_black);
+        draw_text(680, 30, string(global.items[inv_display,0]));            //Name of selected item
+        draw_set_font(font_medium);
+        draw_text(980, 80, string(global.items[inv_display,1]));            //Description of selected item
+        
+        var size_x = sprite_get_width(global.items[inv_display,1]);         //Get sprite size
+        draw_sprite_ext(global.items[inv_display,4], 0, 800, 185, 250 /size_x , 250 /size_x, 0, -1, 1); //Draw sprite in 250x250
+    }
+    
+    
+    //Inventory core
+    draw_set_font(font_eq);
+    draw_set_halign(fa_left);
+    
+    //Names
+    draw_text(50, 175, string(global.items[0,0]) + "#" + string(global.items[1,0]) + "#" + string(global.items[2,0]) + "#" + string(global.items[3,0]) + "#" + string(global.items[4,0]));
+    //Price
+    draw_text(580, 175, string(global.items[0,3]) + "#" + string(global.items[1,3]) + "#" + string(global.items[2,3]) + "#" + string(global.items[3,3]) + "#" + string(global.items[4,3]));
+    
+    
+    //External information (to be deleted later)
+    draw_set_colour(c_white);
+    draw_set_halign(fa_right);
+    draw_text(1280 - 20, 20, "Available Slots: 25. | Mouse x: " + string((mouse_x -view_xview) *2));
+    draw_text(1280 - 20, 40, "Money: " + string(money) + ". | Mouse y: " + string((mouse_y -view_yview) *2));
 }
 }
 </string>

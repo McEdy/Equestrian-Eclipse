@@ -57,8 +57,17 @@ value = 10;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with(obj_player)
-money += other.value;
+            <string>///Give money
+
+var money_before = obj_player.money;
+
+with(obj_player)
+{
+    money += other.value;
+}
+
+global.message1 = "Money: " + string(money_before) + " + " + string(value) + " = " + string(obj_player.money) + ".";
+global.message2 = true;
 
 instance_destroy();
 </string>

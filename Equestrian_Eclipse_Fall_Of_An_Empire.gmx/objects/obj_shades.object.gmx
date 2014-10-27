@@ -183,6 +183,8 @@ if(dist_interact &lt; 50)
         global.message1 = "Item pickup failed due to missing space!";
         global.message2 = true;
         
+        show_debug_message("Item pickup assignment no space.");
+        
         timer_no_space = false;
         alarm[0] = 30;
     

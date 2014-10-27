@@ -28,8 +28,6 @@
             <string>///Depth
 
 depth = (y + 50) * -1;
-
-alarm[0] = 20;
 </string>
           </argument>
         </arguments>
@@ -60,8 +58,6 @@ else
 {
     sprite_index = spr_lantern_off;
 }
-
-alarm[0] = 20;
 </string>
           </argument>
         </arguments>
@@ -86,7 +82,8 @@ alarm[0] = 20;
             <kind>1</kind>
             <string>///Turn On
 
-/*if(sprite_index == spr_lantern_off)
+/*
+if(sprite_index == spr_lantern_off)
 {
     sprite_index = spr_lantern_on;
 }
