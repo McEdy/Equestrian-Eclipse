@@ -25,21 +25,208 @@
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>///Depth
+
+depth = y * -1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>///Setup
+
+name = "";          //Name
+desc = "";          //Desciption
+type = -1;          //Type of item
+sprite = spr_none;  //Sprite
+weight = 0;         //Weight
+price = 0;          //Price
+value1 = 0;         //First value of item type
+value2 = 0;         //Second value of item type
+value3 = 0;         //Third value of item type
+
+timer_no_space = true;
+active = false;
 
 p_target = "";
 p_success = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///"No space" message timer
+
 timer_no_space = true;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
+    <event eventtype="5" enumb="69">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Interaction
+
+dist_interact = point_distance(phy_position_x, phy_position_y, obj_player.phy_position_x, obj_player.phy_position_y);
+
+if(dist_interact &lt; 50)
+{
+    global.pickup0 = name;
+    global.pickup1 = desc;
+    global.pickup2 = type;
+    global.pickup3 = sprite;
+    global.pickup4 = weight;
+    global.pickup5 = price;
+    global.pickup6 = value1;
+    global.pickup7 = value2;
+    global.pickup8 = value3;
+    
+    with(obj_player)
+    {
+        inv_quest = 0;
+        event_user(0);
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Pickup result handling
+
+if(dist_interact &lt; 50)
+{
+    if(p_target == name)
+    {
+    if(p_success == 1)
+    {
+        global.message1 = "Item picked up: " + string(p_target) + ".";
+        global.message2 = true;
+        
+        show_debug_message("Item pickup success.");
+        
+        instance_destroy();
+    }
+    }
+    
+    if(p_target == name)
+    {
+    if(p_success == 2)
+    {
+    if(timer_no_space == true)
+    {
+        global.message1 = "Item too heavy to pick up!";
+        global.message2 = true;
+        
+        timer_no_space = false;
+        alarm[0] = 30;
+    
+        show_debug_message("Item pickup unsuccessful.");
+    }
+    }
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(active == true)
+{
+    draw_self();
+    draw_circle(x, y, 50 -25, true);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
   </events>
-  <PhysicsObject>0</PhysicsObject>
-  <PhysicsObjectSensor>0</PhysicsObjectSensor>
+  <PhysicsObject>-1</PhysicsObject>
+  <PhysicsObjectSensor>-1</PhysicsObjectSensor>
   <PhysicsObjectShape>0</PhysicsObjectShape>
-  <PhysicsObjectDensity>0.5</PhysicsObjectDensity>
+  <PhysicsObjectDensity>0</PhysicsObjectDensity>
   <PhysicsObjectRestitution>0.100000001490116</PhysicsObjectRestitution>
   <PhysicsObjectGroup>0</PhysicsObjectGroup>
   <PhysicsObjectLinearDamping>0.100000001490116</PhysicsObjectLinearDamping>
@@ -47,5 +234,8 @@ timer_no_space = true;
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>16,16</point>
+    <point>12,16</point>
+  </PhysicsShapePoints>
 </object>

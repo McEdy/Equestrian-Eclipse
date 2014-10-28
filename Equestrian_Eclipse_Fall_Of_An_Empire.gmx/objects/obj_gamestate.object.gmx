@@ -32,8 +32,6 @@ global.dest_x = 256;
 global.dest_y = 96;
 
 cursor_sprite = spr_cursor_normal;
-switches = ds_map_create();
-obj_button.colour = c_white;
 
 global.message1 = "";           //Sending message
 global.message2 = false;        //A message was sent

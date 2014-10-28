@@ -90,6 +90,9 @@ for(var i = 99; i &gt; -1; i--;)       //Actual inventory
     global.items[i,3] = spr_none;   //Sprite
     global.items[i,4] = 0;          //Weight
     global.items[i,5] = 0;          //Price
+    global.items[i,6] = "";         //Value 1 (String)
+    global.items[i,7] = 0;          //Value 2 (Number)
+    global.items[i,8] = 0;          //Value 3 (Number)
 }
 
 show_debug_message("Inventory arrays finished.");
@@ -1640,14 +1643,17 @@ if(inv_quest == 0)
     {
         if(global.items[p_runs,0] == "")
         {
-            if(weight + global.pickup5 &lt;= weight_limit)
+            if(weight + global.pickup4 &lt;= weight_limit)
             {
                 global.items[p_runs,0] = global.pickup0;    //Name
                 global.items[p_runs,1] = global.pickup1;    //Description
-                global.items[p_runs,2] = global.pickup2;    //Type (Weapon, Armour, Status, Misc)
+                global.items[p_runs,2] = global.pickup2;    //Type
                 global.items[p_runs,3] = global.pickup3;    //Sprite
                 global.items[p_runs,4] = global.pickup4;    //Weight
                 global.items[p_runs,5] = global.pickup5;    //Price
+                global.items[p_runs,6] = global.pickup6;    //Value 1
+                global.items[p_runs,7] = global.pickup7;    //Value 2
+                global.items[p_runs,8] = global.pickup8;    //Value 3
                 
                 weight = weight + global.pickup4;           //Weight calculation
                 
@@ -1750,26 +1756,6 @@ else    //Quests
 //Health + Stamina bar
 draw_healthbar(20, 20, 200, 30, hp/max_hp *100, c_black, c_red, c_red, 0, true, true);
 draw_healthbar(20, 40, 200, 50, stamina/max_stamina *100, c_black, c_blue, c_blue, 0, true, true);
-
-//Messages
-draw_set_halign(0);
-draw_set_alpha(alpha1);
-if(message_1a != "")
-{
-    draw_text(20, 500, message_1a);
-}
-
-draw_set_alpha(alpha2);
-if(message_2a != "")
-{
-    draw_text(20, 520, message_2a);
-}
-
-draw_set_alpha(alpha3);
-if(message_3a != "")
-{
-    draw_text(20, 540, message_3a);
-}
 
 //Big Messages
 draw_set_alpha(alpha_big1);
@@ -1915,7 +1901,7 @@ if(quest_show == false)
         draw_set_colour(c_black);
         draw_text(680, 30, string(global.items[inv_select,0]));             //Name of selected item
         draw_set_font(font_medium);
-        draw_text(980, 80, string(global.items[inv_select,1]));             //Description of selected item
+        draw_text(950, 100, string(global.items[inv_select,1]));             //Description of selected item
         
         var size_x = sprite_get_width(global.items[inv_select,3]);          //Get sprite size
         draw_sprite_ext(global.items[inv_select,3], 0, 800, 200, 200 /size_x , 200 /size_x, 0, -1, 1); //Draw sprite in 250x250
@@ -2101,6 +2087,58 @@ if(quest_show == false)
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Information dialog system
+
+draw_set_halign(0);
+draw_set_alpha(alpha1);
+
+if(inv_show == false)
+{
+    draw_set_colour(c_white);
+}
+else
+{
+    draw_set_colour(c_black);
+}
+
+if(message_1a != "")
+{
+    draw_text(20, 500, message_1a);
+}
+
+draw_set_alpha(alpha2);
+if(message_2a != "")
+{
+    draw_text(20, 520, message_2a);
+}
+
+draw_set_alpha(alpha3);
+if(message_3a != "")
+{
+    draw_text(20, 540, message_3a);
+}
+
+draw_set_alpha(1);  //Prevent other drawn objects from being vanished
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="8" enumb="0">
       <action>
@@ -2199,7 +2237,61 @@ if(inv_slot_selected = true)
 {
 if(global.items[inv_select,0] != "")
 {
-    equip_0 = inv_select;
+    switch(global.items[inv_select,2])
+    {
+        case 0: //Weapon -&gt; equip
+        equip_0 = inv_select;
+        break;
+        
+        case 1: //Armour -&gt; equip
+        equip_0 = inv_select;
+        break;
+        
+        case 2: //Shield -&gt; equip
+        equip_0 = inv_select;
+        break;
+        
+        case 3: //Ammonition -&gt; equip
+        equip_0 = inv_select;
+        break;
+        
+        case 4: //Potion -&gt; use
+        if(global.items[inv_select,6] == "heal")
+        {
+            if(max_hp - hp &gt;= global.items[inv_select,7])   //If health is low
+            {
+                hp = hp + global.items[inv_select,7];       //Fill health a bit
+                
+                global.items[inv_select,0] = "";            //Delete item
+                global.items[inv_select,1] = "";
+                global.items[inv_select,2] = -1;
+                global.items[inv_select,3] = spr_none;
+                global.items[inv_select,4] = 0;
+                global.items[inv_select,5] = 0;
+            }
+            else
+            {
+                if(hp == max_hp)    //Give player information that already full health
+                {
+                    global.message1 = "You already have full health.";
+                    global.message2 = true;
+                }
+                else
+                {
+                    hp = max_hp;                            //Fill up to full health
+                    
+                    global.items[inv_select,0] = "";        //Delete item
+                    global.items[inv_select,1] = "";
+                    global.items[inv_select,2] = -1;
+                    global.items[inv_select,3] = spr_none;
+                    global.items[inv_select,4] = 0;
+                    global.items[inv_select,5] = 0;
+                }
+            }
+        }
+        
+        break;
+    }
 }
 }
 }

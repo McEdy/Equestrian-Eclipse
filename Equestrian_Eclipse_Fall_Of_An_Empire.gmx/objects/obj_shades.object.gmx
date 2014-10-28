@@ -5,36 +5,10 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>obj_items</parentName>
+  <parentName>obj_items_quest</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Depth
-
-event_inherited();
-
-depth = y * -1;
-active = false;
-</string>
-          </argument>
-        </arguments>
-      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -55,169 +29,14 @@ active = false;
 
 event_inherited();
 
-active = false;
-search_quest = "";
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///"No space" message timer
+name = "Shades";
+desc = "Cobalt's shades.";
+type = 6;
+sprite = spr_shades;
+weight = 1;
+price = 0;
 
-timer_no_space = true;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="5" enumb="69">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Interaction
-
-dist_interact = point_distance(phy_position_x, phy_position_y, obj_player.phy_position_x, obj_player.phy_position_y);
-
-if(dist_interact &lt; 50)
-{
-    var i = 0;
-    while(search_quest != "Cobalt Shades" &amp;&amp; i &lt; 1) //Runs = 5
-    {
-        search_quest = global.quests[i,0];
-        i += 1;
-    }
-    
-    if(search_quest == "Cobalt Shades")
-    {
-        global.pickup0 = "Shades";
-        global.pickup1 = "Cobalt's shades.";
-        global.pickup2 = 3;
-        global.pickup3 = spr_shades;
-        global.pickup4 = 1;
-        global.pickup5 = 0;
-        
-        with(obj_player)
-        {
-            inv_quest = 0;
-            event_user(0);
-        }
-    }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="10">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Pickup result handling
-
-if(dist_interact &lt; 50)
-{
-    if(p_target == "Shades")
-    {
-    if(p_success == 1)
-    {
-        global.message1 = "Item picked up: " + string(p_target) + ".";
-        global.message2 = true;
-        
-        show_debug_message("Item pickup success.");
-        
-        instance_destroy();
-    }
-    }
-    
-    if(p_target == "Shades")
-    {
-    if(p_success == 2)
-    {
-    if(timer_no_space == true)
-    {
-        global.message1 = "Item too heavy to pick up!";
-        global.message2 = true;
-        
-        show_debug_message("Item pickup assignment no space.");
-        
-        timer_no_space = false;
-        alarm[0] = 30;
-    
-        show_debug_message("Item pickup unsuccessful.");
-    }
-    }
-    }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if(active == true)
-{
-    draw_self();
-    draw_circle(x, y, 50 -25, true);
-}
+quest_name = "Cobalt Shades";
 </string>
           </argument>
         </arguments>
