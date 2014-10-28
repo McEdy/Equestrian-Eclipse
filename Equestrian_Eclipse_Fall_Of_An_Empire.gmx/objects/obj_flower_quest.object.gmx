@@ -29,12 +29,12 @@
 
 event_inherited();
 
-name = "Flower";
-desc = "A normal,#unspectacular#flower.";
-type = 6;
-sprite = spr_flower_blue;
-weight = 0.5;
-price = 1;
+name    = "Flower";
+desc    = "A normal,#unspectacular#flower.";
+type    = 6;
+sprite  = spr_flower_blue;
+weight  = 0.5;
+price   = 1;
 
 image_speed = 0.013 + random(0.003);
 quest_name = "Flower";

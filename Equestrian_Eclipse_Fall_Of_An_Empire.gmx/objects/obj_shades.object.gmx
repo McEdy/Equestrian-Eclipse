@@ -29,12 +29,12 @@
 
 event_inherited();
 
-name = "Shades";
-desc = "Cobalt's shades.";
-type = 6;
-sprite = spr_shades;
-weight = 1;
-price = 0;
+name    = "Shades";
+desc    = "Cobalt's shades.";
+type    = 6;
+sprite  = spr_shades;
+weight  = 1;
+price   = 0;
 
 quest_name = "Cobalt Shades";
 </string>

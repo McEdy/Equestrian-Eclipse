@@ -29,16 +29,16 @@
 
 event_inherited();
 
-name = "Health potion (M)";
-desc = "You can see the#rising bubbles#inside the bottle.#What may be#in there?";
-type = 4;           //Potion
-sprite = spr_healthpotion_m;
-weight = 0.5;
-price = 3;
-value1 = "heal";    //Healing potion
-value2 = 10;        //Amount of healing
+name    = "Health potion (M)";
+desc    = "You can see the#rising bubbles#inside the bottle.#What may be#in there?";
+type    = 4;                    //Potion
+sprite  = spr_healthpotion_m;
+weight  = 0.5;
+price   = 3;
+value1  = "heal";               //Healing potion
+value2  = 10;                   //Amount of healing
 
-active = true;
+active  = true;
 </string>
           </argument>
         </arguments>

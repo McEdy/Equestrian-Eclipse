@@ -661,7 +661,7 @@ if(message_2c == true)
 }
 }
 
-if(alpha2 == 0)
+if(alpha3 == 0)
 {
 if(message_3a != "")
 {
