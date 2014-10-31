@@ -88,6 +88,8 @@
       <sprite>sprites\spr_shades</sprite>
       <sprite>sprites\spr_coinbag</sprite>
       <sprite>sprites\spr_healthpotion_m</sprite>
+      <sprite>sprites\spr_healthpotion_s</sprite>
+      <sprite>sprites\spr_healthpotion_l</sprite>
     </sprites>
     <sprites name="System">
       <sprites name="Window">
@@ -228,7 +230,9 @@
         <object>objects\obj_items_quest</object>
       </objects>
       <objects name="Status">
-        <object>objects\obj_heathpotion_m</object>
+        <object>objects\obj_healthpotion_m</object>
+        <object>objects\obj_healthpotion_s</object>
+        <object>objects\obj_healthpotion_l</object>
       </objects>
       <objects name="Other">
         <object>objects\obj_coinbag</object>
@@ -260,7 +264,7 @@
     <room>rooms\rm_cave_boss</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41940.7366100347</constant>
+    <constant name="GM_build_date">41942.1412925</constant>
     <constant name="GM_version">'0.0.0.1'</constant>
   </constants>
   <help>

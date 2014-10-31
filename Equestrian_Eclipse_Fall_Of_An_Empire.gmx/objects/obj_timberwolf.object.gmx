@@ -45,10 +45,10 @@ dy = 0;
 l_value = 1;
 h_value = 10;
 money_drop_tc = 1;
-money_drop = true;                  //Money drop enabled
+money_drop = true;                   //Money drop enabled
 item_drop_c = 1;
-item_drop_1 = obj_flower_orange;    //Common drop
-item_drop_2 = obj_tree;             //Rare drop
+item_drop_1 = obj_healthpotion_s;    //Common drop
+item_drop_2 = obj_healthpotion_m;    //Rare drop
 
 dir = 0;
 </string>
