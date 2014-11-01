@@ -33,7 +33,6 @@ alarm[0] = 40;
 force = 80;
 damage = 2;
 status_effect = "exhausted";
-status_effect_damage = 1;
 </string>
           </argument>
         </arguments>

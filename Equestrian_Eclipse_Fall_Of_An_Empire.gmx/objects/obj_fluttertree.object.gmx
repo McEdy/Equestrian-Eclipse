@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = 0;
+            <string>///Setup
+
+alarm[0] = 0;
 
 hero_dist = 0;
 name = "Fluttertree";
@@ -35,6 +37,131 @@ global.boss_defeated = false;
 
 max_hp = 90;
 hp = max_hp;
+
+l_value = 5;                    //Lowest money drop possible
+h_value = 50;                   //Highest money drop possible
+money_drop = true;              //If money drop is enabled
+item_drop_1 = obj_bush_red;     //Common item drop
+item_drop_2 = obj_stalagmite;   //Rare item drop
+
+status_effect1 = "";            //Current effect 1
+status_effect2 = "";            //Current effect 2
+effect1_counter = 0;            //Seconds of effect 1
+effect2_counter = 0;            //Seconds of effect 2
+
+effect_burn_length = 5;         //Length of effect burning
+effect_slow_length = 5;         //Length of effect 1
+effect_exhausted_length = 5;    //Length of effect 2
+
+effect_burn_damage = 5;         //Damage caused by effect burn
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Status effect 2
+
+switch(status_effect2)
+{
+    case "burning": //Status effect burning
+    if(effect2_counter &lt; effect_burn_length)
+    {
+        //Count up
+        effect2_counter += 1;
+        
+        //Effect
+        with(instance_create(x, y, obj_damage_popup))   //Damage popup
+        {
+            damage_popup = other.effect_burn_damage;
+            character = other.id;
+            colour = c_orange;
+        }
+        
+        hp -= other.effect_burn_damage;                 //Reduce health
+        
+        if(hp &lt;= 0)                                     //Drop items
+        {
+            event_user(0);
+        }
+        
+        alarm[3] = 60;                                  //Next second
+    }
+    else
+    {
+        status_effect1 = "";                            //Reset values
+        effect1_counter = 0;
+    }
+    break;
+    
+    case "slowness": //Status effect slowness
+    if(effect2_counter &lt; effect_slow_length)
+    {
+        //Count up
+        effect2_counter += 1;
+        
+        //Effect
+        with(instance_create(x, y, obj_damage_popup))   //Damage popup
+        {
+            damage_popup = "Slow";
+            character = other.id;
+            colour = c_orange;
+        }
+        
+        walk_speed = 0.25;                              //One forth speed
+        
+        alarm[3] = 60;                                  //Next second
+    }
+    else
+    {
+        walk_speed = 1;                                 //Reset
+        status_effect1 = "";
+        effect1_counter = 0;
+    }
+    break;
+    
+    case "exhausted":  //Status effect exhausted
+    if(effect2_counter &lt; effect_exhausted_length)
+    {
+        //Count up
+        effect2_counter += 1;
+        
+        //Effect
+        with(instance_create(x, y, obj_damage_popup))   //Damage popup
+        {
+            damage_popup = "Exhausted";
+            character = other.id;
+            colour = c_orange;
+        }
+        
+        //To be added                                   //Keep stamina low
+        
+        alarm[3] = 60;                                  //Next second
+    }
+    else
+    {
+        //To be added                                   //Reset values
+        status_effect1 = "";
+        effect1_counter = 0;
+    }
+    break;
+}
 </string>
           </argument>
         </arguments>
@@ -57,19 +184,91 @@ hp = max_hp;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>status_effect = 1;
+            <string>///Status effect 1
 
-hp -= 1;
-
-show_debug_message("staus effects are online!");
-
-counter += 1;
-
-event_user(0);
-
-if(hp &lt;= 0)
+switch(status_effect1)
 {
-    instance_destroy();
+    case "burning": //Status effect burning
+    if(effect1_counter &lt; effect_burn_length)
+    {
+        //Count up
+        effect1_counter += 1;
+        
+        //Effect
+        with(instance_create(x, y, obj_damage_popup))   //Damage popup
+        {
+            damage_popup = other.effect_burn_damage;
+            character = other.id;
+            colour = c_orange;
+        }
+        
+        hp -= other.effect_burn_damage;                 //Reduce health
+        
+        if(hp &lt;= 0)                                     //Drop items
+        {
+            event_user(0);
+        }
+        
+        alarm[2] = 60;                                  //Next second
+    }
+    else
+    {
+        status_effect1 = "";                            //Reset values
+        effect1_counter = 0;
+    }
+    break;
+    
+    case "slowness": //Status effect slowness
+    if(effect1_counter &lt; effect_slow_length)
+    {
+        //Count up
+        effect1_counter += 1;
+        
+        //Effect
+        with(instance_create(x, y, obj_damage_popup))   //Damage popup
+        {
+            damage_popup = "Slow";
+            character = other.id;
+            colour = c_orange;
+        }
+        
+        walk_speed = 0.25;                              //One forth speed
+        
+        alarm[2] = 60;                                  //Next second
+    }
+    else
+    {
+        walk_speed = 1;                                 //Reset values
+        status_effect1 = "";
+        effect1_counter = 0;
+    }
+    break;
+    
+    case "exhausted":  //Status effect exhausted
+    if(effect1_counter &lt; effect_exhausted_length)
+    {
+        //Count up
+        effect1_counter += 1;
+        
+        //Effect
+        with(instance_create(x, y, obj_damage_popup))   //Damage popup
+        {
+            damage_popup = "Exhausted";
+            character = other.id;
+            colour = c_orange;
+        }
+        
+        //To be added                                   //Keep stamina low
+        
+        alarm[2] = 60;                                  //Next second
+    }
+    else
+    {
+        //To be added                                   //Reset values
+        status_effect1 = "";
+        effect1_counter = 0;
+    }
+    break;
 }
 </string>
           </argument>
@@ -146,17 +345,55 @@ boss_timer = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(counter &gt;=1)
-if(counter &lt;=9)
+            <string>///Handle drops
+
+//Money drop
+money_drop_c = irandom_range(1, 2);             //Roll money drop chance
+show_debug_message("Random number: " + string(money_drop_c));
+
+if(money_drop = true)
 {
-alarm[2] = 60;
-show_debug_message("Stage 2 of user event 0 complete");
-    }
-    else
-    counter = 0;
-    status_effect = 0;
+    if(money_drop_c = 1)                        //50% chance of money drop
     {
+        with(instance_create(x + irandom_range(-8, 8), y + irandom_range(-8, 8), obj_coinbag))
+        {
+            value = irandom_range(other.l_value, other.h_value);
+        }
+    }
 }
+
+//Item drop
+item_drop_c = 1;                                //Roll item drop chance (100%)
+show_debug_message("Random number: " + string(item_drop_c));
+
+if(item_drop_c = 1)                             //50% chance of item drop
+{
+    if(item_drop_1 != false)                    //If drop exists
+    {
+        item_drop_tc = irandom_range(1, 100);   //Roll second item drop chance
+        
+        if(item_drop_tc &lt;=90)                   //90% chance drop (common drop)
+        {
+            instance_create(x + irandom_range(-8, 8), y + irandom_range(-8, 8), item_drop_1)
+        }
+        else                                    //10% chance drop (rare drop)
+        {
+            if(item_drop_2 != false)            //If drop exists
+            {
+                instance_create(x + irandom_range(-8, 8), y + irandom_range(-8, 8), item_drop_2)
+            }
+        }
+    }
+}
+
+//Open gate
+with(obj_gate)
+{
+    event_user(1);
+}
+
+//Destroy self
+instance_destroy();
 </string>
           </argument>
         </arguments>

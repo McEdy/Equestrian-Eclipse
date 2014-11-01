@@ -46,7 +46,6 @@ global.damage_popup1 = false;   //Damage was dealt to player
 global.damage_popup2 = false;   //Damage was dealt by player
 global.pickup_target = "";      //Name of target object
 
-global.boss_battle_start = false;   //Starts boss room script
 
 randomize();                    //Change seed for random functions -&gt; true random
 </string>

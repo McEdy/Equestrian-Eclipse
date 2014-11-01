@@ -25,15 +25,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.boss_defeated == false)
+            <string>if(instance_exists(obj_fluttertree))
 {
     global.message_big1 = "Fluttertree The Frightening";
     global.message_big2 = true;
     global.message_big_x = 640;
     global.message_big_y = 200;
     
-    global.boss_battle_start = true;
-    obj_gate.phy_active = true;
+    with(obj_gate)
+    {
+        event_user(0);
+    }
 }
 </string>
           </argument>

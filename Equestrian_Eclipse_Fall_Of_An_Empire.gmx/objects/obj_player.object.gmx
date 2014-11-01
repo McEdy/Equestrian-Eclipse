@@ -147,6 +147,18 @@ speech_active_counter = 0;
 msg_pony = 0;
 msg_conv = 0;
 msg_case = 0;
+
+//Status effects
+status_effect1 = "";            //Current effect 1
+status_effect2 = "";            //Current effect 2
+effect1_counter = 0;            //Seconds of effect 1
+effect2_counter = 0;            //Seconds of effect 2
+
+effect_burn_length = 5;         //Length of effect burning
+effect_slow_length = 5;         //Length of effect 1
+effect_exhausted_length = 5;    //Length of effect 2
+
+effect_burn_damage = 1;         //Damage caused by effect burn
 </string>
           </argument>
         </arguments>
@@ -202,6 +214,230 @@ money = 10;
             <string>///General timer
 
 general_timer = true;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Status effect 2
+
+switch(status_effect1)
+{
+    case "burning": //Status effect burning
+    if(effect2_counter &lt; effect_burn_length)
+    {
+        //Count up
+        effect2_counter += 1;
+        
+        //Effect
+        with(instance_create(x, y, obj_damage_popup))   //Damage popup
+        {
+            damage_popup = other.effect_burn_damage;
+            character = other.id;
+            colour = c_red;
+        }
+        
+        hp -= other.effect_burn_damage;                 //Reduce health
+        
+        if(hp &lt;= 0)                                     //Drop items
+        {
+            //Handle game over
+            show_debug_message("You died in Equestrian Eclipse. You're bad at this game and you should feel bad!");
+            show_message("You died. Bad player, I expected more from you! (You can even cheat, dumbass...)");
+            
+            event_user(2);
+        }
+        
+        alarm[5] = 60;                                  //Next second
+    }
+    else
+    {
+        status_effect2 = "";                            //Reset values
+        effect1_counter = 0;
+    }
+    break;
+    
+    case "slowness": //Status effect slowness
+    if(effect2_counter &lt; effect_slow_length)
+    {
+        //Count up
+        effect2_counter += 1;
+        
+        //Effect
+        with(instance_create(x, y, obj_damage_popup))   //Damage popup
+        {
+            damage_popup = "Slow";
+            character = other.id;
+            colour = c_red;
+        }
+        
+        walk_speed = 0.25;                              //One forth speed
+        
+        alarm[5] = 60;                                  //Next second
+    }
+    else
+    {
+        walk_speed = 1;                                 //Reset values
+        status_effect2 = "";
+        effect1_counter = 0;
+    }
+    break;
+    
+    case "exhausted":  //Status effect exhausted
+    if(effect2_counter &lt; effect_exhausted_length)
+    {
+        //Count up
+        effect2_counter += 1;
+        
+        //Effect
+        with(instance_create(x, y, obj_damage_popup))   //Damage popup
+        {
+            damage_popup = "Exhausted";
+            character = other.id;
+            colour = c_red;
+        }
+        
+        //To be added                                   //Keep stamina low
+        
+        alarm[5] = 60;                                  //Next second
+    }
+    else
+    {
+        //To be added                                   //Reset values
+        status_effect2 = "";
+        effect1_counter = 0;
+    }
+    break;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Status effect 1
+
+switch(status_effect1)
+{
+    case "burning": //Status effect burning
+    if(effect1_counter &lt; effect_burn_length)
+    {
+        //Count up
+        effect1_counter += 1;
+        
+        //Effect
+        with(instance_create(x, y, obj_damage_popup))   //Damage popup
+        {
+            damage_popup = other.effect_burn_damage;
+            character = other.id;
+            colour = c_red;
+        }
+        
+        hp -= other.effect_burn_damage;                 //Reduce health
+        
+        if(hp &lt;= 0)                                     //Respawn script
+        {
+            //Handle game over
+            show_debug_message("You died in Equestrian Eclipse. You're bad at this game and you should feel bad!");
+            show_message("You died. Bad player, I expected more from you! (You can even cheat, dumbass...)");
+            
+            event_user(2);
+        }
+        
+        alarm[4] = 60;                                  //Next second
+    }
+    else
+    {
+        status_effect1 = "";                            //Reset values
+        effect1_counter = 0;
+    }
+    break;
+    
+    case "slowness": //Status effect slowness
+    if(effect1_counter &lt; effect_slow_length)
+    {
+        //Count up
+        effect1_counter += 1;
+        
+        //Effect
+        with(instance_create(x, y, obj_damage_popup))   //Damage popup
+        {
+            damage_popup = "Slow";
+            character = other.id;
+            colour = c_red;
+        }
+        
+        walk_speed = 0.25;                              //One forth speed
+        
+        alarm[4] = 60;                                  //Next second
+    }
+    else
+    {
+        walk_speed = 1;                                 //Reset values
+        status_effect1 = "";
+        effect1_counter = 0;
+    }
+    break;
+    
+    case "exhausted":  //Status effect exhausted
+    if(effect1_counter &lt; effect_exhausted_length)
+    {
+        //Count up
+        effect1_counter += 1;
+        
+        //Effect
+        with(instance_create(x, y, obj_damage_popup))   //Damage popup
+        {
+            damage_popup = "Exhausted";
+            character = other.id;
+            colour = c_red;
+        }
+        
+        //To be added                                   //Keep stamina low
+        
+        alarm[4] = 60;                                  //Next second
+    }
+    else
+    {
+        //To be added                                   //Reset values
+        status_effect1 = "";
+        effect1_counter = 0;
+    }
+    break;
+}
 </string>
           </argument>
         </arguments>
@@ -1226,27 +1462,26 @@ magic = max_magic
             <kind>1</kind>
             <string>///Handle respawn
 
-if(respawn = true)
+//Variables reset
+hp = max_hp;
+magic = max_magic;
+stamina = max_stamina;
+
+//Stop status effects
+status_effect1 = "";
+effect1_counter = 0;
+status_effect2 = "";
+effect2_counter = 0;
+    
+//Warp event script
+global.dest_x = dest_x;
+global.dest_y = dest_y;
+room_goto(dest_room);
+
+//Reduce money
+if(money &gt;= 10)
 {
-    //Variables reset
-    
-    hp = max_hp;
-    magic = max_magic;
-    stamina = max_stamina;
-    
-    //Warp event script
-    
-    global.dest_x = dest_x;
-    global.dest_y = dest_y;
-
-    room_goto(dest_room);
-
-    if(money &gt;= 10)
-    {
-        money -= 10;
-    }
-
-    respawn = false
+    money -= 10;
 }
 </string>
           </argument>

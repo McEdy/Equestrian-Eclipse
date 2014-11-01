@@ -8,6 +8,31 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Setup
+
+status_effect = "";
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
@@ -50,7 +75,9 @@ instance_destroy();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hit_angle = point_direction(x, y, other.phy_position_x, other.phy_position_y);
+            <string>///Damage and status effects
+
+hit_angle = point_direction(x, y, other.phy_position_x, other.phy_position_y);
 hit_dx = lengthdir_x(10, hit_angle);
 hit_dy = -lengthdir_y(10, hit_angle);
 
@@ -64,17 +91,74 @@ with(other)
 {
     hp -= other.damage;
     physics_apply_impulse(x, y, other.hit_dx, other.hit_dy);
+}
 
-    if(hp &lt;= 0)
+if(obj_player.hp &lt;= 0) //Handle respawn
+{
+    show_debug_message("You died in Equestrian Eclipse. You're bad at this game and you should feel bad!");
+    show_message("You died. Bad player, I expected more from you! (You can even cheat, dumbass...)");
+    
+    with(obj_player)
     {
-        //Handle game over
-        show_debug_message("You died in Equestrian Eclipse. You're bad at this game and you should feel bad!");
-          
-        //Respawn
-        show_message("You died. Bad player, I expected more from you! (You can even cheat, dumbass...)");
-        
-        respawn = true;
         event_user(2);
+    }
+}
+else                    //Status effects
+{
+    if(status_effect == "")                                         //No status effect
+    {
+        show_debug_message("No status effect.");
+    }
+    else
+    {
+        with(obj_player)
+        {
+            if(status_effect1 == "")                                //Create new effect 1
+            {
+                alarm[4] = 60;
+                status_effect1 = other.status_effect;
+            }
+            else
+            {
+                if(status_effect1 == other.status_effect)           //Overwrite same effect 1
+                {
+                    alarm[4] = 60;
+                    status_effect1 = other.status_effect;
+                    effect1_counter = 0;
+                }
+                else                                                //Switch to effect 2
+                {
+                    if(status_effect2 == "")                        //Create new effect 2
+                    {
+                        alarm[5] = 60;
+                        status_effect2 = other.status_effect;
+                    }
+                    else
+                    {
+                        if(status_effect2 == other.status_effect)   //Overwrite same effect 2
+                        {
+                            alarm[5] = 60;
+                            status_effect2 = other.status_effect;
+                        }                                           //If no space -&gt; no effect
+                    }
+                }
+            }
+        }
+    }
+    
+    switch(status_effect)
+    {
+        case "burning":
+        show_debug_message("Burning activated.");
+        break;
+        
+        case "slowness":
+        show_debug_message("Slowness activated.");
+        break;
+        
+        case "exhausted":
+        show_debug_message("Exhausted activated.");
+        break;
     }
 }
 </string>
@@ -99,7 +183,9 @@ with(other)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_destroy();
+            <string>///Destroy
+
+instance_destroy();
 </string>
           </argument>
         </arguments>

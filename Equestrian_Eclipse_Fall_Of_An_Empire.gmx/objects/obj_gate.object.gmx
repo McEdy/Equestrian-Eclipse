@@ -27,14 +27,14 @@
             <kind>1</kind>
             <string>///Set to inactive when spawned
 
-phy_active = false;
 image_alpha = 0;
+phy_active = false;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="7" enumb="11">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -51,18 +51,37 @@ image_alpha = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.boss_battle_start = true)
-{
-    if(global.boss_defeated == false)
-    {
-        image_alpha = lerp(image_alpha, 1.0, 0.1);
-    }
-    else
-    {
-        image_alpha = 0;
-        phy_active = false;
-    }
-}
+            <string>///Deactivate
+
+image_alpha = 0;
+phy_active = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Activate
+
+//image_alpha = lerp(image_alpha, 1.0, 0.1);
+image_alpha = 1;
+phy_active = true;
 </string>
           </argument>
         </arguments>

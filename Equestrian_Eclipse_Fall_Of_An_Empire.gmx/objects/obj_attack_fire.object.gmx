@@ -33,7 +33,6 @@ alarm[0] = 30;
 force = 30;
 damage = 4;
 status_effect = "burning";
-status_effect_damage = 2;
 </string>
           </argument>
         </arguments>

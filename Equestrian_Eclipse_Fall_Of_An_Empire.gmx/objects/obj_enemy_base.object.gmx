@@ -35,16 +35,24 @@ max_hp = 10;
 hp = max_hp;
 
 dir = 0;
-walk_speed = 1;         //Multiplier for speed
+walk_speed = 1;                 //Multiplier for speed
 
-l_value = 1;            //Lowest money drop possible
-h_value = 10;           //Highest money drop possible
-money_drop_c = 1;       //Roll of money drop chance
-money_drop = false;     //If money drop is enabled
-item_drop_c = 1;        //Roll of item drop chance (type decision)
-item_drop_tc = 1;       //Roll of 2nd item drop chance
-item_drop_1 = false;    //Common item drop
-item_drop_2 = false;    //Rare item drop´
+l_value = 1;                    //Lowest money drop possible
+h_value = 10;                   //Highest money drop possible
+money_drop = false;             //If money drop is enabled
+item_drop_1 = false;            //Common item drop
+item_drop_2 = false;            //Rare item drop
+
+status_effect1 = "";            //Current effect 1
+status_effect2 = "";            //Current effect 2
+effect1_counter = 0;            //Seconds of effect 1
+effect2_counter = 0;            //Seconds of effect 2
+
+effect_burn_length = 5;         //Length of effect burning
+effect_slow_length = 5;         //Length of effect 1
+effect_exhausted_length = 5;    //Length of effect 2
+
+effect_burn_damage = 1;         //Damage caused by effect burn
 </string>
           </argument>
         </arguments>
@@ -68,6 +76,222 @@ item_drop_2 = false;    //Rare item drop´
           <argument>
             <kind>1</kind>
             <string>image_alpha = 1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Status effect 2
+
+switch(status_effect2)
+{
+    case "burning": //Status effect burning
+    if(effect2_counter &lt; effect_burn_length)
+    {
+        //Count up
+        effect2_counter += 1;
+        
+        //Effect
+        with(instance_create(x, y, obj_damage_popup))   //Damage popup
+        {
+            damage_popup = other.effect_burn_damage;
+            character = other.id;
+            colour = c_orange;
+        }
+        
+        hp -= other.effect_burn_damage;                 //Reduce health
+        
+        if(hp &lt;= 0)                                     //Drop items
+        {
+            event_user(0);
+        }
+        
+        alarm[3] = 60;                                  //Next second
+    }
+    else
+    {
+        status_effect1 = "";                            //Reset values
+        effect1_counter = 0;
+    }
+    break;
+    
+    case "slowness": //Status effect slowness
+    if(effect2_counter &lt; effect_slow_length)
+    {
+        //Count up
+        effect2_counter += 1;
+        
+        //Effect
+        with(instance_create(x, y, obj_damage_popup))   //Damage popup
+        {
+            damage_popup = "Slow";
+            character = other.id;
+            colour = c_orange;
+        }
+        
+        walk_speed = 0.25;                              //One forth speed
+        
+        alarm[3] = 60;                                  //Next second
+    }
+    else
+    {
+        walk_speed = 1;                                 //Reset
+        status_effect1 = "";
+        effect1_counter = 0;
+    }
+    break;
+    
+    case "exhausted":  //Status effect exhausted
+    if(effect2_counter &lt; effect_exhausted_length)
+    {
+        //Count up
+        effect2_counter += 1;
+        
+        //Effect
+        with(instance_create(x, y, obj_damage_popup))   //Damage popup
+        {
+            damage_popup = "Exhausted";
+            character = other.id;
+            colour = c_orange;
+        }
+        
+        //To be added                                   //Keep stamina low
+        
+        alarm[3] = 60;                                  //Next second
+    }
+    else
+    {
+        //To be added                                   //Reset values
+        status_effect1 = "";
+        effect1_counter = 0;
+    }
+    break;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Status effect 1
+
+switch(status_effect1)
+{
+    case "burning": //Status effect burning
+    if(effect1_counter &lt; effect_burn_length)
+    {
+        //Count up
+        effect1_counter += 1;
+        
+        //Effect
+        with(instance_create(x, y, obj_damage_popup))   //Damage popup
+        {
+            damage_popup = other.effect_burn_damage;
+            character = other.id;
+            colour = c_orange;
+        }
+        
+        hp -= other.effect_burn_damage;                 //Reduce health
+        
+        if(hp &lt;= 0)                                     //Drop items
+        {
+            event_user(0);
+        }
+        
+        alarm[2] = 60;                                  //Next second
+    }
+    else
+    {
+        status_effect1 = "";                            //Reset values
+        effect1_counter = 0;
+    }
+    break;
+    
+    case "slowness": //Status effect slowness
+    if(effect1_counter &lt; effect_slow_length)
+    {
+        //Count up
+        effect1_counter += 1;
+        
+        //Effect
+        with(instance_create(x, y, obj_damage_popup))   //Damage popup
+        {
+            damage_popup = "Slow";
+            character = other.id;
+            colour = c_orange;
+        }
+        
+        walk_speed = 0.25;                              //One forth speed
+        
+        alarm[2] = 60;                                  //Next second
+    }
+    else
+    {
+        walk_speed = 1;                                 //Reset values
+        status_effect1 = "";
+        effect1_counter = 0;
+    }
+    break;
+    
+    case "exhausted":  //Status effect exhausted
+    if(effect1_counter &lt; effect_exhausted_length)
+    {
+        //Count up
+        effect1_counter += 1;
+        
+        //Effect
+        with(instance_create(x, y, obj_damage_popup))   //Damage popup
+        {
+            damage_popup = "Exhausted";
+            character = other.id;
+            colour = c_orange;
+        }
+        
+        //To be added                                   //Keep stamina low
+        
+        alarm[2] = 60;                                  //Next second
+    }
+    else
+    {
+        //To be added                                   //Reset values
+        status_effect1 = "";
+        effect1_counter = 0;
+    }
+    break;
+}
 </string>
           </argument>
         </arguments>

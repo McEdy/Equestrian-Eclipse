@@ -169,7 +169,6 @@
       <object>objects\obj_notme</object>
       <object>objects\obj_obstacles</object>
       <object>objects\obj_collision</object>
-      <object>objects\obj_status_effects</object>
       <objects name="Window">
         <object>objects\obj_window_base</object>
       </objects>
@@ -266,7 +265,7 @@
     <room>rooms\rm_cave_boss</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41944.0090526042</constant>
+    <constant name="GM_build_date">41944.6332819444</constant>
     <constant name="GM_version">'0.0.0.1'</constant>
   </constants>
   <help>
