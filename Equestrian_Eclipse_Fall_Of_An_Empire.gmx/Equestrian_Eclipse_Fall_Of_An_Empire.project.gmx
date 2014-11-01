@@ -158,8 +158,9 @@
   </paths>
   <fonts name="fonts">
     <font>fonts\font_eq</font>
-    <font>fonts\font_popup</font>
+    <font>fonts\font_big</font>
     <font>fonts\font_medium</font>
+    <font>fonts\font_desc</font>
   </fonts>
   <objects name="objects">
     <objects name="System">
@@ -168,6 +169,7 @@
       <object>objects\obj_notme</object>
       <object>objects\obj_obstacles</object>
       <object>objects\obj_collision</object>
+      <object>objects\obj_status_effects</object>
       <objects name="Window">
         <object>objects\obj_window_base</object>
       </objects>
@@ -230,8 +232,8 @@
         <object>objects\obj_items_quest</object>
       </objects>
       <objects name="Status">
-        <object>objects\obj_healthpotion_m</object>
         <object>objects\obj_healthpotion_s</object>
+        <object>objects\obj_healthpotion_m</object>
         <object>objects\obj_healthpotion_l</object>
       </objects>
       <objects name="Other">
@@ -264,7 +266,7 @@
     <room>rooms\rm_cave_boss</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41942.1412925</constant>
+    <constant name="GM_build_date">41944.0090526042</constant>
     <constant name="GM_version">'0.0.0.1'</constant>
   </constants>
   <help>

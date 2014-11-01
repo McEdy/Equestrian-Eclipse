@@ -35,15 +35,7 @@ max_hp = 10;
 hp = max_hp;
 
 dir = 0;
-
-//Set variables for status effects
-
-status_effect_1 = false;
-status_effect_2 = false;
-status_effect_3 = false;
-counter_1 = 0;
-counter_2 = 0;
-counter_3 = 0;
+walk_speed = 1;         //Multiplier for speed
 
 l_value = 1;            //Lowest money drop possible
 h_value = 10;           //Highest money drop possible
@@ -76,144 +68,6 @@ item_drop_2 = false;    //Rare item drop´
           <argument>
             <kind>1</kind>
             <string>image_alpha = 1;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="4">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Status effect 3
-
-status_effect_3 = true;
-
-damage = 1;
-hp -= damage;
-
-with(instance_create(x, y, obj_damage_popup))
-{
-    damage_popup = other.damage;
-    character = instance_nearest(x, y, obj_enemy_base);
-    colour = c_orange;
-}
-
-show_debug_message("Status effect 3 initiated.");
-
-counter_3 += 1;
-
-event_user(0);
-
-if(hp &lt;= 0)
-{
-    event_user(1);
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="3">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Status effect 2
-
-status_effect_2 = true;
-
-damage = 1;
-hp -= damage;
-
-with(instance_create(x, y, obj_damage_popup))
-{
-    damage_popup = other.damage;
-    character = instance_nearest(x, y, obj_enemy_base);
-    colour = c_orange;
-}
-
-show_debug_message("Status effect 2 initiated.");
-
-counter_2 += 1;
-
-event_user(0);
-
-if(hp &lt;= 0)
-{
-    event_user(1);
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Status effect 1
-
-status_effect_1 = true;
-
-damage = 1;
-hp -= damage;
-
-with(instance_create(x, y, obj_damage_popup))
-{
-    damage_popup = other.damage;
-    character = instance_nearest(x, y, obj_enemy_base);
-    colour = c_orange;
-}
-
-show_debug_message("Status effect 1 initiated.");
-
-counter_1 += 1;
-
-event_user(0);
-
-if(hp &lt;= 0)
-{
-    event_user(1);
-}
 </string>
           </argument>
         </arguments>
@@ -351,7 +205,7 @@ if(dir &gt;= 0)
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="11">
+    <event eventtype="7" enumb="10">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -411,83 +265,6 @@ if(item_drop_c = 1)                             //50% chance of item drop
 
 //Destroy self
 instance_destroy();
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="10">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Handle status effect type &amp; loop
-
-//Status effect type 1
-if(status_effect_1 = true)
-{
-    if(counter_1 &gt;= 1)
-    {
-        if(counter_1 &lt;= 9)
-        {
-            alarm[2] = 60;
-            show_debug_message("Loop for status effect 1 in progress.");
-        }
-        else
-        {
-            counter_1 = 0;
-            status_effect_1 = false;
-        }
-    }
-}
-
-//Status effect type 2
-if(status_effect_2 = true)
-{
-    if(counter_2 &gt;=1)
-    {
-        if(counter_2 &lt;=6)
-        {
-            alarm[3] = 60;
-            show_debug_message("Loop for status effect 2 in progress.");
-        }
-        else
-        {
-            counter_2 = 0;
-            status_effect_2 = false;
-        }
-    }
-}
-
-//Status effect type 3
-if(status_effect_3 = true)
-{
-    if(counter_3 &gt;=1)
-    {
-        if(counter_3 &lt;=3)
-        {
-            alarm[4] = 60;
-            show_debug_message("Loop for status effect 3 in progress.");
-        }
-        else
-        {
-            counter_3 = 0;
-            status_effect_3 = false;
-        }
-    }
-}
 </string>
           </argument>
         </arguments>

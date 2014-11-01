@@ -138,6 +138,8 @@
     <instance objName="obj_shades" x="208" y="192" name="inst_1BFEE87D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_shades" x="80" y="48" name="inst_20C37492" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_shades" x="96" y="192" name="inst_0896CA1A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_healthpotion_s" x="176" y="48" name="inst_385E95FB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_healthpotion_l" x="352" y="48" name="inst_0A04D73D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tiles_1" x="224" y="240" w="32" h="32" xo="80" yo="16" id="10001332" name="inst_BEC45BE2" depth="1000001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

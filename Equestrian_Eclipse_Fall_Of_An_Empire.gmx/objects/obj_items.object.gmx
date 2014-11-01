@@ -158,6 +158,8 @@ if(dist_interact &lt; 50)
             <kind>1</kind>
             <string>///Pickup result handling
 
+dist_interact = point_distance(phy_position_x, phy_position_y, obj_player.phy_position_x, obj_player.phy_position_y);
+
 if(dist_interact &lt; 50)
 {
     if(p_target == name)

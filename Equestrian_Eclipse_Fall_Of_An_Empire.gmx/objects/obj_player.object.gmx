@@ -1760,7 +1760,7 @@ draw_healthbar(20, 40, 200, 50, stamina/max_stamina *100, c_black, c_blue, c_blu
 //Big Messages
 draw_set_alpha(alpha_big1);
 draw_set_halign(fa_center);
-draw_set_font(font_popup);
+draw_set_font(font_big);
 if(message_big_1a != "")
 {
     draw_text(global.message_big_x, global.message_big_y, message_big_1a);
@@ -1876,7 +1876,7 @@ if(quest_show == false)
     draw_set_colour(c_black);
     draw_set_halign(fa_left);
     draw_set_valign(fa_top);
-    draw_set_font(font_popup);
+    draw_set_font(font_big);
     draw_text(75, 30, "Weapons");                       //Inventory page title
     draw_sprite(spr_arrow_left, 0, 25, 30);             //Left arrow
     draw_sprite(spr_arrow_right, 0, 400, 30);           //Left arrow
@@ -1897,10 +1897,10 @@ if(quest_show == false)
         
         //Description
         draw_set_alpha(1);
-        draw_set_font(font_popup);
+        draw_set_font(font_big);
         draw_set_colour(c_black);
         draw_text(680, 30, string(global.items[inv_select,0]));             //Name of selected item
-        draw_set_font(font_medium);
+        draw_set_font(font_desc);
         draw_text(950, 100, string(global.items[inv_select,1]));             //Description of selected item
         
         var size_x = sprite_get_width(global.items[inv_select,3]);          //Get sprite size
@@ -1912,7 +1912,7 @@ if(quest_show == false)
     draw_set_font(font_eq);
     draw_set_halign(fa_left);
     
-    if(global.items[0,0] != "") //Item 0
+    if(global.items[0,0] != "")     //Item 0
     {
         draw_text(50, 175, string(global.items[0,0]));  //Name
         draw_text(500, 175, string(global.items[0,4])); //Weight

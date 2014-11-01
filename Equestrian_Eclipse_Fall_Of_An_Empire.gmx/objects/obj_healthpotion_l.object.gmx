@@ -30,11 +30,11 @@
 event_inherited();
 
 name    = "Health potion (L)";
-desc    = "You can see the#rising bubbles#inside the bottle.#What may be#in there?";
+desc    = "A pretty huge potion.#The amount of rising#bubbles is even a bit#terrifying, but who cares?#Cheers!";
 type    = 4;                    //Potion
 sprite  = spr_healthpotion_l;
 weight  = 0.5;
-price   = 3;
+price   = 20;
 value1  = "heal";               //Healing potion
 value2  = 25;                   //Amount of healing
 

@@ -8,7 +8,7 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="2" enumb="1">
+    <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -25,15 +25,34 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with(other)
-{
-    hp -= other.status_effect_damage;
+            <string>///Setup
 
-    if(hp &lt;= 0)
-    {
-        instance_destroy();
-    }
-}
+status_effect = "";
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///After time -&gt; destroy
+
+instance_destroy();
 </string>
           </argument>
         </arguments>
@@ -56,7 +75,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Damage
+            <string>///Damage and force
 
 hit_angle = point_direction(origin_x, origin_y, other.phy_position_x, other.phy_position_y);
 hit_dx = lengthdir_x(force, hit_angle);
@@ -104,7 +123,9 @@ with(other)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hit_angle = point_direction(origin_x, origin_y, other.phy_position_x, other.phy_position_y);
+            <string>///Damage and force
+
+hit_angle = point_direction(origin_x, origin_y, other.phy_position_x, other.phy_position_y);
 hit_dx = lengthdir_x(force, hit_angle);
 hit_dy = -lengthdir_y(force, hit_angle);
 
@@ -145,43 +166,50 @@ with(other)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Handle status effect type &amp; begin alarm loop
+            <string>///Launch status effect(s)
+
+enemy = other.id;
 
 //No status effect
-
-if(status_effect_0 = true)
+if(status_effect == "")
 {
-show_debug_message("No status effect.");
+    show_debug_message("No status effect.");
 }
 
-//Status effect type 1
-
-if(status_effect_1 = true)
+//Status effect burning
+if(status_effect = "burning")
 {
-    with(other)
-    alarm[2] = 60;
-    counter = 1;
-    show_debug_message("alarm has been activated")
+    with(instance_create(x, y, obj_status_effects))
+    {
+        alarm[0] = 60;
+        target = other.enemy;
+        effect1_counter = 0;
+    }
+    show_debug_message("Burning activated.");
 }
 
-//Status effect type 2
-
-if(status_effect_2 = true)
+//Status effect slowness
+if(status_effect = "slowness")
 {
-    with(other)
-    alarm[3] = 60;
-    counter = 1;
-    show_debug_message("alarm has been activated")
+    with(instance_create(x, y, obj_status_effects))
+    {
+        alarm[1] = 60;
+        target = other.enemy;
+        effect2_counter = 0;
+    }
+    show_debug_message("Slowness activated.");
 }
 
-//Status effect type 3
-
-if(status_effect_3 = true)
+//Status effect exhausted
+if(status_effect = "exhausted")
 {
-    with(other)
-    alarm[4] = 60;
-    counter = 1;
-    show_debug_message("alarm has been activated")
+    with(instance_create(x, y, obj_status_effects))
+    {
+        alarm[2] = 60;
+        target = other.enemy;
+        effect3_counter = 0;
+    }
+    show_debug_message("Exhausted activated.");
 }
 </string>
           </argument>
