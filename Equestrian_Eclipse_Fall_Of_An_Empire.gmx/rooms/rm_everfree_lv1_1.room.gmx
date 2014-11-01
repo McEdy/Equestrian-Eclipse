@@ -70,6 +70,8 @@
     <instance objName="obj_collision" x="624" y="240" name="inst_610B65E9" locked="0" code="" scaleX="1" scaleY="13" colour="4294967295" rotation="0"/>
     <instance objName="obj_collision" x="320" y="464" name="inst_4B055A7F" locked="0" code="" scaleX="20" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_collision" x="432" y="432" name="inst_B020924B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_enemy_mage" x="224" y="256" name="inst_B2029509" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_enemy_mage" x="544" y="384" name="inst_85A1D151" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tiles_1" x="160" y="160" w="32" h="32" xo="80" yo="16" id="10005044" name="inst_C39B7DA8" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

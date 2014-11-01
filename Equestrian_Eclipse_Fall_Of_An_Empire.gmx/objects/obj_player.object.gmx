@@ -37,6 +37,8 @@ notme = true;
 interaction_delay = false;
 general_timer = true;
 
+walk_speed = 1;
+
 message_1a = "";    //Message 1 content
 message_1b = false; //Message 1 start timer
 message_1c = false; //Message 1 to be stopped
@@ -72,7 +74,7 @@ quest_assigned = false;
 q_success = false;
 
 //Status
-max_hp = 10;
+max_hp = 50;
 hp = max_hp;
 
 max_stamina = 30;
@@ -596,13 +598,13 @@ if(keyboard_check(ord("A")))
 
     if(keyboard_check(vk_shift) &amp;&amp; stamina &gt; 0)
     {
-        phy_position_x -= 3;
+        phy_position_x -= 3 *walk_speed;
         stamina -= 2/60;
         status_running = true;
     }
     else
     {
-        phy_position_x -= 2;
+        phy_position_x -= 2 *walk_speed;
     }
 }
 
@@ -612,13 +614,13 @@ if(keyboard_check(ord("D")))
 
     if(keyboard_check(vk_shift) &amp;&amp; stamina &gt; 0)
     {
-        phy_position_x += 3;
+        phy_position_x += 3 *walk_speed;
         stamina -= 2/60;
         status_running = true;
     }
     else
     {
-        phy_position_x += 2;
+        phy_position_x += 2 *walk_speed;
     }
 }
 
@@ -628,13 +630,13 @@ if(keyboard_check(ord("W")))
 
     if(keyboard_check(vk_shift) &amp;&amp; stamina &gt; 0)
     {
-        phy_position_y -= 3;
+        phy_position_y -= 3 *walk_speed;
         stamina -= 2/60;
         status_running = true;
     }
     else
     {
-        phy_position_y -= 2;
+        phy_position_y -= 2 *walk_speed;
     }
 }
 
@@ -646,13 +648,13 @@ if(keyboard_check(ord("S")))
 
     if(keyboard_check(vk_shift) &amp;&amp; stamina &gt; 0)
     {
-        phy_position_y += 3;
+        phy_position_y += 3 *walk_speed;
         stamina -= 2/60;
         status_running = true;
     }
     else
     {
-        phy_position_y += 2;
+        phy_position_y += 2 *walk_speed;
     }
 }
 
@@ -781,7 +783,6 @@ if(global.message2 == true)
     {
         message_1a = global.message1;
         message_1b = true;
-        show_debug_message("Message assignment 1.");
     }
     else
     {
@@ -789,7 +790,6 @@ if(global.message2 == true)
         {
             message_2a = global.message1;
             message_2b = true;
-            show_debug_message("Message assignment 2.");
         }
         else
         {
@@ -797,13 +797,11 @@ if(global.message2 == true)
             {
                 message_3a = global.message1;
                 message_3b = true;
-                show_debug_message("Message assignment 3.");
             }
             else
             {
                 message_1a = global.message1;
                 message_1b = true;
-                show_debug_message("Message assignment O.");
             }
         }
     }
@@ -878,7 +876,6 @@ if(message_1c == true)
     message_1a = "";
     message_1c = false;
     alpha1 = 1;
-    show_debug_message("Finished message loop 1.");
 }
 }
 }
@@ -892,7 +889,6 @@ if(message_2c == true)
     message_2a = "";
     message_2c = false;
     alpha2 = 1;
-    show_debug_message("Finished message loop 2.");
 }
 }
 }
@@ -906,7 +902,6 @@ if(message_3c == true)
     message_3a = "";
     message_3c = false;
     alpha3 = 1;
-    show_debug_message("Finished message loop 3.");
 }
 }
 }
@@ -917,7 +912,6 @@ if(global.damage_popup1 == true)
     with(instance_create(x, y, obj_damage_popup))
     {
         character = other.id;
-        //damage_amount = string(global.damage_popup);
         global.damage_popup1 = false;
     }
 }
@@ -930,13 +924,11 @@ if(global.message_big2 == true)
     {
         message_big_1a = global.message_big1;
         message_big_1b = true;
-        show_debug_message("Message assignment (big) 1.");
     }
     else
     {
         message_big_1a = global.message_big1;
         message_big_1b = true;
-        show_debug_message("Message assignment (big) O.");
     }
 }
 
@@ -971,7 +963,6 @@ if(message_big_1c == true)
     message_big_1a = "";
     message_big_1c = false;
     alpha_big1 = 1;
-    show_debug_message("Finished message (big) loop 1.");
 }
 }
 }
@@ -2032,6 +2023,43 @@ draw_text((200-20)/2 +20, 20, string(hp) + "/" + string(max_hp));
 //Attack type
 draw_set_halign(0);
 draw_text(20, 80, "attack_type: " + string(attack_type));
+
+//Status effects
+if(status_effect1 != "")
+{
+    switch(status_effect1)
+    {
+        case "burning":
+        draw_text(20, 170, "Burning " + string(effect_burn_length - effect1_counter) + "s remaining");
+        break;
+        
+        case "slowness":
+        draw_text(20, 170, "Slowness " + string(effect_slow_length - effect1_counter) + "s remaining");
+        break;
+        
+        case "exhausted":
+        draw_text(20, 170, "Exhaustion " + string(effect_exhausted_length - effect1_counter) + "s remaining");
+        break;
+    }
+}
+
+if(status_effect2 != "")
+{
+    switch(status_effect2)
+    {
+        case "burning":
+        draw_text(20, 190, "Burning " + string(effect_burn_length - effect2_counter) + "s remaining");
+        break;
+        
+        case "slowness":
+        draw_text(20, 190, "Slowness " + string(effect_slow_length - effect2_counter) + "s remaining");
+        break;
+        
+        case "exhausted":
+        draw_text(20, 190, "Exhaustion " + string(effect_exhausted_length - effect2_counter) + "s remaining");
+        break;
+    }
+}
 
 //Quest screen
 if(quest_show == true)
