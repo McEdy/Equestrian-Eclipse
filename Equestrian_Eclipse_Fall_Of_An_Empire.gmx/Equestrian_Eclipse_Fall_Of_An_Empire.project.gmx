@@ -135,6 +135,16 @@
       <sprite>sprites\spr_pressE_2</sprite>
       <sprite>sprites\spr_inv_test</sprite>
       <sprite>sprites\spr_none</sprite>
+      <sprites name="Status">
+        <sprite>sprites\spr_poisoned</sprite>
+        <sprite>sprites\spr_fire</sprite>
+        <sprite>sprites\spr_fatigue</sprite>
+        <sprite>sprites\spr_regeneration</sprite>
+        <sprite>sprites\spr_strength</sprite>
+        <sprite>sprites\spr_weakness</sprite>
+        <sprite>sprites\spr_defended</sprite>
+        <sprite>sprites\spr_defenceless</sprite>
+      </sprites>
     </sprites>
     <sprites name="Attacks">
       <sprites name="Player attacks">
@@ -187,6 +197,10 @@
         <object>objects\obj_attack_player</object>
         <object>objects\obj_attack_enemy</object>
         <object>objects\obj_damage_popup</object>
+      </objects>
+      <objects name="Status Icons">
+        <object>objects\obj_status_icon_1</object>
+        <object>objects\obj_status_icon_2</object>
       </objects>
     </objects>
     <objects name="Ponies">
@@ -267,7 +281,7 @@
     <room>rooms\rm_cave_boss</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41944,9036318056</constant>
+    <constant name="GM_build_date">41957.0091254514</constant>
     <constant name="GM_version">'0.0.0.1'</constant>
   </constants>
   <help>
