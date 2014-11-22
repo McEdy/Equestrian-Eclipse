@@ -161,6 +161,10 @@ effect_slow_length = 5;         //Length of effect 1
 effect_exhausted_length = 5;    //Length of effect 2
 
 effect_burn_damage = 1;         //Damage caused by effect burn
+
+//Status icons
+status_icon_1 = true;
+status_icon_2 = false;
 </string>
           </argument>
         </arguments>
@@ -245,6 +249,10 @@ switch(status_effect1)
     case "burning": //Status effect burning
     if(effect2_counter &lt; effect_burn_length)
     {
+        with(instance_create(1,1,obj_status_icon_2))
+        {
+            sprite_index = spr_fire;
+        }
         //Count up
         effect2_counter += 1;
         
@@ -271,6 +279,10 @@ switch(status_effect1)
     }
     else
     {
+        with(obj_status_icon_2)
+        {
+            instance_destroy();
+        }
         status_effect2 = "";                            //Reset values
         effect1_counter = 0;
     }
@@ -279,6 +291,10 @@ switch(status_effect1)
     case "slowness": //Status effect slowness
     if(effect2_counter &lt; effect_slow_length)
     {
+        with(instance_create(1,1,obj_status_icon_2))
+        {
+            sprite_index = spr_fatigue;
+        }
         //Count up
         effect2_counter += 1;
         
@@ -296,6 +312,10 @@ switch(status_effect1)
     }
     else
     {
+        with(obj_status_icon_2)
+        {
+            instance_destroy();
+        }
         walk_speed = 1;                                 //Reset values
         status_effect2 = "";
         effect1_counter = 0;
@@ -305,6 +325,10 @@ switch(status_effect1)
     case "exhausted":  //Status effect exhausted
     if(effect2_counter &lt; effect_exhausted_length)
     {
+        with(instance_create(1,1,obj_status_icon_2))
+        {
+            sprite_index = spr_fatigue;
+        }
         //Count up
         effect2_counter += 1;
         
@@ -322,6 +346,10 @@ switch(status_effect1)
     }
     else
     {
+        with(obj_status_icon_2)
+        {
+            instance_destroy();
+        }
         //To be added                                   //Reset values
         status_effect2 = "";
         effect1_counter = 0;
@@ -357,6 +385,10 @@ switch(status_effect1)
     case "burning": //Status effect burning
     if(effect1_counter &lt; effect_burn_length)
     {
+        with(instance_create(1,1,obj_status_icon_1))    //Create status icon 1
+        {
+            sprite_index = spr_fire;
+        }
         //Count up
         effect1_counter += 1;
         
@@ -383,6 +415,10 @@ switch(status_effect1)
     }
     else
     {
+        with(obj_status_icon_1)                         //Delete status icon 1
+        {
+            instance_destroy();
+        }
         status_effect1 = "";                            //Reset values
         effect1_counter = 0;
     }
@@ -391,6 +427,10 @@ switch(status_effect1)
     case "slowness": //Status effect slowness
     if(effect1_counter &lt; effect_slow_length)
     {
+        with(instance_create(1,1,obj_status_icon_1))    //Create status icon 1
+        {
+            sprite_index = spr_fatigue;
+        }
         //Count up
         effect1_counter += 1;
         
@@ -408,6 +448,10 @@ switch(status_effect1)
     }
     else
     {
+        with(obj_status_icon_1)                         //Delete status icon 1
+        {
+            instance_destroy();
+        }
         walk_speed = 1;                                 //Reset values
         status_effect1 = "";
         effect1_counter = 0;
@@ -417,6 +461,10 @@ switch(status_effect1)
     case "exhausted":  //Status effect exhausted
     if(effect1_counter &lt; effect_exhausted_length)
     {
+        with(instance_create(1,1,obj_status_icon_1))    //Create status icon 1
+        {
+            sprite_index = spr_fatigue;
+        }
         //Count up
         effect1_counter += 1;
         
@@ -434,6 +482,10 @@ switch(status_effect1)
     }
     else
     {
+        with(obj_status_icon_1)                         //Delete status icon 1
+        {
+            instance_destroy();
+        }
         //To be added                                   //Reset values
         status_effect1 = "";
         effect1_counter = 0;

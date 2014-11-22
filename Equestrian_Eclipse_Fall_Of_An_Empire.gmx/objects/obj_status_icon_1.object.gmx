@@ -27,7 +27,6 @@
             <kind>1</kind>
             <string>///Setup
 
-status_icon = "none";
 image_alpha = 0;
 sprite_index = spr_poisoned;
 </string>
@@ -54,67 +53,99 @@ sprite_index = spr_poisoned;
             <kind>1</kind>
             <string>//Icon
 
-switch(status_icon)
+if(active = true)
 {
-    case "none":
+
+    switch(status_icon)
     {
-        image_alpha = 0;
-    }
+        case "none":
+        {
+            image_alpha = 0;
+        }
+        
+        break;
     
-    case "poisoned":
-    {
-        sprite_index = spr_poisoned;
-        image_alpha = 100;
-        obj_status_icon_2.active = true;
-    }
-     case "fire":
-    {
-        sprite_index = spr_fire;
-        image_alpha = 100;
-        obj_status_icon_2.active = true;
-    }
+        case "poisoned":
+        {
+            sprite_index = spr_poisoned;
+            image_alpha = 100;
+            obj_status_icon_2.active = true;
+            active = false;
+        }
+        
+        break;
     
-     case "fatigue":
-    {
-        sprite_index = spr_fatigue;
-        image_alpha = 100;
-        obj_status_icon_2.active = true;
-    }
+        case "fire":
+        {
+            sprite_index = spr_fire;
+            image_alpha = 100;
+            obj_status_icon_2.active = true;
+            active = false;
+        }
+        
+        break;
     
-     case "regeneration":
-    {
-        sprite_index = spr_regeneration;
-        image_alpha = 100;
-        obj_status_icon_2.active = true;
-    }
+        case "fatigue":
+        {
+            sprite_index = spr_fatigue;
+            image_alpha = 100;
+            obj_status_icon_2.active = true;
+            active = false;
+        }
+        
+        break;
     
-     case "strength":
-    {
-        sprite_index = spr_strength;
-        image_alpha = 100;
-        obj_status_icon_2.active = true;
-    }
+        case "regeneration":
+        {
+            sprite_index = spr_regeneration;
+            image_alpha = 100;
+            obj_status_icon_2.active = true;
+            active = false;
+        }
+        
+        break;
     
-     case "weakness":
-    {
-        sprite_index = spr_weakness;
-        image_alpha = 100;
-        obj_status_icon_2.active = true;
-    }
+        case "strength":
+        {
+            sprite_index = spr_strength;
+            image_alpha = 100;
+            obj_status_icon_2.active = true;
+            active = false;
+        }
+        
+        break;
     
-     case "defended":
-    {
-        sprite_index = spr_defended;
-        image_alpha = 100;
-        obj_status_icon_2.active = true;
-    }
+        case "weakness":
+        {
+            sprite_index = spr_weakness;
+            image_alpha = 100;
+            obj_status_icon_2.active = true;
+            active = false;
+        }
+        
+        break;
     
-     case "defenceless":
-    {
-        sprite_index = spr_defenceless;
-        image_alpha = 100;
-        obj_status_icon_2.active = true;
+        case "defended":
+        {
+            sprite_index = spr_defended;
+            image_alpha = 100;
+            obj_status_icon_2.active = true;
+            active = false;
+        }
+        
+        break;
+    
+        case "defenceless":
+        {
+            sprite_index = spr_defenceless;
+            image_alpha = 100;
+            obj_status_icon_2.active = true;
+            active = false;
+        }
+        
+        break;
     }
+
 }
 </string>
           </argument>
@@ -138,7 +169,7 @@ switch(status_icon)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self()
+            <string>draw_sprite(sprite_index, 0, 82, 150);
 </string>
           </argument>
         </arguments>
