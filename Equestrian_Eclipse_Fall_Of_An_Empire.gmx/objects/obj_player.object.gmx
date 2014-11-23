@@ -162,9 +162,9 @@ effect_exhausted_length = 5;    //Length of effect 2
 
 effect_burn_damage = 1;         //Damage caused by effect burn
 
-//Status icons
-status_icon_1 = true;
-status_icon_2 = false;
+//Meelee attacks
+weapon_equipped = spr_cobalt_right;
+attack_melee = true;
 </string>
           </argument>
         </arguments>
@@ -220,6 +220,31 @@ money = 10;
             <string>///General timer
 
 general_timer = true;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="6">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Attack delay
+
+attack_melee = true;
 </string>
           </argument>
         </arguments>
@@ -783,6 +808,13 @@ if(keyboard_check(ord("Q")))
 else
 {
     quest_show_prepare = false;
+}
+
+//If "R" pressed meelee attack
+
+if(keyboard_check(ord("R")))
+{
+    event_user(3);
 }
 </string>
           </argument>
@@ -1481,6 +1513,69 @@ if(general_timer = true)
 hp = max_hp
 stamina = max_stamina
 magic = max_magic
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="13">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Handle attack direction
+
+switch(sprite_index)
+{
+    case global.character_left:
+    face_x = obj_player.phy_position_x - 25;
+    face_y = obj_player.phy_position_y;
+    direction = 270;
+    break;
+    
+    case global.character_right:
+    face_x = obj_player.phy_position_x + 25;
+    face_y = obj_player.phy_position_y;
+    direction = 90;
+    break;
+    
+    case global.character_up:
+    face_x = obj_player.phy_position_x;
+    face_y = obj_player.phy_position_y - 25;
+    direction = 0;
+    break;
+    
+    case global.character_down:
+    face_x = obj_player.phy_position_x;
+    face_y = obj_player.phy_position_y + 25;
+    direction = 180;
+    break;
+}
+
+if(attack_melee == true)
+{
+    m_dir = point_direction(phy_position_x, phy_position_y, face_x, face_y);
+    m_spawn_x = lengthdir_x(25, m_dir);
+    m_spawn_y = lengthdir_y(25, m_dir);
+
+    with(instance_create(phy_position_x + m_spawn_x, phy_position_y + m_spawn_y, obj_melee_attack_player))
+    {
+    }
+    attack_melee = false;
+    alarm[6] = 15;
+}
 </string>
           </argument>
         </arguments>

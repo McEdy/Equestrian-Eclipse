@@ -90,6 +90,9 @@
       <sprite>sprites\spr_healthpotion_m</sprite>
       <sprite>sprites\spr_healthpotion_s</sprite>
       <sprite>sprites\spr_healthpotion_l</sprite>
+      <sprites name="Weapons">
+        <sprite>sprites\spr_weapon_test</sprite>
+      </sprites>
     </sprites>
     <sprites name="System">
       <sprites name="Window">
@@ -197,6 +200,7 @@
         <object>objects\obj_attack_player</object>
         <object>objects\obj_attack_enemy</object>
         <object>objects\obj_damage_popup</object>
+        <object>objects\obj_melee_attack_player</object>
       </objects>
       <objects name="Status Icons">
         <object>objects\obj_status_icon_1</object>
@@ -281,7 +285,7 @@
     <room>rooms\rm_cave_boss</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41965.5919827199</constant>
+    <constant name="GM_build_date">41965.9999687847</constant>
     <constant name="GM_version">'0.0.0.1'</constant>
   </constants>
   <help>
