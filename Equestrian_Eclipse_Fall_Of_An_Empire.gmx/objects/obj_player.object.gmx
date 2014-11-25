@@ -73,6 +73,9 @@ quest1 = "";
 quest_assigned = false;
 q_success = false;
 
+shop_show = false;
+s_target = "";
+
 //Status
 max_hp = 50;
 hp = max_hp;
@@ -810,8 +813,7 @@ else
     quest_show_prepare = false;
 }
 
-//If "R" pressed meelee attack
-
+//Melee attack
 if(keyboard_check(ord("R")))
 {
     event_user(3);
@@ -1859,6 +1861,34 @@ switch(msg_pony)
         }
     }
     break;
+    
+    case 5:  //Pinkie
+    if(msg_conv == 0)
+    {
+        if(msg_case == 0)   //Error
+        {
+            msg[0, 0] = 3;
+            msg[0, 1] = spr_pinkie_right;
+            msg[0, 2] = "Error message! Something was apparently not set...";
+            msg[0, 3] = global.character_right;
+            msg[0, 4] = "Dumb developers, right?";
+            msg[0, 5] = spr_pinkie_right;
+            msg[0, 6] = "No, it is just hard to keep an eye on everything that could break.";
+        }
+        if(msg_case == 3)   //Offer denial
+        {
+            msg[0, 0] = 1;
+            msg[0, 1] = spr_pinkie_right;
+            msg[0, 2] = "I am disappointed...";
+        }
+        if(msg_case == 8)   //Shop
+        {
+            msg[0, 0] = 1;
+            msg[0, 1] = spr_pinkie_right;
+            msg[0, 2] = "Hello! You shall see my goods of magnificence.";
+        }
+    }
+    break;
 }
 </string>
           </argument>
@@ -1966,10 +1996,12 @@ if(q_success = true)            //-&gt; Only if quest space is there
     with(instance_create(1000, 530, obj_button_yesno))   //Create "Yes" button
     {
         name = "Yes";
+        type = "quest";
     }
     with(instance_create(1000, 630, obj_button_yesno))   //Create "No" button
     {
         name = "No";
+        type = "quest";
     }
 
     with(obj_window_base)       //Lock window (decision has to be done)
@@ -1980,6 +2012,30 @@ if(q_success = true)            //-&gt; Only if quest space is there
     q_success = false;
     show_debug_message("Window locked now.");
 }
+}
+}
+
+if(text_loop &gt; (msg[0, 0] -1))  //If last message is shown -&gt; lock
+{
+if(msg_case = 8)                //-&gt; Only for shop cases
+{
+    with(instance_create(1000, 530, obj_button_yesno))   //Create "Yes" button
+    {
+        name = "Yes";
+        type = "shop";
+    }
+    with(instance_create(1000, 630, obj_button_yesno))   //Create "No" button
+    {
+        name = "No";
+        type = "shop";
+    }
+
+    with(obj_window_base)       //Lock window (decision has to be done)
+    {
+        locked = true;
+    }
+    
+    show_debug_message("Window locked now.");
 }
 }
 </string>
@@ -2236,6 +2292,28 @@ if(inv_show == false)
     draw_text(1280 - 20, 20, "Limit of quests/same time: 5 (Currently just 1 due to testing).");
     
     draw_set_halign(fa_left);
+}
+}
+
+//Shop screen
+if(shop_show == true)
+{
+if(inv_show == false)
+{
+if(quest_show == false)
+{
+    draw_set_alpha(0.3);
+    draw_set_colour(c_black);
+    draw_rectangle(0, 0, 1280, 720, false);
+    
+    draw_set_halign(fa_center);
+    draw_set_alpha(1);
+    draw_set_colour(c_white);
+    draw_set_font(font_big);
+    draw_text(640, 200, "-----------SHOP-----------");
+    draw_set_font(font_medium);
+    draw_text(640, 250, "Shops are not added yet. But thanks for trying them out!#Speak with Pinkie Pie again and select YES to exit shop.");
+}
 }
 }
 </string>

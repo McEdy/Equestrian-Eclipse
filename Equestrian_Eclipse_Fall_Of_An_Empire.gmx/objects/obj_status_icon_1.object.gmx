@@ -51,7 +51,7 @@ sprite_index = spr_poisoned;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Icon
+            <string>///Icon
 
 if(active = true)
 {

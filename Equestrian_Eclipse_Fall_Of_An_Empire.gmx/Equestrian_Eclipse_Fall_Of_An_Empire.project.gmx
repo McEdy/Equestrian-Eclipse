@@ -219,6 +219,10 @@
           <object>objects\obj_NPC_trixie</object>
           <object>objects\obj_NPC_base1</object>
         </objects>
+        <objects name="Shop">
+          <object>objects\obj_NPC_pinkie</object>
+          <object>objects\obj_NPC_shop</object>
+        </objects>
         <object>objects\obj_pathguide</object>
       </objects>
     </objects>
@@ -285,7 +289,7 @@
     <room>rooms\rm_cave_boss</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41965.9999687847</constant>
+    <constant name="GM_build_date">41968.7874189931</constant>
     <constant name="GM_version">'0.0.0.1'</constant>
   </constants>
   <help>
