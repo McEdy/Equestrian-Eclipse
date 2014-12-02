@@ -64,8 +64,8 @@ inv_quest = 0;          //Choice if inventory or quest assignment (0 = inv, othe
 inv_show = false;
 inv_assigned = false;
 inv_slot_selected = false;
-inv_preview_x = 0;
 inv_preview_y = 0;
+inv_page = 1;
 quest_show = false;
 quest_show_prepare = false;
 
@@ -115,12 +115,26 @@ equip_6 = -1;                       //Front hoofs
 equip_7 = -1;                       //Back hoofs
 
 //Quests
-for(var i = 5; i &gt; -1; i--;)
+for(var i = 4; i &gt; -1; i--;)
 {
     global.quests[i,0] = "";
 }
 
 show_debug_message("Quest array finished.");
+
+//Shop
+for(var i = 14; i &gt; -1; i--;)
+{
+    shop[i,0] = "";
+    shop[i,1] = "";
+    shop[i,2] = -1;
+    shop[i,3] = spr_none;
+    shop[i,4] = 0;
+    shop[i,5] = 0;
+    shop[i,6] = "";
+    shop[i,7] = 0;
+    shop[i,8] = 0;
+}
 
 //Window messages
 for(var i = 6; i &gt; -1; i--;)        //6 = amount of cases
@@ -1358,116 +1372,124 @@ if(global.character_race == "unicorn")
             <kind>1</kind>
             <string>///Inventory user input
 
-
-if(inv_show == true)
+if(inv_show == true or shop_show == true)
 {
     if(8 &lt;= ((mouse_x -view_xview) *2) &amp;&amp; ((mouse_x -view_xview) *2) &lt;= 648)
     {
-        //Item 0
         if(174 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 200)
         {
             inv_select = 0;
             inv_slot_selected = true;
             inv_preview_y = 174;
         }
-        //Item 1
         if(201 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 227)
         {
             inv_select = 1;
             inv_slot_selected = true;
             inv_preview_y = 201;
         }
-        //Item 2
         if(228 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 254)
         {
             inv_select = 2;
             inv_slot_selected = true;
             inv_preview_y = 228;
         }
-        //Item 3
         if(255 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 281)
         {
             inv_select = 3;
             inv_slot_selected = true;
             inv_preview_y = 255;
         }
-        //Item 4
         if(282 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 308)
         {
             inv_select = 4;
             inv_slot_selected = true;
             inv_preview_y = 282;
         }
-        //Item 5
         if(309 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 335)
         {
             inv_select = 5;
             inv_slot_selected = true;
             inv_preview_y = 309;
         }
-        //Item 6
         if(336 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 362)
         {
             inv_select = 6;
             inv_slot_selected = true;
             inv_preview_y = 336;
         }
-        //Item 7
         if(363 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 389)
         {
             inv_select = 7;
             inv_slot_selected = true;
             inv_preview_y = 363;
         }
-        //Item 8
         if(390 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 416)
         {
             inv_select = 8;
             inv_slot_selected = true;
             inv_preview_y = 390;
         }
-        //Item 9
         if(417 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 443)
         {
             inv_select = 9;
             inv_slot_selected = true;
             inv_preview_y = 417;
         }
-        //Item 10
         if(444 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 470)
         {
             inv_select = 10;
             inv_slot_selected = true;
             inv_preview_y = 444;
         }
-        //Item 11
         if(471 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 497)
         {
             inv_select = 11;
             inv_slot_selected = true;
             inv_preview_y = 471;
         }
-        //Item 12
         if(498 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 524)
         {
             inv_select = 12;
             inv_slot_selected = true;
             inv_preview_y = 498;
         }
-        //Item 13
         if(525 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 551)
         {
             inv_select = 13;
             inv_slot_selected = true;
             inv_preview_y = 525;
         }
-        //Item 14
         if(552 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 578)
         {
             inv_select = 14;
             inv_slot_selected = true;
             inv_preview_y = 552;
         }
+    }
+    
+    if(30 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 90)
+    {
+        if(28 &lt;= ((mouse_x -view_xview) *2) &amp;&amp; ((mouse_x -view_xview) *2) &lt;= 60)
+        {
+            if(inv_page != 0) inv_page -= 1;
+        }
+        if(400 &lt;= ((mouse_x -view_xview) *2) &amp;&amp; ((mouse_x -view_xview) *2) &lt;= 435)
+        {
+            if(inv_page != 1) inv_page += 1;
+        }
+    }
+}
+
+if(shop_show == true)
+{
+    if(30 &lt;= ((mouse_y -view_yview) *2) &amp;&amp; ((mouse_y -view_yview) *2) &lt;= 90)
+    {
+    if(60 &lt;= ((mouse_x -view_xview) *2) &amp;&amp; ((mouse_x -view_xview) *2) &lt;= 400)
+    {
+        inv_page = 1;
+        shop_show = false;
+    }
     }
 }
 </string>
@@ -2294,28 +2316,6 @@ if(inv_show == false)
     draw_set_halign(fa_left);
 }
 }
-
-//Shop screen
-if(shop_show == true)
-{
-if(inv_show == false)
-{
-if(quest_show == false)
-{
-    draw_set_alpha(0.3);
-    draw_set_colour(c_black);
-    draw_rectangle(0, 0, 1280, 720, false);
-    
-    draw_set_halign(fa_center);
-    draw_set_alpha(1);
-    draw_set_colour(c_white);
-    draw_set_font(font_big);
-    draw_text(640, 200, "-----------SHOP-----------");
-    draw_set_font(font_medium);
-    draw_text(640, 250, "Shops are not added yet. But thanks for trying them out!#Speak with Pinkie Pie again and select YES to exit shop.");
-}
-}
-}
 </string>
           </argument>
         </arguments>
@@ -2341,6 +2341,8 @@ if(quest_show == false)
 if(inv_show == true)
 {
 if(quest_show == false)
+{
+if(shop_show == false)
 {
     //Blacken screen
     draw_set_alpha(0.5);
@@ -2371,8 +2373,8 @@ if(quest_show == false)
     
     draw_rectangle(7, 105, 647, 106, false);            //Horizontal line
     
-    draw_sprite(spr_weight, 0, 500, 116);               //"Weight" symbol
-    draw_sprite(spr_money, 0, 560, 130);                //"Price" symbol
+    draw_sprite(spr_weight, 0, 500, 116);
+    draw_sprite(spr_money, 0, 560, 130);
     
     draw_set_font(font_eq);
     
@@ -2389,7 +2391,7 @@ if(quest_show == false)
         draw_set_colour(c_black);
         draw_text(680, 30, string(global.items[inv_select,0]));             //Name of selected item
         draw_set_font(font_desc);
-        draw_text(950, 100, string(global.items[inv_select,1]));             //Description of selected item
+        draw_text(950, 100, string(global.items[inv_select,1]));            //Description of selected item
         
         var size_x = sprite_get_width(global.items[inv_select,3]);          //Get sprite size
         draw_sprite_ext(global.items[inv_select,3], 0, 800, 200, 200 /size_x , 200 /size_x, 0, -1, 1); //Draw sprite in 250x250
@@ -2497,59 +2499,45 @@ if(quest_show == false)
         case 0:
         draw_sprite(spr_quadrat_gr1, 0, 20, 177);
         break;
-        
         case 1:
         draw_sprite(spr_quadrat_gr1, 0, 20, 177 +27);
         break;
-        
         case 2:
         draw_sprite(spr_quadrat_gr1, 0, 20, 177 +27*2);
         break;
-        
         case 3:
         draw_sprite(spr_quadrat_gr1, 0, 20, 177 +27*3);
         break;
-        
         case 4:
         draw_sprite(spr_quadrat_gr1, 0, 20, 177 +27*4);
         break;
-        
         case 5:
         draw_sprite(spr_quadrat_gr1, 0, 20, 177 +27*5);
         break;
-        
         case 6:
         draw_sprite(spr_quadrat_gr1, 0, 20, 177 +27*6);
         break;
-        
         case 7:
         draw_sprite(spr_quadrat_gr1, 0, 20, 177 +27*7);
         break;
-        
         case 8:
         draw_sprite(spr_quadrat_gr1, 0, 20, 177 +27*8);
         break;
-        
         case 9:
         draw_sprite(spr_quadrat_gr1, 0, 20, 177 +27*9);
         break;
-        
         case 10:
         draw_sprite(spr_quadrat_gr1, 0, 20, 177 +27*10);
         break;
-        
         case 11:
         draw_sprite(spr_quadrat_gr1, 0, 20, 177 +27*11);
         break;
-        
         case 12:
         draw_sprite(spr_quadrat_gr1, 0, 20, 177 +27*12);
         break;
-        
         case 13:
         draw_sprite(spr_quadrat_gr1, 0, 20, 177 +27*13);
         break;
-        
         case 14:
         draw_sprite(spr_quadrat_gr1, 0, 20, 177 +27*14);
         break;
@@ -2563,12 +2551,382 @@ if(quest_show == false)
     draw_rectangle(8, 660, 648, 720 -8, false);
     draw_set_font(font_eq);
     draw_set_colour(c_white);
-    draw_text(20, 675, "[E] Equip      [RMB] Switch weapon group      [Q] Delete item");
+    draw_text(20, 675, "[E] Equip   [RMB] Switch weapon group   [Q] Delete item");
     
     //External information (to be deleted later)
     draw_set_halign(fa_right);
     draw_text(1280 - 20, 20, "Available Slots: 25. | Mouse x: " + string((mouse_x -view_xview) *2));
     draw_text(1280 - 20, 40, "Money: " + string(money) + ". | Mouse y: " + string((mouse_y -view_yview) *2));
+}
+}
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Shop screen
+
+if(shop_show == true)
+{
+if(inv_show == false)
+{
+if(quest_show == false)
+{
+    //Blacken screen
+    draw_set_alpha(0.5);
+    draw_set_colour(c_black);
+    draw_rectangle(0, 0, 1280, 720, false);
+    
+    //Black outlines
+    draw_set_alpha(1);
+    draw_set_colour(c_black);
+    draw_rectangle(7, 7, 649, 720 -7, false);           //Inventory box
+    draw_rectangle(658, 7, 1280 -7, 356, false);        //Description box
+    draw_rectangle(658, 365, 1280 -7, 720 -7, false);   //Comparison box
+    
+    //Interface pages
+    draw_set_colour(make_color_rgb(214, 182, 135));
+    draw_rectangle(8, 8, 648, 720 -8, false);           //Inventory box
+    draw_rectangle(659, 8, 1280 -8, 355, false);        //Description box
+    draw_rectangle(659, 366, 1280 -8, 720 -8, false);   //Comparison box
+    
+    //Above inventory
+    draw_set_colour(c_black);
+    draw_set_halign(fa_left);
+    draw_set_valign(fa_top);
+    draw_sprite(spr_arrow_left, 0, 25, 30);             //Left arrow
+    draw_sprite(spr_arrow_right, 0, 400, 30);           //Left arrow
+    
+    draw_rectangle(7, 105, 647, 106, false);            //Horizontal line
+    
+    draw_sprite(spr_weight, 0, 500, 116);
+    draw_sprite(spr_money, 0, 560, 130);
+    
+    //Inventory core
+    draw_set_halign(fa_left);
+    
+    if(inv_page == 1)
+    {
+        draw_set_colour(c_black);
+        draw_set_halign(fa_left);
+        draw_set_valign(fa_top);
+        draw_set_font(font_big);
+        draw_text(75, 30, "Weapons");
+        
+        //Selection marker
+        if(inv_slot_selected == true)
+        {
+            draw_set_alpha(0.5);
+            draw_set_colour(c_blue);
+            draw_rectangle(8, inv_preview_y, 648, inv_preview_y + 25, false);
+            
+            //Description
+            draw_set_font(font_eq);
+            draw_set_alpha(1);
+            draw_set_font(font_big);
+            draw_set_colour(c_black);
+            draw_text(680, 30, string(global.items[inv_select,0]));             //Name of selected item
+            draw_set_font(font_desc);
+            draw_text(950, 100, string(global.items[inv_select,1]));            //Description of selected item
+            
+            var size_x = sprite_get_width(global.items[inv_select,3]);
+            draw_sprite_ext(global.items[inv_select,3], 0, 800, 200, 200 /size_x , 200 /size_x, 0, -1, 1); //Draw sprite in 250x250
+        }
+        
+        draw_set_font(font_eq);
+        if(global.items[0,0] != "")     //Item 0
+        {
+            draw_text(50, 175, string(global.items[0,0]));  //Name
+            draw_text(500, 175, string(global.items[0,4])); //Weight
+            draw_text(580, 175, string(global.items[0,5])); //Price
+        }
+        if(global.items[1,0] != "")     //Item 1
+        {
+            draw_text(50, 175, "#" + string(global.items[1,0]));
+            draw_text(500, 175, "#" + string(global.items[1,4]));
+            draw_text(580, 175, "#" + string(global.items[1,5]));
+        }
+        if(global.items[2,0] != "")     //Item 2
+        {
+            draw_text(50, 175, "##" + string(global.items[2,0]));
+            draw_text(500, 175, "##" + string(global.items[2,4]));
+            draw_text(580, 175, "##" + string(global.items[2,5]));
+        }
+        if(global.items[3,0] != "")     //Item 3
+        {
+            draw_text(50, 175, "###" + string(global.items[3,0]));
+            draw_text(500, 175, "###" + string(global.items[3,4]));
+            draw_text(580, 175, "###" + string(global.items[3,5]));
+        }
+        if(global.items[4,0] != "")     //Item 4
+        {
+            draw_text(50, 175, "####" + string(global.items[4,0]));
+            draw_text(500, 175, "####" + string(global.items[4,4]));
+            draw_text(580, 175, "####" + string(global.items[4,5]));
+        }
+        if(global.items[5,0] != "")     //Item 5
+        {
+            draw_text(50, 175, "#####" + string(global.items[5,0]));
+            draw_text(500, 175, "#####" + string(global.items[5,4]));
+            draw_text(580, 175, "#####" + string(global.items[5,5]));
+        }
+        if(global.items[6,0] != "")     //Item 6
+        {
+            draw_text(50, 175, "######" + string(global.items[6,0]));
+            draw_text(500, 175, "######" + string(global.items[6,4]));
+            draw_text(580, 175, "######" + string(global.items[6,5]));
+        }
+        if(global.items[7,0] != "")     //Item 7
+        {
+            draw_text(50, 175, "#######" + string(global.items[7,0]));
+            draw_text(500, 175, "#######" + string(global.items[7,4]));
+            draw_text(580, 175, "#######" + string(global.items[7,5]));
+        }
+        if(global.items[8,0] != "")     //Item 8
+        {
+            draw_text(50, 175, "########" + string(global.items[8,0]));
+            draw_text(500, 175, "########" + string(global.items[8,4]));
+            draw_text(580, 175, "########" + string(global.items[8,5]));
+        }
+        if(global.items[9,0] != "")     //Item 9
+        {
+            draw_text(50, 175, "#########" + string(global.items[9,0]));
+            draw_text(500, 175, "#########" + string(global.items[9,4]));
+            draw_text(580, 175, "#########" + string(global.items[9,5]));
+        }
+        if(global.items[10,0] != "")    //Item 10
+        {
+            draw_text(50, 175, "##########" + string(global.items[10,0]));
+            draw_text(500, 175, "##########" + string(global.items[10,4]));
+            draw_text(580, 175, "##########" + string(global.items[10,5]));
+        }
+        if(global.items[11,0] != "")    //Item 11
+        {
+            draw_text(50, 175, "###########" + string(global.items[11,0]));
+            draw_text(500, 175, "###########" + string(global.items[11,4]));
+            draw_text(580, 175, "###########" + string(global.items[11,5]));
+        }
+        if(global.items[12,0] != "")    //Item 12
+        {
+            draw_text(50, 175, "############" + string(global.items[12,0]));
+            draw_text(500, 175, "############" + string(global.items[12,4]));
+            draw_text(580, 175, "############" + string(global.items[12,5]));
+        }
+        if(global.items[13,0] != "")    //Item 13
+        {
+            draw_text(50, 175, "#############" + string(global.items[13,0]));
+            draw_text(500, 175, "#############" + string(global.items[13,4]));
+            draw_text(580, 175, "#############" + string(global.items[13,5]));
+        }
+        if(global.items[14,0] != "")    //Item 14
+        {
+            draw_text(50, 175, "##############" + string(global.items[14,0]));
+            draw_text(500, 175, "##############" + string(global.items[14,4]));
+            draw_text(580, 175, "##############" + string(global.items[14,5]));
+        }
+        
+        //Equiped quadrat
+        switch(equip_0)
+        {
+            case 0:
+            draw_sprite(spr_quadrat_gr1, 0, 20, 177);
+            break;
+            case 1:
+            draw_sprite(spr_quadrat_gr1, 0, 20, 177 +27);
+            break;
+            case 2:
+            draw_sprite(spr_quadrat_gr1, 0, 20, 177 +27*2);
+            break;
+            case 3:
+            draw_sprite(spr_quadrat_gr1, 0, 20, 177 +27*3);
+            break;
+            case 4:
+            draw_sprite(spr_quadrat_gr1, 0, 20, 177 +27*4);
+            break;
+            case 5:
+            draw_sprite(spr_quadrat_gr1, 0, 20, 177 +27*5);
+            break;
+            case 6:
+            draw_sprite(spr_quadrat_gr1, 0, 20, 177 +27*6);
+            break;
+            case 7:
+            draw_sprite(spr_quadrat_gr1, 0, 20, 177 +27*7);
+            break;
+            case 8:
+            draw_sprite(spr_quadrat_gr1, 0, 20, 177 +27*8);
+            break;
+            case 9:
+            draw_sprite(spr_quadrat_gr1, 0, 20, 177 +27*9);
+            break;
+            case 10:
+            draw_sprite(spr_quadrat_gr1, 0, 20, 177 +27*10);
+            break;
+            case 11:
+            draw_sprite(spr_quadrat_gr1, 0, 20, 177 +27*11);
+            break;
+            case 12:
+            draw_sprite(spr_quadrat_gr1, 0, 20, 177 +27*12);
+            break;
+            case 13:
+            draw_sprite(spr_quadrat_gr1, 0, 20, 177 +27*13);
+            break;
+            case 14:
+            draw_sprite(spr_quadrat_gr1, 0, 20, 177 +27*14);
+            break;
+        }
+    }
+    else if(inv_page == 0)
+    {
+        draw_set_colour(c_black);
+        draw_set_halign(fa_left);
+        draw_set_valign(fa_top);
+        draw_set_font(font_big);
+        draw_text(75, 30, "Shop");
+        
+        //Selection marker
+        if(inv_slot_selected == true)
+        {
+            draw_set_alpha(0.5);
+            draw_set_colour(c_blue);
+            draw_rectangle(8, inv_preview_y, 648, inv_preview_y + 25, false);
+            
+            //Description
+            draw_set_font(font_eq);
+            draw_set_alpha(1);
+            draw_set_font(font_big);
+            draw_set_colour(c_black);
+            draw_text(680, 30, string(shop[inv_select,0]));             //Name of selected item
+            draw_set_font(font_desc);
+            draw_text(950, 100, string(shop[inv_select,1]));            //Description of selected item
+            
+            var size_x = sprite_get_width(shop[inv_select,3]);
+            draw_sprite_ext(shop[inv_select,3], 0, 800, 200, 200 /size_x , 200 /size_x, 0, -1, 1); //Draw sprite in 250x250
+        }
+        
+        draw_set_font(font_eq);
+        if(shop[0,0] != "")     //Item 0
+        {
+            draw_text(50, 175, string(shop[0,0]));  //Name
+            draw_text(500, 175, string(shop[0,4])); //Weight
+            draw_text(580, 175, string(shop[0,5])); //Price
+        }
+        if(shop[1,0] != "")     //Item 1
+        {
+            draw_text(50, 175, "#" + string(shop[1,0]));
+            draw_text(500, 175, "#" + string(shop[1,4]));
+            draw_text(580, 175, "#" + string(shop[1,5]));
+        }
+        if(shop[2,0] != "")     //Item 2
+        {
+            draw_text(50, 175, "##" + string(shop[2,0]));
+            draw_text(500, 175, "##" + string(shop[2,4]));
+            draw_text(580, 175, "##" + string(shop[2,5]));
+        }
+        if(shop[3,0] != "")     //Item 3
+        {
+            draw_text(50, 175, "###" + string(shop[3,0]));
+            draw_text(500, 175, "###" + string(shop[3,4]));
+            draw_text(580, 175, "###" + string(shop[3,5]));
+        }
+        if(shop[4,0] != "")     //Item 4
+        {
+            draw_text(50, 175, "####" + string(shop[4,0]));
+            draw_text(500, 175, "####" + string(shop[4,4]));
+            draw_text(580, 175, "####" + string(shop[4,5]));
+        }
+        if(shop[5,0] != "")     //Item 5
+        {
+            draw_text(50, 175, "#####" + string(shop[5,0]));
+            draw_text(500, 175, "#####" + string(shop[5,4]));
+            draw_text(580, 175, "#####" + string(shop[5,5]));
+        }
+        if(shop[6,0] != "")     //Item 6
+        {
+            draw_text(50, 175, "######" + string(shop[6,0]));
+            draw_text(500, 175, "######" + string(shop[6,4]));
+            draw_text(580, 175, "######" + string(shop[6,5]));
+        }
+        if(shop[7,0] != "")     //Item 7
+        {
+            draw_text(50, 175, "#######" + string(shop[7,0]));
+            draw_text(500, 175, "#######" + string(shop[7,4]));
+            draw_text(580, 175, "#######" + string(shop[7,5]));
+        }
+        if(shop[8,0] != "")     //Item 8
+        {
+            draw_text(50, 175, "########" + string(shop[8,0]));
+            draw_text(500, 175, "########" + string(shop[8,4]));
+            draw_text(580, 175, "########" + string(shop[8,5]));
+        }
+        if(shop[9,0] != "")     //Item 9
+        {
+            draw_text(50, 175, "#########" + string(shop[9,0]));
+            draw_text(500, 175, "#########" + string(shop[9,4]));
+            draw_text(580, 175, "#########" + string(shop[9,5]));
+        }
+        if(shop[10,0] != "")    //Item 10
+        {
+            draw_text(50, 175, "##########" + string(shop[10,0]));
+            draw_text(500, 175, "##########" + string(shop[10,4]));
+            draw_text(580, 175, "##########" + string(shop[10,5]));
+        }
+        if(shop[11,0] != "")    //Item 11
+        {
+            draw_text(50, 175, "###########" + string(shop[11,0]));
+            draw_text(500, 175, "###########" + string(shop[11,4]));
+            draw_text(580, 175, "###########" + string(shop[11,5]));
+        }
+        if(shop[12,0] != "")    //Item 12
+        {
+            draw_text(50, 175, "############" + string(shop[12,0]));
+            draw_text(500, 175, "############" + string(shop[12,4]));
+            draw_text(580, 175, "############" + string(shop[12,5]));
+        }
+        if(shop[13,0] != "")    //Item 13
+        {
+            draw_text(50, 175, "#############" + string(shop[13,0]));
+            draw_text(500, 175, "#############" + string(shop[13,4]));
+            draw_text(580, 175, "#############" + string(shop[13,5]));
+        }
+        if(shop[14,0] != "")    //Item 14
+        {
+            draw_text(50, 175, "##############" + string(shop[14,0]));
+            draw_text(500, 175, "##############" + string(shop[14,4]));
+            draw_text(580, 175, "##############" + string(shop[14,5]));
+        }
+    }
+    
+    //Below inventory
+    draw_set_font(font_medium);
+    draw_text(50, 610, "Weight: " + string(weight) + "kg of " + string(weight_limit) + "kg");
+    
+    //Command information box
+    draw_rectangle(8, 660, 648, 720 -8, false);
+    draw_set_font(font_eq);
+    draw_set_colour(c_white);
+    draw_text(20, 675, "[E] Equip   [RMB] Switch weapon group   [Q] Delete item   [B] Buy");
+    
+    //External information (to be deleted later)
+    draw_set_halign(fa_right);
+    draw_text(1280 - 20, 20, "Available Slots: 25. | Mouse x: " + string((mouse_x -view_xview) *2));
+    draw_text(1280 - 20, 40, "Money: " + string(money) + ". | Mouse y: " + string((mouse_y -view_yview) *2));
+}
 }
 }
 </string>
@@ -2780,6 +3138,63 @@ if(global.items[inv_select,0] != "")
         
         break;
     }
+}
+}
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="66">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Purchase item
+
+if(shop_show == true)
+{
+if(inv_page == 0)
+{
+if(inv_slot_selected = true)
+{
+    weight = weight + shop[inv_select,4];
+    
+    global.pickup0 = shop[inv_select,0];
+    global.pickup1 = shop[inv_select,1];
+    global.pickup2 = shop[inv_select,2];
+    global.pickup3 = shop[inv_select,3];
+    global.pickup4 = shop[inv_select,4];
+    global.pickup5 = shop[inv_select,5];
+        
+    with(obj_player)
+    {
+        inv_quest = 0;
+        event_user(0);
+    }
+    
+    shop[inv_select,0] = "";
+    shop[inv_select,1] = "";
+    shop[inv_select,2] = -1;
+    shop[inv_select,3] = spr_none;
+    shop[inv_select,4] = 0;
+    shop[inv_select,5] = 0;
+    shop[inv_select,6] = "";
+    shop[inv_select,7] = 0;
+    shop[inv_select,8] = 0;
 }
 }
 }

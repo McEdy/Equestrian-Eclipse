@@ -261,11 +261,21 @@ if(obj_player.s_target == shop_name)
     {
         if(shop_show == false)      //Activate the shop
         {
+            shop[0,0] = "Sword";
+            shop[0,1] = "It is nicely done. BUY it!!!";
+            shop[0,2] = 1;
+            shop[0,3] = spr_lantern_on;
+            shop[0,4] = 3;
+            shop[0,5] = 10;
+            
+            shop[1,0] = "Sword2";
+            shop[1,1] = "BUY that as well!11";
+            shop[1,2] = 1;
+            shop[1,3] = spr_lantern_on;
+            shop[1,4] = 3;
+            shop[1,5] = 10;
+            
             shop_show = true;
-        }
-        else
-        {
-            shop_show = false;
         }
     }
 

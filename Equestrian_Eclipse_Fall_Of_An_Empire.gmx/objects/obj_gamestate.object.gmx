@@ -46,6 +46,9 @@ global.damage_popup1 = false;   //Damage was dealt to player
 global.damage_popup2 = false;   //Damage was dealt by player
 global.pickup_target = "";      //Name of target object
 
+global.pickup6 = "";
+global.pickup7 = 0;
+global.pickup8 = 0;
 
 randomize();                    //Change seed for random functions -&gt; true random
 </string>
